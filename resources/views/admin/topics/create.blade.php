@@ -69,11 +69,15 @@
 @endsection
 
 @section('js_after')
-    <!--  <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script> -->
     <script src="{{ asset('js/plugins/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('js/plugins/flatpickr/flatpickr.min.js') }}"></script>
     <script>
         jQuery(function () {
-            Codebase.helpers(['summernote', 'ckeditor', 'simplemde']);
+            Codebase.helpers([
+                'ckeditor', 'flatpickr', 'datepicker'
+            ]);
         });
+        $("#date").flatpickr();
     </script>
 @endsection

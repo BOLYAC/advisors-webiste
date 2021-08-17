@@ -43,16 +43,20 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = [];
+
+        /*$rules = [];
         foreach (config('translatable.locales') as $locale) {
 
             $rules += [$locale . 'file' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048']];
 
-        }//end of  for each
+        }
 
-        $request->validate($rules);
+
+        $request->validate($rules);*/
+
 
         $request_data = $request->all();
+
 
         $next_nor_no = Banner::max('row_no');
         if ($next_nor_no < 1) {
@@ -67,7 +71,7 @@ class BannerController extends Controller
         $request_data['created_by'] = Auth::id();
 
         // Handle image Upload
-        if ($request->has('en.file') && ($request->file('en.file') instanceof UploadedFile)) {
+        /*if ($request->has('en.file') && ($request->file('en.file') instanceof UploadedFile)) {
 
             $bannerImage = $this->uploadOne($request->file('en.file'), 'img/banners');
             $request_data['en']['file'] = $bannerImage;
@@ -80,9 +84,11 @@ class BannerController extends Controller
 
             $request_data['ar']['file'] = $bannerImage;
 
-        }
+        }*/
 
         $banner = Banner::create($request_data);
+
+
         return redirect()->route('banners.index')->withSuccess(__('Banner Created Successfully!'));
 
 
@@ -121,11 +127,7 @@ class BannerController extends Controller
     {
 
         $rules = [];
-        foreach (config('translatable.locales') as $locale) {
-
-            $rules += [$locale . 'file' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048']];
-
-        }//end of  for each
+        $rules += ['file' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048']];
 
         $request->validate($rules);
 
@@ -135,15 +137,7 @@ class BannerController extends Controller
         if ($request->has('en.file') && ($request->file('en.file') instanceof UploadedFile)) {
 
             $bannerImage = $this->uploadOne($request->file('en.file'), 'img/banners');
-            $request_data['en']['file'] = $bannerImage;
-
-        }
-
-        if ($request->has('ar.file') && ($request->file('ar.file') instanceof UploadedFile)) {
-
-            $bannerImage = $this->uploadOne($request->file('ar.file'), 'img/banners');
-
-            $request_data['ar']['file'] = $bannerImage;
+            $request_data['video_link'] = $bannerImage;
 
         }
 

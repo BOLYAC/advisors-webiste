@@ -8,59 +8,74 @@
             <a class="breadcrumb-item" href="{{ route('categories.index') }}">{{ __('List categories') }}</a>
             <span class="breadcrumb-item active">{{ __('Edit category') }}</span>
         </nav>
-        <div class="block">
-            <div class="block-header block-header-default">
-                <h3 class="block-title">{{ __('Edit new category') }}</h3>
-            </div>
-            <div class="block-content">
-                <form action="{{ route('categories.update', $section) }}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    @method('PUT')
-                    <div class="form-group row">
-                        <label class="col-12" for="title-en">{{ __('Title') }} [ English ]</label>
-                        <div class="col-md-12">
-                            <input type="text" class="form-control" id="title-en" name="en[title]"
-                                   placeholder="{{ __('Title for the page') }}" value="{{ old('en:title', optional($section->translate('en'))->title) }}">
-                        </div>
+        <div class="row">
+            <div class="col-8 mx-auto">
+                <div class="block">
+                    <ul class="nav nav-tabs nav-tabs-block" data-toggle="tabs" role="tablist">
+                        @foreach(LaravelLocalization::getSupportedLocales() as $locale => $properties)
+                            <li class="nav-item">
+                                <a class="nav-link {{ $loop->first ? 'active' : '' }}"
+                                   id="custom-content-below-{{ $locale }}-tab" data-toggle="pill"
+                                   href="#custom-content-below-{{ $locale }}" role="tab"
+                                   aria-controls="custom-content-below-{{ $locale }}"
+                                   aria-selected="true">{{ $locale }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+                <div class="block">
+                    <div class="block-header block-header-default">
+                        <h3 class="block-title">{{ __('Edit new category') }}</h3>
                     </div>
-                    <div class="form-group row" dir="rtl">
-                        <label class="col-12" for="title-ar">{{ __('Title') }} [ العربية
-                            ]</label>
-                        <div class="col-md-12">
-                            <input type="text" class="form-control" id="title-ar" name="ar[title]"
-                                   placeholder="{{ __('Title for the page') }}" value="{{ old('ar:title', optional($section->translate('ar'))->title) }}">
-                        </div>
-                    </div>
+                    <form action="{{ route('categories.update', $section) }}" method="post"
+                          enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+                        <div class="block-content tab-content">
+                            @foreach(LaravelLocalization::getSupportedLocales() as $locale => $properties)
+                                <div class="tab-pane fade show {{ $loop->first ? 'active' : '' }}"
+                                     id="custom-content-below-{{ $locale }}" role="tabpanel"
+                                     aria-labelledby="custom-content-below-{{ $locale }}-tab">
+                                    <div class="form-group row">
+                                        <label class="col-12"
+                                               for="title_{{$local}}">{{ __('Title') . " " ."(" . $locale . ")" }}</label>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control" id="title_{{$local}}" name="{{$locale}}[title]"
+                                                   placeholder="{{ __('Title for the page') }}"
+                                                   value="{{  optional($section->translate($locale))->title  }}">
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                            <div class="form-group row">
+                                <label class="col-12">{{ __('Icon') }}</label>
+                                <div class="col-12">
+                                    <div class="custom-file">
+                                        <input type="file" class="form-control" id="example-file-input-custom"
+                                               name="icon" data-toggle="custom-file-input">
+                                        <label class="custom-file-label"
+                                               for="example-file-input-custom">{{ __('Choose file') }}</label>
+                                    </div>
+                                </div>
+                            </div>
 
-
-                    <div class="form-group row">
-                        <label class="col-12">{{ __('Photo') }} [ English ]</label>
-                        <div class="col-12">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="icon"
-                                       name="icon" data-toggle="custom-file-input"
-                                >
-                                <label class="custom-file-label"
-                                       for="icon">{{ __('Choose file') }}</label>
+                            <div class="form-group row">
+                                <div class="col-6">
+                                    <a href="{{ route('categories.index') }}" class="btn btn-alt-danger">
+                                        <i class="fa fa-arrow-left mr-5"></i> {{ __('Cancel') }}
+                                    </a>
+                                </div>
+                                <div class="col-6">
+                                    <button type="submit" class="btn btn-alt-primary pull-right">
+                                        <i class="fa fa-check mr-5"></i> {{ __('Save') }}
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col-6">
-                            <a href="{{ route('categories.index') }}" class="btn btn-alt-danger">
-                                <i class="fa fa-arrow-left mr-5"></i> {{ __('Cancel') }}
-                            </a>
-                        </div>
-                        <div class="col-6">
-                            <button type="submit" class="btn btn-alt-primary pull-right">
-                                <i class="fa fa-check mr-5"></i> {{ __('Save') }}
-                            </button>
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
+                <!-- END Page Content -->
             </div>
         </div>
-        <!-- END Page Content -->
     </div>
 @endsection

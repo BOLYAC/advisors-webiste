@@ -21,12 +21,22 @@
             <span class="breadcrumb-item active">{{ __('Create new post') }}</span>
         </nav>
         <div class="block">
-            <div class="block-header block-header-default">
-                <h3 class="block-title">{{ __('Create new post') }}</h3>
-            </div>
-            <div class="block-content">
-                <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
-                    @csrf
+            <ul class="nav nav-tabs nav-tabs-block" data-toggle="tabs" role="tablist">
+                @foreach(LaravelLocalization::getSupportedLocales() as $locale => $properties)
+                    <li class="nav-item">
+                        <a class="nav-link {{ $loop->first ? 'active' : '' }}"
+                           id="custom-content-below-{{ $locale }}-tab" data-toggle="pill"
+                           href="#custom-content-below-{{ $locale }}" role="tab"
+                           aria-controls="custom-content-below-{{ $locale }}"
+                           aria-selected="true">{{ $locale }}</a>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+        <div class="block">
+            <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="block-content tab-content">
                     <div class="form-group row">
                         <label class="col-12" for="date">{{ __('Date') }}</label>
                         <div class="col-12">
@@ -44,39 +54,29 @@
                             </select>
                         </div>
                     </div>
+                    @foreach(LaravelLocalization::getSupportedLocales() as $locale => $properties)
+                        <div class="tab-pane fade show {{ $loop->first ? 'active' : '' }}"
+                             id="custom-content-below-{{ $locale }}" role="tabpanel"
+                             aria-labelledby="custom-content-below-{{ $locale }}-tab">
+                            <div class="form-group">
+                                <label for="title">{{ __('Title' ) . " " ."(" . $locale . ")" }}</label>
+                                <input type="text" class="form-control"
+                                       id="title"
+                                       name="{{ $locale }}[title]"
+                                       value="{{ old($locale . 'title') }}"
+                                       placeholder="{{ __('Enter the title') . " " ."(" . $locale . ")" }}">
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <label
+                                        for="js-ckeditor_{{ $locale }}">{{ __('Details' . " " ."(" . $locale . ")" ) }}</label>
+                                    <textarea id="js-ckeditor_{{ $locale }}"
+                                              name="{{$locale}}[details]">{!! old($locale . 'details') !!}</textarea>
+                                </div>
+                            </div>
 
-
-                    <div class="form-group row">
-                        <label class="col-12" for="example-text-input">{{ __('Title') }} [ English ]</label>
-                        <div class="col-md-12">
-                            <input type="text" class="form-control" id="example-text-input" name="en[title]"
-                                   placeholder="{{ __('Title for the post') }}" value="{{ old('en.title') }}">
                         </div>
-                    </div>
-                    <div class="form-group row" dir="rtl">
-                        <label class="col-12" for="example-text-input">{{ __('Title') }} [ العربية
-                            ]</label>
-                        <div class="col-md-12">
-                            <input type="text" class="form-control" id="example-text-input" name="ar[title]"
-                                   placeholder="{{ __('Title for the post') }}" value="{{ old('ar.title') }}">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-12">
-                            <label for="js-ckeditor">{{ __('Details') }} [ English ]</label>
-                            <!-- CKEditor Container -->
-                            <textarea id="js-ckeditor" name="en[details]">{!! old('en.details') !!}</textarea>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-12">
-                            <label for="js-ckeditor-ar">{{ __('Details') }} [ العربية
-                                ]</label>
-                            <!-- CKEditor Container -->
-                            <textarea id="js-ckeditor-ar" name="ar[details]">{!! old('ar.details') !!}</textarea>
-                        </div>
-                    </div>
-
+                    @endforeach
                     <div class="form-group row">
                         <label class="col-12">{{ __('Photo') }}</label>
                         <div class="col-12">
@@ -110,8 +110,8 @@
                             </button>
                         </div>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
         <!-- END Page Content -->
     </div>
@@ -135,11 +135,10 @@
             Codebase.helpers([
                 'ckeditor', 'flatpickr', 'datepicker', 'colorpicker', 'maxlength', 'select2', 'masked-inputs', 'rangeslider', 'tags-inputs'
             ]);
+            @foreach(LaravelLocalization::getSupportedLocales() as $locale => $properties)
+            CKEDITOR.replace('js-ckeditor_{{ $locale }}');
+            @endforeach
         });
-        CKEDITOR.replace('js-ckeditor-ar', {
-            contentsLangDirection: 'rtl'
-        });
-
         $("#date").flatpickr();
     </script>
 @endsection
