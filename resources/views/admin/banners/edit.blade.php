@@ -63,7 +63,7 @@
                     </div>
                     <div class="form-group">
                         <label for="slide_position">{{ __('Order') }}</label>
-                        <input class="form-control" type="number" name="row_no" id="slide_position"
+                        <input class="form-control" type="number" name="row_no" id="slide_position" value="{{ $banner->row_no }}"
                                placeholder="{{ __('Order') }}">
                     </div>
                     <div class="form-group row">

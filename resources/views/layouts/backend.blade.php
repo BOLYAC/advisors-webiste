@@ -144,7 +144,7 @@
                         <a class="{{ request()->is('admin/contacts') ? ' active' : '' }}"
                            href="{{ route('contacts.index')  }}">
                             <i class="si si-envelope-letter"></i><span
-                                class="sidebar-mini-hide">{{ __('Messages') }}</span>
+                                class="sidebar-mini-hide">{{ __('Contact form') }}</span>
                         </a>
                     </li>
                     <li>

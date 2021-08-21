@@ -18,6 +18,11 @@ Route::namespace('Site')->prefix(LaravelLocalization::setLocale())->middleware('
     Route::get(LaravelLocalization::transRoute('routes.about'), [SiteController::class, 'about'])->name('about');
     Route::get(LaravelLocalization::transRoute('routes.contact'), [SiteController::class, 'contact'])->name('contact');
     Route::get(LaravelLocalization::transRoute('routes.works'), [SiteController::class, 'works'])->name('works');
+    Route::get(LaravelLocalization::transRoute('routes.services'), [SiteController::class, 'services'])->name('services');
+    Route::view('/faq', 'faq')->name('faq');
+    Route::view('/service', 'site.service')->name('service');
+    Route::view('/privacy-policy', 'privacyPolicy')->name('privacyPolicy');
+    Route::view('/terms-of-use', 'termsOfUse')->name('termsOfUse');
     Route::post(LaravelLocalization::transRoute('routes.contact/submit'), [ContactUsFormController::class, 'ContactUsForm'])->name('submit.contact');
     Route::post(LaravelLocalization::transRoute('routes.newsletter/submit'), [ContactUsFormController::class, 'newsletterSubscribe'])->name('submit.subscribe');
     Route::get(LaravelLocalization::transRoute('routes.blog/{slug}'), [SiteController::class, 'getPost'])->name('post.details');

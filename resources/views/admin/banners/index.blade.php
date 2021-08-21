@@ -30,7 +30,7 @@
                         @forelse($banners as $banner)
                             <tr>
                                 <td class="text-center">
-                                    <img class="img-fluid"  src="{{ pageImage($banner->file) }}" alt="">
+                                    <img class="img-fluid" src="{{ pageImage($banner->youtube_link) }}" alt="">
                                 </td>
                                 <td class="font-w600">{{ $banner->title }}</td>
                                 <td>

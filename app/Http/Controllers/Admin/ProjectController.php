@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Facility;
 use App\Models\Feature;
+use App\Models\FloorProject;
 use App\Models\Project;
 use App\Models\ProjectImage;
 use App\Models\Section;
@@ -88,18 +89,19 @@ class ProjectController extends Controller
         $request_data['ar']['seo_title'] = $request_data['ar']['title'];
         $request_data['ar']['seo_url_slug'] = Str::of($request_data['ar']['title'])->slug('-');
         $request_data['ar']['seo_description'] = mb_substr(strip_tags(stripslashes($request_data['ar']['details'])), 0, 165, 'UTF-8');
-        $request_data['featured'] = $request->has('featured') ? 1 : 0;        
-        
+        $request_data['featured'] = $request->has('featured') ? 1 : 0;
+        $request_data['active'] = $request->has('active') ? 1 : 0;
+
         $project = Project::create(collect($request_data)->except(['features', 'facilities', '_token'])->toArray());
         $project->features()->sync($request->input('features'));
-        if($request->facilities) {
-          $items = $request_data['facilities'];
-          $data2 = array();
-          foreach ($items as $key => $val) {
-              $data2[$val['facility_id']] = array('distance' => $val['distance']);
-          }
-          $facilities = collect($data2);
-          $project->facilities()->sync($facilities);
+        if ($request->facilities) {
+            $items = $request_data['facilities'];
+            $data2 = array();
+            foreach ($items as $key => $val) {
+                $data2[$val['facility_id']] = array('distance' => $val['distance']);
+            }
+            $facilities = collect($data2);
+            $project->facilities()->sync($facilities);
         }
 
         return redirect()->route('projects.edit', $project)->withSuccess(__('Project Created Successfully!'));
@@ -129,7 +131,7 @@ class ProjectController extends Controller
         $project->load('facilities');
 
 
-        $facilities = Facility::get()->map(function($facility) use ($project) {
+        $facilities = Facility::get()->map(function ($facility) use ($project) {
             $facility->value = data_get($project->facilities()->firstWhere('id', $facility->id), 'pivot.distance') ?? null;
             return $facility;
         });
@@ -257,4 +259,49 @@ class ProjectController extends Controller
 
         return redirect()->back();
     }
+
+    public function createNewPlan(Request $request)
+    {
+        $project = Project::findOrFail($request->project_id);
+        $request_data = $request->except('_token');
+        // Handle image Upload
+        if ($request->has('floor_full') && ($request->file('floor_full') instanceof UploadedFile)) {
+
+            $projectImage = $this->uploadOne($request->file('floor_full'), 'img/projects');
+
+            $request_data['floor_full'] = $projectImage;
+        }
+        //$d = ['project_id', 'floor_full', 'floor_title', 'floor_price', 'floor_currency', 'floor_size', 'floor_bedrooms', 'floor_bathrooms'];
+        $project->floors()->create([
+            'floor_full' => $request_data['floor_full'],
+            'floor_title' => $request_data['floor_title'],
+            'floor_price' => $request_data['floor_price'],
+            'floor_size' => $request_data['floor_size'],
+            'floor_bedrooms' => $request_data['floor_bedrooms'],
+            'floor_bathrooms' => $request_data['floor_bathrooms'],
+
+        ]);
+
+        return redirect()->route('projects.edit', $project)
+            ->with('toast_success', __('Successfully created new plan floor'));
+    }
+
+    public function updatePlan(Request $request)
+    {
+        $request_data = $request->except('_token', 'project_id', 'floor_id');
+        // Handle image Upload
+        $floor = FloorProject::findOrFail($request->floor_id);
+        if ($request->has('floor_full') && ($request->file('floor_full') instanceof UploadedFile)) {
+
+            $projectImage = $this->uploadOne($request->file('floor_full'), 'img/projects');
+
+            $request_data['floor_full'] = $projectImage;
+        }
+        //$d = ['project_id', 'floor_full', 'floor_title', 'floor_price', 'floor_currency', 'floor_size', 'floor_bedrooms', 'floor_bathrooms'];
+        $floor->update($request_data);
+
+        return redirect()->route('projects.edit', $floor->project_id)
+            ->with('toast_success', __('Successfully created new plan floor'));
+    }
+
 }

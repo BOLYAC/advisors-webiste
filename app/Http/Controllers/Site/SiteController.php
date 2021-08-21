@@ -22,26 +22,25 @@ class SiteController extends Controller
     {
         $banners = \App\Models\Banner::orderBy('row_no')->get();
         $sections = \App\Models\Section::all();
-        $projects = \App\Models\Project::where('featured',true)->get();
-        $properties = \App\Models\Project::where('featured',false)->get();
-        //$properties = \App\Models\Property::all()->take(6);
+        $projects = \App\Models\Project::where('featured', true)->get();
+        $citizenProjects = \App\Models\Project::all();
         $posts = \App\Models\Post::all();
         $news = \App\Models\Article::all();
         $topic = Topic::whereTranslationLike('title', '%home%')->first();
-        if($topic){
-          SEOTools::setTitle(config('settings.site_name') . ' | ' . $topic->seo_title);
-          SEOTools::setDescription($topic->seo_description);
-          SEOTools::opengraph()->setUrl(route('home'));
-          SEOTools::setCanonical(route('home'));
-          SEOTools::opengraph()->addProperty('type', 'articles');
-          SEOTools::twitter()->setSite(config('settings.social_twitter'));
-          SEOTools::jsonLd()->addImage($topic->photo_file);
-          SEOMeta::addKeyword([$topic->seo_keywords]);
-          $topic->visits = $topic->visits + 1;
-          $topic->save();
+        if ($topic) {
+            SEOTools::setTitle(config('settings.site_name') . ' | ' . $topic->seo_title);
+            SEOTools::setDescription($topic->seo_description);
+            SEOTools::opengraph()->setUrl(route('home'));
+            SEOTools::setCanonical(route('home'));
+            SEOTools::opengraph()->addProperty('type', 'articles');
+            SEOTools::twitter()->setSite(config('settings.social_twitter'));
+            SEOTools::jsonLd()->addImage($topic->photo_file);
+            SEOMeta::addKeyword([$topic->seo_keywords]);
+            $topic->visits = $topic->visits + 1;
+            $topic->save();
         }
 
-        return view('site.landing', compact('banners', 'sections', 'projects', 'properties', 'posts', 'news'));
+        return view('site.home', compact('banners', 'sections', 'projects', 'posts', 'news', 'citizenProjects'));
     }
 
     public function projectList()
@@ -51,28 +50,29 @@ class SiteController extends Controller
         $sections = \App\Models\Section::all();
         $popProjects = \App\Models\Project::query()->get()->take(3);
         $topic = Topic::whereTranslationLike('title', '%projects%')->first();
-        if($topic){
-          SEOTools::setTitle(config('settings.site_name') . ' | ' . $topic->seo_title);
-          SEOTools::setDescription($topic->seo_description);
-          SEOTools::opengraph()->setUrl(route('projects'));
-          SEOTools::setCanonical(route('projects'));
-          SEOTools::opengraph()->addProperty('type', 'articles');
-          SEOTools::twitter()->setSite(config('settings.social_twitter'));
-          SEOTools::jsonLd()->addImage($topic->photo_file);
-          SEOMeta::addKeyword([$topic->seo_keywords]);
-          $topic->visits = $topic->visits + 1;
-          $topic->save();
+        if ($topic) {
+            SEOTools::setTitle(config('settings.site_name') . ' | ' . $topic->seo_title);
+            SEOTools::setDescription($topic->seo_description);
+            SEOTools::opengraph()->setUrl(route('projects'));
+            SEOTools::setCanonical(route('projects'));
+            SEOTools::opengraph()->addProperty('type', 'articles');
+            SEOTools::twitter()->setSite(config('settings.social_twitter'));
+            SEOTools::jsonLd()->addImage($topic->photo_file);
+            SEOMeta::addKeyword([$topic->seo_keywords]);
+            $topic->visits = $topic->visits + 1;
+            $topic->save();
         }
-        return view('site.projects.index', compact('projects', 'features', 'sections', 'popProjects'));
+        return view('site.projects', compact('projects', 'features', 'sections', 'popProjects'));
     }
 
     public function getProject($slug)
     {
         $categories = Section::all();
         $project = Project::with('images')->whereTranslation('seo_url_slug', $slug)->firstOrFail();
+        $popProjects = \App\Models\Project::query()->get()->take(6);
         $project->visits = $project->visits + 1;
         $project->save();
-        
+
         SEOTools::setTitle(config('settings.site_name') . ' | ' . $project->seo_title);
         SEOTools::setDescription($project->seo_description);
         SEOTools::opengraph()->setUrl(route('project.detail', $project->seo_url_slug));
@@ -81,8 +81,8 @@ class SiteController extends Controller
         SEOTools::twitter()->setSite(config('settings.social_twitter'));
         SEOTools::jsonLd()->addImage($project->photo_file);
         SEOMeta::addKeyword([$project->seo_keywords]);
-        
-        return view('site.projects.show', compact('project', 'categories'));
+
+        return view('site.project', compact('project', 'categories', 'popProjects'));
     }
 
     public function propertyList()
@@ -92,17 +92,17 @@ class SiteController extends Controller
         $sections = \App\Models\Section::all();
         $popProperties = \App\Models\Property::query()->get()->take(3);
         $topic = Topic::whereTranslationLike('title', '%properties%')->first();
-        if($topic){
-          SEOTools::setTitle(config('settings.site_name') . ' | ' . $topic->seo_title);
-          SEOTools::setDescription($topic->seo_description);
-          SEOTools::opengraph()->setUrl(route('properties'));
-          SEOTools::setCanonical(route('properties'));
-          SEOTools::opengraph()->addProperty('type', 'articles');
-          SEOTools::twitter()->setSite(config('settings.social_twitter'));
-          SEOTools::jsonLd()->addImage($topic->photo_file);
-          SEOMeta::addKeyword([$topic->seo_keywords]);
-          $topic->visits = $topic->visits + 1;
-          $topic->save();
+        if ($topic) {
+            SEOTools::setTitle(config('settings.site_name') . ' | ' . $topic->seo_title);
+            SEOTools::setDescription($topic->seo_description);
+            SEOTools::opengraph()->setUrl(route('properties'));
+            SEOTools::setCanonical(route('properties'));
+            SEOTools::opengraph()->addProperty('type', 'articles');
+            SEOTools::twitter()->setSite(config('settings.social_twitter'));
+            SEOTools::jsonLd()->addImage($topic->photo_file);
+            SEOMeta::addKeyword([$topic->seo_keywords]);
+            $topic->visits = $topic->visits + 1;
+            $topic->save();
         }
         return view('site.properties.index', compact('properties', 'features', 'sections', 'popProperties'));
     }
@@ -131,20 +131,22 @@ class SiteController extends Controller
     {
         $posts = \App\Models\Post::all();
         $categories = Category::all();
+        $lastArticles = Post::latest()->take(3)->get();
+        $projects = Property::where('featured', true)->take(3)->get();
         $topic = Topic::whereTranslationLike('title', '%blog%')->first();
-        if($topic){
-          SEOTools::setTitle(config('settings.site_name') . ' | ' . $topic->seo_title);
-          SEOTools::setDescription($topic->seo_description);
-          SEOTools::opengraph()->setUrl(route('properties'));
-          SEOTools::setCanonical(route('properties'));
-          SEOTools::opengraph()->addProperty('type', 'articles');
-          SEOTools::twitter()->setSite(config('settings.social_twitter'));
-          SEOTools::jsonLd()->addImage($topic->photo_file);
-          SEOMeta::addKeyword([$topic->seo_keywords]);
-          $topic->visits = $topic->visits + 1;
-          $topic->save();
+        if ($topic) {
+            SEOTools::setTitle(config('settings.site_name') . ' | ' . $topic->seo_title);
+            SEOTools::setDescription($topic->seo_description);
+            SEOTools::opengraph()->setUrl(route('properties'));
+            SEOTools::setCanonical(route('properties'));
+            SEOTools::opengraph()->addProperty('type', 'articles');
+            SEOTools::twitter()->setSite(config('settings.social_twitter'));
+            SEOTools::jsonLd()->addImage($topic->photo_file);
+            SEOMeta::addKeyword([$topic->seo_keywords]);
+            $topic->visits = $topic->visits + 1;
+            $topic->save();
         }
-        return view('site.blog.index', compact('posts', 'categories'));
+        return view('site.articles', compact('posts', 'categories', 'topic', 'lastArticles', 'projects'));
     }
 
     public function getPost($slug)
@@ -165,9 +167,9 @@ class SiteController extends Controller
         OpenGraph::setUrl(route('post.details', $post->seo_url_slug));
         OpenGraph::addProperty('type', 'article');
         OpenGraph::addProperty('locale', 'tr-TR');
-        
+
         OpenGraph::addImage(asset('$post->photo_file'), ['height' => 300, 'width' => 300]);
-        
+
         JsonLd::setTitle($post->title);
         JsonLd::setDescription($post->details);
         JsonLd::setType('Article');
@@ -179,17 +181,17 @@ class SiteController extends Controller
     {
         $articles = \App\Models\Article::all();
         $topic = Topic::whereTranslationLike('seo_url_slug', '%news%')->first();
-        if($topic){
-          SEOTools::setTitle(config('settings.site_name') . ' | ' . $topic->seo_title);
-          SEOTools::setDescription($topic->seo_description);
-          SEOTools::opengraph()->setUrl(route('news'));
-          SEOTools::setCanonical(route('news'));
-          SEOTools::opengraph()->addProperty('type', 'articles');
-          SEOTools::twitter()->setSite(config('settings.social_twitter'));
-          SEOTools::jsonLd()->addImage($topic->photo_file);
-          SEOMeta::addKeyword([$topic->seo_keywords]);
-          $topic->visits = $topic->visits + 1;
-          $topic->save();
+        if ($topic) {
+            SEOTools::setTitle(config('settings.site_name') . ' | ' . $topic->seo_title);
+            SEOTools::setDescription($topic->seo_description);
+            SEOTools::opengraph()->setUrl(route('news'));
+            SEOTools::setCanonical(route('news'));
+            SEOTools::opengraph()->addProperty('type', 'articles');
+            SEOTools::twitter()->setSite(config('settings.social_twitter'));
+            SEOTools::jsonLd()->addImage($topic->photo_file);
+            SEOMeta::addKeyword([$topic->seo_keywords]);
+            $topic->visits = $topic->visits + 1;
+            $topic->save();
         }
         return view('site.news.index', compact('articles', 'topic'));
     }
@@ -203,35 +205,35 @@ class SiteController extends Controller
     public function about()
     {
         $topic = Topic::whereTranslationLike('seo_url_slug', '%about%')->first();
-        if($topic){
-          SEOTools::setTitle(config('settings.site_name') . ' | ' . $topic->seo_title);
-          SEOTools::setDescription($topic->seo_description);
-          SEOTools::opengraph()->setUrl(route('about'));
-          SEOTools::setCanonical(route('about'));
-          SEOTools::opengraph()->addProperty('type', 'articles');
-          SEOTools::twitter()->setSite(config('settings.social_twitter'));
-          SEOTools::jsonLd()->addImage($topic->photo_file);
-          SEOMeta::addKeyword([$topic->seo_keywords]);
-          $topic->visits = $topic->visits + 1;
-          $topic->save();
+        if ($topic) {
+            SEOTools::setTitle(config('settings.site_name') . ' | ' . $topic->seo_title);
+            SEOTools::setDescription($topic->seo_description);
+            SEOTools::opengraph()->setUrl(route('about'));
+            SEOTools::setCanonical(route('about'));
+            SEOTools::opengraph()->addProperty('type', 'articles');
+            SEOTools::twitter()->setSite(config('settings.social_twitter'));
+            SEOTools::jsonLd()->addImage($topic->photo_file);
+            SEOMeta::addKeyword([$topic->seo_keywords]);
+            $topic->visits = $topic->visits + 1;
+            $topic->save();
         }
-        return view('site.about', compact('topic'));
+        return view('site.aboutUs', compact('topic'));
     }
 
     public function contact()
     {
         $topic = Topic::whereTranslationLike('seo_url_slug', '%contact%')->first();
-        if($topic){
-          SEOTools::setTitle(config('settings.site_name') . ' | ' . $topic->seo_title);
-          SEOTools::setDescription($topic->seo_description);
-          SEOTools::opengraph()->setUrl(route('contact'));
-          SEOTools::setCanonical(route('contact'));
-          SEOTools::opengraph()->addProperty('type', 'articles');
-          SEOTools::twitter()->setSite(config('settings.social_twitter'));
-          SEOTools::jsonLd()->addImage($topic->photo_file);
-          SEOMeta::addKeyword([$topic->seo_keywords]);
-          $topic->visits = $topic->visits + 1;
-          $topic->save();
+        if ($topic) {
+            SEOTools::setTitle(config('settings.site_name') . ' | ' . $topic->seo_title);
+            SEOTools::setDescription($topic->seo_description);
+            SEOTools::opengraph()->setUrl(route('contact'));
+            SEOTools::setCanonical(route('contact'));
+            SEOTools::opengraph()->addProperty('type', 'articles');
+            SEOTools::twitter()->setSite(config('settings.social_twitter'));
+            SEOTools::jsonLd()->addImage($topic->photo_file);
+            SEOMeta::addKeyword([$topic->seo_keywords]);
+            $topic->visits = $topic->visits + 1;
+            $topic->save();
         }
         return view('site.contact', compact('topic'));
 
@@ -240,17 +242,17 @@ class SiteController extends Controller
     public function works()
     {
         $topic = Topic::whereTranslationLike('seo_url_slug', '%work%')->first();
-        if($topic){
-          SEOTools::setTitle(config('settings.site_name') . ' | ' . $topic->seo_title);
-          SEOTools::setDescription($topic->seo_description);
-          SEOTools::opengraph()->setUrl(route('contact'));
-          SEOTools::setCanonical(route('contact'));
-          SEOTools::opengraph()->addProperty('type', 'articles');
-          SEOTools::twitter()->setSite(config('settings.social_twitter'));
-          SEOTools::jsonLd()->addImage($topic->photo_file);
-          SEOMeta::addKeyword([$topic->seo_keywords]);
-          $topic->visits = $topic->visits + 1;
-          $topic->save();
+        if ($topic) {
+            SEOTools::setTitle(config('settings.site_name') . ' | ' . $topic->seo_title);
+            SEOTools::setDescription($topic->seo_description);
+            SEOTools::opengraph()->setUrl(route('contact'));
+            SEOTools::setCanonical(route('contact'));
+            SEOTools::opengraph()->addProperty('type', 'articles');
+            SEOTools::twitter()->setSite(config('settings.social_twitter'));
+            SEOTools::jsonLd()->addImage($topic->photo_file);
+            SEOMeta::addKeyword([$topic->seo_keywords]);
+            $topic->visits = $topic->visits + 1;
+            $topic->save();
         }
         return view('site.construction.index', compact('topic'));
 
@@ -322,5 +324,10 @@ class SiteController extends Controller
         $projects = $queryProjects->get();
 
         return view('site.search', compact('properties', 'projects', 'sections'));
+    }
+
+    public function services()
+    {
+        return view('site.services');
     }
 }

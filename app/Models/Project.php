@@ -44,7 +44,17 @@ class Project extends Model implements TranslatableContract
         'currency',
         'finish_date',
         'open_sell_date',
-        'created_by'
+        'created_by',
+        'payment_type',
+        'gps_map',
+        'brochure_file',
+        'project_size_max',
+        'project_size_min',
+        'project_bedrooms',
+        'project_bathrooms',
+        'garage_number',
+        'garage_size',
+        'active'
     ];
 
     protected $casts = [
@@ -53,6 +63,7 @@ class Project extends Model implements TranslatableContract
         'finish_date' => 'date',
         'open_sell_date' => 'date',
         'featured' => 'boolean',
+        'active' => 'boolean'
     ];
 
 
@@ -72,6 +83,14 @@ class Project extends Model implements TranslatableContract
     public function images()
     {
         return $this->hasMany(ProjectImage::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function floors()
+    {
+        return $this->hasMany(FloorProject::class);
     }
 
     public function category()

@@ -66,14 +66,28 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label for="featured" class="col-12">{{ __('Status') }}</label>
-                                <div class="col-12">
-                                    <label class="css-control css-control-success css-switch">
-                                        <input type="checkbox" class="css-control-input" id="featured" name="featured"
-                                               checked>
-                                        <span class="css-control-indicator"></span>
-                                    </label>
+
+                            <div class="row">
+                                <div class="form-group col-6 row">
+                                    <label for="featured" class="col-12">{{ __('Featured') }}</label>
+                                    <div class="col-12">
+                                        <label class="css-control css-control-success css-switch">
+                                            <input type="checkbox" class="css-control-input" id="featured"
+                                                   name="featured"
+                                                   checked>
+                                            <span class="css-control-indicator"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-6 row">
+                                    <label for="active" class="col-12">{{ __('Active') }}</label>
+                                    <div class="col-12">
+                                        <label class="css-control css-control-success css-switch">
+                                            <input type="checkbox" class="css-control-input" id="active" name="active"
+                                                   checked>
+                                            <span class="css-control-indicator"></span>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -100,8 +114,8 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="form-group col-5 row">
-                                    <label for="blocks_number" class="col-6">{{ __('Number blocks') }}</label>
+                                <div class="form-group col-4 row">
+                                    <label for="blocks_number" class="col-12">{{ __('Number blocks') }}</label>
                                     <div class="col-12">
                                         <input class="form-control" type="number" name="blocks_number"
                                                value="{{ old('blocks_number') }}">
@@ -121,7 +135,7 @@
                                                value="{{ old('flats_number') }}">
                                     </div>
                                 </div>
-                                <div class="form-group col-5 row">
+                                <div class="form-group col-4 row">
                                     <label for="flats_number" class="col-12">{{ __('Lowest price') }}</label>
                                     <div class="col-12">
                                         <input class="form-control" type="number" name="lowest_price"
@@ -133,6 +147,48 @@
                                     <div class="col-12">
                                         <input class="form-control" type="number" name="highest_price"
                                                value="{{ old('highest_price') }}">
+                                    </div>
+                                </div>
+                                <div class="form-group col-4 row">
+                                    <label for="project_size" class="col-12">{{ __('Size min') }}</label>
+                                    <div class="col-12">
+                                        <input class="form-control" type="number" name="project_size_min"
+                                               value="{{ old('project_size') }}">
+                                    </div>
+                                </div>
+                                <div class="form-group col-4 row">
+                                    <label for="project_size" class="col-12">{{ __('Size max') }}</label>
+                                    <div class="col-12">
+                                        <input class="form-control" type="number" name="project_size_max"
+                                               value="{{ old('project_size') }}">
+                                    </div>
+                                </div>
+                                <div class="form-group col-4 row">
+                                    <label for="project_bedrooms" class="col-12">{{ __('Bedrooms') }}</label>
+                                    <div class="col-12">
+                                        <input class="form-control" type="number" name="project_bedrooms"
+                                               value="{{ old('project_bedrooms') }}">
+                                    </div>
+                                </div>
+                                <div class="form-group col-4 row">
+                                    <label for="project_bathrooms" class="col-12">{{ __('Bathrooms') }}</label>
+                                    <div class="col-12">
+                                        <input class="form-control" type="number" name="project_bathrooms"
+                                               value="{{ old('project_bathrooms') }}">
+                                    </div>
+                                </div>
+                                <div class="form-group col-4 row">
+                                    <label for="garage_number" class="col-12">{{ __('Garage number') }}</label>
+                                    <div class="col-12">
+                                        <input class="form-control" type="number" name="garage_number"
+                                               value="{{ old('garage_number') }}">
+                                    </div>
+                                </div>
+                                <div class="form-group col-4 row">
+                                    <label for="garage_size" class="col-12">{{ __('Garage size') }}</label>
+                                    <div class="col-12">
+                                        <input class="form-control" type="number" name="garage_size"
+                                               value="{{ old('garage_size') }}">
                                     </div>
                                 </div>
                             </div>
@@ -211,6 +267,15 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <div class="col-12">
+                                        <select class="form-control" name="payment_type" id="payment_type">
+                                            <option value="">{{ __('Payment type') }}</option>
+                                            <option value="1">{{  __('Cash') }}</option>
+                                            <option value="2">{{  __('Installment') }}</option>
+                                        </select>
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
@@ -221,16 +286,13 @@
                                 <h3 class="block-title">{{  __('Category') }}</h3>
                             </div>
                             <div class="block-content">
-
-                                <div class="block-content">
-                                    <div class="form-group row">
-                                        <div class="col-12">
-                                            <select class="form-control" name="category_id" id="category">
-                                                @foreach ($sections as $section)
-                                                    <option value="{{ $section->id }}">{{ $section->title }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                <div class="form-group row">
+                                    <div class="col-12">
+                                        <select class="form-control" name="category_id" id="category">
+                                            @foreach ($sections as $section)
+                                                <option value="{{ $section->id }}">{{ $section->title }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             </div>

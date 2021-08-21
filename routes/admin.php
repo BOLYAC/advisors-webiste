@@ -51,13 +51,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
             Route::resource('properties', 'PropertyController');
             Route::post('properties/check_slug', 'PropertyController@check_slug')
                 ->name('properties.check_slug');
+            Route::post('projects/add-floor', 'ProjectController@createNewPlan')
+                ->name('projects.add.floor');
+            Route::post('projects/update-floor', 'ProjectController@updatePlan')
+                ->name('projects.update.floor');
         });
     });
     Route::get('login', 'LoginController@showLoginForm')->name('admin.login');
     Route::post('login', 'LoginController@login')->name('admin.login.post');
     Route::get('logout', 'LoginController@logout')->name('admin.logout');
 });
-
-Route::view('/pages/slick', 'pages.slick');
-Route::view('/pages/datatables', 'pages.datatables');
-Route::view('/pages/blank', 'pages.blank');

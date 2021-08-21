@@ -44,15 +44,11 @@ class BannerController extends Controller
     public function store(Request $request)
     {
 
-        /*$rules = [];
-        foreach (config('translatable.locales') as $locale) {
-
-            $rules += [$locale . 'file' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048']];
-
-        }
+        $rules = [];
+        $rules += ['file' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048']];
 
 
-        $request->validate($rules);*/
+        $request->validate($rules);
 
 
         $request_data = $request->all();
@@ -71,20 +67,12 @@ class BannerController extends Controller
         $request_data['created_by'] = Auth::id();
 
         // Handle image Upload
-        /*if ($request->has('en.file') && ($request->file('en.file') instanceof UploadedFile)) {
+        if ($request->has('file') && ($request->file('file') instanceof UploadedFile)) {
 
-            $bannerImage = $this->uploadOne($request->file('en.file'), 'img/banners');
-            $request_data['en']['file'] = $bannerImage;
+            $bannerImage = $this->uploadOne($request->file('file'), 'img/banners');
+            $request_data['youtube_link'] = $bannerImage;
 
         }
-
-        if ($request->has('ar.file') && ($request->file('ar.file') instanceof UploadedFile)) {
-
-            $bannerImage = $this->uploadOne($request->file('ar.file'), 'img/banners');
-
-            $request_data['ar']['file'] = $bannerImage;
-
-        }*/
 
         $banner = Banner::create($request_data);
 
@@ -134,10 +122,10 @@ class BannerController extends Controller
         $request_data = $request->all();
 
         // Handle image Upload
-        if ($request->has('en.file') && ($request->file('en.file') instanceof UploadedFile)) {
+        if ($request->has('video_link') && ($request->file('video_link') instanceof UploadedFile)) {
 
-            $bannerImage = $this->uploadOne($request->file('en.file'), 'img/banners');
-            $request_data['video_link'] = $bannerImage;
+            $bannerImage = $this->uploadOne($request->file('video_link'), 'img/banners');
+            $request_data['youtube_link'] = $bannerImage;
 
         }
 

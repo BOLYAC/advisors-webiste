@@ -1,4 +1,9 @@
 @extends('layouts.backend')
+@section('css_before')
+    <!-- Page JS Plugins CSS -->
+    <link rel="stylesheet" href="{{ asset('js/plugins/datatables/dataTables.bootstrap4.css') }}">
+@endsection
+
 
 @section('content')
     <!-- Page Content -->
@@ -8,6 +13,7 @@
             <a class="breadcrumb-item" href="{{ route('projects.index') }}">{{ __('List site projects') }}</a>
             <span class="breadcrumb-item active">{{ __('Edit project') }}</span>
         </nav>
+
         <form action="{{ route('projects.update',$project) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
@@ -19,14 +25,33 @@
                             <h3 class="block-title">{{  __('Estate data') }}</h3>
                         </div>
                         <div class="block-content">
+                            <div class="row">
+                                <div class="form-group col-6 row">
+                                    <label for="featured" class="col-12">{{ __('Featured') }}</label>
+                                    <div class="col-12">
+                                        <label class="css-control css-control-success css-switch">
+                                            <input type="checkbox" class="css-control-input" id="featured"
+                                                   name="featured" {{ $project->featured ? 'checked' : null }}>
+                                            <span class="css-control-indicator"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-6 row">
+                                    <label for="active" class="col-12">{{ __('Active') }}</label>
+                                    <div class="col-12">
+                                        <label class="css-control css-control-success css-switch">
+                                            <input type="checkbox" class="css-control-input" id="active" name="active"
+                                                {{ $project->featured ? 'checked' : null }}>
+                                            <span class="css-control-indicator"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="form-group row">
-                                <label for="featured" class="col-12">{{ __('Featured') }}</label>
+                                <label for="gps_map" class="col-12">{{ __('Gps') }}</label>
                                 <div class="col-12">
-                                    <label class="css-control css-control-success css-switch">
-                                        <input type="checkbox" class="css-control-input" id="featured"
-                                               name="featured" {{ $project->featured ? 'checked' : null }}>
-                                        <span class="css-control-indicator"></span>
-                                    </label>
+                                    <input type="text" class="form-control form-control-sm" id="gps_map"
+                                           name="gps_map" value="{{ $project->gps_map }}">
                                 </div>
                             </div>
                         </div>
@@ -218,6 +243,48 @@
                                                value="{{ old('highest_price' , optional($project)->highest_price) }}">
                                     </div>
                                 </div>
+                                <div class="form-group col-4 row">
+                                    <label for="project_size" class="col-12">{{ __('Size min') }}</label>
+                                    <div class="col-12">
+                                        <input class="form-control" type="number" name="project_size_min"
+                                               value="{{ old('project_size_min' , optional($project)->project_size_min) }}">
+                                    </div>
+                                </div>
+                                <div class="form-group col-5 row">
+                                    <label for="project_size" class="col-12">{{ __('Size max') }}</label>
+                                    <div class="col-12">
+                                        <input class="form-control" type="number" name="project_size_max"
+                                               value="{{ old('project_size_max', optional($project)->project_size_max) }}">
+                                    </div>
+                                </div>
+                                <div class="form-group col-4 row">
+                                    <label for="project_bedrooms" class="col-12">{{ __('Bedrooms') }}</label>
+                                    <div class="col-12">
+                                        <input class="form-control" type="number" name="project_bedrooms"
+                                               value="{{ old('project_bedrooms',optional($project)->project_bedrooms) }}">
+                                    </div>
+                                </div>
+                                <div class="form-group col-4 row">
+                                    <label for="project_bathrooms" class="col-12">{{ __('Bathrooms') }}</label>
+                                    <div class="col-12">
+                                        <input class="form-control" type="number" name="project_bathrooms"
+                                               value="{{ old('project_bathrooms',optional($project)->project_bathrooms) }}">
+                                    </div>
+                                </div>
+                                <div class="form-group col-5 row">
+                                    <label for="garage_number" class="col-12">{{ __('Garage number') }}</label>
+                                    <div class="col-12">
+                                        <input class="form-control" type="number" name="garage_number"
+                                               value="{{ old('garage_number',optional($project)->garage_number) }}">
+                                    </div>
+                                </div>
+                                <div class="form-group col-4 row">
+                                    <label for="garage_size" class="col-12">{{ __('Garage size') }}</label>
+                                    <div class="col-12">
+                                        <input class="form-control" type="number" name="garage_size"
+                                               value="{{ old('garage_size',optional($project)->garage_size) }}">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -351,6 +418,17 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <div class="col-12">
+                                        <select class="form-control" name="payment_type" id="payment_type">
+                                            <option value="">{{ __('Payment type') }}</option>
+                                            <option
+                                                value="1" {{ $project->payment_type == '1' ? 'selected' : '' }}>{{  __('Cash') }}</option>
+                                            <option
+                                                value="2" {{ $project->payment_type == '2' ? 'selected' : '' }}>{{  __('Installment') }}</option>
+                                        </select>
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
@@ -409,13 +487,239 @@
                 </div>
             </div>
         </form>
+        <div class="row">
+            <div class="col-8">
+                <div class="block block-bordered">
+                    <div class="block-header block-header-default">
+                        <h3 class="block-title">{{ __('Plans') }}</h3>
+                        <button type="button" class="btn btn-alt-info" data-toggle="modal"
+                                data-target="#modal-normal">{{ __('Add plan') }}
+                        </button>
+                    </div>
+                    <div class="block-content">
+                        <table class="table table-bordered table-striped table-vcenter js-dataTable-simple">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>{{ __('Title') }}</th>
+                                <th>{{ __('Price') }}</th>
+                                <th>{{ __('Size') }}</th>
+                                <th>{{ __('Bedrooms') }}</th>
+                                <th>{{ __('Bathrooms') }}</th>
+                                <th class="text-center">{{ __('Action') }}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($project->floors as $floor)
+                                <tr>
+                                    <td>{{ $floor->id }}</td>
+                                    <td class="font-w600">{{ $floor->floor_title }}</td>
+                                    <td class="font-w600">{{ $floor->floor_price }}</td>
+                                    <td class="font-w600">{{ $floor->floor_size }}</td>
+                                    <td class="font-w600">{{ $floor->floor_bedrooms }}</td>
+                                    <td class="font-w600">{{ $floor->floor_bathrooms }}</td>
+                                    <td class="text-center">
+                                        <button type="button" class="btn btn-sm btn-secondary edit"
+                                                data-toggle="tooltip"
+                                                title="Edit plan">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-secondary delete"
+                                                data-toggle="tooltip"
+                                                title="Delete plan">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
+    <!-- Create modal floor -->
+    <div class="modal" id="modal-normal" tabindex="-1" role="dialog" aria-labelledby="modal-normal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="block block-themed block-transparent mb-0">
+                    <div class="block-header bg-primary-dark">
+                        <h3 class="block-title">{{ __('New plan') }}</h3>
+                        <div class="block-options">
+                            <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
+                                <i class="si si-close"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <form action="{{ route('projects.add.floor') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="block-content">
+                            <input type="hidden" name="project_id" value="{{ $project->id }}">
+                            <div class="form-group">
+                                <label for="floor_title">{{ __('Title') }}</label>
+                                <input type="text" name="floor_title"
+                                       class="form-control form-control-sm">
+                            </div>
+                            <div class="form-group">
+                                <label for="floor_price">{{ __('Price') }}</label>
+                                <input type="text" name="floor_price"
+                                       class="form-control form-control-sm">
+                            </div>
+                            <div class="form-group">
+                                <label for="floor_size">{{ __('Size') }}</label>
+                                <input type="text" name="floor_size"
+                                       class="form-control form-control-sm">
+                            </div>
+                            <div class="form-group">
+                                <label for="floor_bedrooms">{{ __('Bedrooms') }}</label>
+                                <input type="text" name="floor_bedrooms"
+                                       class="form-control form-control-sm">
+                            </div>
+                            <div class="form-group">
+                                <label for="floor_bathrooms">{{ __('Bathrooms') }}</label>
+                                <input type="text" name="floor_bathrooms"
+                                       class="form-control form-control-sm">
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-12">{{ __('Plan image') }}</label>
+                                <div class="col-12">
+                                    <div class="custom-file">
+                                        <input type="file" class="form-control-file" id="floor_full"
+                                               name="floor_full" data-toggle="custom-file-input">
+                                        <label class="custom-file-label"
+                                               for="floor_full">{{ __('Choose file') }}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-alt-secondary"
+                                    data-dismiss="modal">{{ __('Close') }}</button>
+                            <button type="submit" class="btn btn-alt-success">
+                                <i class="fa fa-check"></i> {{ __('Save') }}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END create modal floor -->
+    <!-- edit modal floor -->
+    <div class="modal" id="edit_floor" tabindex="-1" role="dialog" aria-labelledby="modal-normal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="block block-themed block-transparent mb-0">
+                    <div class="block-header bg-primary-dark">
+                        <h3 class="block-title">{{ __('New plan') }}</h3>
+                        <div class="block-options">
+                            <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
+                                <i class="si si-close"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <form action="{{ route('projects.update.floor') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="block-content">
+                            <input type="hidden" name="floor_id" id="floor_id">
+                            <input type="hidden" name="project_id" value="{{ $project->id }}">
+                            <div class="form-group">
+                                <label for="floor_title">{{ __('Title') }}</label>
+                                <input type="text" name="floor_title" id="floor_title"
+                                       class="form-control form-control-sm">
+                            </div>
+                            <div class="form-group">
+                                <label for="floor_price">{{ __('Price') }}</label>
+                                <input type="text" name="floor_price" id="floor_price"
+                                       class="form-control form-control-sm">
+                            </div>
+                            <div class="form-group">
+                                <label for="floor_size">{{ __('Size') }}</label>
+                                <input type="text" name="floor_size" id="floor_size"
+                                       class="form-control form-control-sm">
+                            </div>
+                            <div class="form-group">
+                                <label for="floor_bedrooms">{{ __('Bedrooms') }}</label>
+                                <input type="text" name="floor_bedrooms" id="floor_bedrooms"
+                                       class="form-control form-control-sm">
+                            </div>
+                            <div class="form-group">
+                                <label for="floor_bathrooms">{{ __('Bathrooms') }}</label>
+                                <input type="text" name="floor_bathrooms" id="floor_bathrooms"
+                                       class="form-control form-control-sm">
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-12">{{ __('Plan image') }}</label>
+                                <div class="col-12">
+                                    <div class="custom-file">
+                                        <input type="file" class="form-control-file" id="floor_full_edit"
+                                               name="floor_full" data-toggle="custom-file-input">
+                                        <label class="custom-file-label"
+                                               for="floor_full_edit">{{ __('Choose file') }}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-alt-secondary"
+                                    data-dismiss="modal">{{ __('Close') }}</button>
+                            <button type="submit" class="btn btn-alt-success">
+                                <i class="fa fa-check"></i> {{ __('Save') }}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END edit modal floor -->
 @endsection
 
 @section('js_after')
     <!--  <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script> -->
     <script src="{{ asset('js/plugins/ckeditor/ckeditor.js') }}"></script>
+    <!-- Page JS Plugins -->
+    <script src="{{ asset('js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>
     <!-- Page JS Code -->
+    <script src="{{ asset('js/pages/tables_datatables.js') }}"></script>
+    <script>
+        $(function () {
+            // Init Table Apartments
+            let table = $('.js-dataTable-simple').DataTable({
+                searching: false,
+                paging: false,
+            });
+            // Edit apartment
+            table.on('click', '.edit', function () {
+                $tr = $(this).closest('tr');
+                if ($($tr).hasClass('child')) {
+                    $tr = $tr.prev('.parent');
+                }
+                let data = table.row($tr).data();
+                $('#floor_id').val(data[0])
+                $('#floor_title').val(data[1]);
+                $('#floor_price').val(data[2]);
+                $('#floor_size').val(data[3]);
+                $('#floor_bedrooms').val(data[4]);
+                $('#floor_bathrooms').val(data[5]);
+                $('#edit_floor').modal('show');
+            })
+            // Delete apartment
+            table.on('click', '.delete', function () {
+                $tr = $(this).closest('tr');
+                if ($($tr).hasClass('child')) {
+                    $tr = $tr.prev('.parent');
+                }
+                var data = table.row($tr).data();
+                let id = $(this).data('id');
+                $('#deleteForm').attr('action', '/properties/' + id);
+                $('#deleteModal').modal('show');
+            })
+        })
+    </script>
 
     <script>
         jQuery(function () {
