@@ -174,7 +174,7 @@ class SiteController extends Controller
         JsonLd::setDescription($post->details);
         JsonLd::setType('Article');
 
-        return view('site.blog.show', compact('post', 'categories'));
+        return view('site.post', compact('post', 'categories'));
     }
 
     public function news()
