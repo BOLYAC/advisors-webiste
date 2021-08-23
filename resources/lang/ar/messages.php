@@ -86,5 +86,7 @@ return [
     'our_clients_what_they_said' => 'ما يقول عملاءنا عنا',
     'turkey_advisors_about' => 'في Turkey Advisors ، نعتقد أن عملائنا هم تجربتنا المخصصة بحيث نرافقك في كل خطوة على الطريق. من البداية الى النهاية. نؤكد لك أنك ستحقق أهدافك بكل سهولة ويسر',
     'useful_links' => 'روابط مفيدة',
-    'best_offers' => 'أفضل العروض'
+    'best_offers' => 'أفضل العروض',
+    'subscription_details' => 'دعنا نساعدك في اختيار العقار المناسب لك',
+    'most_popular_questions' => 'الأسئلة الأكثر شيوعًا'
 ];

@@ -86,5 +86,7 @@ return [
     'our_clients_what_they_said' => 'Our Clients what they said',
     'turkey_advisors_about' => 'At Turkey Advisors, we believe that our clients are our experience is customized so that we accompany you in every step of the way. from start to finish. We assure you that you will achieve your goals with ease and convenience',
     'useful_links' => 'Useful Links',
-    'best_offers' => 'Best Offers'
+    'best_offers' => 'Best Offers',
+    'subscription_details' => 'Let us help you choose the right property for you',
+    'most_popular_questions' => 'Most Popular Questions'
 ];

@@ -91,6 +91,7 @@ class ProjectController extends Controller
         $request_data['ar']['seo_description'] = mb_substr(strip_tags(stripslashes($request_data['ar']['details'])), 0, 165, 'UTF-8');
         $request_data['featured'] = $request->has('featured') ? 1 : 0;
         $request_data['active'] = $request->has('active') ? 1 : 0;
+        $request_data['citizen_status'] = $request->has('citizen_status') ? 1 : 0;
 
         $project = Project::create(collect($request_data)->except(['features', 'facilities', '_token'])->toArray());
         $project->features()->sync($request->input('features'));
@@ -184,6 +185,8 @@ class ProjectController extends Controller
         // create new topic
         $request_data['updated_by'] = Auth::id();
         $request_data['featured'] = $request->has('featured') ? 1 : 0;
+        $request_data['active'] = $request->has('active') ? 1 : 0;
+        $request_data['citizen_status'] = $request->has('citizen_status') ? 1 : 0;
 
         $facilities = collect($request->input('facilities', []))
             ->map(function ($facility) {

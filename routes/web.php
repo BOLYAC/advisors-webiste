@@ -19,7 +19,7 @@ Route::namespace('Site')->prefix(LaravelLocalization::setLocale())->middleware('
     Route::get(LaravelLocalization::transRoute('routes.contact'), [SiteController::class, 'contact'])->name('contact');
     Route::get(LaravelLocalization::transRoute('routes.works'), [SiteController::class, 'works'])->name('works');
     Route::get(LaravelLocalization::transRoute('routes.services'), [SiteController::class, 'services'])->name('services');
-    Route::view('/faq', 'faq')->name('faq');
+    Route::get(LaravelLocalization::transRoute('routes.faqQuestions'), [SiteController::class, 'faqQuestions'])->name('faqQuestion');
     Route::view('/service', 'site.service')->name('service');
     Route::view('/privacy-policy', 'privacyPolicy')->name('privacyPolicy');
     Route::view('/terms-of-use', 'termsOfUse')->name('termsOfUse');

@@ -1,6 +1,6 @@
 @extends('layouts.simple')
-@section('title')
-    Turkey Advisors
+@section('seo_header')
+    {!! SEO::generate() !!}
 @endsection
 @section('stylesheets')
     <link rel="stylesheet" href="{{ asset('sites/vendor/rs-plugin/css/settings.css') }}" media="screen">
@@ -75,7 +75,8 @@
                     <h3 class="mb-0">{{ __('messages.find_your_dream_home') }}</h3>
                 </div>
                 <div class="col-xl-8">
-                    <form class="row align-items-center">
+                    <form action="{{ route('search') }}" method="post" class="row align-items-center">
+                        @csrf
                         <div class="col-lg-3">
                             <div class="select-wrapper">
                                 <select name="city" class="form-control form-control-lg">
@@ -93,7 +94,7 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="select-wrapper">
-                                <select name="property-type" class="form-control form-control-lg">
+                                <select name="property_type" class="form-control form-control-lg">
                                     <option value="">{{ __('messages.property_type') }}</option>
                                     @foreach($sections as $section)
                                         <option value="{{ $section->id }}">{{ $section->title }}</option>
@@ -103,9 +104,8 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="select-wrapper">
-                                <select name="bedrooms" class="form-control form-control-lg">
-                                    <option>{{ __('messages.bedrooms') }}</option>
-                                    <option value="">{{ __('All') }}</option>
+                                <select name="project_bedrooms" class="form-control form-control-lg">
+                                    <option value="">{{ __('messages.bedrooms') }}</option>
                                     <option value="1">1+0</option>
                                     <option value="2">1+1</option>
                                     <option value="3">2+1</option>
@@ -217,7 +217,7 @@
                                     &#36;
                                 </div>
                                 <div class="col-6 more-details">
-                                    <a href="{{ route('project.detail', $project->seo_url_slug) }}"
+                                    <a href="{{ route('project.detail', $project->seo_url_slug ?? $project->translate('en')->seo_url_slug) }}"
                                        class="btn btn-primary btn-line w-100 text-4">{{ __('messages.more_details') }}</a>
                                 </div>
                             </div>
@@ -259,7 +259,7 @@
                                     <p class="text-4">{!! \Str::limit($post->details , 100, $end='...') !!}</p>
                                 </div>
                                 <div class="col-2 read-more text-end">
-                                    <a href="{{ route('post.details', $post->seo_url_slug) }}"><span
+                                    <a href="{{ route('post.details', $post->seo_url_slug ?? $post->translate('en')->seo_url_slug) }}"><span
                                             class="arrow2 is-triangle arrow-bar is-right"></span></a>
                                 </div>
                             </div>
@@ -394,7 +394,7 @@
                                     &#36;
                                 </div>
                                 <div class="col-6 more-details">
-                                    <a href="{{ route('project.detail', $project->seo_url_slug) }}"
+                                    <a href="{{ route('project.detail', $project->seo_url_slug ?? $project->translate('en')->seo_url_slug) }}"
                                        class="btn btn-primary btn-line w-100 text-4">{{ __('messages.more_details') }}</a>
                                 </div>
                             </div>
@@ -412,13 +412,14 @@
                 </div>
                 <div class="col-lg-7 col-xl-4 py-5">
                     <h5>{{ __('messages.subscribe_via_email') }}</h5>
-                    <p class="text-4">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy</p>
-                    <form class="newsletter-form row gx-2">
+                    <p class="text-4">{{ __('messages.subscription_details') }}</p>
+                    <form action="{{ route('submit.subscribe') }}" method="POST" class="newsletter-form row gx-2">
+                        @csrf
                         <div class="col-auto mb-2">
                             <label class="sr-only" for="email">{{ __('messages.email') }}</label>
                             <div class="input-group">
                                 <div class="input-group-text"><i class="far fa-envelope"></i></div>
-                                <input type="text" class="form-control" id="email"
+                                <input type="email" class="form-control" id="email" name="email"
                                        placeholder="{{ __('messages.email_address') }}">
                             </div>
                         </div>
@@ -495,7 +496,7 @@
                 </div>
             </div>
             <div class="owl-carousel owl-theme articles mt-3">
-                @foreach($posts as $post)
+                @foreach($citizenPosts as $post)
                     <div class="article card border-radius-0">
                         <img class="card-img-top" src="{{ pageImage($post->photo_file) }}" alt="Project">
                         <div class="card-body">
@@ -533,82 +534,27 @@
             <div class="row justify-content-center">
                 <div class="col-lg-12 col-xl-10">
                     <div class="owl-carousel owl-theme testimonials mt-3">
-                        <div class="testimonial p-1 testimonial-style-2">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="testimonial-author">
-                                        <img src="{{ asset('sites/img/avatar.png') }}" class="img-fluid rounded-circle"
-                                             alt="">
-                                        <p><strong class="font-weight-extra-bold">Person
-                                                Name</strong><span>Person Title</span></p>
+                        @foreach($testimonials as $testimonial)
+                            <div class="testimonial p-1 testimonial-style-2">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="testimonial-author">
+                                            <img src="{{ pageImage($testimonial->photo_file) }}"
+                                                 class="img-fluid rounded-circle"
+                                                 alt="">
+                                            <p><strong
+                                                    class="font-weight-extra-bold">{{ $testimonial->name ?? '' }}</strong>
+                                                <span>{{ $testimonial->title ?? '' }}</span>
+                                            </p>
+                                        </div>
+                                        <blockquote>
+                                            <p class="mb-0">{!! $testimonial->details ?? ''  !!}</p>
+                                        </blockquote>
+                                        <div class="testimonial-arrow-down"></div>
                                     </div>
-                                    <blockquote>
-                                        <p class="mb-0">You will never fake the feeling of being in such place. The live
-                                            minimalism base on the natural materials and alive unprocessed textires -
-                                            true, authentic, close to nature, it has memory and appreciates to the
-                                            culture, roots.</p>
-                                    </blockquote>
-                                    <div class="testimonial-arrow-down"></div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="testimonial p-1 testimonial-style-2">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="testimonial-author">
-                                        <img src="{{ asset('sites/img/avatar.png') }}" class="img-fluid rounded-circle"
-                                             alt="">
-                                        <p><strong class="font-weight-extra-bold">Person
-                                                Name</strong><span>Person Title</span></p>
-                                    </div>
-                                    <blockquote>
-                                        <p class="mb-0">You will never fake the feeling of being in such place. The live
-                                            minimalism base on the natural materials and alive unprocessed textires -
-                                            true, authentic, close to nature, it has memory and appreciates to the
-                                            culture, roots.</p>
-                                    </blockquote>
-                                    <div class="testimonial-arrow-down"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial p-1 testimonial-style-2">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="testimonial-author">
-                                        <img src="{{ asset('sites/img/avatar.png') }}" class="img-fluid rounded-circle"
-                                             alt="">
-                                        <p><strong class="font-weight-extra-bold">Person
-                                                Name</strong><span>Person Title</span></p>
-                                    </div>
-                                    <blockquote>
-                                        <p class="mb-0">You will never fake the feeling of being in such place. The live
-                                            minimalism base on the natural materials and alive unprocessed textires -
-                                            true, authentic, close to nature, it has memory and appreciates to the
-                                            culture, roots.</p>
-                                    </blockquote>
-                                    <div class="testimonial-arrow-down"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial p-1 testimonial-style-2">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="testimonial-author">
-                                        <img src="{{ asset('sites/img/avatar.png') }}" class="img-fluid rounded-circle"
-                                             alt="">
-                                        <p><strong class="font-weight-extra-bold">Person
-                                                Name</strong><span>Person Title</span></p>
-                                    </div>
-                                    <blockquote>
-                                        <p class="mb-0">You will never fake the feeling of being in such place. The live
-                                            minimalism base on the natural materials and alive unprocessed textires -
-                                            true, authentic, close to nature, it has memory and appreciates to the
-                                            culture, roots.</p>
-                                    </blockquote>
-                                    <div class="testimonial-arrow-down"></div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

@@ -89,6 +89,16 @@
                                         </label>
                                     </div>
                                 </div>
+                                <div class="form-group col-6 row">
+                                    <label for="citizen_status" class="col-12">{{ __('Active') }}</label>
+                                    <div class="col-12">
+                                        <label class="css-control css-control-success css-switch">
+                                            <input type="checkbox" class="css-control-input" id="citizen_status" name="citizen_status"
+                                                   checked>
+                                            <span class="css-control-indicator"></span>
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group row">
                                 <label for="city" class="col-12">{{ __('City') }}</label>

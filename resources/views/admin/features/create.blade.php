@@ -28,7 +28,7 @@
                     </div>
                     <form action="{{ route('features.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
-                        <div class="block-content  tab-content">
+                        <div class="block-content tab-content">
                             @foreach(LaravelLocalization::getSupportedLocales() as $locale => $properties)
                                 <div class="tab-pane fade show {{ $loop->first ? 'active' : '' }}"
                                      id="custom-content-below-{{ $locale }}" role="tabpanel"

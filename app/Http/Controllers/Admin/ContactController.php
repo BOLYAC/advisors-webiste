@@ -15,7 +15,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::paginate(10);
+        $contacts = Contact::all();
         return view('admin.inbox.index', compact('contacts'));
     }
 
@@ -32,7 +32,7 @@ class ContactController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -43,7 +43,7 @@ class ContactController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -54,7 +54,7 @@ class ContactController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -65,8 +65,8 @@ class ContactController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -77,13 +77,13 @@ class ContactController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Contact $contact)
     {
         $contact->delete();
 
-        return redirect()->route('contacts.index')->withSuccess( __('Message deleted Successfully!') );
+        return redirect()->route('contacts.index')->withSuccess(__('Message deleted Successfully!'));
     }
 }

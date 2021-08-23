@@ -1,7 +1,4 @@
 @extends('layouts.simple')
-@section('title')
-    {{ __('messages.best_articles') }} | Turkey Advisors
-@endsection
 @section('seo_header')
     {!! SEO::generate() !!}
 @endsection

@@ -15,5 +15,6 @@ return [
     'search'                => 'bahath',
     'search/{city?}'        => 'bahath/{slug?}',
     'works'                 => 'aemaluna',
-    'newsletter/submit'     => 'iikhbariat/iirsal'
+    'newsletter/submit'     => 'iikhbariat/iirsal',
+    'faqQuestions'          => 'Faq-Questions'
 ];

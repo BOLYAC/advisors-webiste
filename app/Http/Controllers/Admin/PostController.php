@@ -49,11 +49,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = [
+        /*$rules = [
             'photo_file' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048']
         ];
 
-        $request->validate($rules);
+        $request->validate($rules);*/
 
         $request_data = $request->all();
 
@@ -67,6 +67,7 @@ class PostController extends Controller
         $request_data['seo_url_slug'] = Str::of($request->get('title'))->slug('-');
         $request_data['row_no'] = $next_nor_no;
         $request_data['status'] = $request->has('status') ? 1 : 0;
+        $request_data['citizen_status'] = $request->has('citizen_status') ? 1 : 0;
         $request_data['visits'] = 0;
         $request_data['created_by'] = Auth::id();
 
@@ -114,11 +115,11 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $rules = [
+        /*$rules = [
             'photo_file' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
         ];
 
-        $request->validate($rules);
+        $request->validate($rules);*/
 
         $request_data = $request->all();
 
@@ -132,6 +133,7 @@ class PostController extends Controller
         // create new topic
         $request_data['updated_by'] = Auth::id();
         $request_data['status'] = $request->has('status') ? 1 : 0;
+        $request_data['citizen_status'] = $request->has('citizen_status') ? 1 : 0;
 
         $post->update(collect($request_data)->except(['categories', '_token'])->toArray());
         $post->categories()->sync($request->input('categories'));

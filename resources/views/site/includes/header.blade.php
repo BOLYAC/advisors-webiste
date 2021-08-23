@@ -49,11 +49,11 @@
                                                 {{ __('messages.articles') }}
                                             </a>
                                         </li>
-                                        {{--                                        <li>--}}
-                                        {{--                                            <a href="{{ route('faq') }}">--}}
-                                        {{--                                                {{ __('messages.faq') }}--}}
-                                        {{--                                            </a>--}}
-                                        {{--                                        </li>--}}
+                                        <li>
+                                            <a href="{{ route('faqQuestion') }}">
+                                                {{ __('messages.faq') }}
+                                            </a>
+                                        </li>
                                         <li>
                                             <a href="{{ route('contact') }}">
                                                 {{ __('messages.contact_us') }}
@@ -112,11 +112,12 @@
                             <li class="nav-item nav-item-left-border-remove nav-item-left-border-sm-show me-3">
                                 <span class="ws-nowrap"><img src="{{ asset('sites/img/envelope.svg') }}" alt="email"
                                                              class="fa-border"/> <a
-                                        href="mailto:info@turkeyadvisors.com">info@turkeyadvisors.com</a></span>
+                                        href="mailto:{{ config('settings.default_email_address') }}">{{ config('settings.default_email_address') }}</a></span>
                             </li>
                             <li class="nav-item nav-item-left-border-remove nav-item-left-border-sm-show me-3">
                                 <span class="ws-nowrap"><img src="{{ asset('sites/img/phone.svg') }}" alt="phone"
-                                                             class="fa-border"/> +90 552 744 06 17</span>
+                                                             class="fa-border"/> <a
+                                        href="tel://{{ config('settings.phone_number_2') }}">{{ config('settings.phone_number') }}</a></span>
                             </li>
                             <li class="nav-item nav-item-borders dropdown me-3">
                                 <a class="btn btn-primary btn-sm" href="#" role="button" id="dropdownCurrencies"
@@ -141,7 +142,15 @@
                             <li class="nav-item nav-item-borders dropdown">
                                 <a class="btn btn-primary btn-sm" href="#" role="button" id="dropdownLanguages"
                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="{{ asset('sites/img/locale.svg') }}" alt="locale"/> EN
+                                    <img src="{{ asset('https://winalco-web.app/img/locale.svg') }}" alt="locale">
+                                    @switch(LaravelLocalization::getCurrentLocale())
+                                        @case('en')
+                                        EN
+                                        @break
+                                        @case('ar')
+                                        AR
+                                        @break
+                                    @endswitch
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownLanguages">
                                     <a class="dropdown-item text-uppercase"

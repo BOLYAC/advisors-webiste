@@ -23,8 +23,11 @@ class SiteController extends Controller
         $banners = \App\Models\Banner::orderBy('row_no')->get();
         $sections = \App\Models\Section::all();
         $projects = \App\Models\Project::where('featured', true)->get();
-        $citizenProjects = \App\Models\Project::all();
+        $citizenProjects = \App\Models\Project::where('citizen_status', true)->get();
         $posts = \App\Models\Post::all();
+        $citizenPosts = \App\Models\Post::where('citizen_status', true)->get();
+        $testimonials = \App\Models\Testimonial::where('status', true)->orderBy('row_no')->get();
+
         $news = \App\Models\Article::all();
         $topic = Topic::whereTranslationLike('title', '%home%')->first();
         if ($topic) {
@@ -35,12 +38,14 @@ class SiteController extends Controller
             SEOTools::opengraph()->addProperty('type', 'articles');
             SEOTools::twitter()->setSite(config('settings.social_twitter'));
             SEOTools::jsonLd()->addImage($topic->photo_file);
-            SEOMeta::addKeyword([$topic->seo_keywords]);
+            SEOMeta::addKeyword($topic->seo_keywords);
             $topic->visits = $topic->visits + 1;
             $topic->save();
         }
 
-        return view('site.home', compact('banners', 'sections', 'projects', 'posts', 'news', 'citizenProjects'));
+        return view('site.home',
+            compact('banners', 'sections', 'projects', 'posts', 'news', 'citizenProjects', 'citizenPosts', 'testimonials')
+        );
     }
 
     public function projectList()
@@ -196,6 +201,25 @@ class SiteController extends Controller
         return view('site.news.index', compact('articles', 'topic'));
     }
 
+    public function faqQuestions()
+    {
+        $faqQuestions = \App\Models\FaqQuestion::all();
+        $topic = Topic::whereTranslationLike('seo_url_slug', '%faq%')->first();
+        if ($topic) {
+            SEOTools::setTitle(config('settings.site_name') . ' | ' . $topic->seo_title);
+            SEOTools::setDescription($topic->seo_description);
+            SEOTools::opengraph()->setUrl(route('faqQuestion'));
+            SEOTools::setCanonical(route('faqQuestion'));
+            SEOTools::opengraph()->addProperty('type', 'articles');
+            SEOTools::twitter()->setSite(config('settings.social_twitter'));
+            SEOTools::jsonLd()->addImage($topic->photo_file);
+            SEOMeta::addKeyword($topic->seo_keywords);
+            $topic->visits = $topic->visits + 1;
+            $topic->save();
+        }
+        return view('site.faq', compact('faqQuestions', 'topic'));
+    }
+
     public function getNews($slug)
     {
         $article = Article::whereTranslation('seo_url_slug', $slug)->firstOrFail();
@@ -266,12 +290,12 @@ class SiteController extends Controller
     public function search(Request $request, $city = null)
     {
         $input = $request->all();
-        $queryProperty = Property::query();
+
         $queryProjects = Project::query();
         $sections = Section::all();
 
         // For properties
-        if ($request->price) {
+        /*if ($request->price) {
             $array = explode(':', $input['price']); // Array of your values
             $min_price = $array[0];
             $max_price = $array[1];
@@ -281,9 +305,9 @@ class SiteController extends Controller
             $array2 = explode(':', $input['square']); // Array of your values
             $min_square = $array2[0];
             $max_square = $array2[1];
-        }
+        }*/
 
-        if (!empty($min_price) && !empty($max_price)) {
+        /*if (!empty($min_price) && !empty($max_price)) {
             $queryProperty->whereBetween('price', [$min_price, $max_price])->get();
             $queryProjects->whereBetween('lowest_price', [$min_price, $max_price])->get();
         }
@@ -291,7 +315,7 @@ class SiteController extends Controller
         if (!empty($min_square) && !empty($max_square)) {
             $queryProperty->whereBetween('square', [$min_square, $max_square])->get();
             $queryProjects->whereBetween('square', [$min_square, $max_square])->get();
-        }
+        }*/
 
 
         // If there more filter specification
@@ -302,28 +326,38 @@ class SiteController extends Controller
         }*/
 
 
-        if ($request->type) {
-            $queryProperty->where('category_id', $input['type'])->get();
-            $queryProjects->where('category_id', $input['type'])->get();
+        $key = $request->search_input;
+
+        if ($key) {
+            $projectResult = Project::where(function ($query) use ($key) {
+                $query->whereTranslationLike('title', '%' . $key . '%')
+                    ->orWhereTranslationLike('details', '%' . $key . '%');
+            })->get();
+            $postResult = Post::where(function ($query) use ($key) {
+                $query->whereTranslationLike('title', '%' . $key . '%')
+                    ->orWhereTranslationLike('details', '%' . $key . '%');
+            })->get();
+
+            return view('site.search', compact('projectResult', 'postResult', 'sections'));
+        }
+        if ($request->property_type) {
+            $queryProjects->where('category_id', $input['property_type'])->get();
         }
 
         if ($request->city) {
-            $queryProperty->where('city', $input['city'] ?? $city)->get();
             $queryProjects->where('city', $input['city'] ?? $city)->get();
         }
 
-        if ($request->rooms) {
-            if ($input['rooms'] < 6) {
-                $queryProperty->where('number_bedrooms', $input['rooms'])->get();
+        if ($request->project_bedrooms) {
+            if ($input['project_bedrooms'] < 6) {
+                $queryProjects->where('project_bedrooms', $input['project_bedrooms'])->get();
             } else {
-                $queryProperty->where('number_bedrooms', '>=', $input['rooms'])->get();
+                $queryProjects->where('project_bedrooms', '>=', $input['project_bedrooms'])->get();
             }
         }
+        $projectResult = $queryProjects->get();
 
-        $properties = $queryProperty->get();
-        $projects = $queryProjects->get();
-
-        return view('site.search', compact('properties', 'projects', 'sections'));
+        return view('site.search', compact('projectResult', 'sections'));
     }
 
     public function services()

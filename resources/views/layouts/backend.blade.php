@@ -178,6 +178,22 @@
                         </a>
                     </li>
 
+                    <li>
+                        <a class="{{ request()->is('admin/testimonials') ? ' active' : '' }}"
+                           href="{{ route('testimonial.index')  }}">
+                            <i class="si si-bubbles"></i><span
+                                class="sidebar-mini-hide">{{ __('Testimonial') }}</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="{{ request()->is('admin/faqQuestions') ? ' active' : '' }}"
+                           href="{{ route('faqQuestions.index')  }}">
+                            <i class="si si-question"></i><span
+                                class="sidebar-mini-hide">{{ __('Faq Questions') }}</span>
+                        </a>
+                    </li>
+
                     <li class="nav-main-heading">
                         <span class="sidebar-mini-visible">MR</span><span
                             class="sidebar-mini-hidden">{{ __('Settings') }}</span>

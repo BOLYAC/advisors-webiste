@@ -29,6 +29,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::resource('contacts', 'ContactController');
         Route::resource('category', 'CategoryController');
         Route::resource('posts', 'PostController');
+        Route::resource('testimonial', 'TestimonialController');
+        Route::resource('faqQuestions', 'FaqQuestionController');
         Route::resource('news', 'ArticleController', ['parameters' => [
             'news' => 'article'
         ]]);

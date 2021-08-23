@@ -127,14 +127,26 @@
                                     </div>
                                 </div>
                             @endforeach
-                            <div class="form-group row">
-                                <label for="status" class="col-12">{{ __('Status') }}</label>
-                                <div class="col-12">
-                                    <label class="css-control css-control-success css-switch">
-                                        <input type="checkbox" class="css-control-input" id="status"
-                                               name="status" {{ $post->status ? 'checked' : null }}>
-                                        <span class="css-control-indicator"></span>
-                                    </label>
+                            <div class="row">
+                                <div class="form-group col-6 row">
+                                    <label for="status" class="col-12">{{ __('Status') }}</label>
+                                    <div class="col-12">
+                                        <label class="css-control css-control-success css-switch">
+                                            <input type="checkbox" class="css-control-input" id="status"
+                                                   name="status" {{ $post->status ? 'checked' : null }}>
+                                            <span class="css-control-indicator"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-6 row">
+                                    <label for="citizen_status" class="col-12">{{ __('Citizenship') }}</label>
+                                    <div class="col-12">
+                                        <label class="css-control css-control-success css-switch">
+                                            <input type="checkbox" class="css-control-input" id="citizen_status"
+                                                   name="citizen_status" {{ $post->citizen_status ? 'checked' : null }}>
+                                            <span class="css-control-indicator"></span>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group row">

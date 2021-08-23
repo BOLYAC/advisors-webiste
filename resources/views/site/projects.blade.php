@@ -1,6 +1,6 @@
 @extends('layouts.simple')
-@section('title')
-    {{ __('messages.our_projects') }} | Turkey Advisors
+@section('seo_header')
+    {!! SEO::generate() !!}
 @endsection
 @section('stylesheets')
     @if (App::getLocale() == 'ar')

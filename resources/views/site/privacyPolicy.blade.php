@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title')
-    {{ __('messages.privacy_policy') }} | Turkey Advisors
+@section('seo_header')
+    {!! SEO::generate() !!}
 @endsection
 @section('stylesheets')
     <link rel="stylesheet" href="{{ asset('sites/css/privacyPolicy.css') }}">

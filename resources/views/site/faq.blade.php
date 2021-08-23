@@ -1,6 +1,6 @@
-@extends('layouts.app')
-@section('title')
-    {{ __('messages.FAQs') }} | Turkey Advisors
+@extends('layouts.simple')
+@section('seo_header')
+    {!! SEO::generate() !!}
 @endsection
 @section('stylesheets')
     @if (App::getLocale() == 'ar')
@@ -17,7 +17,8 @@
 @endsection
 
 @section('content')
-    <section class="page-header page-header-modern page-header-background page-header-background-sm mb-5" style="background-image: url({{ asset('img/background.jpg') }});">
+    <section class="page-header page-header-modern page-header-background page-header-background-sm mb-5"
+             style="background-image: url({{ asset('img/background.jpg') }});">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 align-self-center p-static order-2 text-center">
@@ -39,154 +40,27 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Most Popular Questions</h2>
+                    <h2>{{ __('messages.most_popular_questions') }}</h2>
                 </div>
             </div>
             <div class="row justify-content-around accordion without-bg" id="faq">
-                <div class="col-lg-6 col-xl-5">
-                    <div class="card card-default">
-                        <div class="card-header">
-                            <h4 class="card-title m-0">
-                                <a class="accordion-toggle" data-bs-toggle="collapse" data-bs-target="#faq1" href="#faq1" aria-expanded="true">
-                                    We Build Possibilities.
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="faq1" class="collapse show">
-                            <div class="card-body">
-                                <p class="mb-0">Donec tellus massa, tristique sit amet condim vel, facilisis quis sapien. Praesent id enim sit amet odio vulputate eleifend in in tortor. Donec tellus massa, tristique sit amet condim vel, facilisis quis sapien. Praesent id enim sit amet odio vulputate eleifend in in tortor. Donec tellus massa, tristique sit amet condim vel, facilisis quis sapien.</p>
+                @foreach($faqQuestions->chunk(2) as $row)
+                    <div class="col-lg-6 col-xl-5">
+                        @foreach($row as $i => $value)
+                            <div class="card card-default">
+                                <div class="card-header">
+                                    <h4 class="card-title m-0">
+                                        <a class="accordion-toggle collapsed" data-bs-toggle="collapse"
+                                           data-bs-target="#faq{{$i}}" href="#faq{{$i}}"
+                                           aria-expanded="false">{{ $value->title ?? '' }}</a></h4>
+                                </div>
+                                <div id="faq{{$i}}" class="collapse">
+                                    <div class="card-body"><p class="mb-0">{!! $value->details !!}</p></div>
+                                </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
-                    <div class="card card-default">
-                        <div class="card-header">
-                            <h4 class="card-title m-0">
-                                <a class="accordion-toggle collapsed" data-bs-toggle="collapse" data-bs-target="#faq2" href="#faq2" aria-expanded="false">
-                                    We Build Possibilities.
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="faq2" class="collapse">
-                            <div class="card-body">
-                                <p class="mb-0">Donec tellus massa, tristique sit amet condimentum vel, facilisis quis sapien.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card card-default">
-                        <div class="card-header">
-                            <h4 class="card-title m-0">
-                                <a class="accordion-toggle collapsed" data-bs-toggle="collapse" data-bs-target="#faq3" href="#faq3" aria-expanded="false">
-                                    We Build Possibilities.
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="faq3" class="collapse">
-                            <div class="card-body">
-                                <p class="mb-0">Donec tellus massa, tristique sit amet condimentum vel, facilisis quis sapien.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card card-default">
-                        <div class="card-header">
-                            <h4 class="card-title m-0">
-                                <a class="accordion-toggle collapsed" data-bs-toggle="collapse" data-bs-target="#faq4" href="#faq4" aria-expanded="false">
-                                    We Build Possibilities.
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="faq4" class="collapse">
-                            <div class="card-body">
-                                <p class="mb-0">Donec tellus massa, tristique sit amet condimentum vel, facilisis quis sapien.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card card-default">
-                        <div class="card-header">
-                            <h4 class="card-title m-0">
-                                <a class="accordion-toggle collapsed" data-bs-toggle="collapse" data-bs-target="#faq5" href="#faq5" aria-expanded="false">
-                                    We Build Possibilities.
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="faq5" class="collapse">
-                            <div class="card-body">
-                                <p class="mb-0">Donec tellus massa, tristique sit amet condimentum vel, facilisis quis sapien.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-xl-5">
-                    <div class="card card-default">
-                        <div class="card-header">
-                            <h4 class="card-title m-0">
-                                <a class="accordion-toggle" data-bs-toggle="collapse" data-bs-target="#faq6" href="#faq6" aria-expanded="true">
-                                    We Build Possibilities.
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="faq6" class="collapse show" style="">
-                            <div class="card-body">
-                                <p class="mb-0">Donec tellus massa, tristique sit amet condim vel, facilisis quis sapien. Praesent id enim sit amet odio vulputate eleifend in in tortor. Donec tellus massa, tristique sit amet condim vel, facilisis quis sapien. Praesent id enim sit amet odio vulputate eleifend in in tortor. Donec tellus massa, tristique sit amet condim vel, facilisis quis sapien.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card card-default">
-                        <div class="card-header">
-                            <h4 class="card-title m-0">
-                                <a class="accordion-toggle collapsed" data-bs-toggle="collapse" data-bs-target="#faq7" href="#faq2" aria-expanded="false">
-                                    We Build Possibilities.
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="faq7" class="collapse">
-                            <div class="card-body">
-                                <p class="mb-0">Donec tellus massa, tristique sit amet condimentum vel, facilisis quis sapien.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card card-default">
-                        <div class="card-header">
-                            <h4 class="card-title m-0">
-                                <a class="accordion-toggle collapsed" data-bs-toggle="collapse" data-bs-target="#faq8" href="#faq8" aria-expanded="false">
-                                    We Build Possibilities.
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="faq8" class="collapse">
-                            <div class="card-body">
-                                <p class="mb-0">Donec tellus massa, tristique sit amet condimentum vel, facilisis quis sapien.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card card-default">
-                        <div class="card-header">
-                            <h4 class="card-title m-0">
-                                <a class="accordion-toggle collapsed" data-bs-toggle="collapse" data-bs-target="#faq9" href="#faq9" aria-expanded="false">
-                                    We Build Possibilities.
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="faq9" class="collapse">
-                            <div class="card-body">
-                                <p class="mb-0">Donec tellus massa, tristique sit amet condimentum vel, facilisis quis sapien.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card card-default">
-                        <div class="card-header">
-                            <h4 class="card-title m-0">
-                                <a class="accordion-toggle collapsed" data-bs-toggle="collapse" data-bs-target="#faq10" href="#faq10" aria-expanded="false">
-                                    We Build Possibilities.
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="faq10" class="collapse">
-                            <div class="card-body">
-                                <p class="mb-0">Donec tellus massa, tristique sit amet condimentum vel, facilisis quis sapien.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -199,7 +73,9 @@
                     <h4 class="font-weight-extra-bold text-secondary line-height-1 text-6">{{ __('messages.contact_us_now') }}</h4>
                 </div>
                 <div class="col-sm-6 text-start text-lg-end mt-4">
-                    <a class="btn btn-lg btn-secondary px-4 py-3 w-100-mobile" href="#">{{ __('messages.get_in_touch') }} <span class="arrow1 is-triangle arrow-bar is-right"></span></a>
+                    <a class="btn btn-lg btn-secondary px-4 py-3 w-100-mobile"
+                       href="#">{{ __('messages.get_in_touch') }} <span
+                            class="arrow1 is-triangle arrow-bar is-right"></span></a>
                 </div>
             </div>
         </div>

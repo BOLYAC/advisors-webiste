@@ -1,6 +1,6 @@
 @extends('layouts.simple')
-@section('title')
-    {{ __('messages.about_us') }} | Turkey Advisors
+@section('seo_header')
+    {!! SEO::generate() !!}
 @endsection
 @section('stylesheets')
     <link rel="stylesheet" href="{{ asset('css/aboutUs.css') }}">

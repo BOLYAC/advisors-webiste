@@ -24,13 +24,16 @@ class Post extends Model implements TranslatableContract
         'status',
         'visits',
         'row_no',
-        'created_by'
+        'created_by',
+        'citizen_status'
     ];
 
     protected $casts = [
         'date' => 'date',
         'expire_date' => 'date',
         'status' => 'boolean',
+        'citizen_status' => 'boolean',
+
     ];
 
     /**

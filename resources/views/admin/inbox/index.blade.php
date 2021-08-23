@@ -18,7 +18,7 @@
 <!-- Page Content -->
 <div class="content">
   <nav class="breadcrumb bg-white push">
-    <a class="breadcrumb-item" href="{{ route('admin.dashboard') }}">{{ __('Messages') }}</a>
+    <a class="breadcrumb-item" href="{{ route('admin.dashboard') }}">{{ __('Messages list') }}</a>
     <span class="breadcrumb-item active">{{ __('Messages list') }}</span>
   </nav>
   <div class="block">
@@ -48,7 +48,7 @@
             <td class="font-w600">{{ $contact->email ?? '' }}</td>
             <td class="font-w600">{{ $contact->phone ?? '' }}</td>
             <td class="font-w600">{{ $contact->subject ?? '' }}</td>
-            <td class="font-w600">{{ $contact->message ?? '' }}</td>
+            <td class="font-w600">{!! $contact->message ?? '' !!}</td>
             <td class="font-w600">{{ $contact->item_id ?? '' }}</td>
             <td class="font-w600">{{ $contact->created_at->format('d-m-Y') }}</td>
             <td class="text-center">

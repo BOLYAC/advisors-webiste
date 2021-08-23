@@ -15,5 +15,6 @@ return [
     'search'            => 'search',
     'search/{city?}'    => 'search/{slug?}',
     'works'             => 'works',
-    'newsletter/submit' => 'newsletter/submit'
+    'newsletter/submit' => 'newsletter/submit',
+    'faqQuestions'      => 'Faq-Questions'
 ];

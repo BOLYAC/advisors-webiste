@@ -54,7 +54,8 @@ class Project extends Model implements TranslatableContract
         'project_bathrooms',
         'garage_number',
         'garage_size',
-        'active'
+        'active',
+        'citizen_status',
     ];
 
     protected $casts = [
@@ -63,7 +64,8 @@ class Project extends Model implements TranslatableContract
         'finish_date' => 'date',
         'open_sell_date' => 'date',
         'featured' => 'boolean',
-        'active' => 'boolean'
+        'active' => 'boolean',
+        'citizen_status' => 'boolean'
     ];
 
 

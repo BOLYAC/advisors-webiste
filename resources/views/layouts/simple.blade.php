@@ -4,18 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-
-    <title>@yield('title')</title>
-
+    @yield('seo_header')
+    <meta name="robots" content="noindex, nofollow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 
-    <meta name="description"
-          content="Codebase - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
-    <meta name="author" content="pixelcave">
-    <meta name="robots" content="noindex, nofollow">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -30,13 +25,20 @@
             href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;500;700&display=swap"
             rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('sites/css/app.rtl.css') }}">
-    @else<link rel="stylesheet" href="{{ asset('sites/css/app.css') }}">@endif
+    @else
+        <link rel="stylesheet" href="{{ asset('sites/css/app.css') }}">@endif
     @yield('stylesheets')
-    @if (App::getLocale() == 'ar')<link rel="stylesheet" href="{{ asset('css/custom.rtl.css') }}">
-    @else<link rel="stylesheet" href="{{ asset('sites/css/custom.css') }}">@endif
+    @if (App::getLocale() == 'ar')
+        <link rel="stylesheet" href="{{ asset('css/custom.rtl.css') }}">
+    @else
+        <link rel="stylesheet" href="{{ asset('sites/css/custom.css') }}">@endif
 
 <!-- Scripts -->
     <script>window.Laravel = {!! json_encode(['csrfToken' => csrf_token(),]) !!};</script>
+    <!-- google -->
+    {{ config('settings.google_analytics') }}
+<!-- facebook -->
+    {{ config('settings.facebook_pixels') }}
 </head>
 <body>
 

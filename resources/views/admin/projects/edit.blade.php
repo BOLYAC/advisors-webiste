@@ -26,7 +26,7 @@
                         </div>
                         <div class="block-content">
                             <div class="row">
-                                <div class="form-group col-6 row">
+                                <div class="form-group col-3 row">
                                     <label for="featured" class="col-12">{{ __('Featured') }}</label>
                                     <div class="col-12">
                                         <label class="css-control css-control-success css-switch">
@@ -36,7 +36,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="form-group col-6 row">
+                                <div class="form-group col-3 row">
                                     <label for="active" class="col-12">{{ __('Active') }}</label>
                                     <div class="col-12">
                                         <label class="css-control css-control-success css-switch">
@@ -46,7 +46,19 @@
                                         </label>
                                     </div>
                                 </div>
+                                <div class="form-group col-3 row">
+                                    <label for="citizen_status" class="col-12">{{ __('Citizenship') }}</label>
+                                    <div class="col-12">
+                                        <label class="css-control css-control-success css-switch">
+                                            <input type="checkbox" class="css-control-input" id="citizen_status"
+                                                   name="citizen_status"
+                                                {{ $project->citizen_status ? 'checked' : null }}>
+                                            <span class="css-control-indicator"></span>
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
+
                             <div class="form-group row">
                                 <label for="gps_map" class="col-12">{{ __('Gps') }}</label>
                                 <div class="col-12">

@@ -29,8 +29,8 @@ class ContactUsFormController extends Controller
         //  Store data in database
         Contact::create($request_data);
 
-        //
-        return back()->with('success', 'We have received your message and would like to thank you for writing to us.');
+        // return view with message
+        return back()->with('success', __('We have received your message and would like to thank you for writing to us.'));
     }
 
     public function newsletterSubscribe(Request $request)
