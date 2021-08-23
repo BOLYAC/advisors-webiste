@@ -43,7 +43,8 @@
                     <h3 class="mb-0">{{ __('messages.find_your_dream_home') }}</h3>
                 </div>
                 <div class="col-xl-8">
-                    <form class="row align-items-center">
+                    <form action="{{ route('search') }}" method="post" class="row align-items-center">
+                        @csrf
                         <div class="col-lg-3">
                             <div class="select-wrapper">
                                 <select name="city" class="form-control form-control-lg">
@@ -71,9 +72,8 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="select-wrapper">
-                                <select name="bedrooms" class="form-control form-control-lg">
-                                    <option>{{ __('messages.bedrooms') }}</option>
-                                    <option value="">{{ __('All') }}</option>
+                                <select name="project_bedrooms" class="form-control form-control-lg">
+                                    <option value="">{{ __('messages.bedrooms') }}</option>
                                     <option value="1">1+0</option>
                                     <option value="2">1+1</option>
                                     <option value="3">2+1</option>
@@ -97,10 +97,7 @@
             <div class="row">
                 <div class="col-lg-12 col-xl-10 mb-4">
                     <h2>{{ __('messages.properties_for_sale_in_istanbul_2021') }}</h2>
-                    <p class="lead">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                        tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
-                        accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-                        Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet</p>
+                    <p class="lead">{!! $topic->details !!}</p>
                 </div>
             </div>
             <div class="row projects mt-3">
@@ -146,7 +143,7 @@
                                     </div>
                                     <div class="col-auto text-3"><img class="feature-icon me-1"
                                                                       src="{{ asset('sites/img/project/hand.svg') }}"
-                                                                      alt="hand"/> Installment
+                                                                      alt="hand"/> {{ $project->payment_type === 1 ? 'Cash' : 'Installment' }}
                                     </div>
                                     <div class="col-auto text-3"><img class="feature-icon me-1"
                                                                       src="{{ asset('sites/img/project/hourglass.svg') }}"
@@ -172,11 +169,12 @@
                                 </div>
                                 <p class="card-text text-4 mb-5">{!! \Str::limit($project->details , 150, $end='...') !!}</p>
                                 <div class="row align-items-center">
-                                    <div class="col-6 price text-primary text-7 text-sm-8 font-weight-semibold">{{ $project->lowest_price ?? '' }}
+                                    <div
+                                        class="col-6 price text-primary text-7 text-sm-8 font-weight-semibold">{{ $project->lowest_price ?? '' }}
                                         &#36;
                                     </div>
                                     <div class="col-6 more-details">
-                                        <a href="{{ route('project.detail', $project->seo_url_slug) }}"
+                                        <a href="{{ route('project.detail', $project->seo_url_slug ?? $project->translate('en')->seo_url_slug ) }}"
                                            class="btn btn-primary btn-line w-100 text-4">{{ __('messages.more_details') }}</a>
                                     </div>
                                 </div>

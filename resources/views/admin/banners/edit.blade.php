@@ -59,11 +59,13 @@
                                 <label class="custom-file-label"
                                        for="file-photo">{{ __('Choose file') }}</label>
                             </div>
+                            <div class="text-danger float-right font-w700 mt-1">Size: 1920*120</div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="slide_position">{{ __('Order') }}</label>
-                        <input class="form-control" type="number" name="row_no" id="slide_position" value="{{ $banner->row_no }}"
+                        <input class="form-control" type="number" name="row_no" id="slide_position"
+                               value="{{ $banner->row_no }}"
                                placeholder="{{ __('Order') }}">
                     </div>
                     <div class="form-group row">

@@ -13,7 +13,8 @@
 @endsection
 
 @section('content')
-    <section class="page-header page-header-modern page-header-background page-header-background-sm mb-5" style="background-image: url({{ asset('img/background.jpg') }});">
+    <section class="page-header page-header-modern page-header-background page-header-background-sm mb-5"
+             style="background-image: url({{ asset('img/background.jpg') }});">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 align-self-center p-static order-2 text-center">
@@ -35,13 +36,13 @@
         <div class="container">
             <div class="row justify-content-between align-items-center">
                 <div class="col-lg-6 col-xl-5 mb-3">
-                    <h2>Our Vision</h2>
+                    <h2>{{ __('aboutPage.our_vision') }}</h2>
                     <p class="lead">
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet
+                        {{ __('aboutPage.our_vision_details') }}
                     </p>
                 </div>
                 <div class="col-lg-6 col-xl-5">
-                    <img class="w-100 img-fluid" src="{{ asset('sites/img/about/our-vision.jpg') }}" alt="Our vision" />
+                    <img class="w-100 img-fluid" src="{{ asset('sites/img/about/our-vision.jpg') }}" alt="Our vision"/>
                 </div>
             </div>
         </div>
@@ -50,12 +51,13 @@
         <div class="container">
             <div class="row justify-content-between align-items-center">
                 <div class="col-lg-6 col-xl-5 order-1 order-lg-0">
-                    <img class="w-100 img-fluid" src="{{ asset('sites/img/about/our-approach.jpg') }}" alt="Our approach" />
+                    <img class="w-100 img-fluid" src="{{ asset('sites/img/about/our-approach.jpg') }}"
+                         alt="Our approach"/>
                 </div>
                 <div class="col-lg-6 col-xl-5 order-0 order-lg-1 mb-3">
-                    <h2>Our Approach</h2>
+                    <h2>{{ __('aboutPage.our_approach') }}</h2>
                     <p class="lead">
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet
+                        {{ __('aboutPage.our_approach_details') }}
                     </p>
                 </div>
             </div>
@@ -65,13 +67,14 @@
         <div class="container">
             <div class="row justify-content-between align-items-center">
                 <div class="col-lg-6 col-xl-5 mb-3">
-                    <h2>Our Process</h2>
+                    <h2>{{ __('aboutPage.our_process') }}</h2>
                     <p class="lead">
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet
+                        {{__('aboutPage.our_process_details')}}
                     </p>
                 </div>
                 <div class="col-lg-6 col-xl-5">
-                    <img class="w-100 img-fluid" src="{{ asset('sites/img/about/our-process.jpg') }}" alt="Our process" />
+                    <img class="w-100 img-fluid" src="{{ asset('sites/img/about/our-process.jpg') }}"
+                         alt="Our process"/>
                 </div>
             </div>
         </div>
@@ -81,11 +84,13 @@
             <div class="row align-items-end justify-content-between">
                 <div class="col-sm-6">
                     <span class="d-block font-weight-semibold text-4 mb-1">{{ __('messages.who_we_are') }} !</span>
-                    <h2 class="font-weight-extra-bold line-height-1 text-7 mb-5">Turkey Advisors</h2>
+                    <h2 class="font-weight-extra-bold line-height-1 text-7 mb-5">{{ __('Turkey Advisors') }}</h2>
                     <h4 class="font-weight-extra-bold text-secondary line-height-1 text-6">{{ __('messages.contact_us_now') }}</h4>
                 </div>
                 <div class="col-sm-6 text-start text-lg-end mt-4">
-                    <a class="btn btn-lg btn-secondary px-4 py-3 w-100-mobile" href="#">{{ __('messages.get_in_touch') }} <span class="arrow1 is-triangle arrow-bar is-right"></span></a>
+                    <a class="btn btn-lg btn-secondary px-4 py-3 w-100-mobile"
+                       href="{{ route('contact') }}">{{ __('messages.get_in_touch') }} <span
+                            class="arrow1 is-triangle arrow-bar is-right"></span></a>
                 </div>
             </div>
         </div>

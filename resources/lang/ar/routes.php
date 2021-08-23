@@ -16,5 +16,7 @@ return [
     'search/{city?}'        => 'bahath/{slug?}',
     'works'                 => 'aemaluna',
     'newsletter/submit'     => 'iikhbariat/iirsal',
-    'faqQuestions'          => 'Faq-Questions'
+    'faqQuestions'          => 'Faq-Questions',
+    'service'               => 'fine-touch-of-luxury',
+    'servicesVirtualTour'   => 'virtual-tour-360'
 ];

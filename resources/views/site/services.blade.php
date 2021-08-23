@@ -41,11 +41,11 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-lg-6 col-xl-4 mb-4">
                     <div class="pr-5">
-                        <h2 class="font-weight-extra-bold line-height-1 mb-5">Fine Touch Of Luxury</h2>
-                        <p class="lead mb-5 pb-2">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-                            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua</p>
+                        <h2 class="font-weight-extra-bold line-height-1 mb-5">{{ __('servicesPage.fine_touch_of_luxury') }}</h2>
+                        <p class="lead mb-5 pb-2">{{ __('servicesPage.fine_touch_of_luxury_details') }}</p>
                         <div class="more-details d-inline-block mb-4">
-                            <a class="btn btn-outline-secondary btn-secondary-animated btn-lg px-5 w-auto-mobile w-100">{{ __('messages.view_more') }}
+                            <a href="{{ route('service') }}"
+                               class="btn btn-outline-secondary btn-secondary-animated btn-lg px-5 w-auto-mobile w-100">{{ __('messages.view_more') }}
                                 <span class="arrow2 is-triangle arrow-bar is-right"></span></a>
                         </div>
                     </div>
@@ -68,11 +68,11 @@
                 </div>
                 <div class="col-lg-6 col-xl-4 order-0 order-lg-1 mb-4">
                     <div class="pr-5">
-                        <h2 class="font-weight-extra-bold line-height-1 mb-5">Virtual Tour 360</h2>
-                        <p class="lead mb-5 pb-2">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-                            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua</p>
+                        <h2 class="font-weight-extra-bold line-height-1 mb-5">{{ __('servicesPage.virtual_tour_360') }}</h2>
+                        <p class="lead mb-5 pb-2">{{ __('servicesPage.virtual_tour_360_details') }}</p>
                         <div class="more-details d-inline-block mb-4">
-                            <a class="btn btn-outline-secondary btn-secondary-animated btn-lg px-5 w-auto-mobile w-100">{{ __('messages.view_more') }}
+                            <a href="{{ route('virtual.tour') }}"
+                               class="btn btn-outline-secondary btn-secondary-animated btn-lg px-5 w-auto-mobile w-100">{{ __('messages.view_more') }}
                                 <span class="arrow2 is-triangle arrow-bar is-right"></span></a>
                         </div>
                     </div>
@@ -84,12 +84,13 @@
         <div class="container container-lg">
             <div class="row align-items-end justify-content-between">
                 <div class="col-sm-6">
-                    <span class="d-block font-weight-semibold text-4 mb-1">Who we are !</span>
-                    <h2 class="font-weight-extra-bold line-height-1 text-7 mb-5">Turkey Advisors</h2>
-                    <h4 class="font-weight-extra-bold text-secondary line-height-1 text-6">Contact Us Now</h4>
+                    <span class="d-block font-weight-semibold text-4 mb-1">{{ __('messages.who_we_are') }}</span>
+                    <h2 class="font-weight-extra-bold line-height-1 text-7 mb-5">{{ __('Turkey Advisors') }}</h2>
+                    <h4 class="font-weight-extra-bold text-secondary line-height-1 text-6">{{ __('messages.contact_us') }}</h4>
                 </div>
                 <div class="col-sm-6 text-start text-lg-end mt-4">
-                    <a class="btn btn-lg btn-secondary px-4 py-3 w-100-mobile" href="#">Get In Touch <span
+                    <a class="btn btn-lg btn-secondary px-4 py-3 w-100-mobile"
+                       href="{{ route('contact') }}">{{ __('messages.get_in_touch') }}<span
                             class="arrow1 is-triangle arrow-bar is-right"></span></a>
                 </div>
             </div>

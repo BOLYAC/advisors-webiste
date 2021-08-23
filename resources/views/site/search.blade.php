@@ -49,7 +49,8 @@
     <div class="container mb-5 search-bar">
         <div class="row justify-content-center">
             <div class="col-lg-10 col-xl-8">
-                <form action="{{ route('search') }}" method="get">
+                <form action="{{ route('search') }}" method="post">
+                    @csrf
                     <div class="input-group input-group-lg">
                         <div class="input-group-text bg-transparent border-end-0"><i class="fa fa-search"></i></div>
                         <input class="form-control form-control-lg py-2 border-start-0" type="search" id="search-input"

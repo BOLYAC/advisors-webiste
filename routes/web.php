@@ -20,7 +20,8 @@ Route::namespace('Site')->prefix(LaravelLocalization::setLocale())->middleware('
     Route::get(LaravelLocalization::transRoute('routes.works'), [SiteController::class, 'works'])->name('works');
     Route::get(LaravelLocalization::transRoute('routes.services'), [SiteController::class, 'services'])->name('services');
     Route::get(LaravelLocalization::transRoute('routes.faqQuestions'), [SiteController::class, 'faqQuestions'])->name('faqQuestion');
-    Route::view('/service', 'site.service')->name('service');
+    Route::get(LaravelLocalization::transRoute('routes.service'), [SiteController::class, 'service'])->name('service');
+    Route::get(LaravelLocalization::transRoute('routes.servicesVirtualTour'), [SiteController::class, 'servicesVirtualTour'])->name('virtual.tour');
     Route::view('/privacy-policy', 'privacyPolicy')->name('privacyPolicy');
     Route::view('/terms-of-use', 'termsOfUse')->name('termsOfUse');
     Route::post(LaravelLocalization::transRoute('routes.contact/submit'), [ContactUsFormController::class, 'ContactUsForm'])->name('submit.contact');
@@ -30,7 +31,9 @@ Route::namespace('Site')->prefix(LaravelLocalization::setLocale())->middleware('
     Route::get(LaravelLocalization::transRoute('routes.projects/{slug}'), [SiteController::class, 'getProject'])->name('project.detail');
     Route::get(LaravelLocalization::transRoute('routes.properties/{slug}'), [SiteController::class, 'getProperty'])->name('property.detail');
     Route::post(LaravelLocalization::transRoute('routes.search'), [SiteController::class, 'search'])->name('search');
-    Route::get(LaravelLocalization::transRoute('routes.search/{city?}'), [SiteController::class, 'search'])->name('search.city');
+    //Route::get(LaravelLocalization::transRoute('routes.search/{city?}'), [SiteController::class, 'search'])->name('search.city');
+
+    Route::get('/currency-switch/{currency}', [SiteController::class, 'switchCurrency'])->name('switch_currency');
 
 });
 

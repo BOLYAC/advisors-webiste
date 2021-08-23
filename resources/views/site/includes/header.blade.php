@@ -96,7 +96,7 @@
                                 <ul class="nav nav-pills d-block">
                                     @foreach(\App\Models\Article::all() as $item)
                                         <li class="nav-item nav-item-anim-icon d-inline-block me-5">
-                                            <a href="{{ $item->seo_url_slug }}">{{ $item->title }}</a>
+                                            <a href="{{ $item->seo_url_slug ?? $item->translate('en')->seo_url_slug }}">{{ $item->title }}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -122,18 +122,29 @@
                             <li class="nav-item nav-item-borders dropdown me-3">
                                 <a class="btn btn-primary btn-sm" href="#" role="button" id="dropdownCurrencies"
                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="{{ asset('sites/img/currency.svg') }}" alt="currency"/> USD
+                                    <img src="{{ asset('sites/img/currency.svg') }}" alt="currency"/>
+                                    @switch(\Illuminate\Support\Facades\Session::get('currency'))
+                                        @case('EUR')
+                                        EUR
+                                        @break
+                                        @case('GBP')
+                                        GBP
+                                        @break
+                                        @case('USD')
+                                        USD
+                                        @break
+                                    @endswitch
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownCurrencies">
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="{{ route('switch_currency', 'EUR') }}">
                                         <img src="{{ asset('sites/img/flags/eu.png') }}"
                                              class="flag flag-us rounded-circle" alt="EUR"> EUR
                                     </a>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="{{ route('switch_currency', 'GBP') }}">
                                         <img src="{{ asset('sites/img/flags/gb.png') }}"
                                              class="flag flag-us rounded-circle" alt="GBP"> GBP
                                     </a>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="{{ route('switch_currency', 'USD') }}">
                                         <img src="{{ asset('sites/img/flags/us.png') }}"
                                              class="flag flag-us rounded-circle" alt="USD"> USD
                                     </a>

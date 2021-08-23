@@ -58,6 +58,7 @@
                                 <label class="custom-file-label"
                                        for="file-photo">{{ __('Choose file') }}</label>
                             </div>
+                            <div class="text-danger float-right font-w700 mt-1">Size: 1920*120</div>
                         </div>
                     </div>
                     <div class="form-group row">

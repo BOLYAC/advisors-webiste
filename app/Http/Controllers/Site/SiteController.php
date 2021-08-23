@@ -15,6 +15,7 @@ use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Illuminate\Http\Request;
 use Artesaos\SEOTools\Facades\SEOTools;
+use Illuminate\Support\Facades\Session;
 
 class SiteController extends Controller
 {
@@ -67,7 +68,7 @@ class SiteController extends Controller
             $topic->visits = $topic->visits + 1;
             $topic->save();
         }
-        return view('site.projects', compact('projects', 'features', 'sections', 'popProjects'));
+        return view('site.projects', compact('projects', 'features', 'sections', 'popProjects', 'topic'));
     }
 
     public function getProject($slug)
@@ -157,6 +158,8 @@ class SiteController extends Controller
     public function getPost($slug)
     {
         $categories = Category::all();
+        $projects = Project::where('featured', true)->take(3)->get();
+        $lastArticles = Post::latest()->take(3)->get();
         $post = Post::whereTranslation('seo_url_slug', $slug)->firstOrFail();
         $post->visits = $post->visits + 1;
         $post->save();
@@ -165,7 +168,7 @@ class SiteController extends Controller
         SEOMeta::setDescription($post->details);
         SEOMeta::addMeta('article:published_time', $post->created_at->toW3CString(), 'property');
         SEOMeta::addMeta('article:section', $post->categories->first()->title, 'property');
-        SEOMeta::addKeyword([$post->seo_keywords]);
+        SEOMeta::addKeyword($post->seo_keywords);
 
         OpenGraph::setDescription($post->details);
         OpenGraph::setTitle($post->title);
@@ -173,13 +176,13 @@ class SiteController extends Controller
         OpenGraph::addProperty('type', 'article');
         OpenGraph::addProperty('locale', 'tr-TR');
 
-        OpenGraph::addImage(asset('$post->photo_file'), ['height' => 300, 'width' => 300]);
+        OpenGraph::addImage(pageImage($post->photo_file), ['height' => 300, 'width' => 300]);
 
         JsonLd::setTitle($post->title);
         JsonLd::setDescription($post->details);
         JsonLd::setType('Article');
 
-        return view('site.post', compact('post', 'categories'));
+        return view('site.post', compact('post', 'categories', 'projects', 'lastArticles'));
     }
 
     public function news()
@@ -282,49 +285,65 @@ class SiteController extends Controller
 
     }
 
-    public function contactSubmit()
+    public function services()
     {
+        $topic = Topic::whereTranslationLike('seo_url_slug', '%services%')->first();
+        if ($topic) {
+            SEOTools::setTitle(config('settings.site_name') . ' | ' . $topic->seo_title);
+            SEOTools::setDescription($topic->seo_description);
+            SEOTools::opengraph()->setUrl(route('services'));
+            SEOTools::setCanonical(route('services'));
+            SEOTools::opengraph()->addProperty('type', 'articles');
+            SEOTools::twitter()->setSite(config('settings.social_twitter'));
+            SEOTools::jsonLd()->addImage($topic->photo_file);
+            SEOMeta::addKeyword($topic->seo_keywords);
+            $topic->visits = $topic->visits + 1;
+            $topic->save();
+        }
+        return view('site.services');
+    }
 
+    public function service()
+    {
+        $topic = Topic::whereTranslationLike('seo_url_slug', '%Fine Touch Of Luxury%')->first();
+        if ($topic) {
+            SEOTools::setTitle(config('settings.site_name') . ' | ' . $topic->seo_title);
+            SEOTools::setDescription($topic->seo_description);
+            SEOTools::opengraph()->setUrl(route('services/' . $topic->seo_slug));
+            SEOTools::setCanonical(route('services/' . $topic->seo_slug));
+            SEOTools::opengraph()->addProperty('type', 'articles');
+            SEOTools::twitter()->setSite(config('settings.social_twitter'));
+            SEOTools::jsonLd()->addImage($topic->photo_file);
+            SEOMeta::addKeyword($topic->seo_keywords);
+            $topic->visits = $topic->visits + 1;
+            $topic->save();
+        }
+        return view('site.service');
+    }
+
+    public function servicesVirtualTour()
+    {
+        $topic = Topic::whereTranslationLike('seo_url_slug', '%Virtual Tour 360%')->first();
+        if ($topic) {
+            SEOTools::setTitle(config('settings.site_name') . ' | ' . $topic->seo_title);
+            SEOTools::setDescription($topic->seo_description);
+            SEOTools::opengraph()->setUrl(route('services/' . $topic->seo_slug));
+            SEOTools::setCanonical(route('services/' . $topic->seo_slug));
+            SEOTools::opengraph()->addProperty('type', 'articles');
+            SEOTools::twitter()->setSite(config('settings.social_twitter'));
+            SEOTools::jsonLd()->addImage($topic->photo_file);
+            SEOMeta::addKeyword($topic->seo_keywords);
+            $topic->visits = $topic->visits + 1;
+            $topic->save();
+        }
+        return view('site.service-virtual-tour');
     }
 
     public function search(Request $request, $city = null)
     {
         $input = $request->all();
-
         $queryProjects = Project::query();
         $sections = Section::all();
-
-        // For properties
-        /*if ($request->price) {
-            $array = explode(':', $input['price']); // Array of your values
-            $min_price = $array[0];
-            $max_price = $array[1];
-        }
-
-        if ($request->square) {
-            $array2 = explode(':', $input['square']); // Array of your values
-            $min_square = $array2[0];
-            $max_square = $array2[1];
-        }*/
-
-        /*if (!empty($min_price) && !empty($max_price)) {
-            $queryProperty->whereBetween('price', [$min_price, $max_price])->get();
-            $queryProjects->whereBetween('lowest_price', [$min_price, $max_price])->get();
-        }
-
-        if (!empty($min_square) && !empty($max_square)) {
-            $queryProperty->whereBetween('square', [$min_square, $max_square])->get();
-            $queryProjects->whereBetween('square', [$min_square, $max_square])->get();
-        }*/
-
-
-        // If there more filter specification
-        /*elseif (!empty($min_price)) {
-            $properties = Property::where('price', '>=', $min_price)->get('price');
-        } elseif (!empty($max_price)) {
-            $properties = Property::where('price', '<=', $max_price)->get('price');
-        }*/
-
 
         $key = $request->search_input;
 
@@ -360,8 +379,9 @@ class SiteController extends Controller
         return view('site.search', compact('projectResult', 'sections'));
     }
 
-    public function services()
+    public function switchCurrency($currency)
     {
-        return view('site.services');
+        Session::put('currency', $currency);
+        return redirect()->back();
     }
 }
