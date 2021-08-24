@@ -121,6 +121,8 @@
       <path value="$PROJECT_DIR$/vendor/mcamara/laravel-localization" />
       <path value="$PROJECT_DIR$/vendor/symfony/debug" />
       <path value="$PROJECT_DIR$/vendor/joedixon/laravel-translation" />
+      <path value="$PROJECT_DIR$/vendor/amrshawky/currency" />
+      <path value="$PROJECT_DIR$/vendor/amrshawky/laravel-currency" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7">

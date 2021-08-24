@@ -122,7 +122,7 @@
                     </div>
                 </div>
                 <div class="col-sm-auto text-lg-end text-10 font-weight-semibold line-height-2 mt-4 mt-lg-0">
-                    {{ $project->lowest_price ?? '' }} &#36;
+                    {{ currencyConvert($project->lowest_price) }}
                 </div>
             </div>
         </div>
@@ -185,7 +185,7 @@
                                                         {{ __('messages.price') }}:
                                                     </div>
                                                     <div class="col-6 text-end text-secondary">
-                                                        {{ $project->lowest_price ?? '' }} &#36;
+                                                        {{ currencyConvert($project->lowest_price) }}
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3 align-items-center">
@@ -515,8 +515,7 @@
                                         <p class="card-text text-4 mb-5">{!! \Str::limit($project->details , 150, $end='...') !!}</p>
                                         <div class="row align-items-center">
                                             <div
-                                                class="col-6 price text-primary text-8 font-weight-semibold">{{ $project->lowest_price ?? '' }}
-                                                $
+                                                class="col-6 price text-primary text-8 font-weight-semibold">{{ currencyConvert($project->lowest_price) }}
                                             </div>
                                             <div class="col-6 more-details">
                                                 <a href="{{ route('project.detail', $project->seo_url_slug) }}"

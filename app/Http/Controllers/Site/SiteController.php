@@ -138,7 +138,7 @@ class SiteController extends Controller
         $posts = \App\Models\Post::all();
         $categories = Category::all();
         $lastArticles = Post::latest()->take(3)->get();
-        $projects = Property::where('featured', true)->take(3)->get();
+        $projects = Project::where('featured', true)->take(3)->get();
         $topic = Topic::whereTranslationLike('title', '%blog%')->first();
         if ($topic) {
             SEOTools::setTitle(config('settings.site_name') . ' | ' . $topic->seo_title);

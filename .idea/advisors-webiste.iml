@@ -124,6 +124,8 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/mcamara/laravel-localization" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/debug" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/joedixon/laravel-translation" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/amrshawky/currency" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/amrshawky/laravel-currency" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

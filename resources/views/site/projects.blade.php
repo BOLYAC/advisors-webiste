@@ -170,8 +170,7 @@
                                 <p class="card-text text-4 mb-5">{!! \Str::limit($project->details , 150, $end='...') !!}</p>
                                 <div class="row align-items-center">
                                     <div
-                                        class="col-6 price text-primary text-7 text-sm-8 font-weight-semibold">{{ $project->lowest_price ?? '' }}
-                                        &#36;
+                                        class="col-6 price text-primary text-7 text-sm-8 font-weight-semibold">{{ currencyConvert($project->lowest_price) }}
                                     </div>
                                     <div class="col-6 more-details">
                                         <a href="{{ route('project.detail', $project->seo_url_slug ?? $project->translate('en')->seo_url_slug ) }}"
