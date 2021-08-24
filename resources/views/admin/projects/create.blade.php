@@ -68,8 +68,8 @@
                             </div>
 
                             <div class="row">
-                                <div class="form-group col-6 row">
-                                    <label for="featured" class="col-12">{{ __('Featured') }}</label>
+                                <div class="form-group col-4 row">
+                                    <label for="featured" class="col-12">{{ __('Hot') }}</label>
                                     <div class="col-12">
                                         <label class="css-control css-control-success css-switch">
                                             <input type="checkbox" class="css-control-input" id="featured"
@@ -79,7 +79,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="form-group col-6 row">
+                                <div class="form-group col-4 row">
                                     <label for="active" class="col-12">{{ __('Active') }}</label>
                                     <div class="col-12">
                                         <label class="css-control css-control-success css-switch">
@@ -89,8 +89,8 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="form-group col-6 row">
-                                    <label for="citizen_status" class="col-12">{{ __('Active') }}</label>
+                                <div class="form-group col-4 row">
+                                    <label for="citizen_status" class="col-12">{{ __('Citizenship') }}</label>
                                     <div class="col-12">
                                         <label class="css-control css-control-success css-switch">
                                             <input type="checkbox" class="css-control-input" id="citizen_status" name="citizen_status"

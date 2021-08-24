@@ -27,7 +27,7 @@
                         <div class="block-content">
                             <div class="row">
                                 <div class="form-group col-3 row">
-                                    <label for="featured" class="col-12">{{ __('Featured') }}</label>
+                                    <label for="featured" class="col-12">{{ __('Hot') }}</label>
                                     <div class="col-12">
                                         <label class="css-control css-control-success css-switch">
                                             <input type="checkbox" class="css-control-input" id="featured"

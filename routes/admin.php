@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
     Route::group(['middleware' => ['auth:admin']], function () {
@@ -58,6 +59,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
             Route::post('projects/update-floor', 'ProjectController@updatePlan')
                 ->name('projects.update.floor');
         });
+        Route::get('/sitemap', 'SettingController@toSitemap')
+            ->name('generate.sitemap');
     });
     Route::get('login', 'LoginController@showLoginForm')->name('admin.login');
     Route::post('login', 'LoginController@login')->name('admin.login.post');
