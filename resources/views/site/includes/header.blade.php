@@ -165,7 +165,7 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownLanguages">
                                     <a class="dropdown-item text-uppercase"
-                                       href="{{ LaravelLocalization::getLocalizedURL('en') }}">
+                                       href="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}">
                                         English
                                     </a>
                                     <a class="dropdown-item text-uppercase"
