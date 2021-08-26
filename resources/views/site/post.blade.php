@@ -14,22 +14,7 @@
     <script src="{{ asset('sites/js/articles.js') }}" type="text/javascript"></script>
     <script type="text/javascript">
         window.$ = window.jQuery = $;
-        {{--$('.socio-links li a').click(function (e) {--}}
-        {{--    e.preventDefault();--}}
-        {{--    var social = $(this).find('i').attr('class').split('-').pop();--}}
-        {{--    console.log(social)--}}
-        {{--    links = {--}}
-        {{--        facebook: 'https://www.facebook.com/sharer/sharer.php?u=',--}}
-        {{--        twitter: 'https://twitter.com/intent/tweet?url=',--}}
-        {{--    };--}}
-        {{--    id = $(this).closest('[data]').attr('data');--}}
-        {{--    if (!links[social]) return false;--}}
-        {{--    window.open(links[social] + '{{ url(Request::url() ."/") }}' + id, '', 'width=600, height=400');--}}
-
-        {{--    console.log(links[social] + '{{ url(Request::url() ."/") }}' + id, '', 'width=600, height=400')--}}
-        {{--});--}}
     </script>
-
 @endsection
 
 @section('content')

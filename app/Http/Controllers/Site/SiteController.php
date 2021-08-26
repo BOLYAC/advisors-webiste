@@ -28,6 +28,7 @@ class SiteController extends Controller
         $posts = \App\Models\Post::all();
         $citizenPosts = \App\Models\Post::where('citizen_status', true)->get();
         $testimonials = \App\Models\Testimonial::where('status', true)->orderBy('row_no')->get();
+        $stories = \App\Models\InstaStory::where('status', true)->orderBy('row_no')->get();
 
         $news = \App\Models\Article::all();
         $topic = Topic::whereTranslationLike('title', '%home%')->first();
@@ -45,7 +46,7 @@ class SiteController extends Controller
         }
 
         return view('site.home',
-            compact('banners', 'sections', 'projects', 'posts', 'news', 'citizenProjects', 'citizenPosts', 'testimonials')
+            compact('banners', 'sections', 'projects', 'posts', 'news', 'citizenProjects', 'citizenPosts', 'testimonials', 'stories')
         );
     }
 

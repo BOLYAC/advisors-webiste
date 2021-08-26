@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.simple')
 @section('seo_header')
     {!! SEO::generate() !!}
 @endsection

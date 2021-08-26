@@ -128,10 +128,14 @@
         <div class="container">
             <h3 class="mb-4">{{ __('messages.best_offers') }}</h3>
             <div class="owl-carousel owl-theme offers">
-                <div class="offer embed-responsive embed-responsive-1by1">
-                    <img class="embed-responsive-item w-100 h-100 img-responsive p-2"
-                         src="{{ asset('sites/img/offer.jpg') }}" alt="">
-                </div>
+                @foreach($stories as $story)
+                    <div class="offer embed-responsive embed-responsive-1by1">
+                        <a href="{{ $story->link_story }}">
+                            <img class="embed-responsive-item w-100 h-100 img-responsive p-2"
+                                 src="{{ pageImage($story->photo_file) }}" alt="">
+                        </a>
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>

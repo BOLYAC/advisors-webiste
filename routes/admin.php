@@ -32,6 +32,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::resource('posts', 'PostController');
         Route::resource('testimonial', 'TestimonialController');
         Route::resource('faqQuestions', 'FaqQuestionController');
+        Route::resource('insta-stories', 'InstaStoryController');
         Route::resource('news', 'ArticleController', ['parameters' => [
             'news' => 'article'
         ]]);
@@ -61,6 +62,18 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         });
         Route::get('/sitemap', 'SettingController@toSitemap')
             ->name('generate.sitemap');
+
+
+    });
+    Route::get('/clear-cache', function () {
+        Artisan::call('config:clear');
+        Artisan::call('cache:clear');
+        Artisan::call('config:cache');
+        Artisan::call('optimize');
+        Artisan::call('route:trans:clear');
+        Artisan::call('route:trans:cache');
+
+        return "Done!"; //Return anything
     });
     Route::get('login', 'LoginController@showLoginForm')->name('admin.login');
     Route::post('login', 'LoginController@login')->name('admin.login.post');

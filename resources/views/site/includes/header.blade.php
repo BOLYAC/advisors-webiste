@@ -123,6 +123,7 @@
                                 <a class="btn btn-primary btn-sm" href="#" role="button" id="dropdownCurrencies"
                                    data-bs-toggle="dropdown" aria-expanded="false">
                                     <img src="{{ asset('sites/img/currency.svg') }}" alt="currency"/>
+
                                     @switch(\Illuminate\Support\Facades\Session::get('currency'))
                                         @case('EUR')
                                         EUR
@@ -158,20 +159,22 @@
                                         @case('en')
                                         EN
                                         @break
-                                        @case('ar')
-                                        AR
+                                        @case('ru')
+                                        RU
                                         @break
                                     @endswitch
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownLanguages">
-                                    <a class="dropdown-item text-uppercase"
-                                       href="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}">
-                                        English
-                                    </a>
-                                    <a class="dropdown-item text-uppercase"
-                                       href="{{ LaravelLocalization::getLocalizedURL('ar', null, [], true) }}">
-                                        Arabic
-                                    </a>
+                                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+
+                                        <a rel="alternate"
+                                           hreflang="{{ $localeCode }}"
+                                           class="dropdown-item text-uppercase"
+                                           href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                            {{ $properties['native'] }}
+                                        </a>
+
+                                    @endforeach
                                 </div>
                             </li>
                         </ul>

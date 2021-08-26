@@ -9,7 +9,8 @@
                 <ul class="footer-social-icons social-icons m-0">
                     <li class="social-icons-facebook"><a href="{{ config('settings.social_facebook') }}" target="_blank"
                                                          title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                    <li class="social-icons-instagram"><a href="{{ config('settings.social_instagram') }}" target="_blank"
+                    <li class="social-icons-instagram"><a href="{{ config('settings.social_instagram') }}"
+                                                          target="_blank"
                                                           title="Instagram"><i class="fab fa-instagram"></i></a></li>
                     <li class="social-icons-twitter"><a href="{{ config('settings.social_twitter') }}" title="Skype"><i
                                 class="fab fa-twitter"></i></a></li>
@@ -23,7 +24,7 @@
                 <h4 class="text-font-weight-light text-color-light">{{ __('messages.latest_articles') }}</h4>
                 @foreach(\App\Models\Article::all()->take(4) as $article)
                     <p class="mb-1"><a
-                            href="{{ route('news.details', $article->seo_url_slug) }}">{{$article->title}}</a>
+                            href="{{ route('news.details', $article->seo_url_slug ?? $article->translate('en')->seo_url_slug) }}">{{$article->title}}</a>
                     </p>
                 @endforeach
             </div>

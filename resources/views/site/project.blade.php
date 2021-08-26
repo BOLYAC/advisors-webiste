@@ -325,7 +325,7 @@
                                                             <span
                                                                 class="text-primary me-1">{{ __('messages.price') }}:</span>
                                                                 <span
-                                                                    class="text-secondary me-3">${{ $floor->floor_price }}</span>
+                                                                    class="text-secondary me-3">{{ currencyConvert($floor->floor_price) }}</span>
                                                             </div>
                                                             <div class="d-inline-block">
                                                                 <span class="text-primary me-1">{{ __('messages.property_size') }}:</span>
@@ -410,13 +410,13 @@
                                         <div class="error">
                                             {{ $errors->first('phone') }}
                                         </div>
-                                        @endif
+                                    @endif
                                 </div>
                                 <div class="form-group mb-5">
                                     <textarea
                                         name="message"
                                         class="form-control form-control-lg" rows="3"
-                                              placeholder="{{ __('messages.your_message') }}"></textarea>
+                                        placeholder="{{ __('messages.your_message') }}"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <button type="submit"
@@ -518,7 +518,7 @@
                                                 class="col-6 price text-primary text-8 font-weight-semibold">{{ currencyConvert($project->lowest_price) }}
                                             </div>
                                             <div class="col-6 more-details">
-                                                <a href="{{ route('project.detail', $project->seo_url_slug) }}"
+                                                <a href="{{ route('project.detail', $project->seo_url_slug ?? $project->translate('en')->seo_url_slug) }}"
                                                    class="btn btn-primary btn-line w-100 text-4">{{ __('messages.more_details') }}</a>
                                             </div>
                                         </div>

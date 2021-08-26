@@ -82,7 +82,7 @@
                                             <p class="text-4">{!! \Str::limit($post->details , 100, $end='...') !!}</p>
                                         </div>
                                         <div class="col-2 read-more text-end">
-                                            <a href="{{ route('post.details', $post->seo_url_slug) }}"><span
+                                            <a href="{{ route('post.details', $post->seo_url_slug ?? $post->translate('en')->seo_url_slug) }}"><span
                                                     class="arrow2 is-triangle arrow-bar is-right"></span></a>
                                         </div>
                                     </div>
@@ -185,7 +185,7 @@
                                         class="col-6 price text-primary text-7 text-sm-8 font-weight-semibold">{{ currencyConvert($project->lowest_price) }}
                                     </div>
                                     <div class="col-6 more-details">
-                                        <a href="{{ route('project.detail', $project->seo_url_slug) }}"
+                                        <a href="{{ route('project.detail', $project->seo_url_slug ?? $project->translate('en')->seo_url_slug) }}"
                                            class="btn btn-primary btn-line w-100 text-4">{{ __('messages.more_details') }}</a>
                                     </div>
                                 </div>
@@ -233,7 +233,7 @@
                                             <p class="text-4">{!! \Str::limit($a->details , 100, $end='...') !!}</p>
                                         </div>
                                         <div class="col-2 read-more text-end">
-                                            <a href="{{ route('post.details', $a->seo_url_slug) }}"><span
+                                            <a href="{{ route('post.details', $a->seo_url_slug ?? $a->translate('en')->seo_url_slug) }}"><span
                                                     class="arrow2 is-triangle arrow-bar is-right"></span></a>
                                         </div>
                                     </div>

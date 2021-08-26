@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class InstaStory extends Model
+{
+    use HasFactory;
+
+    protected $fillable = ['photo_file', 'status', 'row_no', 'link_story'];
+
+    protected $casts = [
+        'status' => 'boolean'
+    ];
+
+}
