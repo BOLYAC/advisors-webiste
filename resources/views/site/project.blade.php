@@ -235,7 +235,7 @@
                                                         {{ __('messages.year_built') }}:
                                                     </div>
                                                     <div class="col-6 text-end text-secondary">
-                                                        {{ $project->finish_date->format('Y') }}
+                                                        {{ \Carbon\Carbon::parse($project->finish_date)->format('Y')}}
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3 align-items-center">
@@ -451,73 +451,78 @@
                         <div class="owl-carousel owl-theme projects mt-3">
                             @foreach($popProjects as $project)
                                 <div class="project card">
-                                    <img class="card-img-top" src="{{ pageImage($project->photo_file) }}" alt="Project">
+                                    <div class="ratio ratio-16x9">
+                                        <img class="card-img-top" src="{{ pageImage($project->photo_file) }}"
+                                             alt="Project">
+                                    </div>
                                     <div class="card-body">
-                                        <h4 class="card-title mb-4 text-8 font-weight-bold">{{ __('messages.project_no') }} {{ $project->title }}</h4>
-                                        <div class="row features mb-3 gx-3">
-                                            <div class="col-auto text-3"><img class="feature-icon me-1"
-                                                                              src="{{ asset('sites/img/project/map.svg') }}"
-                                                                              alt="map"/>
-                                                @switch($project->city)
-                                                    @case(1)
-                                                    {{  __('Istanbul') }}
-                                                    @break
-                                                    @case(2)
-                                                    {{  __('Bodrum') }}
-                                                    @break
-                                                    @case(3)
-                                                    {{  __('Antalya') }}
-                                                    @break
-                                                    @case(4)
-                                                    {{  __('Sapanca') }}
-                                                    @break
-                                                    @case(5)
-                                                    {{  __('Trapzon') }}
-                                                    @break
-                                                    @case(6)
-                                                    {{  __('Kıbrıs') }}
-                                                    @break
-                                                    @case(7)
-                                                    {{  __('Bursa') }}
-                                                    @break
-                                                    @case(8)
-                                                    {{  __('Izmir') }}
-                                                    @break
+                                        <div class="card-infos">
+                                            <h4 class="card-title mb-4 text-8 font-weight-bold">{{ __('messages.project_no') }} {{ $project->title }}</h4>
+                                            <div class="row features mb-3 gx-3">
+                                                <div class="col-auto text-3"><img class="feature-icon me-1"
+                                                                                  src="{{ asset('sites/img/project/map.svg') }}"
+                                                                                  alt="map"/>
+                                                    @switch($project->city)
+                                                        @case(1)
+                                                        {{  __('Istanbul') }}
+                                                        @break
+                                                        @case(2)
+                                                        {{  __('Bodrum') }}
+                                                        @break
+                                                        @case(3)
+                                                        {{  __('Antalya') }}
+                                                        @break
+                                                        @case(4)
+                                                        {{  __('Sapanca') }}
+                                                        @break
+                                                        @case(5)
+                                                        {{  __('Trapzon') }}
+                                                        @break
+                                                        @case(6)
+                                                        {{  __('Kıbrıs') }}
+                                                        @break
+                                                        @case(7)
+                                                        {{  __('Bursa') }}
+                                                        @break
+                                                        @case(8)
+                                                        {{  __('Izmir') }}
+                                                        @break
 
-                                                @endswitch
+                                                    @endswitch
+                                                </div>
+                                                <div class="col-auto text-3"><img class="feature-icon me-1"
+                                                                                  src="{{ asset('sites/img/project/hand.svg') }}"
+                                                                                  alt="hand"/> Installment
+                                                </div>
+                                                <div class="col-auto text-3"><img class="feature-icon me-1"
+                                                                                  src="{{ asset('sites/img/project/hourglass.svg') }}"
+                                                                                  alt="hourglass"/>
+                                                    @switch($project->status)
+                                                        @case(1)
+                                                        {{  __('Not available') }}
+                                                        @break
+                                                        @case(2)
+                                                        {{  __('Preparing selling') }}
+                                                        @break
+                                                        @case(3)
+                                                        {{  __('Selling') }}
+                                                        @break
+                                                        @case(4)
+                                                        {{  __('Sold') }}
+                                                        @break
+                                                        @case(5)
+                                                        {{  __('Building') }}
+                                                        @break
+                                                    @endswitch
+                                                </div>
                                             </div>
-                                            <div class="col-auto text-3"><img class="feature-icon me-1"
-                                                                              src="{{ asset('sites/img/project/hand.svg') }}"
-                                                                              alt="hand"/> Installment
-                                            </div>
-                                            <div class="col-auto text-3"><img class="feature-icon me-1"
-                                                                              src="{{ asset('sites/img/project/hourglass.svg') }}"
-                                                                              alt="hourglass"/>
-                                                @switch($project->status)
-                                                    @case(1)
-                                                    {{  __('Not available') }}
-                                                    @break
-                                                    @case(2)
-                                                    {{  __('Preparing selling') }}
-                                                    @break
-                                                    @case(3)
-                                                    {{  __('Selling') }}
-                                                    @break
-                                                    @case(4)
-                                                    {{  __('Sold') }}
-                                                    @break
-                                                    @case(5)
-                                                    {{  __('Building') }}
-                                                    @break
-                                                @endswitch
-                                            </div>
+                                            <p class="card-text text-4 mb-5">{!! \Str::limit($project->details , 150, $end='...') !!}</p>
                                         </div>
-                                        <p class="card-text text-4 mb-5">{!! \Str::limit($project->details , 150, $end='...') !!}</p>
-                                        <div class="row align-items-center">
+                                        <div class="row align-items-center justify-content-between">
                                             <div
-                                                class="col-6 price text-primary text-8 font-weight-semibold">{{ currencyConvert($project->lowest_price) }}
+                                                class="col-auto col-sm-6 price text-primary text-6 text-sm-7 font-weight-semibold">{{ currencyConvert($project->lowest_price) }}
                                             </div>
-                                            <div class="col-6 more-details">
+                                            <div class="col-auto col-sm-6 more-details">
                                                 <a href="{{ route('project.detail', $project->seo_url_slug ?? $project->translate('en')->seo_url_slug) }}"
                                                    class="btn btn-primary btn-line w-100 text-4">{{ __('messages.more_details') }}</a>
                                             </div>
