@@ -129,7 +129,9 @@
         <div class="owl-carousel owl-theme gallery mt-5">
             @foreach($project->images as $img)
                 <div class="image-container">
-                    <img src="{{ pageImage($img->full) }}" alt="image2"/>
+                    <div class="image ratio ratio-16x9">
+                        <img src="{{ pageImage($img->full) }}" alt="image2"/>
+                    </div>
                     <div class="buttons">
                         <a class="btn btn-secondary me-1"><img src="{{ asset('sites/img/project/360-degrees.svg') }}"
                                                                alt="360-degrees"/></a>
