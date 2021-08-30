@@ -302,7 +302,7 @@
                     </div>
                     <div class="block">
                         <div class="block-header block-header-default">
-                            <h3 class="block-title">{{  __('Distance key between facilities') }}</h3>
+                            <h3 class="block-title">{{  __('Near by') }}</h3>
                         </div>
                         <div class="block-content">
                             <div class="form-group row">
@@ -448,7 +448,7 @@
                     <div class="col-12">
                         <div class="block block-bordered">
                             <div class="block-header block-header-default">
-                                <h3 class="block-title">{{  __('Category') }}</h3>
+                                <h3 class="block-title">{{  __('Type') }}</h3>
                             </div>
                             <div class="block-content">
                                 <div class="form-group row">

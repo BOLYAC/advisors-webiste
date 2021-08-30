@@ -128,11 +128,11 @@
                             </li>
                             <li>
                                 <a class="{{ request()->is('admin/real-estate/facilities') || request()->is('admin/real-estate/facilities/*') ? ' active' : '' }}"
-                                   href="{{ route('facilities.index') }}">{{ __('Facilities') }}</a>
+                                   href="{{ route('facilities.index') }}">{{ __('Near by') }}</a>
                             </li>
                             <li>
                                 <a class="{{ request()->is('admin/real-estate/categories') || request()->is('admin/real-estate/categories/*') ? ' active' : '' }}"
-                                   href="{{ route('categories.index') }}">{{ __('Categories') }}</a>
+                                   href="{{ route('categories.index') }}">{{ __('Type') }}</a>
                             </li>
                         </ul>
                     </li>

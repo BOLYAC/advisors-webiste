@@ -70,6 +70,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Artisan::call('cache:clear');
         Artisan::call('config:cache');
         Artisan::call('optimize');
+        Artisan::call('optimize:clear');
         Artisan::call('route:trans:clear');
         Artisan::call('route:trans:cache');
 
@@ -78,4 +79,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('login', 'LoginController@showLoginForm')->name('admin.login');
     Route::post('login', 'LoginController@login')->name('admin.login.post');
     Route::get('logout', 'LoginController@logout')->name('admin.logout');
+    Route::view('/import', 'import');
+    Route::post('/import-file', 'MenuController@store')->name('import.file');
 });
