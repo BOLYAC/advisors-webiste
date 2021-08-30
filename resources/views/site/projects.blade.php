@@ -1,4 +1,5 @@
 @extends('layouts.simple')
+@extends('layouts.simple')
 @section('seo_header')
     {!! SEO::generate() !!}
 @endsection
@@ -18,7 +19,7 @@
 
 @section('content')
     <section class="page-header page-header-modern page-header-background page-header-background-sm mb-5"
-             style="background-image: url({{ asset('img/background.jpg') }});">
+             style="background-image: url({{ asset('sites/img/background.jpg') }});">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 align-self-center p-static order-2 text-center">
@@ -167,7 +168,7 @@
                                         @endswitch
                                     </div>
                                 </div>
-                                <p class="card-text text-4 mb-5">{!! \Str::limit($project->details , 150, $end='...') !!}</p>
+                                <p class="card-text text-4 mb-5">{!! \Str::limit($project->details , 100, $end='...') !!}</p>
                                 <div class="row align-items-center">
                                     <div
                                         class="col-6 price text-primary text-7 text-sm-8 font-weight-semibold">{{ currencyConvert($project->lowest_price) }}

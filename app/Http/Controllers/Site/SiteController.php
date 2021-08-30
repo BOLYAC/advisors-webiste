@@ -23,10 +23,10 @@ class SiteController extends Controller
     {
         $banners = \App\Models\Banner::orderBy('row_no')->get();
         $sections = \App\Models\Section::all();
-        $projects = \App\Models\Project::where('featured', true)->get();
-        $citizenProjects = \App\Models\Project::where('citizen_status', true)->get();
+        $projects = \App\Models\Project::where('featured', true)->get()->take(6);
+        $citizenProjects = \App\Models\Project::where('citizen_status', true)->get()->take(6);
         $posts = \App\Models\Post::all();
-        $citizenPosts = \App\Models\Post::where('citizen_status', true)->get();
+        $citizenPosts = \App\Models\Post::where('citizen_status', true)->get()->take(6);
         $testimonials = \App\Models\Testimonial::where('status', true)->orderBy('row_no')->get();
         $stories = \App\Models\InstaStory::where('status', true)->orderBy('row_no')->get();
 
@@ -184,6 +184,24 @@ class SiteController extends Controller
         JsonLd::setType('Article');
 
         return view('site.post', compact('post', 'categories', 'projects', 'lastArticles'));
+    }
+
+    public function citizenShipPage()
+    {
+        $topic = Topic::whereTranslationLike('seo_url_slug', '%news%')->first();
+        if ($topic) {
+            SEOTools::setTitle(config('settings.site_name') . ' | ' . $topic->seo_title);
+            SEOTools::setDescription($topic->seo_description);
+            SEOTools::opengraph()->setUrl(route('news'));
+            SEOTools::setCanonical(route('news'));
+            SEOTools::opengraph()->addProperty('type', 'articles');
+            SEOTools::twitter()->setSite(config('settings.social_twitter'));
+            SEOTools::jsonLd()->addImage($topic->photo_file);
+            SEOMeta::addKeyword([$topic->seo_keywords]);
+            $topic->visits = $topic->visits + 1;
+            $topic->save();
+        }
+        return view('site.citizenship', compact('topic'));
     }
 
     public function news()

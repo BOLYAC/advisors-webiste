@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use App\Models\Setting;
 use App\Traits\UploadAble;
 use Carbon\Carbon;
@@ -28,13 +29,22 @@ class SettingController extends Controller
 
     public function toSitemap()
     {
-        SitemapGenerator::create('https://turkeyadvisors.com')
+        /*SitemapGenerator::create('https://turkeyadvisors.com')
             ->getSitemap()
             ->add(Url::create('/home')
                 ->setLastModificationDate(Carbon::yesterday())
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
                 ->setPriority(0.1))
-            ->writeToFile('sitemap.xml');
+            ->writeToFile('sitemap.xml');*/
+        $sitemap = Sitemap::create()
+            ->add(Url::create('/about-us'))
+            ->add(Url::create('/contact_us'));
+
+        $posts = Post::all();
+        foreach ($posts as $post) {
+            $sitemap->add(Url::create("/post/{$post->slug}"));
+        }
+        $sitemap->writeToFile(public_path('sitemap.xml'));
     }
 
     /**

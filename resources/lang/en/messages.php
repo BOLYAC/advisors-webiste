@@ -88,5 +88,6 @@ return [
     'useful_links' => 'Useful Links',
     'best_offers' => 'Best Offers',
     'subscription_details' => 'Let us help you choose the right property for you',
-    'most_popular_questions' => 'Most Popular Questions'
+    'most_popular_questions' => 'Most Popular Questions',
+    'turkish_citizenship' => 'Turkish Citizenship'
 ];

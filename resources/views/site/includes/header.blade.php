@@ -40,7 +40,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="index.html">
+                                            <a href="{{ route('citizenShipPage') }}">
                                                 {{ __('messages.citizenship') }}
                                             </a>
                                         </li>
@@ -154,7 +154,7 @@
                             <li class="nav-item nav-item-borders dropdown">
                                 <a class="btn btn-primary btn-sm" href="#" role="button" id="dropdownLanguages"
                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="{{ asset('https://winalco-web.app/img/locale.svg') }}" alt="locale">
+                                    <img src="{{ asset('sites/img/locale.svg') }}" alt="locale">
                                     @switch(LaravelLocalization::getCurrentLocale())
                                         @case('en')
                                         EN

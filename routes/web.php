@@ -18,6 +18,7 @@ Route::namespace('Site')->prefix(LaravelLocalization::setLocale())->middleware('
     Route::get(LaravelLocalization::transRoute('routes.about'), [SiteController::class, 'about'])->name('about');
     Route::get(LaravelLocalization::transRoute('routes.contact'), [SiteController::class, 'contact'])->name('contact');
     Route::get(LaravelLocalization::transRoute('routes.works'), [SiteController::class, 'works'])->name('works');
+    Route::get(LaravelLocalization::transRoute('routes.citizenship-by-investment'), [SiteController::class, 'citizenShipPage'])->name('citizenShipPage');
     Route::get(LaravelLocalization::transRoute('routes.services'), [SiteController::class, 'services'])->name('services');
     Route::get(LaravelLocalization::transRoute('routes.faqQuestions'), [SiteController::class, 'faqQuestions'])->name('faqQuestion');
     Route::get(LaravelLocalization::transRoute('routes.service'), [SiteController::class, 'service'])->name('service');

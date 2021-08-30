@@ -18,5 +18,6 @@ return [
     'newsletter/submit'     => 'newsletter/submit',
     'faqQuestions'          => 'Faq-Questions',
     'service'               => 'fine-touch-of-luxury',
-    'servicesVirtualTour'   => 'virtual-tour-360'
+    'servicesVirtualTour'   => 'virtual-tour-360',
+    'citizenship-by-investment' => 'citizenship-by-investment'
 ];
