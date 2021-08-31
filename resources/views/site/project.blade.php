@@ -302,8 +302,11 @@
                                     <div class="col-lg-4">
                                         <ul class="list list-icons">
                                             @foreach($row as $facility)
-                                                <li><i class="fas fa-circle"></i> {{ $facility->title }}
-                                                    <span class="ml-5 pl-5">{{ $facility->pivot->distance }}</span></li>
+                                                <li class="feature text-4 mb-3">
+                                                    <i class="fas fa-circle"></i> {{ $facility->title }}
+                                                    <span
+                                                        class="me-3 text-secondary">{{ $facility->pivot->distance }}</span>
+                                                </li>
                                             @endforeach
                                         </ul>
                                     </div>
@@ -349,11 +352,13 @@
                                                 </a>
                                             </div>
                                         </div>
-                                        <div id="plan{{$i}}" class="accordion-collapse collapse show"
+                                        <div id="plan{{$i}}" class="accordion-collapse collapse"
                                              aria-labelledby="heading{{$i}}" data-bs-parent="#plans">
                                             <div class="card-body">
-                                                <img src="{{ floorImage($floor->floor_full) }}" alt="plan"
-                                                     class="w-100"/>
+                                                @if($floor->floor_full)
+                                                    <img src="{{ floorImage($floor->floor_full) }}" alt="plan"
+                                                         class="w-100"/>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
