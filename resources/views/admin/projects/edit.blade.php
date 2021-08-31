@@ -453,7 +453,7 @@
                             <div class="block-content">
                                 <div class="form-group row">
                                     <div class="col-12">
-                                        <select class="form-control" name="category" id="category">
+                                        <select class="form-control" name="category_id" id="category_id">
                                             @foreach ($sections as $section)
                                                 <option
                                                     value="{{ $section->id }}" {{ $project->category_id == $section->id ? 'selected' : '' }}>
@@ -687,6 +687,38 @@
         </div>
     </div>
     <!-- END edit modal floor -->
+    <!-- Delete modal floor -->
+    <div class="modal" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="modal-normal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="block block-themed block-transparent mb-0">
+                    <div class="block-header bg-primary-dark">
+                        <h3 class="block-title">{{ __('Delete plan') }}</h3>
+                        <div class="block-options">
+                            <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
+                                <i class="si si-close"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <form action="{{ route('projects.delete.floor') }}" method="POST">
+                        @csrf
+                        <div class="block-content">
+                            <input type="hidden" name="floor_id" id="floor_id_delete">
+                            <input type="hidden" name="project_id" value="{{ $project->id }}">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-alt-secondary"
+                                    data-dismiss="modal">{{ __('Close') }}</button>
+                            <button type="submit" class="btn btn-alt-success">
+                                <i class="fa fa-check"></i> {{ __('Delete') }}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END Delete modal floor -->
 @endsection
 
 @section('js_after')
@@ -725,9 +757,8 @@
                 if ($($tr).hasClass('child')) {
                     $tr = $tr.prev('.parent');
                 }
-                var data = table.row($tr).data();
-                let id = $(this).data('id');
-                $('#deleteForm').attr('action', '/properties/' + id);
+                let data = table.row($tr).data();
+                $('#floor_id_delete').val(data[0])
                 $('#deleteModal').modal('show');
             })
         })

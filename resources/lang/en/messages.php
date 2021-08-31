@@ -55,7 +55,7 @@ return [
     'project_details' => 'Project Details',
     'garage' => 'Garage',
     'garage_size' => 'Garage Size',
-    'year_built' => 'Year Built',
+    'year_built' => 'Delivery Date',
     'property_status' => 'Property Status',
     'property_id' => 'Property ID',
     'price' => 'Price',

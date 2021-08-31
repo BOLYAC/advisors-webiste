@@ -59,6 +59,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
                 ->name('projects.add.floor');
             Route::post('projects/update-floor', 'ProjectController@updatePlan')
                 ->name('projects.update.floor');
+            Route::post('projects/delete-floor', 'ProjectController@deletePlan')
+                ->name('projects.delete.floor');
         });
         Route::get('/sitemap', 'SettingController@toSitemap')
             ->name('generate.sitemap');

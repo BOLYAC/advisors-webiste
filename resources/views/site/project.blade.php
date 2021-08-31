@@ -96,7 +96,7 @@
                         </span>
                         <span class="d-inline-block me-4 pr-1 text-4"><img class="feature-icon me-1"
                                                                            src="{{ asset('sites/img/project/hand.svg') }}"
-                                                                           alt="hand"/> Installment</span>
+                                                                           alt="hand"/> {{ $project->payment_type == '1' ? __('Cash') : __('Installment') }}</span>
                         <span class="d-inline-block me-4 pr-1 text-4"><img class="feature-icon me-1"
                                                                            src="{{ asset('sites/img/project/hourglass.svg') }}"
                                                                            alt="hourglass"/>
@@ -135,7 +135,7 @@
                     <div class="buttons">
                         <a class="btn btn-secondary me-1"><img src="{{ asset('sites/img/project/360-degrees.svg') }}"
                                                                alt="360-degrees"/></a>
-                        <a class="btn btn-secondary popup-image" href="{{ asset('sites/img/project/image2.png') }}"><img
+                        <a class="btn btn-secondary popup-image" href="{{ pageImage($img->full) }}"><img
                                 src="{{ asset('sites/img/project/fullscreen.svg') }}" alt="fullscreen"/></a>
                     </div>
                 </div>
@@ -302,7 +302,8 @@
                                     <div class="col-lg-4">
                                         <ul class="list list-icons">
                                             @foreach($row as $facility)
-                                                <li><i class="fas fa-circle"></i> {{ $facility->title }}</li>
+                                                <li><i class="fas fa-circle"></i> {{ $facility->title }}
+                                                    <span class="ml-5 pl-5">{{ $facility->pivot->distance }}</span></li>
                                             @endforeach
                                         </ul>
                                     </div>
@@ -351,7 +352,7 @@
                                         <div id="plan{{$i}}" class="accordion-collapse collapse show"
                                              aria-labelledby="heading{{$i}}" data-bs-parent="#plans">
                                             <div class="card-body">
-                                                <img src="{{ pageImage($floor->floor_full) }}" alt="plan"
+                                                <img src="{{ floorImage($floor->floor_full) }}" alt="plan"
                                                      class="w-100"/>
                                             </div>
                                         </div>

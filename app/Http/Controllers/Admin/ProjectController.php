@@ -273,17 +273,25 @@ class ProjectController extends Controller
             $projectImage = $this->uploadOne($request->file('floor_full'), 'img/projects');
 
             $request_data['floor_full'] = $projectImage;
-        }
-        //$d = ['project_id', 'floor_full', 'floor_title', 'floor_price', 'floor_currency', 'floor_size', 'floor_bedrooms', 'floor_bathrooms'];
-        $project->floors()->create([
-            'floor_full' => $request_data['floor_full'],
-            'floor_title' => $request_data['floor_title'],
-            'floor_price' => $request_data['floor_price'],
-            'floor_size' => $request_data['floor_size'],
-            'floor_bedrooms' => $request_data['floor_bedrooms'],
-            'floor_bathrooms' => $request_data['floor_bathrooms'],
 
-        ]);
+            $project->floors()->create([
+                'floor_full' => $request_data['floor_full'],
+                'floor_title' => $request_data['floor_title'],
+                'floor_price' => $request_data['floor_price'],
+                'floor_size' => $request_data['floor_size'],
+                'floor_bedrooms' => $request_data['floor_bedrooms'],
+                'floor_bathrooms' => $request_data['floor_bathrooms'],
+            ]);
+
+        } else {
+            $project->floors()->create([
+                'floor_title' => $request_data['floor_title'],
+                'floor_price' => $request_data['floor_price'],
+                'floor_size' => $request_data['floor_size'],
+                'floor_bedrooms' => $request_data['floor_bedrooms'],
+                'floor_bathrooms' => $request_data['floor_bathrooms'],
+            ]);
+        }
 
         return redirect()->route('projects.edit', $project)
             ->with('toast_success', __('Successfully created new plan floor'));
@@ -300,11 +308,22 @@ class ProjectController extends Controller
 
             $request_data['floor_full'] = $projectImage;
         }
-        //$d = ['project_id', 'floor_full', 'floor_title', 'floor_price', 'floor_currency', 'floor_size', 'floor_bedrooms', 'floor_bathrooms'];
         $floor->update($request_data);
 
         return redirect()->route('projects.edit', $floor->project_id)
             ->with('toast_success', __('Successfully created new plan floor'));
     }
 
+    public function deletePlan(Request $request)
+    {
+        $request_data = $request->except('_token', 'project_id', 'floor_id');
+
+        $floor = FloorProject::findOrFail($request->floor_id);
+
+        File::delete('storage/' . $floor->photo_file);
+        $floor->delete();
+
+        return redirect()->route('projects.edit', $request->project_id)
+            ->with('toast_success', __('Successfully delete plan floor'));
+    }
 }

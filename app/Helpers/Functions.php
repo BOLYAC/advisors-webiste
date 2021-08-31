@@ -7,6 +7,11 @@ function pageImage($path)
     return $path && file_exists('storage/' . $path) ? asset('storage/' . $path) : 'https://via.placeholder.com/250';
 }
 
+function floorImage($path)
+{
+    return $path && file_exists('storage/' . $path) ? asset('storage/' . $path) : '';
+}
+
 function currencyConvert($price)
 {
     $i = \Illuminate\Support\Facades\Session::get('currency');
