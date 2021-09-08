@@ -46,6 +46,7 @@
     @include('site.includes.header')
     @yield('content')
     @include('site.includes.footer')
+    @include('site.includes.sideButtons')
 </div>
 <script src="{{ asset('sites/js/app.js') }}" type="text/javascript"></script>
 @yield('javascripts')

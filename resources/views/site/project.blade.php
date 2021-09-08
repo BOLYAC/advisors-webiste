@@ -335,7 +335,7 @@
                                                             </div>
                                                             <div class="d-inline-block">
                                                                 <span class="text-primary me-1">{{ __('messages.property_size') }}:</span>
-                                                                <span class="text-secondary me-3">{{ $floor->floor_size }} Sq Ft</span>
+                                                                <span class="text-secondary me-3">{{ $floor->floor_size }} Sq M</span>
                                                             </div>
                                                             <div class="d-inline-block">
                                                                 <span class="text-primary me-1">{{ __('messages.bedrooms') }}:</span>
@@ -373,7 +373,7 @@
                 <div class="col-xl-4 sidebar">
                     <div class="contact">
                         <div class="contact-on-whatsapp">
-                            <a href="https://wa.me/00905527440617"
+                            <a href="https://wa.me/00905527440617" target="_blank"
                                class="btn btn-lg btn-secondary w-100 font-weight-semibold py-3">{{ __('messages.contact_us_on_whatsapp') }}
                                 <i class="ms-3 fab fa-whatsapp text-5"></i></a>
                         </div>

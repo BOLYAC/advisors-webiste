@@ -194,7 +194,7 @@
                                     </div>
                                     <div class="col-auto text-3"><img class="feature-icon me-1"
                                                                       src="{{ asset('sites/img/project/hand.svg') }}"
-                                                                      alt="hand"/> Installment
+                                                                      alt="hand"/> {{ $project->payment_type == '1' ? __('Cash') : __('Installment') }}
                                     </div>
                                     <div class="col-auto text-3"><img class="feature-icon me-1"
                                                                       src="{{ asset('sites/img/project/hourglass.svg') }}"
@@ -378,7 +378,7 @@
                                     </div>
                                     <div class="col-auto text-3"><img class="feature-icon me-1"
                                                                       src="{{ asset('sites/img/project/hand.svg') }}"
-                                                                      alt="hand"/> Installment
+                                                                      alt="hand"/> {{ $project->payment_type == '1' ? __('Cash') : __('Installment') }}
                                     </div>
                                     <div class="col-auto text-3"><img class="feature-icon me-1"
                                                                       src="{{ asset('sites/img/project/hourglass.svg') }}"

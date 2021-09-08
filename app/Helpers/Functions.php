@@ -24,9 +24,8 @@ function currencyConvert($price)
                 ->round(2)
                 ->throw()
                 ->get();
-            return number_format($amount, 2) . ' ' . '€';
+            return number_format($amount) . ' ' . '€';
         case 'USD':
-            //return number_format($price, 2) . ' ' . '€';
             $amount = Currency::convert()
                 ->from('USD')
                 ->to('USD')
@@ -34,7 +33,7 @@ function currencyConvert($price)
                 ->round(2)
                 ->throw()
                 ->get();
-            return number_format($amount, 2) . ' ' . '$';
+            return number_format($amount) . ' ' . '$';
         case 'GBP':
             $amount = Currency::convert()
                 ->from('USD')
@@ -43,6 +42,6 @@ function currencyConvert($price)
                 ->round(2)
                 ->throw()
                 ->get();
-            return number_format($amount, 2) . ' ' . '£';
+            return number_format($amount) . ' ' . '£';
     }
 }
