@@ -177,13 +177,19 @@
                             </div>
                             @if ($project->images)
                                 <div class="galeri-container">
-                                    <div class="row galeri">
+                                    <div class="row gutters-tiny js-gallery img-fluid-100 js-gallery-enabled">
                                         @foreach ($project->images as $i => $image)
                                             <div class="col-md-3" id="{{ $image->id }}">
-                                                <a href="{{ pageImage($image->full) }}" data-fancybox="galeri">
-                                                    <img class="img-fluid" src="{{ pageImage($image->full) }}"
-                                                         class="one-img">
+                                                <a class="img-link img-link-simple img-thumb img-lightbox"
+                                                   href="{{ pageImage($image->full) }}">
+                                                    <img class="img-fluid rounded-top"
+                                                         src="{{ pageImage($image->full) }}">
                                                 </a>
+                                                <div class="form-group">
+                                                    <input class="form-control form-control-sm" type="number"
+                                                           name="row_no_image[{{$image->id}}]"
+                                                           value="{{ $image->row_no_image }}">
+                                                </div>
                                                 <div class="checkbox">
                                                     <input id="check-{{ $i }}" type="checkbox" name="imageDestroy[]"
                                                            value="{{ $image->id }}">

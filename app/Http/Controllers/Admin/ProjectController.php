@@ -165,6 +165,20 @@ class ProjectController extends Controller
             $request_data['photo_file'] = $projectImage;
         }
 
+        if (isset($request_data['imageDestroy'])) {
+            foreach ($request_data['imageDestroy'] as $image) {
+                File::delete('storage/' . $image);
+                ProjectImage::findOrFail($image)->delete();
+            }
+        }
+
+
+        if (isset($request_data['row_no_image'])) {
+            foreach ($request_data['row_no_image'] as $key => $row_num) {
+                ProjectImage::findOrFail($key)->update(['row_no_image' => $row_num]);
+            }
+        }
+
         if ($request->hasFile('photos')) {
             foreach ($request_data['photos'] as $image) {
                 $pathImage = $this->uploadOne($image, 'img/projects');
@@ -172,13 +186,6 @@ class ProjectController extends Controller
                     'full' => $pathImage,
                     'project_id' => $project->id,
                 ]);
-            }
-        }
-
-        if (isset($request_data['imageDestroy'])) {
-            foreach ($request_data['imageDestroy'] as $image) {
-                File::delete('storage/' . $image);
-                ProjectImage::findOrFail($image)->delete();
             }
         }
 

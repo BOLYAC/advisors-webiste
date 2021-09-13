@@ -15,7 +15,7 @@ class ProjectImage extends Model
     /**
      * @var array
      */
-    protected $fillable = ['project_id', 'full'];
+    protected $fillable = ['project_id', 'full', 'row_no_image'];
 
     /**
      * @var array
