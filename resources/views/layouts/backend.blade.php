@@ -124,7 +124,7 @@
                             </li>
                             <li>
                                 <a class="{{ request()->is('admin/real-estate/features') || request()->is('admin/real-estate/features/*') ? ' active' : '' }}"
-                                   href="{{ route('features.index') }}">{{ __('Features') }}</a>
+                                   href="{{ route('features.index') }}">{{ __('Facilities') }}</a>
                             </li>
                             <li>
                                 <a class="{{ request()->is('admin/real-estate/facilities') || request()->is('admin/real-estate/facilities/*') ? ' active' : '' }}"
@@ -291,5 +291,6 @@
 <!-- <script src="{{ asset('js/laravel.app.js') }}"></script> -->
 
 @yield('js_after')
+@include('sweetalert::alert')
 </body>
 </html>

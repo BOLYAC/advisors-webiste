@@ -149,7 +149,7 @@ class ProjectController extends Controller
     public function update(Request $request, Project $project)
     {
         $rules = [
-            'photo_file' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+            'photo_file' => ['image', 'mimes:jpeg,png,jpg', 'max:2048'],
         ];
 
         $request->validate($rules);
@@ -204,7 +204,7 @@ class ProjectController extends Controller
         $project->facilities()->sync($facilities);
         $project->features()->sync($request->input('features'));
 
-        return redirect()->route('projects.edit', $project)->withSuccess(__('Project updated Successfully!'));
+        return redirect()->route('projects.edit', $project)->with('toast_success', __('Project updated Successfully!'));
     }
 
     /**

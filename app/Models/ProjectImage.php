@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class ProjectImage extends Model
 {
@@ -30,5 +31,12 @@ class ProjectImage extends Model
     public function project()
     {
         return $this->belongsTo(Project::class);
+    }
+
+    protected static function boot() {
+        parent::boot();
+        static::addGlobalScope('order', function (Builder $builder) {
+            $builder->orderBy('row_no_image', 'ASC');
+        });
     }
 }

@@ -179,7 +179,7 @@
                                 <div class="galeri-container">
                                     <div class="row gutters-tiny js-gallery img-fluid-100 js-gallery-enabled">
                                         @foreach ($project->images as $i => $image)
-                                            <div class="col-md-3" id="{{ $image->id }}">
+                                            <div class="col-4" id="{{ $image->id }}">
                                                 <a class="img-link img-link-simple img-thumb img-lightbox"
                                                    href="{{ pageImage($image->full) }}">
                                                     <img class="img-fluid rounded-top"
@@ -347,7 +347,7 @@
                     </div>
                     <div class="block">
                         <div class="block-header block-header-default">
-                            <h3 class="block-title">{{  __('Features') }}</h3>
+                            <h3 class="block-title">{{  __('Facilities') }}</h3>
                         </div>
                         <div class="block-content">
                             <div class="form-group row">

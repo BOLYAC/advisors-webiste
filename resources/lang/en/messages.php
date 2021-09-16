@@ -61,7 +61,7 @@ return [
     'price' => 'Price',
     'property_size' => 'Property Size',
     'bathrooms' => 'Bathrooms',
-    'project_features' => 'Project Features',
+    'project_features' => 'Project Facilities',
     'whats_nearby' => "What's nearby",
     'public_transport' => 'Public transport',
     'closest_airports' => 'Closest airports',
