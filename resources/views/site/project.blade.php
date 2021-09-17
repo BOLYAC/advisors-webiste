@@ -42,8 +42,25 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 mb-3 mb-lg-0">
-                    <a class="badge badge-secondary badge-md px-3 me-1">{{ __('messages.featured') }}</a>
-                    <a class="badge badge-primary badge-md px-3 me-3">{{ __('messages.sold') }}</a>
+                    <a class="badge badge-primary badge-md px-3 me-3">
+                        @switch($project->status)
+                            @case(1)
+                            {{  __('Not available') }}
+                            @break
+                            @case(2)
+                            {{  __('Preparing selling') }}
+                            @break
+                            @case(3)
+                            {{  __('Selling') }}
+                            @break
+                            @case(4)
+                            {{  __('Sold') }}
+                            @break
+                            @case(5)
+                            {{  __('Building') }}
+                            @break
+                        @endswitch
+                    </a>
                     <span class="d-inline-block article-date me-3"><i
                             class="fas fa-calendar-alt me-1 text-secondary"></i> {{ \Carbon\Carbon::parse($project->finish_date)->format('d M Y')}}</span>
                     <span class="d-inline-block article-views"><i
