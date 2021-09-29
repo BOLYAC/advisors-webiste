@@ -166,12 +166,11 @@ class ProjectController extends Controller
         }
 
         if (isset($request_data['imageDestroy'])) {
-            foreach ($request_data['imageDestroy'] as $image) {
+            foreach ($request_data['imageDestroy'] as $key => $image) {
                 File::delete('storage/' . $image);
-                ProjectImage::findOrFail($image)->delete();
+                /*ProjectImage::findOrFail($image)->delete();*/
             }
         }
-
 
         if (isset($request_data['row_no_image'])) {
             foreach ($request_data['row_no_image'] as $key => $row_num) {

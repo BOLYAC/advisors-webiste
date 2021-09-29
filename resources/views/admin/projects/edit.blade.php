@@ -191,9 +191,9 @@
                                                            value="{{ $image->row_no_image }}">
                                                 </div>
                                                 <div class="checkbox">
-                                                    <input id="check-{{ $i }}" type="checkbox" name="imageDestroy[]"
+                                                    <input id="check-{{ $image->id }}" type="checkbox" name="imageDestroy[]"
                                                            value="{{ $image->id }}">
-                                                    <label for="check-{{ $i }}">{{__('Delete') }}</label>
+                                                    <label for="check-{{ $image->id }}">{{__('Delete') }}</label>
                                                 </div>
                                             </div>
                                         @endforeach
