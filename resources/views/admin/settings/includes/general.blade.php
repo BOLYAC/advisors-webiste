@@ -15,17 +15,6 @@
                     value="{{ optional($setting->translate('en'))->site_name ?? '' }}"
                 />
             </div>
-            <div class="form-group" dir="rtl">
-                <label class="control-label" for="site_name">Site Name  [ العربية ]</label>
-                <input
-                    class="form-control"
-                    type="text"
-                    placeholder="Enter site name"
-                    id="site_name"
-                    name="ar[site_name]"
-                    value="{{ optional($setting->translate('ar'))->site_name ?? '' }}"
-                />
-            </div>
             <div class="form-group">
                 <label class="control-label" for="site_title">Site Title [ English ]</label>
                 <input
@@ -37,17 +26,6 @@
                     value="{{ optional($setting->translate('en'))->site_title ?? '' }}"
                 />
             </div>
-            <div class="form-group" dir="rtl">
-                <label class="control-label" for="site_title">Site Title [ العربية ]</label>
-                <input
-                    class="form-control"
-                    type="text"
-                    placeholder="Enter site title"
-                    id="site_title"
-                    name="ar[site_title]"
-                    value="{{ optional($setting->translate('ar'))->site_title ?? '' }}"
-                />
-            </div>
             <div class="form-group">
                 <label class="control-label" for="footer_copyright_text">Address [ English ]</label>
                 <textarea
@@ -57,16 +35,6 @@
                     id="site_address"
                     name="en[site_address]"
                 >{{ optional($setting->translate('en'))->site_address ?? '' }}</textarea>
-            </div>
-            <div class="form-group" dir="rtl">
-                <label class="control-label" for="footer_copyright_text">Address [ العربية ]</label>
-                <textarea
-                    class="form-control"
-                    rows="4"
-                    placeholder="Enter footer copyright text"
-                    id="site_address"
-                    name="ar[site_address]"
-                >{{ optional($setting->translate('ar'))->site_address ?? '' }}</textarea>
             </div>
             <div class="form-group">
                 <label class="control-label" for="default_email_address">Default Email Address</label>
