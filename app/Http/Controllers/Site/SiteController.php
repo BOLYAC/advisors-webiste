@@ -50,9 +50,9 @@ class SiteController extends Controller
         );
     }
 
-    public function projectList()
+    public function projectList(Request $request, $city = null)
     {
-        $projects = \App\Models\Project::paginate(12);
+        $projects = \App\Models\Project::query();
         $features = \App\Models\Feature::all();
         $sections = \App\Models\Section::all();
         $popProjects = \App\Models\Project::query()->get()->take(3);
@@ -69,7 +69,30 @@ class SiteController extends Controller
             $topic->visits = $topic->visits + 1;
             $topic->save();
         }
-        return view('site.projects', compact('projects', 'features', 'sections', 'popProjects', 'topic'));
+
+        $input = $request->all();
+
+        if ($request->property_type) {
+            $projects->where('category_id', $input['property_type']);
+        }
+
+        if ($request->city) {
+            $projects->whereIn('city', $input['city'] ?? $city);
+        }
+
+        if ($request->project_bedrooms) {
+            if ($input['project_bedrooms'] < 6) {
+                $projects->where('project_bedrooms', $input['project_bedrooms']);
+            } else {
+                $projects->where('project_bedrooms', '>=', $input['project_bedrooms']);
+            }
+        }
+
+        $projects = $projects->paginate(6);
+
+
+        return view('site.projects', compact('projects', 'features', 'sections', 'popProjects', 'topic'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     public function getProject($slug)
@@ -379,7 +402,13 @@ class SiteController extends Controller
             }
         }
 
-        $projects = $queryProjects->paginate(12);
+        $projects = $queryProjects->paginate(3);
+
+        if($request->ajax()){
+            $view = view('site.vendor.data',compact('projects'))->render();
+            return response()->json(['html'=>$view]);
+        }
+
         return view('site.projects', compact('projects', 'sections'));
         //return \View::make('site.vendor.resaults', compact('projects'));
 

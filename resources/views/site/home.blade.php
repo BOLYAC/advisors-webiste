@@ -75,7 +75,8 @@
                     <h3 class="mb-0">{{ __('messages.find_your_dream_home') }}</h3>
                 </div>
                 <div class="col-xl-8">
-                    <form action="{{ route('search') }}" method="post" class="row align-items-center">
+                    <form class="row align-items-center" id="form-projects-ajax" role="form" method="post"
+                          action="{{ route('projects') }}">
                         @csrf
                         <div class="col-lg-3">
                             <button class="cities-dropdown btn dropdown-toggle" type="button" id="citiesMenu"
@@ -87,19 +88,25 @@
                                 <div class="row gx-5">
                                     <div class="col-lg-4">
                                         <div class="form-check mb-3">
-                                            <input class="form-check-input" type="checkbox" value="1" id="istanbul" name="city">
+                                            <input class="form-check-input common_selector city" type="checkbox"
+                                                   value="1" id="istanbul"
+                                                   name="city[]">
                                             <label class="form-check-label" for="istanbul">
                                                 {{ __('Istanbul') }}
                                             </label>
                                         </div>
                                         <div class="form-check mb-3">
-                                            <input class="form-check-input" type="checkbox" value="4" id="sapanca" name="city">
+                                            <input class="form-check-input common_selector city" type="checkbox"
+                                                   value="4" id="sapanca"
+                                                   name="city[]">
                                             <label class="form-check-label" for="sapanca">
                                                 {{ __('Sapanca') }}
                                             </label>
                                         </div>
                                         <div class="form-check mb-3">
-                                            <input class="form-check-input" type="checkbox" value="6" id="kıbrıs" name="city">
+                                            <input class="form-check-input common_selector city" type="checkbox"
+                                                   value="6" id="kıbrıs"
+                                                   name="city[]">
                                             <label class="form-check-label" for="kıbrıs">
                                                 {{ __('Kıbrıs') }}
                                             </label>
@@ -107,19 +114,25 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-check mb-3">
-                                            <input class="form-check-input" type="checkbox" value="2" id="bodrum" name="city">
+                                            <input class="form-check-input common_selector city" type="checkbox"
+                                                   value="2" id="bodrum"
+                                                   name="city[]">
                                             <label class="form-check-label" for="bodrum">
                                                 {{ __('Bodrum') }}
                                             </label>
                                         </div>
                                         <div class="form-check mb-3">
-                                            <input class="form-check-input" type="checkbox" value="5" id="trapzon" name="city">
+                                            <input class="form-check-input common_selector city" type="checkbox"
+                                                   value="5" id="trapzon"
+                                                   name="city[]">
                                             <label class="form-check-label" for="trapzon">
                                                 {{ __('Trapzon') }}
                                             </label>
                                         </div>
                                         <div class="form-check mb-3">
-                                            <input class="form-check-input" type="checkbox" value="7" id="bursa" name="city">
+                                            <input class="form-check-input common_selector city" type="checkbox"
+                                                   value="7" id="bursa"
+                                                   name="city[]">
                                             <label class="form-check-label" for="bursa">
                                                 {{ __('Bursa') }}
                                             </label>
@@ -127,13 +140,17 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-check mb-3">
-                                            <input class="form-check-input" type="checkbox" value="3" id="antalya" name="city">
+                                            <input class="form-check-input common_selector city" type="checkbox"
+                                                   value="3" id="antalya"
+                                                   name="city[]">
                                             <label class="form-check-label" for="antalya">
                                                 {{ __('Antalya') }}
                                             </label>
                                         </div>
                                         <div class="form-check mb-3">
-                                            <input class="form-check-input" type="checkbox" value="8" id="izmir" name="city">
+                                            <input class="form-check-input common_selector city" type="checkbox"
+                                                   value="8" id="izmir"
+                                                   name="city[]">
                                             <label class="form-check-label" for="izmir">
                                                 {{ __('Izmir') }}
                                             </label>
@@ -144,7 +161,7 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="select-wrapper">
-                                <select name="property_type" class="form-control form-control-lg">
+                                <select name="property-type" id="property-type" class="form-control form-control-lg">
                                     <option value="">{{ __('messages.property_type') }}</option>
                                     @foreach($sections as $section)
                                         <option value="{{ $section->id }}">{{ $section->title }}</option>
@@ -154,7 +171,8 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="select-wrapper">
-                                <select name="project_bedrooms" class="form-control form-control-lg">
+                                <select name="project_bedrooms" id="project_bedrooms"
+                                        class="form-control form-control-lg">
                                     <option value="">{{ __('messages.bedrooms') }}</option>
                                     <option value="1">1+0</option>
                                     <option value="2">1+1</option>
