@@ -189,7 +189,7 @@
                                                     <div class="col-6 text-primary text-start">
                                                         {{ __('messages.property_id') }}:
                                                     </div>
-                                                    <div class="col-6 text-end text-secondary">
+                                                    <div class="col-6 text-start text-secondary">
                                                         {{ $project->title }}
                                                     </div>
                                                 </div>
@@ -197,7 +197,7 @@
                                                     <div class="col-6 text-primary text-start">
                                                         {{ __('messages.price') }}:
                                                     </div>
-                                                    <div class="col-6 text-end text-secondary">
+                                                    <div class="col-6 text-start text-secondary">
                                                         {{ currencyConvert($project->lowest_price) }}
                                                     </div>
                                                 </div>
@@ -205,7 +205,7 @@
                                                     <div class="col-6 text-primary text-start">
                                                         {{ __('messages.property_size') }}:
                                                     </div>
-                                                    <div class="col-6 text-end text-secondary">
+                                                    <div class="col-6 text-start text-secondary">
                                                         {{ $project->project_size_min ? $project->project_size_min . ' Sq.m' : '' }}
                                                     </div>
                                                 </div>
@@ -213,7 +213,7 @@
                                                     <div class="col-6 text-primary text-start">
                                                         {{ __('messages.bedrooms') }}:
                                                     </div>
-                                                    <div class="col-6 text-end text-secondary">
+                                                    <div class="col-6 text-start text-secondary">
                                                         {{  $project->project_bedrooms }}
                                                     </div>
                                                 </div>
@@ -221,7 +221,7 @@
                                                     <div class="col-6 text-primary text-start">
                                                         {{ __('messages.bathrooms') }}:
                                                     </div>
-                                                    <div class="col-6 text-end text-secondary">
+                                                    <div class="col-6 text-start text-secondary">
                                                         {{ $project->project_bathrooms }}
                                                     </div>
                                                 </div>
@@ -231,7 +231,7 @@
                                                     <div class="col-6 text-primary text-start">
                                                         {{ __('messages.year_built') }}:
                                                     </div>
-                                                    <div class="col-6 text-end text-secondary">
+                                                    <div class="col-6 text-start text-secondary">
                                                         {{ \Carbon\Carbon::parse($project->finish_date)->format('Y')}}
                                                     </div>
                                                 </div>
@@ -239,7 +239,7 @@
                                                     <div class="col-6 text-primary text-start">
                                                         {{ __('messages.property_type') }}:
                                                     </div>
-                                                    <div class="col-6 text-end text-secondary">
+                                                    <div class="col-6 text-start text-secondary">
                                                         {{ $project->category->title }}
                                                     </div>
                                                 </div>
@@ -247,7 +247,7 @@
                                                     <div class="col-6 text-primary text-start">
                                                         {{ __('messages.property_status') }}:
                                                     </div>
-                                                    <div class="col-6 text-end text-secondary">
+                                                    <div class="col-6 text-start text-secondary">
                                                         @switch($project->status)
                                                             @case(1)
                                                             {{  __('Not available') }}
@@ -321,7 +321,7 @@
                                                    aria-controls="plan{{$i}}">
                                                     <div class="row justify-content-between">
                                                         <h4 class="col-lg-auto my-1">{{ $floor->floor_title }}</h4>
-                                                        <div class="col-lg-auto my-1 floor-properties text-lg-end">
+                                                        <div class="col-lg-auto my-1 floor-properties text-lg-start">
                                                             <div class="d-inline-block">
                                                             <span
                                                                 class="text-primary me-1">{{ __('messages.price') }}:</span>

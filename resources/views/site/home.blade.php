@@ -75,7 +75,7 @@
                     <h3 class="mb-0">{{ __('messages.find_your_dream_home') }}</h3>
                 </div>
                 <div class="col-xl-8">
-                    <form class="row align-items-center" id="form-projects-ajax" role="form" method="post"
+                    <form class="row align-items-center" id="form-projects-ajax" role="form" method="get"
                           action="{{ route('projects') }}">
                         @csrf
                         <div class="col-lg-3">

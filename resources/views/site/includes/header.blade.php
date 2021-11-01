@@ -87,7 +87,7 @@
         <div class="row py-2 align-items-center">
             <div class="col-xl-6 mb-0 mb-lg-2 mb-xl-0">
                 <div class="header-row">
-                    <nav class="header-nav-top">
+                    <nav class="header-nav-top flash-news">
                         <h6 class="d-inline-flex align-middle flash-news mb-0 text-4">
                             <strong>{{ __('messages.latest_news') }} : </strong></h6>
                         <div class="d-inline-flex align-middle">
