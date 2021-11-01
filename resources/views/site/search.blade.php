@@ -71,48 +71,9 @@
     <div class="container">
         <div class="grid row">
             <div class="grid-sizer col-12"></div>
-            <div class="grid-item col-12 articles mb-5">
-                <h3 class="mb-4">{{ __('messages.articles') }}</h3>
-                <div class="row">
-                    @isset($postResult)
-                        @forelse($postResult as $post)
-                            <div class="col-lg-6 col-xl-4 mb-4">
-                                <div class="article card border-radius-0">
-                                    <div class="card-top">
-                                        <img class="card-img-top" src="{{ pageImage('$post->photo_file') }}"
-                                             alt="Project">
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="article-date"><i
-                                                class="fas fa-calendar-alt me-1"></i> {{ \Carbon\Carbon::parse($post->date)->format('d M Y')}}
-                                        </div>
-                                        <div class="article-views"><i class="fa fa-eye me-1"></i>
-                                            {{ $post->visits }} {{ __('messages.views') }}</div>
-                                        <div class="card-title">
-                                            <div
-                                                class="mb-3 text-4 card-subtitle">{{ $post->categories->first()->title ?? '' }}</div>
-                                            <h4 class="mb-0 text-5 text-sm-6 text-lg-5 font-weight-bold">{{ $post->title }}</h4>
-                                        </div>
-                                        <div class="card-text row align-items-end">
-                                            <div class="col-10">
-                                                <p class="text-4">{!! \Str::limit($post->details , 100, $end='...') !!}</p>
-                                            </div>
-                                            <div class="col-2 read-more text-end">
-                                                <a href="{{ route('post.details', $post->seo_url_slug ?? $post->translate('en')->seo_url_slug ) }}"><span
-                                                        class="arrow2 is-triangle arrow-bar is-right"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @empty
-                        @endforelse
-                    @endisset
-                </div>
-            </div>
             <div class="grid-item col-12 projects">
                 <h3 class="mb-4">{{ __('messages.projects') }}</h3>
-                <div class="row">
+                <div class="row mt-3 gx-3 gx-lg-4 gx-xl-3 gx-xxl-4">
                     @isset($projectResult)
                         @forelse($projectResult as $project)
                             <div class="col-lg-6 col-xl-4 mb-4">
@@ -123,8 +84,8 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="card-infos">
-                                            <h4 class="card-title mb-4 text-8 font-weight-bold">{{ __('messages.project_no') }} {{ $project->title  }}</h4>
-                                            <div class="row features mb-3 gx-3">
+                                            <h4 class="card-title mb-4 text-6 text-sm-7 text-lg-6 text-xl-6 text-xxl-7 font-weight-bold">{{ __('messages.project_no') }} {{ $project->title  }}</h4>
+                                            <div class="row features mb-3 gx-2 gx-sm-3 gx-xl-2 gx-xxl-3">
                                                 <div class="col-auto text-3"><img class="feature-icon me-1"
                                                                                   src="{{ asset('sites/img/project/map.svg') }}"
                                                                                   alt="map"/> @switch($project->city)
@@ -184,11 +145,11 @@
                                         </div>
                                         <div class="row align-items-center justify-content-between">
                                             <div
-                                                class="col-auto col-sm-6 price text-primary text-6 text-sm-7 font-weight-semibold">{{ currencyConvert($project->lowest_price) }}
+                                                class="col-auto col-sm-6 price text-primary text-5 text-sm-6 font-weight-semibold">{{ currencyConvert($project->lowest_price) }}
                                             </div>
                                             <div class="col-auto col-sm-6 more-details">
                                                 <a href="{{ route('project.detail', $project->seo_url_slug ?? $project->translate('en')->seo_url_slug) }}"
-                                                   class="btn btn-primary btn-line w-100 text-4">{{ __('messages.more_details') }}</a>
+                                                   class="btn btn-primary btn-line w-100 text-3">{{ __('messages.more_details') }}</a>
                                             </div>
                                         </div>
                                     </div>

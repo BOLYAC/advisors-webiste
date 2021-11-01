@@ -129,10 +129,10 @@
                             </div>
                             <div class="card-body">
                                 <div class="card-infos">
-                                    <h4 class="card-title mb-4 text-7 text-sm-8 text-lg-7 text-xl-8 font-weight-bold">
+                                    <h4 class="card-title mb-4 text-5 text-sm-6 text-lg-5 text-xl-6 font-weight-bold">
                                         {{ __('messages.project_no') }} {{ $project->title }}
                                     </h4>
-                                    <div class="row features mb-3 gx-3">
+                                    <div class="row features mb-3 gx-2 gx-sm-3">
                                         <div class="col-auto text-3"><img class="feature-icon me-1"
                                                                           src="{{ asset('sites/img/project/map.svg') }}"
                                                                           alt="map"/>
@@ -193,7 +193,7 @@
                                 </div>
                                 <div class="row align-items-center justify-content-between">
                                     <div
-                                        class="col-auto col-sm-6 price text-primary text-6 text-sm-7 font-weight-semibold">{{ currencyConvert($project->lowest_price) }}
+                                        class="col-auto col-sm-6 price text-primary text-6 text-xl-5 text-xxl-6 font-weight-semibold">{{ currencyConvert($project->lowest_price) }}
                                     </div>
                                     <div class="col-auto col-sm-6 more-details">
                                         <a href="{{ route('project.detail', $project->seo_url_slug ?? $project->translate('en')->seo_url_slug) }}"

@@ -74,7 +74,7 @@
                 </div>
                 <div class="header-column d-none d-xl-flex order-1 order-lg-2">
                     <div class="header-row justify-content-end">
-                        <a href="#" class="btn btn-xl btn-secondary">{{ __('messages.get_in_touch') }} <span
+                        <a href="{{ route('contact') }}" class="btn btn-lg btn-secondary">{{ __('messages.get_in_touch') }} <span
                                 class="arrow1 is-triangle arrow-bar is-right"></span> </a>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
 <div class="header-top">
     <div class="container">
         <div class="row py-2 align-items-center">
-            <div class="col-xl-6 mb-2 mb-xl-0">
+            <div class="col-xl-6 mb-0 mb-lg-2 mb-xl-0">
                 <div class="header-row">
                     <nav class="header-nav-top">
                         <h6 class="d-inline-flex align-middle flash-news mb-0 text-4">
@@ -128,26 +128,33 @@
                                         @case('EUR')
                                         EUR
                                         @break
-                                        @case('GBP')
-                                        GBP
-                                        @break
                                         @case('USD')
                                         USD
+                                        @break
+                                        @case('TRY')
+                                        TRY
+                                        @break
+                                        @case('GBP')
+                                        GBP
                                         @break
                                     @endswitch
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownCurrencies">
+                                    <a class="dropdown-item" href="{{ route('switch_currency', 'USD') }}">
+                                        <img src="{{ asset('sites/img/flags/us.png') }}"
+                                             class="flag flag-us rounded-circle" alt="USD"> USD
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('switch_currency', 'EUR') }}">
                                         <img src="{{ asset('sites/img/flags/eu.png') }}"
                                              class="flag flag-us rounded-circle" alt="EUR"> EUR
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('switch_currency', 'TRY') }}">
+                                        <img src="{{ asset('sites/img/flags/tr.png') }}"
+                                             class="flag flag-us rounded-circle" alt="EUR"> TRY
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('switch_currency', 'GBP') }}">
                                         <img src="{{ asset('sites/img/flags/gb.png') }}"
                                              class="flag flag-us rounded-circle" alt="GBP"> GBP
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('switch_currency', 'USD') }}">
-                                        <img src="{{ asset('sites/img/flags/us.png') }}"
-                                             class="flag flag-us rounded-circle" alt="USD"> USD
                                     </a>
                                 </div>
                             </li>

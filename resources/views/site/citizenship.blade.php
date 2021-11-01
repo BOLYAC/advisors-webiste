@@ -57,13 +57,13 @@
     <section class="section section-height-2 border-0 mb-0 pt-5">
         <div class="container container-lg">
             <div class="row justify-content-center">
-                <div class="col-lg-7 col-xl-6 text-center">
+                <div class="col-lg-8 col-xl-6 text-center">
                     <h2 class="font-weight-extra-bold line-height-4 mb-5">Application Types To Obtain Turkish
                         Citizenship By Investment</h2>
                 </div>
             </div>
-            <div class="row justify-content-center gx-5">
-                <div class="type col-md-6 col-lg-4 col-xl-3 text-center mb-4">
+            <div class="row justify-content-center gx-5 gx-lg-4 gx-xl-5">
+                <div class="type col-md-6 col-lg-4 col-xxl-3 text-center mb-4">
                     <div class="card">
                         <div class="card-body text-center">
                             <span class="icon-border mb-4">
@@ -100,7 +100,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="type col-md-6 col-lg-4 col-xl-3 text-center mb-4">
+                <div class="type col-md-6 col-lg-4 col-xxl-3 text-center mb-4">
                     <div class="card">
                         <div class="card-body text-center">
                             <span class="icon-border mb-4">
@@ -137,7 +137,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="type col-md-6 col-lg-4 col-xl-3 text-center mb-4">
+                <div class="type col-md-6 col-lg-4 col-xxl-3 text-center mb-4">
                     <div class="card">
                         <div class="card-body text-center">
                             <span class="icon-border mb-4">

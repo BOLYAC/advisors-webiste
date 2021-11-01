@@ -52,7 +52,7 @@ class SiteController extends Controller
 
     public function projectList()
     {
-        $projects = \App\Models\Project::all();
+        $projects = \App\Models\Project::paginate(12);
         $features = \App\Models\Feature::all();
         $sections = \App\Models\Section::all();
         $popProjects = \App\Models\Project::query()->get()->take(3);
@@ -361,7 +361,29 @@ class SiteController extends Controller
     public function search(Request $request, $city = null)
     {
         $input = $request->all();
+        $sections = \App\Models\Section::all();
         $queryProjects = Project::query();
+        if ($request->property_type) {
+            $queryProjects->where('category_id', $input['property_type']);
+        }
+
+        if ($request->city) {
+            $queryProjects->whereIn('city', $input['city'] ?? $city);
+        }
+
+        if ($request->project_bedrooms) {
+            if ($input['project_bedrooms'] < 6) {
+                $queryProjects->where('project_bedrooms', $input['project_bedrooms']);
+            } else {
+                $queryProjects->where('project_bedrooms', '>=', $input['project_bedrooms']);
+            }
+        }
+
+        $projects = $queryProjects->paginate(12);
+        return view('site.projects', compact('projects', 'sections'));
+        //return \View::make('site.vendor.resaults', compact('projects'));
+
+        /*$queryProjects = Project::query();
         $sections = Section::all();
 
         $key = $request->search_input;
@@ -395,10 +417,11 @@ class SiteController extends Controller
         }
         $projectResult = $queryProjects->get();
 
-        return view('site.search', compact('projectResult', 'sections'));
+        return view('site.search', compact('projectResult', 'sections'));*/
     }
 
-    public function switchCurrency($currency)
+    public
+    function switchCurrency($currency)
     {
         Session::put('currency', $currency);
         return redirect()->back();

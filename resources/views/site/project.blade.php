@@ -150,8 +150,6 @@
                         <img src="{{ pageImage($img->full) }}" alt="image2"/>
                     </div>
                     <div class="buttons">
-                        <a class="btn btn-secondary me-1"><img src="{{ asset('sites/img/project/360-degrees.svg') }}"
-                                                               alt="360-degrees"/></a>
                         <a class="btn btn-secondary popup-image" href="{{ pageImage($img->full) }}"><img
                                 src="{{ asset('sites/img/project/fullscreen.svg') }}" alt="fullscreen"/></a>
                     </div>
@@ -167,10 +165,6 @@
                             <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#overview" type="button"
                                role="tab" aria-controls="overview"
                                aria-selected="true">{{ __('messages.overview') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#map-view" type="button" role="tab"
-                               aria-controls="overview" aria-selected="true">{{ __('messages.map_view') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="ms-0 ms-sm-1 btn btn-lg btn-primary" href="" data-toggle="tab"><i
@@ -192,7 +186,7 @@
                                         <div class="row justify-content-around">
                                             <div class="col-md-6 col-lg-5">
                                                 <div class="row mb-3 align-items-center">
-                                                    <div class="col-6 text-primary text-end">
+                                                    <div class="col-6 text-primary text-start">
                                                         {{ __('messages.property_id') }}:
                                                     </div>
                                                     <div class="col-6 text-end text-secondary">
@@ -200,7 +194,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3 align-items-center">
-                                                    <div class="col-6 text-primary text-end">
+                                                    <div class="col-6 text-primary text-start">
                                                         {{ __('messages.price') }}:
                                                     </div>
                                                     <div class="col-6 text-end text-secondary">
@@ -208,15 +202,15 @@
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3 align-items-center">
-                                                    <div class="col-6 text-primary text-end">
+                                                    <div class="col-6 text-primary text-start">
                                                         {{ __('messages.property_size') }}:
                                                     </div>
                                                     <div class="col-6 text-end text-secondary">
-                                                        {{ $project->project_size_min }}
+                                                        {{ $project->project_size_min ? $project->project_size_min . ' Sq.m' : '' }}
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3 align-items-center">
-                                                    <div class="col-6 text-primary text-end">
+                                                    <div class="col-6 text-primary text-start">
                                                         {{ __('messages.bedrooms') }}:
                                                     </div>
                                                     <div class="col-6 text-end text-secondary">
@@ -224,7 +218,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3 align-items-center">
-                                                    <div class="col-6 text-primary text-end">
+                                                    <div class="col-6 text-primary text-start">
                                                         {{ __('messages.bathrooms') }}:
                                                     </div>
                                                     <div class="col-6 text-end text-secondary">
@@ -234,23 +228,7 @@
                                             </div>
                                             <div class="col-md-6 col-lg-5">
                                                 <div class="row mb-3 align-items-center">
-                                                    <div class="col-6 text-primary text-end">
-                                                        {{ __('messages.garage') }}:
-                                                    </div>
-                                                    <div class="col-6 text-end text-secondary">
-                                                        {{ $project->garage_number }}
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-3 align-items-center">
-                                                    <div class="col-6 text-primary text-end">
-                                                        {{ __('messages.garage_size') }}:
-                                                    </div>
-                                                    <div class="col-6 text-end text-secondary">
-                                                        {{ $project->garage_size }}
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-3 align-items-center">
-                                                    <div class="col-6 text-primary text-end">
+                                                    <div class="col-6 text-primary text-start">
                                                         {{ __('messages.year_built') }}:
                                                     </div>
                                                     <div class="col-6 text-end text-secondary">
@@ -258,7 +236,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3 align-items-center">
-                                                    <div class="col-6 text-primary text-end">
+                                                    <div class="col-6 text-primary text-start">
                                                         {{ __('messages.property_type') }}:
                                                     </div>
                                                     <div class="col-6 text-end text-secondary">
@@ -266,7 +244,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3 align-items-center">
-                                                    <div class="col-6 text-primary text-end">
+                                                    <div class="col-6 text-primary text-start">
                                                         {{ __('messages.property_status') }}:
                                                     </div>
                                                     <div class="col-6 text-end text-secondary">
@@ -299,9 +277,9 @@
                                 <h2 class="my-5 text-8">{{ __('messages.project_features') }}</h2>
                                 <div class="row">
                                     @foreach($project->features->chunk(3) as $row)
-                                        <div class="col-4" data-aos="fade-right" data-aos-duration="2000">
+                                        <div class="col-lg-4">
                                             @foreach($row as $value)
-                                                <div class="feature text-5 mb-5">
+                                                <div class="feature text-5 mb-4">
                                                     <i class="far fa-check-square text-secondary me-3"></i> {{ $value->title }}
                                                 </div>
                                             @endforeach
@@ -320,7 +298,7 @@
                                         <ul class="list list-icons">
                                             @foreach($row as $facility)
                                                 <li class="feature text-4 mb-3">
-                                                    <i class="fas fa-circle"></i> {{ $facility->title }}
+                                                    <i class="fas fa-circle"></i> {{ $facility->title }} :
                                                     <span
                                                         class="me-3 text-secondary">{{ $facility->pivot->distance }}</span>
                                                 </li>
@@ -338,11 +316,11 @@
                                     <div class="card card-default">
                                         <div id="heading{{$i}}" class="card-header">
                                             <div class="card-title mb-0">
-                                                <a class="accordion-toggle" data-bs-toggle="collapse"
+                                                <a class="accordion-toggle collapsed" data-bs-toggle="collapse"
                                                    data-bs-target="#plan{{$i}}" aria-expanded="true"
                                                    aria-controls="plan{{$i}}">
                                                     <div class="row justify-content-between">
-                                                        <h4 class="col-lg-auto my-1">{{ __('messages.first_floor') }}</h4>
+                                                        <h4 class="col-lg-auto my-1">{{ $floor->floor_title }}</h4>
                                                         <div class="col-lg-auto my-1 floor-properties text-lg-end">
                                                             <div class="d-inline-block">
                                                             <span
@@ -352,7 +330,7 @@
                                                             </div>
                                                             <div class="d-inline-block">
                                                                 <span class="text-primary me-1">{{ __('messages.property_size') }}:</span>
-                                                                <span class="text-secondary me-3">{{ $floor->floor_size }} Sq M</span>
+                                                                <span class="text-secondary me-3">{{ $floor->floor_size }} Sq.m</span>
                                                             </div>
                                                             <div class="d-inline-block">
                                                                 <span class="text-primary me-1">{{ __('messages.bedrooms') }}:</span>
@@ -397,7 +375,7 @@
                     </div>
                     <div class="featured-box featured-box-primary featured-box-effect-1 mt-5">
                         <div class="box-content box-content-border-0 p-5">
-                            <h2 class="text-uppercase">{{ __('messages.send_us_an_email') }}</h2>
+                            <h2 class="text-uppercase text-6 text-sm-7 text-lg-6 text-xxl-7">{{ __('messages.send_us_an_email') }}</h2>
                             <form action="{{ route('submit.contact') }}" method="POST">
                                 @csrf
                                 <input name="item_id" type="hidden" value="{{ $project->title }}">
@@ -461,7 +439,7 @@
                                     <h2 class="font-weight-extra-bold line-height-1 text-7 mb-5">Turkey Advisors</h2>
                                     <h4 class="font-weight-extra-bold text-secondary line-height-1 text-8">{{ __('messages.some_offers') }}</h4>
                                     <a class="btn btn-lg btn-secondary px-4 mt-5 py-3 w-100"
-                                       href="#">{{ __('messages.get_in_touch') }} <span
+                                       href="{{ route('contact') }}">{{ __('messages.get_in_touch') }} <span
                                             class="arrow1 is-triangle arrow-bar is-right"></span></a>
                                 </div>
                             </div>
@@ -482,8 +460,8 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="card-infos">
-                                            <h4 class="card-title mb-4 text-8 font-weight-bold">{{ __('messages.project_no') }} {{ $project->title }}</h4>
-                                            <div class="row features mb-3 gx-3">
+                                            <h4 class="card-title mb-4 text-7 font-weight-bold">{{ __('messages.project_no') }} {{ $project->title }}</h4>
+                                            <div class="row features mb-3 gx-2 gx-sm-3 gx-xl-2 gx-xxl-3">
                                                 <div class="col-auto text-3"><img class="feature-icon me-1"
                                                                                   src="{{ asset('sites/img/project/map.svg') }}"
                                                                                   alt="map"/>
@@ -517,7 +495,7 @@
                                                 </div>
                                                 <div class="col-auto text-3"><img class="feature-icon me-1"
                                                                                   src="{{ asset('sites/img/project/hand.svg') }}"
-                                                                                  alt="hand"/> Installment
+                                                                                  alt="hand"/> {{ $project->payment_type == '1' ? __('Cash') : __('Installment') }}
                                                 </div>
                                                 <div class="col-auto text-3"><img class="feature-icon me-1"
                                                                                   src="{{ asset('sites/img/project/hourglass.svg') }}"
@@ -545,11 +523,11 @@
                                         </div>
                                         <div class="row align-items-center justify-content-between">
                                             <div
-                                                class="col-auto col-sm-6 price text-primary text-6 text-sm-7 font-weight-semibold">{{ currencyConvert($project->lowest_price) }}
+                                                class="col-auto col-sm-6 price text-primary text-5 text-sm-6 font-weight-semibold">{{ currencyConvert($project->lowest_price) }}
                                             </div>
                                             <div class="col-auto col-sm-6 more-details">
                                                 <a href="{{ route('project.detail', $project->seo_url_slug ?? $project->translate('en')->seo_url_slug) }}"
-                                                   class="btn btn-primary btn-line w-100 text-4">{{ __('messages.more_details') }}</a>
+                                                   class="btn btn-primary btn-line w-100 text-3">{{ __('messages.more_details') }}</a>
                                             </div>
                                         </div>
                                     </div>

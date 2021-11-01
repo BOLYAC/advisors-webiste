@@ -36,7 +36,7 @@
                              data-x="{{ App::getLocale() == 'ar' ? 'right' : 'left'}}"
                              data-hoffset="{{ App::getLocale() == 'ar' ? '-740' : '40'}}"
                              data-y="top" data-voffset="250"
-                             data-width="800"
+                             data-width="850"
                              data-start="800"
                              data-whitespace="nowrap"
                              data-transform_in="y:100%;s:400;"
@@ -59,7 +59,7 @@
                              data-basealign="grid"
                              style="z-index: 5"
                              data-mask_in="x:0px;y:0px;">
-                            <a class="btn btn-xl btn-secondary py-3"
+                            <a class="btn btn-secondary"
                                href="{{ $banner->link_url }}">{{ __('messages.get_in_touch') }} <span
                                     class="arrow1 is-triangle arrow-bar is-right"></span></a>
                         </div>
@@ -78,18 +78,68 @@
                     <form action="{{ route('search') }}" method="post" class="row align-items-center">
                         @csrf
                         <div class="col-lg-3">
-                            <div class="select-wrapper">
-                                <select name="city" class="form-control form-control-lg">
-                                    <option value="">{{ __('messages.city') }}</option>
-                                    <option value="1">{{ __('Istanbul') }}</option>
-                                    <option value="2">{{ __('Bodrum') }}</option>
-                                    <option value="3">{{ __('Antalya') }}</option>
-                                    <option value="4">{{ __('Sapanca') }}</option>
-                                    <option value="5">{{ __('Trapzon') }}</option>
-                                    <option value="6">{{ __('Kıbrıs') }}</option>
-                                    <option value="7">{{ __('Bursa') }}</option>
-                                    <option value="8">{{ __('Izmir') }}</option>
-                                </select>
+                            <button class="cities-dropdown btn dropdown-toggle" type="button" id="citiesMenu"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-map-marker-alt text-secondary me-1"></i> {{ __('messages.city') }}
+                            </button>
+                            <div class="cities-dropdown-menu dropdown-menu p-4" aria-labelledby="citiesMenu">
+                                <h6>{{ __('messages.city') }}</h6>
+                                <div class="row gx-5">
+                                    <div class="col-lg-4">
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" value="1" id="istanbul" name="city">
+                                            <label class="form-check-label" for="istanbul">
+                                                {{ __('Istanbul') }}
+                                            </label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" value="4" id="sapanca" name="city">
+                                            <label class="form-check-label" for="sapanca">
+                                                {{ __('Sapanca') }}
+                                            </label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" value="6" id="kıbrıs" name="city">
+                                            <label class="form-check-label" for="kıbrıs">
+                                                {{ __('Kıbrıs') }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" value="2" id="bodrum" name="city">
+                                            <label class="form-check-label" for="bodrum">
+                                                {{ __('Bodrum') }}
+                                            </label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" value="5" id="trapzon" name="city">
+                                            <label class="form-check-label" for="trapzon">
+                                                {{ __('Trapzon') }}
+                                            </label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" value="7" id="bursa" name="city">
+                                            <label class="form-check-label" for="bursa">
+                                                {{ __('Bursa') }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" value="3" id="antalya" name="city">
+                                            <label class="form-check-label" for="antalya">
+                                                {{ __('Antalya') }}
+                                            </label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" value="8" id="izmir" name="city">
+                                            <label class="form-check-label" for="izmir">
+                                                {{ __('Izmir') }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-3">
@@ -159,8 +209,8 @@
                         </div>
                         <div class="card-body">
                             <div class="card-infos">
-                                <h4 class="card-title mb-4 text-8 font-weight-bold">{{ __('messages.project_no') }} {{ $project->title  }}</h4>
-                                <div class="row features mb-3 gx-3">
+                                <h4 class="card-title mb-4 text-7 font-weight-bold">{{ __('messages.project_no') }} {{ $project->title  }}</h4>
+                                <div class="row features mb-3 gx-2 gx-sm-3">
                                     <div class="col-auto text-3"><img class="feature-icon me-1"
                                                                       src="{{ asset('sites/img/project/map.svg') }}"
                                                                       alt="map"/>
@@ -224,11 +274,11 @@
                             </div>
                             <div class="row align-items-center justify-content-between">
                                 <div
-                                    class="col-auto col-sm-6 price text-primary text-6 text-sm-7 font-weight-semibold">{{ currencyConvert($project->lowest_price) }}
+                                    class="col-auto col-sm-6 price text-primary text-5 text-sm-6 font-weight-semibold">{{ currencyConvert($project->lowest_price) }}
                                 </div>
                                 <div class="col-auto col-sm-6 more-details">
                                     <a href="{{ route('project.detail', $project->seo_url_slug ?? $project->translate('en')->seo_url_slug) }}"
-                                       class="btn btn-primary btn-line w-100 text-4">{{ __('messages.more_details') }}</a>
+                                       class="btn btn-primary btn-line w-100 text-3">{{ __('messages.more_details') }}</a>
                                 </div>
                             </div>
                         </div>
@@ -343,7 +393,7 @@
                         </div>
                         <div class="card-body">
                             <div class="card-infos">
-                                <h4 class="card-title mb-4 text-7 text-sm-8 text-lg-7 text-xl-8 font-weight-bold">{{ __('messages.project_no') }} {{ $project->title  }}</h4>
+                                <h4 class="card-title mb-4 text-7 font-weight-bold">{{ __('messages.project_no') }} {{ $project->title  }}</h4>
                                 <div class="row features mb-3 gx-3">
                                     <div class="col-auto text-3"><img class="feature-icon me-1"
                                                                       src="{{ asset('sites/img/project/map.svg') }}"
@@ -407,11 +457,11 @@
                             </div>
                             <div class="row align-items-center justify-content-between">
                                 <div
-                                    class="col-auto col-sm-6 price text-primary text-6 text-sm-7 font-weight-semibold">{{ currencyConvert($project->lowest_price) }}
+                                    class="col-auto col-sm-6 price text-primary text-5 text-sm-6 font-weight-semibold">{{ currencyConvert($project->lowest_price) }}
                                 </div>
                                 <div class="col-auto col-sm-6 more-details">
                                     <a href="{{ route('project.detail', $project->seo_url_slug ?? $project->translate('en')->seo_url_slug) }}"
-                                       class="btn btn-primary btn-line w-100 text-4">{{ __('messages.more_details') }}</a>
+                                       class="btn btn-primary btn-line w-100 text-3">{{ __('messages.more_details') }}</a>
                                 </div>
                             </div>
                         </div>
@@ -426,7 +476,7 @@
                 <div class="col-lg-5 col-xl-6 text-center">
                     <img src="{{ asset('sites/img/newsletter.png') }}" alt="newsletter" class="w-100-mobile"/>
                 </div>
-                <div class="col-lg-7 col-xl-4 py-5">
+                <div class="col-lg-7 col-xl-5 col-xxl-4 py-5">
                     <h5>{{ __('messages.subscribe_via_email') }}</h5>
                     <p class="text-4">{{ __('messages.subscription_details') }}</p>
                     <form action="{{ route('submit.subscribe') }}" method="POST" class="newsletter-form row gx-2">
@@ -441,7 +491,7 @@
                         </div>
                         <div class="col-auto">
                             <button type="submit"
-                                    class="btn btn-secondary px-5 text-uppercase">{{ __('messages.subscribe') }}</button>
+                                    class="btn btn-secondary px-4 px-sm-5 px-xxl-4 text-uppercase">{{ __('messages.subscribe') }}</button>
                         </div>
                     </form>
                 </div>
@@ -460,7 +510,7 @@
                         <span class="arrow2 is-triangle arrow-bar is-right"></span></a>
                 </div>
             </div>
-            <div class="row mt-4">
+            <div class="row gx-4 gx-xl-3 gx-xxl-4 mt-4">
                 <div class="service col-md-6 col-xl-3 mb-4 flex-fill">
                     <div class="card">
                         <div class="card-body">
@@ -666,7 +716,7 @@
                                             </p>
                                         </div>
                                         <blockquote>
-                                            <p class="mb-0">{!! $testimonial->details ?? ''  !!}</p>
+                                            <p class="mb-0 line-height-5">{!! $testimonial->details ?? ''  !!}</p>
                                         </blockquote>
                                         <div class="testimonial-arrow-down"></div>
                                     </div>
