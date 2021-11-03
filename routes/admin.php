@@ -83,4 +83,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('logout', 'LoginController@logout')->name('admin.logout');
     Route::view('/import', 'import');
     Route::post('/import-file', 'MenuController@store')->name('import.file');
+
+    // Users
+    Route::resource(\App\Http\Controllers\UsersController::class, 'users');
 });

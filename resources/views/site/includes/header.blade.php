@@ -74,7 +74,8 @@
                 </div>
                 <div class="header-column d-none d-xl-flex order-1 order-lg-2">
                     <div class="header-row justify-content-end">
-                        <a href="{{ route('contact') }}" class="btn btn-lg btn-secondary">{{ __('messages.get_in_touch') }} <span
+                        <a href="{{ route('contact') }}"
+                           class="btn btn-lg btn-secondary">{{ __('messages.get_in_touch') }} <span
                                 class="arrow1 is-triangle arrow-bar is-right"></span> </a>
                     </div>
                 </div>
@@ -82,9 +83,9 @@
         </div>
     </div>
 </header>
-<div class="header-top">
+<div class="header-top" style="min-height:40px!important;">
     <div class="container">
-        <div class="row py-2 align-items-center">
+        <div class="row align-items-center">
             <div class="col-xl-6 mb-0 mb-lg-2 mb-xl-0">
                 <div class="header-row">
                     <nav class="header-nav-top flash-news">
@@ -119,22 +120,29 @@
                                                              class="fa-border"/> <a
                                         href="tel://{{ config('settings.phone_number_2') }}">{{ config('settings.phone_number') }}</a></span>
                             </li>
-                            <li class="nav-item nav-item-borders dropdown me-3">
+                            <li class="nav-item nav-item-borders dropdown me-1">
                                 <a class="btn btn-primary btn-sm" href="#" role="button" id="dropdownCurrencies"
                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="{{ asset('sites/img/currency.svg') }}" alt="currency"/>
-
                                     @switch(\Illuminate\Support\Facades\Session::get('currency'))
                                         @case('EUR')
+                                        <img class="img-thumb" src="{{ asset('sites/img/currency.svg') }}"
+                                             alt="currency"/>
                                         EUR
                                         @break
                                         @case('USD')
+                                        <img class="img-thumbnail"
+                                             src="{{ asset('sites/img/dollar-currency-sign.png') }}" alt="currency"/>
                                         USD
                                         @break
                                         @case('TRY')
+                                        <img class="img img-fluid"
+                                             src="{{ asset('sites/img/turkey-lira-currency-symbol.png') }}"
+                                             alt="currency"/>
                                         TRY
                                         @break
                                         @case('GBP')
+                                        <img class="img img-avatar-rounded"
+                                             src="{{ asset('sites/img/pound-symbol-variant.png') }}" alt="currency"/>
                                         GBP
                                         @break
                                     @endswitch
