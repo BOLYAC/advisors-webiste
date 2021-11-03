@@ -39,41 +39,26 @@
         }
 
         //function for Scroll Event
-        var page = 1;
+        let page = 1;
+
         $(window).scroll(function () {
             if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
                 page++;
                 loadMoreData(page);
             }
         });
-        // Search form
-        /*$('#form-projects-ajax').on('submit', function (e) {
-            e.preventDefault();
 
-            function get_filter(class_name) {
-                let filter = [];
-                $('.' + class_name + ':checked').each(function () {
-                    filter.push($(this).val());
-                });
-                return filter;
-            }
-
-            $.ajax({
-                url: "{{ route('search') }}",
-                headers: {'X-CSRF-TOKEN': "{{ csrf_token() }}"},
-                type: "POST",
-                data: {
-                    property_type: $('[name="property-type"]').val(),
-                    project_bedrooms: $('[name="project_bedrooms"]').val(),
-                    city: get_filter('city')
-                },
-                success: function (response) {
-                    $('#results').html(response);
-                },
-                error: function (error) {
-                }
-            });
+        $(document).ready(function() {
+            $('#citiesMenu').html($('.common_selector').attr('id'))
         });
+
+
+
+        $('.common_selector').click(function () {
+            console.log($(this).attr('id'))
+            $('#citiesMenu').html($(this).attr('id'))
+        });
+
     </script>*/
 @endsection
 
@@ -114,12 +99,12 @@
                             </button>
                             <div class="cities-dropdown-menu dropdown-menu p-4" aria-labelledby="citiesMenu">
                                 <h6>{{ __('messages.city') }}</h6>
-                                <div class="row gx-5">
+                                <div class="row gx-5 radio-panel">
                                     <div class="col-lg-4">
                                         <div class="form-check mb-3">
                                             <input class="form-check-input common_selector city" type="checkbox"
                                                    value="1" id="istanbul"
-                                                   name="city[]">
+                                                   name="city[]" {{ (is_array(request()->city) and in_array(1, request()->city)) ? ' checked' : '' }}>
                                             <label class="form-check-label" for="istanbul">
                                                 {{ __('Istanbul') }}
                                             </label>
@@ -127,7 +112,7 @@
                                         <div class="form-check mb-3">
                                             <input class="form-check-input common_selector city" type="checkbox"
                                                    value="4" id="sapanca"
-                                                   name="city[]">
+                                                   name="city[]" {{ (is_array(old('city')) && in_array(4, old('city'))) ? ' checked' : '' }}>
                                             <label class="form-check-label" for="sapanca">
                                                 {{ __('Sapanca') }}
                                             </label>
@@ -135,7 +120,7 @@
                                         <div class="form-check mb-3">
                                             <input class="form-check-input common_selector city" type="checkbox"
                                                    value="6" id="kıbrıs"
-                                                   name="city[]">
+                                                   name="city[]" {{ (is_array(old('city')) && in_array(6, old('city'))) ? ' checked' : '' }}>
                                             <label class="form-check-label" for="kıbrıs">
                                                 {{ __('Kıbrıs') }}
                                             </label>
@@ -145,7 +130,7 @@
                                         <div class="form-check mb-3">
                                             <input class="form-check-input common_selector city" type="checkbox"
                                                    value="2" id="bodrum"
-                                                   name="city[]">
+                                                   name="city[]" {{ (is_array(old('city')) && in_array(2, old('city'))) ? ' checked' : '' }}>
                                             <label class="form-check-label" for="bodrum">
                                                 {{ __('Bodrum') }}
                                             </label>
@@ -153,7 +138,7 @@
                                         <div class="form-check mb-3">
                                             <input class="form-check-input common_selector city" type="checkbox"
                                                    value="5" id="trapzon"
-                                                   name="city[]">
+                                                   name="city[]" {{ (is_array(old('city')) && in_array(5, old('city'))) ? ' checked' : '' }}>
                                             <label class="form-check-label" for="trapzon">
                                                 {{ __('Trapzon') }}
                                             </label>
@@ -161,7 +146,7 @@
                                         <div class="form-check mb-3">
                                             <input class="form-check-input common_selector city" type="checkbox"
                                                    value="7" id="bursa"
-                                                   name="city[]">
+                                                   name="city[]" {{ (is_array(old('city')) && in_array(7, old('city'))) ? ' checked' : '' }}>
                                             <label class="form-check-label" for="bursa">
                                                 {{ __('Bursa') }}
                                             </label>
@@ -171,7 +156,7 @@
                                         <div class="form-check mb-3">
                                             <input class="form-check-input common_selector city" type="checkbox"
                                                    value="3" id="antalya"
-                                                   name="city[]">
+                                                   name="city[]" {{ (is_array(old('city')) && in_array(3, old('city'))) ? ' checked' : '' }}>
                                             <label class="form-check-label" for="antalya">
                                                 {{ __('Antalya') }}
                                             </label>
@@ -179,7 +164,7 @@
                                         <div class="form-check mb-3">
                                             <input class="form-check-input common_selector city" type="checkbox"
                                                    value="8" id="izmir"
-                                                   name="city[]">
+                                                   name="city[]" {{ (is_array(old('city')) && in_array(8, old('city'))) ? ' checked' : '' }}>
                                             <label class="form-check-label" for="izmir">
                                                 {{ __('Izmir') }}
                                             </label>
@@ -190,10 +175,11 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="select-wrapper">
-                                <select name="property-type" id="property-type" class="form-control form-control-lg">
+                                <select name="property_type" id="property-type" class="form-control form-control-lg">
                                     <option value="">{{ __('messages.property_type') }}</option>
                                     @foreach($sections as $section)
-                                        <option value="{{ $section->id }}">{{ $section->title }}</option>
+                                        <option
+                                            value="{{ $section->id }}" {{ request()->property_type == $section->id  ? 'selected' : ''  }}>{{ $section->title }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -203,12 +189,18 @@
                                 <select name="project_bedrooms" id="project_bedrooms"
                                         class="form-control form-control-lg">
                                     <option value="">{{ __('messages.bedrooms') }}</option>
-                                    <option value="1">1+0</option>
-                                    <option value="2">1+1</option>
-                                    <option value="3">2+1</option>
-                                    <option value="4">3+1</option>
-                                    <option value="5">4+1</option>
-                                    <option value="6">{{ __('More') }}</option>
+                                    <option value="1" {{ request()->project_bedrooms == 1  ? 'selected' : ''  }}>1+0
+                                    </option>
+                                    <option value="2" {{ request()->project_bedrooms == 2  ? 'selected' : ''  }}>1+1
+                                    </option>
+                                    <option value="3" {{ request()->project_bedrooms == 3  ? 'selected' : ''  }}>2+1
+                                    </option>
+                                    <option value="4" {{ request()->project_bedrooms == 4  ? 'selected' : ''  }}>3+1
+                                    </option>
+                                    <option value="5" {{ request()->project_bedrooms == 5  ? 'selected' : ''  }}>4+1
+                                    </option>
+                                    <option
+                                        value="6" {{ request()->project_bedrooms == 6  ? 'selected' : ''  }}>{{ __('More') }}</option>
                                 </select>
                             </div>
                         </div>

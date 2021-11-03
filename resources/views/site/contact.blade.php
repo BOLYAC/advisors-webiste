@@ -19,10 +19,10 @@
     </script>
     <script type="text/javascript">
         function initMap() {
-            var zoom = 15;
-            var latitude = 41.082941;
-            var longitude = 28.941819;
-            var mapOptions = {
+            let zoom = 15;
+            let latitude = 41.10313111118659;
+            let longitude = 28.983718256779238;
+            let mapOptions = {
                 zoom: zoom,
                 center: new google.maps.LatLng(latitude, longitude),
                 styles: [

@@ -17,6 +17,10 @@
     <script src="{{ asset('sites/js/homepage.js') }}" type="text/javascript"></script>
     <script type="text/javascript">
         window.$ = window.jQuery = $;
+        $('.common_selector').click(function () {
+            console.log($(this).attr('id'))
+            $('#citiesMenu').html($(this).attr('id'))
+        });
     </script>
     <script src="{{ asset('sites/vendor/rs-plugin/js/jquery.themepunch.tools.min.js') }}"></script>
     <script src="{{ asset('sites/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
