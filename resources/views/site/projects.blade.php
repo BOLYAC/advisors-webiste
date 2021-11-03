@@ -49,13 +49,16 @@
         });
 
         $(document).ready(function() {
-            $('#citiesMenu').html($('.common_selector').attr('id'))
+            if ($('.common_selector').is(':checked')) {
+                $('#citiesMenu').html($('.common_selector').attr('id'))
+            } else {
+                $('#citiesMenu').html('<i class="fas fa-map-marker-alt text-secondary me-1"></i> {{ __('messages.city') }}')
+            }
         });
 
 
 
         $('.common_selector').click(function () {
-            console.log($(this).attr('id'))
             $('#citiesMenu').html($(this).attr('id'))
         });
 
@@ -85,7 +88,7 @@
     <section class="section search-form-section section-no-background my-0 pt-0">
         <div class="container">
             <div class="row align-items-end">
-                <div class="col-xl-4 mb-3">
+                <div class="col-xl-4 mb-2">
                     <h3 class="mb-0">{{ __('messages.find_your_dream_home') }}</h3>
                 </div>
                 <div class="col-xl-8">
@@ -93,8 +96,8 @@
                           action="{{ route('projects') }}">
                         @csrf
                         <div class="col-lg-3">
-                            <button class="cities-dropdown btn dropdown-toggle" type="button" id="citiesMenu"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="cities-dropdown dropdown-toggle" type="button" id="citiesMenu"
+                                    data-bs-toggle="dropdown" aria-expanded="false" style="padding: 0.4rem;">
                                 <i class="fas fa-map-marker-alt text-secondary me-1"></i> {{ __('messages.city') }}
                             </button>
                             <div class="cities-dropdown-menu dropdown-menu p-4" aria-labelledby="citiesMenu">
@@ -175,7 +178,7 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="select-wrapper">
-                                <select name="property_type" id="property-type" class="form-control form-control-lg">
+                                <select name="property_type" id="property-type" class="form-control form-control">
                                     <option value="">{{ __('messages.property_type') }}</option>
                                     @foreach($sections as $section)
                                         <option
@@ -187,7 +190,7 @@
                         <div class="col-lg-3">
                             <div class="select-wrapper">
                                 <select name="project_bedrooms" id="project_bedrooms"
-                                        class="form-control form-control-lg">
+                                        class="form-control form-control">
                                     <option value="">{{ __('messages.bedrooms') }}</option>
                                     <option value="1" {{ request()->project_bedrooms == 1  ? 'selected' : ''  }}>1+0
                                     </option>
@@ -205,7 +208,7 @@
                             </div>
                         </div>
                         <div class="col-lg-3 mt-2 mt-lg-0">
-                            <button type="submit" class="btn btn-primary btn-lg w-100 py-3"><i
+                            <button type="submit" class="btn btn-primary w-100 py-2"><i
                                     class="fa fa-search me-2"></i> {{ __('messages.search') }}</button>
                         </div>
                     </form>
