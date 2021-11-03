@@ -131,18 +131,18 @@
                                         @break
                                         @case('USD')
                                         <img class="img-thumbnail"
-                                             src="{{ asset('sites/img/dollar-currency-sign.png') }}" alt="currency"/>
+                                             src="{{ asset('sites/img/currency.svg') }}" alt="currency"/>
                                         USD
                                         @break
                                         @case('TRY')
                                         <img class="img img-fluid"
-                                             src="{{ asset('sites/img/turkey-lira-currency-symbol.png') }}"
+                                             src="{{ asset('sites/img/currency.svg') }}"
                                              alt="currency"/>
                                         TRY
                                         @break
                                         @case('GBP')
                                         <img class="img img-avatar-rounded"
-                                             src="{{ asset('sites/img/pound-symbol-variant.png') }}" alt="currency"/>
+                                             src="{{ asset('sites/img/currency.svg') }}" alt="currency"/>
                                         GBP
                                         @break
                                     @endswitch

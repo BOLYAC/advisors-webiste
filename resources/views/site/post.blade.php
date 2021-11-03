@@ -53,7 +53,7 @@
         </div>
         <div class="row mb-3">
             <div class="col-12">
-                <h2 class="mb-4 text-6 text-lg-7 text-xl-8">{{ __('messages.turkey_advisors_introduce_luxury_properties_in_bursa') }}</h2>
+                <h2 class="mb-4 text-6 text-lg-7 text-xl-8">{{ $post->title }}</h2>
             </div>
         </div>
         <div class="row">
