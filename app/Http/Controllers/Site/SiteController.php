@@ -159,7 +159,8 @@ class SiteController extends Controller
 
     public function blog()
     {
-        $posts = \App\Models\Post::all();
+        $category = Category::whereTranslationLike('seo_url_slug', '%blog%')->firstOrFail();
+        $posts = $category->posts()->get();
         $categories = Category::all();
         $lastArticles = Post::latest()->take(3)->get();
         $projects = Project::where('featured', true)->take(3)->get();
@@ -177,6 +178,61 @@ class SiteController extends Controller
             $topic->save();
         }
         return view('site.articles', compact('posts', 'categories', 'topic', 'lastArticles', 'projects'));
+    }
+
+    public function articles()
+    {
+        $category = Category::whereTranslationLike('seo_url_slug', '%articles%')->firstOrFail();
+        $posts = $category->posts()->get();
+        $categories = Category::all();
+        $lastArticles = Post::latest()->take(3)->get();
+        $projects = Project::where('featured', true)->take(3)->get();
+        $topic = Topic::whereTranslationLike('title', '%articles%')->first();
+        if ($topic) {
+            SEOTools::setTitle(config('settings.site_name') . ' | ' . $topic->seo_title);
+            SEOTools::setDescription($topic->seo_description);
+            SEOTools::opengraph()->setUrl(route('properties'));
+            SEOTools::setCanonical(route('properties'));
+            SEOTools::opengraph()->addProperty('type', 'articles');
+            SEOTools::twitter()->setSite(config('settings.social_twitter'));
+            SEOTools::jsonLd()->addImage($topic->photo_file);
+            SEOMeta::addKeyword([$topic->seo_keywords]);
+            $topic->visits = $topic->visits + 1;
+            $topic->save();
+        }
+        return view('site.articles', compact('posts', 'categories', 'topic', 'lastArticles', 'projects'));
+    }
+
+    public function getCategory($slug)
+    {
+        $category = Category::whereTranslationLike('seo_url_slug', $slug)->firstOrFail();
+        $posts = $category->posts()->get();
+        $categories = Category::all();
+        $lastArticles = $category->posts()->latest()->take(3)->get();
+        $projects = Project::where('featured', true)->take(3)->get();
+
+        $category->visits = $category->visits + 1;
+        $category->save();
+
+        SEOMeta::setTitle($category->title);
+        SEOMeta::setDescription($category->details);
+        SEOMeta::addMeta('article:published_time', $category->created_at->toW3CString(), 'property');
+        SEOMeta::addMeta('article:section', $category->categories->first()->title, 'property');
+        SEOMeta::addKeyword($category->seo_keywords);
+
+        OpenGraph::setDescription($category->details);
+        OpenGraph::setTitle($category->title);
+        OpenGraph::setUrl(route('category.details', $category->seo_url_slug));
+        OpenGraph::addProperty('type', 'article');
+        OpenGraph::addProperty('locale', 'tr-TR');
+
+        OpenGraph::addImage(pageImage($category->photo_file), ['height' => 300, 'width' => 300]);
+
+        JsonLd::setTitle($category->title);
+        JsonLd::setDescription($category->details);
+        JsonLd::setType('Article');
+
+        return view('site.articles', compact('posts', 'categories', 'category', 'lastArticles', 'projects'));
     }
 
     public function getPost($slug)
@@ -449,8 +505,7 @@ class SiteController extends Controller
         return view('site.search', compact('projectResult', 'sections'));*/
     }
 
-    public
-    function switchCurrency($currency)
+    public function switchCurrency($currency)
     {
         Session::put('currency', $currency);
         return redirect()->back();

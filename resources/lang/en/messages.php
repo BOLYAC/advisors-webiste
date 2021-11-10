@@ -14,6 +14,7 @@ return [
     'services' => 'Services',
     'citizenship' => 'Citizenship',
     'articles' => 'Articles',
+    'blog' => 'Blog',
     'contact_us' => 'Contact Us',
     'our_offices' => 'Our office',
     'get_in_touch' => 'Get In Touch',

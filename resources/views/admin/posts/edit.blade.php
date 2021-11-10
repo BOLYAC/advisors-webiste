@@ -202,7 +202,10 @@
                 'ckeditor', 'flatpickr', 'datepicker', 'colorpicker', 'maxlength', 'select2', 'masked-inputs', 'rangeslider', 'tags-inputs'
             ]);
             @foreach(LaravelLocalization::getSupportedLocales() as $locale => $properties)
-            CKEDITOR.replace('js-ckeditor_{{ $locale }}');
+            CKEDITOR.replace('js-ckeditor_{{ $locale }}', {
+                filebrowserUploadUrl: "{{route('ckeditor.upload', ['_token' => csrf_token() ])}}",
+                filebrowserUploadMethod: 'form'
+            });
             @endforeach
         });
 

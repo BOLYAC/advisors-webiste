@@ -18,7 +18,7 @@
 
 @section('content')
     <section class="page-header page-header-modern page-header-background page-header-background-sm mb-5"
-             style="background-image: url({{ asset('img/background.jpg') }});">
+             style="background-image: url({{ asset('sites/img/background.jpg') }});">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 align-self-center p-static order-2 text-center">
@@ -45,11 +45,11 @@
             </div>
             <div class="row justify-content-around accordion without-bg" id="faq">
                 @foreach($faqQuestions->chunk(2) as $row)
-                    <div class="col-lg-6 col-xl-5">
-                        @foreach($row as $i => $value)
+                    @foreach($row as $i => $value)
+                        <div class="col-lg-5 col-xl-5">
                             <div class="card card-default">
                                 <div class="card-header">
-                                    <h4 class="card-title m-0">
+                                    <h4 class="card-title">
                                         <a class="accordion-toggle collapsed" data-bs-toggle="collapse"
                                            data-bs-target="#faq{{$i}}" href="#faq{{$i}}"
                                            aria-expanded="false">{{ $value->title ?? '' }}</a></h4>
@@ -58,13 +58,13 @@
                                     <div class="card-body"><p class="mb-0">{!! $value->details !!}</p></div>
                                 </div>
                             </div>
-                        @endforeach
-                    </div>
+                        </div>
+                    @endforeach
                 @endforeach
             </div>
         </div>
     </section>
-    <section class="section wwa-section border-0 mt-5 py-4" style="background-image: url({{ asset('img/wwa.jpg') }});">
+    <section class="section wwa-section border-0 mt-5 py-4" style="background-image: url({{ asset('sites/img/wwa.jpg') }});">
         <div class="container container-lg">
             <div class="row align-items-end justify-content-between">
                 <div class="col-sm-6">

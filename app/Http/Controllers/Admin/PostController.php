@@ -115,6 +115,8 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+
+        $request->dd();
         /*$rules = [
             'photo_file' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
         ];
@@ -122,6 +124,24 @@ class PostController extends Controller
         $request->validate($rules);*/
 
         $request_data = $request->all();
+
+
+        if($request->has('upload') && ($request->file('upload') instanceof UploadedFile)) {
+            $originName = $request->file('upload')->getClientOriginalName();
+            $fileName = pathinfo($originName, PATHINFO_FILENAME);
+            $extension = $request->file('upload')->getClientOriginalExtension();
+            $fileName = $fileName.'_'.time().'.'.$extension;
+
+            $this->uploadOne($request->file('upload'), 'img/posts', $fileName);
+
+            $CKEditorFuncNum = $request->input('CKEditorFuncNum');
+            $url = pageImage('img/posts/'.$fileName);
+            $msg = 'Image uploaded successfully';
+            $response = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";
+
+            @header('Content-type: text/html; charset=utf-8');
+            echo $response;
+        }
 
         if ($request->has('photo_file') && ($request->file('photo_file') instanceof UploadedFile)) {
 

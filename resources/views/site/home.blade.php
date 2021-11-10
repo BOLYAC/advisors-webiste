@@ -63,7 +63,7 @@
                              data-basealign="grid"
                              style="z-index: 5"
                              data-mask_in="x:0px;y:0px;">
-                            <a class="btn btn-secondary"
+                            <a class="btn btn-secondary p-2"
                                href="{{ $banner->link_url }}">{{ __('messages.get_in_touch') }} <span
                                     class="arrow1 is-triangle arrow-bar is-right"></span></a>
                         </div>

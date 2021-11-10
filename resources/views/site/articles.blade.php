@@ -23,7 +23,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 align-self-center p-static order-2 text-center">
-                    <h1 class="mt-3 text-uppercase">{{ __('messages.best_articles') }}</h1>
+                    <h1 class="mt-3 text-uppercase">{{ $topic->title }}</h1>
                     <div class="divider divider-small divider-small-center">
                         <hr>
                     </div>
@@ -73,8 +73,6 @@
                                             class="fa fa-eye me-1"></i> {{ $post->visits }} {{ __('messages.views') }}
                                     </div>
                                     <div class="card-title">
-                                        <div
-                                            class="mb-3 text-4 card-subtitle">{{ $post->categories->first()->title ?? '' }}</div>
                                         <h4 class="mb-0 text-5 text-sm-6 text-lg-5 font-weight-bold">{{ $post->title }}</h4>
                                     </div>
                                     <div class="card-text row align-items-end">

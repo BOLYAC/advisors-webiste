@@ -24,6 +24,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
             ->name('category.check_slug');
         Route::post('posts/check_slug', 'PostController@check_slug')
             ->name('posts.check_slug');
+        Route::get('ck-editor', [PostController::class,'index']);
         Route::post('news/check_slug', 'ArticleController@check_slug')
             ->name('news.check_slug');
         Route::resource('banners', 'BannerController');

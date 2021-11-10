@@ -46,6 +46,11 @@
                                         </li>
                                         <li>
                                             <a href="{{ route('blog') }}">
+                                                {{ __('messages.blog') }}
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('articles') }}">
                                                 {{ __('messages.articles') }}
                                             </a>
                                         </li>
@@ -181,14 +186,12 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownLanguages">
                                     @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-
                                         <a rel="alternate"
                                            hreflang="{{ $localeCode }}"
                                            class="dropdown-item text-uppercase"
                                            href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
                                             {{ $properties['native'] }}
                                         </a>
-
                                     @endforeach
                                 </div>
                             </li>
