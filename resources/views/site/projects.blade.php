@@ -48,14 +48,13 @@
             }
         });
 
-        $(document).ready(function() {
+        $(document).ready(function () {
             if ($('.common_selector').is(':checked')) {
                 $('#citiesMenu').html($('.common_selector').attr('id'))
             } else {
                 $('#citiesMenu').html('<i class="fas fa-map-marker-alt text-secondary me-1"></i> {{ __('messages.city') }}')
             }
         });
-
 
 
         $('.common_selector').click(function () {
@@ -85,24 +84,24 @@
             </div>
         </div>
     </section>
-    <section class="section search-form-section section-no-background my-0 pt-0">
+    <section class="section search-form-section section-no-background my-0">
         <div class="container">
-            <div class="row align-items-end">
-                <div class="col-xl-4 mb-2">
+            <div class="row align-items-center">
+                <div class="col-xl-3 mb-3">
                     <h3 class="mb-0">{{ __('messages.find_your_dream_home') }}</h3>
                 </div>
-                <div class="col-xl-8">
+                <div class="col-xl-9 mb-3">
                     <form class="row align-items-center" id="form-projects-ajax" role="form" method="get"
                           action="{{ route('projects') }}">
                         @csrf
-                        <div class="col-lg-3">
-                            <button class="cities-dropdown dropdown-toggle" type="button" id="citiesMenu"
-                                    data-bs-toggle="dropdown" aria-expanded="false" style="padding: 0.4rem;">
+                        <div class="col-md-6 col-lg-1-5">
+                            <button class="cities-dropdown dropdown-toggle text-center" type="button" id="citiesMenu"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fas fa-map-marker-alt text-secondary me-1"></i> {{ __('messages.city') }}
                             </button>
                             <div class="cities-dropdown-menu dropdown-menu p-4" aria-labelledby="citiesMenu">
                                 <h6>{{ __('messages.city') }}</h6>
-                                <div class="row gx-5 radio-panel">
+                                <div class="row gx-5">
                                     <div class="col-lg-4">
                                         <div class="form-check mb-3">
                                             <input class="form-check-input common_selector city" type="checkbox"
@@ -176,7 +175,132 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-md-6 col-lg-1-5">
+                            <button class="areas-dropdown btn dropdown-toggle text-center" type="button" id="areasMenu"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-map-marker-alt text-secondary me-1"></i> Area
+                            </button>
+                            <div class="areas-dropdown-menu dropdown-menu p-4" aria-labelledby="areasMenu">
+                                <h6>Area</h6>
+                                <div class="row gx-5">
+                                    <div class="col-lg-4">
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" value="" id="alacati">
+                                            <label class="form-check-label" for="alacati">
+                                                Alacati
+                                            </label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" value="" id="antalya">
+                                            <label class="form-check-label" for="antalya">
+                                                Antalya
+                                            </label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" value="" id="bolu">
+                                            <label class="form-check-label" for="bolu">
+                                                Bolu
+                                            </label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" value="" id="dalaman">
+                                            <label class="form-check-label" for="dalaman">
+                                                Dalaman
+                                            </label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" value="" id="didim">
+                                            <label class="form-check-label" for="didim">
+                                                Didim
+                                            </label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" value="" id="istanbul">
+                                            <label class="form-check-label" for="istanbul">
+                                                Istanbul
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" value="" id="alacati">
+                                            <label class="form-check-label" for="alacati">
+                                                Alacati
+                                            </label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" value="" id="antalya">
+                                            <label class="form-check-label" for="antalya">
+                                                Antalya
+                                            </label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" value="" id="bolu">
+                                            <label class="form-check-label" for="bolu">
+                                                Bolu
+                                            </label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" value="" id="dalaman">
+                                            <label class="form-check-label" for="dalaman">
+                                                Dalaman
+                                            </label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" value="" id="didim">
+                                            <label class="form-check-label" for="didim">
+                                                Didim
+                                            </label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" value="" id="istanbul">
+                                            <label class="form-check-label" for="istanbul">
+                                                Istanbul
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" value="" id="alacati">
+                                            <label class="form-check-label" for="alacati">
+                                                Alacati
+                                            </label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" value="" id="antalya">
+                                            <label class="form-check-label" for="antalya">
+                                                Antalya
+                                            </label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" value="" id="bolu">
+                                            <label class="form-check-label" for="bolu">
+                                                Bolu
+                                            </label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" value="" id="dalaman">
+                                            <label class="form-check-label" for="dalaman">
+                                                Dalaman
+                                            </label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" value="" id="didim">
+                                            <label class="form-check-label" for="didim">
+                                                Didim
+                                            </label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" value="" id="istanbul">
+                                            <label class="form-check-label" for="istanbul">
+                                                Istanbul
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-1-5">
                             <div class="select-wrapper">
                                 <select name="property_type" id="property-type" class="form-control form-control">
                                     <option value="">{{ __('messages.property_type') }}</option>
@@ -187,7 +311,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-md-6 col-lg-1-5">
                             <div class="select-wrapper">
                                 <select name="project_bedrooms" id="project_bedrooms"
                                         class="form-control form-control">
@@ -207,8 +331,8 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-lg-3 mt-2 mt-lg-0">
-                            <button type="submit" class="btn btn-primary w-100 py-2"><i
+                        <div class="col-lg-1-5 mt-2 mt-lg-0">
+                            <button type="submit" class="btn btn-primary w-100"><i
                                     class="fa fa-search me-2"></i> {{ __('messages.search') }}</button>
                         </div>
                     </form>

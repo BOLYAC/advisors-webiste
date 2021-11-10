@@ -146,6 +146,8 @@
       <path value="$PROJECT_DIR$/vendor/maatwebsite/excel" />
       <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
       <path value="$PROJECT_DIR$/vendor/ezyang/htmlpurifier" />
+      <path value="$PROJECT_DIR$/vendor/cuneytyuksel/turkey-cities" />
+      <path value="$PROJECT_DIR$/vendor/laravel/serializable-closure" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7">

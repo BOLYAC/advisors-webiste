@@ -56,6 +56,7 @@ class Project extends Model implements TranslatableContract
         'garage_size',
         'active',
         'citizen_status',
+        'area'
     ];
 
     protected $casts = [

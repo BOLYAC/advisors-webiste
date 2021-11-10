@@ -191,7 +191,8 @@
                                                            value="{{ $image->row_no_image }}">
                                                 </div>
                                                 <div class="checkbox">
-                                                    <input id="check-{{ $image->id }}" type="checkbox" name="imageDestroy[]"
+                                                    <input id="check-{{ $image->id }}" type="checkbox"
+                                                           name="imageDestroy[]"
                                                            value="{{ $image->id }}">
                                                     <label for="check-{{ $image->id }}">{{__('Delete') }}</label>
                                                 </div>
@@ -221,6 +222,15 @@
                                         <option value="7" {{ $project->city == '7' ? 'selected' : '' }}>Bursa
                                         </option>
                                         <option value="8" {{ $project->city == '8' ? 'selected' : '' }}>Izmir
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="area" class="col-12">{{ __('Area') }}</label>
+                                <div class="col-12">
+                                    <select class="form-control" name="area" id="area">
+                                        <option value="1" {{ $project->city == '1' ? 'selected' : '' }}>Istanbul
                                         </option>
                                     </select>
                                 </div>
