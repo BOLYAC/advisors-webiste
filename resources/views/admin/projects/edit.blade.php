@@ -230,7 +230,69 @@
                                 <label for="area" class="col-12">{{ __('Area') }}</label>
                                 <div class="col-12">
                                     <select class="form-control" name="area" id="area">
-                                        <option value="1" {{ $project->city == '1' ? 'selected' : '' }}>Istanbul
+                                        <option value="1" {{ $project->area == '1' ? 'selected' : '' }}>Arnavutkoy
+                                        </option>
+                                        <option value="2" {{ $project->area == '2' ? 'selected' : '' }}>Atasehir
+                                        </option>
+                                        <option value="3" {{ $project->area == '3' ? 'selected' : '' }}>Avcilar</option>
+                                        <option value="4" {{ $project->area == '4' ? 'selected' : '' }}>Bagcilar
+                                        </option>
+                                        <option value="5" {{ $project->area == '5' ? 'selected' : '' }}>Bahcelievler
+                                        </option>
+                                        <option value="6" {{ $project->area == '6' ? 'selected' : '' }}>Bahcesehir
+                                        </option>
+                                        <option value="7" {{ $project->area == '7' ? 'selected' : '' }}>Bakirkoy
+                                        </option>
+                                        <option value="8" {{ $project->area == '8' ? 'selected' : '' }}>Basaksehir
+                                        </option>
+                                        <option value="9" {{ $project->area == '9' ? 'selected' : '' }}>Bayrampasa
+                                        </option>
+                                        <option value="10" {{ $project->area == '10' ? 'selected' : '' }}>Besiktas
+                                        </option>
+                                        <option value="11" {{ $project->area == '11' ? 'selected' : '' }}>Beykoz
+                                        </option>
+                                        <option value="12" {{ $project->area == '12' ? 'selected' : '' }}>Beylikduzu
+                                        </option>
+                                        <option value="13" {{ $project->area == '13' ? 'selected' : '' }}>Beyoglu
+                                        </option>
+                                        <option value="14" {{ $project->area == '14' ? 'selected' : '' }}>Buyukcekmece
+                                        </option>
+                                        <option value="15" {{ $project->area == '15' ? 'selected' : '' }}>Catalca
+                                        </option>
+                                        <option value="16" {{ $project->area == '16' ? 'selected' : '' }}>Cekmekoy
+                                        </option>
+                                        <option value="17" {{ $project->area == '17' ? 'selected' : '' }}>Esenyurt
+                                        </option>
+                                        <option value="18" {{ $project->area == '18' ? 'selected' : '' }}>Eyup</option>
+                                        <option value="19" {{ $project->area == '19' ? 'selected' : '' }}>Fatih</option>
+                                        <option value="20" {{ $project->area == '20' ? 'selected' : '' }}>
+                                            Gaziosmanpasa
+                                        </option>
+                                        <option value="21" {{ $project->area == '21' ? 'selected' : '' }}>Kadikoy
+                                        </option>
+                                        <option value="22" {{ $project->area == '22' ? 'selected' : '' }}>Kagithane
+                                        </option>
+                                        <option value="23" {{ $project->area == '23' ? 'selected' : '' }}>Kartal
+                                        </option>
+                                        <option value="24" {{ $project->area == '24' ? 'selected' : '' }}>Kucukcekmece
+                                        </option>
+                                        <option value="25" {{ $project->area == '25' ? 'selected' : '' }}>Maltepe
+                                        </option>
+                                        <option value="26" {{ $project->area == '26' ? 'selected' : '' }}>Pendik
+                                        </option>
+                                        <option value="27" {{ $project->area == '27' ? 'selected' : '' }}>Sancaktepe
+                                        </option>
+                                        <option value="28" {{ $project->area == '28' ? 'selected' : '' }}>Sariyer
+                                        </option>
+                                        <option value="29" {{ $project->area == '29' ? 'selected' : '' }}>Sisli</option>
+                                        <option value="30" {{ $project->area == '30' ? 'selected' : '' }}>Sultangazi
+                                        </option>
+                                        <option value="31" {{ $project->area == '31' ? 'selected' : '' }}>Tuzla</option>
+                                        <option value="32" {{ $project->area == '32' ? 'selected' : '' }}>Umraniye
+                                        </option>
+                                        <option value="32" {{ $project->area == '33' ? 'selected' : '' }}>Uskudar
+                                        </option>
+                                        <option value="34" {{ $project->area == '34' ? 'selected' : '' }}>Zeytinburnu
                                         </option>
                                     </select>
                                 </div>

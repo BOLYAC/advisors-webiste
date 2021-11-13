@@ -50,7 +50,7 @@ class SiteController extends Controller
         );
     }
 
-    public function projectList(Request $request, $city = null)
+    public function projectList(Request $request, $city = null, $area = null)
     {
         $projects = \App\Models\Project::query();
         $features = \App\Models\Feature::all();
@@ -72,12 +72,17 @@ class SiteController extends Controller
 
         $input = $request->all();
 
+
         if ($request->property_type) {
             $projects->where('category_id', $input['property_type']);
         }
 
         if ($request->city) {
             $projects->whereIn('city', $input['city'] ?? $city);
+        }
+
+        if ($request->area) {
+            $projects->whereIn('area', $input['area'] ?? $area);
         }
 
         if ($request->project_bedrooms) {
@@ -437,9 +442,10 @@ class SiteController extends Controller
         return view('site.service-virtual-tour');
     }
 
-    public function search(Request $request, $city = null)
+    public function search(Request $request, $city = null, $area = null)
     {
         $input = $request->all();
+        dd($input);
         $sections = \App\Models\Section::all();
         $queryProjects = Project::query();
         if ($request->property_type) {
@@ -448,6 +454,10 @@ class SiteController extends Controller
 
         if ($request->city) {
             $queryProjects->whereIn('city', $input['city'] ?? $city);
+        }
+
+        if ($request->area) {
+            $queryProjects->whereIn('area', $input['area'] ?? $area);
         }
 
         if ($request->project_bedrooms) {
@@ -460,9 +470,9 @@ class SiteController extends Controller
 
         $projects = $queryProjects->paginate(3);
 
-        if($request->ajax()){
-            $view = view('site.vendor.data',compact('projects'))->render();
-            return response()->json(['html'=>$view]);
+        if ($request->ajax()) {
+            $view = view('site.vendor.data', compact('projects'))->render();
+            return response()->json(['html' => $view]);
         }
 
         return view('site.projects', compact('projects', 'sections'));
