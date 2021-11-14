@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="{{ asset('js/plugins/ion-rangeslider/css/ion.rangeSlider.css') }}">
     <link rel="stylesheet" href="{{ asset('js/plugins/dropzonejs/dist/dropzone.css') }}">
     <link rel="stylesheet" href="{{ asset('js/plugins/flatpickr/flatpickr.min.css') }}">
+    <!-- Page JS Plugins CSS -->
+    <link rel="stylesheet" href="{{ asset('js/plugins/summernote/summernote-bs4.css') }}">
+    <link rel="stylesheet" href="{{asset('js/plugins/simplemde/simplemde.min.css')}}">
 @endsection
 
 @section('content')
@@ -76,12 +79,20 @@
                                                value="{{ old($locale . 'title', $post->translate($locale)->title ?? '') }}"
                                                placeholder="{{ __('Enter the title')  . " " ."(" . $locale . ")" }}">
                                     </div>
+{{--                                    <div class="form-group row">--}}
+{{--                                        <div class="col-12">--}}
+{{--                                            <label--}}
+{{--                                                for="js-ckeditor_{{$locale}}">{{ __('Details') . " " ."(" . $locale . ")" }} </label>--}}
+{{--                                            <!-- CKEditor Container -->--}}
+{{--                                            <textarea class="editors" id="js-ckeditor_{{$locale}}"--}}
+{{--                                                      name="{{$locale}}[details]">{!! optional($post->translate($locale))->details !!}</textarea>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
                                     <div class="form-group row">
                                         <div class="col-12">
                                             <label
-                                                for="js-ckeditor_{{$locale}}">{{ __('Details') . " " ."(" . $locale . ")" }} </label>
-                                            <!-- CKEditor Container -->
-                                            <textarea class="editors" id="js-ckeditor_{{$locale}}"
+                                                for="js_summernote_{{$locale}}">{{ __('Details') . " " ."(" . $locale . ")" }} </label>
+                                            <textarea id="js_summernote_{{$locale}}"
                                                       name="{{$locale}}[details]">{!! optional($post->translate($locale))->details !!}</textarea>
                                         </div>
                                     </div>
@@ -185,6 +196,7 @@
 @section('js_after')
     <!--  <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script> -->
     <script src="{{ asset('js/plugins/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('js/plugins/summernote/summernote-bs4.min.js') }}"></script>
     <script src="{{ asset('js/plugins/pwstrength-bootstrap/pwstrength-bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
     <script src="{{ asset('js/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}"></script>
@@ -199,13 +211,14 @@
     <script>
         jQuery(function () {
             Codebase.helpers([
-                'ckeditor', 'flatpickr', 'datepicker', 'colorpicker', 'maxlength', 'select2', 'masked-inputs', 'rangeslider', 'tags-inputs'
+                'ckeditor', 'flatpickr', 'datepicker', 'colorpicker', 'maxlength', 'select2', 'masked-inputs', 'rangeslider', 'tags-inputs', 'summernote'
             ]);
             @foreach(LaravelLocalization::getSupportedLocales() as $locale => $properties)
-            CKEDITOR.replace('js-ckeditor_{{ $locale }}', {
-                filebrowserUploadUrl: "{{route('ckeditor.upload', ['_token' => csrf_token() ])}}",
-                filebrowserUploadMethod: 'form'
-            });
+            {{--CKEDITOR.replace('js-ckeditor_{{ $locale }}', {--}}
+            {{--    filebrowserUploadUrl: "{{route('ckeditor.upload', ['_token' => csrf_token() ])}}",--}}
+            {{--    filebrowserUploadMethod: 'form'--}}
+            {{--});--}}
+            $('#js_summernote_{{ $locale }}').summernote();
             @endforeach
         });
 

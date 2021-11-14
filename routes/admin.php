@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\PostController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -24,7 +25,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
             ->name('category.check_slug');
         Route::post('posts/check_slug', 'PostController@check_slug')
             ->name('posts.check_slug');
-        Route::get('ck-editor', [PostController::class,'index']);
+        Route::post('ck-editor', [PostController::class, 'upload'])->name('ckeditor.upload');
         Route::post('news/check_slug', 'ArticleController@check_slug')
             ->name('news.check_slug');
         Route::resource('banners', 'BannerController');
@@ -39,6 +40,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         ]]);
         Route::get('/settings', 'SettingController@index')->name('settings');
         Route::post('/settings', 'SettingController@update')->name('settings.update');
+        Route::get('about-page', 'AboutUsPageController@index')->name('aboutPage.index');
+        Route::post('about-page', 'AboutUsPageController@updatePage')->name('aboutPage.update');
 
         Route::group(['prefix' => 'real-estate'], function () {
             Route::resource('features', 'FeatureController');

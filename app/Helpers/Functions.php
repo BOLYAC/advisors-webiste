@@ -26,14 +26,7 @@ function currencyConvert($price)
                 ->get();
             return '€' . ' ' . number_format($amount);
         case 'USD':
-            $amount = Currency::convert()
-                ->from('USD')
-                ->to('USD')
-                ->amount($price)
-                ->round(2)
-                ->throw()
-                ->get();
-            return '$' . ' ' . number_format($amount);
+            return '$' . ' ' . number_format($price);
         case 'GBP':
             $amount = Currency::convert()
                 ->from('USD')

@@ -116,7 +116,6 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
 
-        $request->dd();
         /*$rules = [
             'photo_file' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
         ];
@@ -125,23 +124,29 @@ class PostController extends Controller
 
         $request_data = $request->all();
 
+        $content = $request_data['en']['details'];
+        $dom = new \DOMDocument();
+        $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $imageFile = $dom->getElementsByTagName('imageFile');
 
-        if($request->has('upload') && ($request->file('upload') instanceof UploadedFile)) {
-            $originName = $request->file('upload')->getClientOriginalName();
-            $fileName = pathinfo($originName, PATHINFO_FILENAME);
-            $extension = $request->file('upload')->getClientOriginalExtension();
-            $fileName = $fileName.'_'.time().'.'.$extension;
+        foreach($imageFile as $item => $image){
+            $data = $img->getAttribute('src');
 
-            $this->uploadOne($request->file('upload'), 'img/posts', $fileName);
+            list($type, $data) = explode(';', $data);
+            list(, $data)      = explode(',', $data);
 
-            $CKEditorFuncNum = $request->input('CKEditorFuncNum');
-            $url = pageImage('img/posts/'.$fileName);
-            $msg = 'Image uploaded successfully';
-            $response = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";
+            $imgeData = base64_decode($data);
+            $image_name= "/upload/" . time().$item.'.png';
+            $path = public_path() . $image_name;
+            file_put_contents($path, $imgeData);
 
-            @header('Content-type: text/html; charset=utf-8');
-            echo $response;
+            $image->removeAttribute('src');
+            $image->setAttribute('src', $image_name);
         }
+
+        $content = $dom->saveHTML();
+        $request_data['en']['details'] = $content;
+
 
         if ($request->has('photo_file') && ($request->file('photo_file') instanceof UploadedFile)) {
 
@@ -185,5 +190,30 @@ class PostController extends Controller
         // New version: to generate unique slugs
         $slug = SlugService::createSlug(PostTranslation::class, 'seo_url_slug', $request->title);
         return response()->json(['slug' => $slug]);
+    }
+
+    /**
+     * success response method.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function upload(Request $request)
+    {
+        if ($request->hasFile('upload')) {
+            $originName = $request->file('upload')->getClientOriginalName();
+            $fileName = pathinfo($originName, PATHINFO_FILENAME);
+            $extension = $request->file('upload')->getClientOriginalExtension();
+            $fileName = $fileName . '_' . time() . '.' . $extension;
+
+            $request->file('upload')->move(public_path('images'), $fileName);
+
+            $CKEditorFuncNum = $request->input('CKEditorFuncNum');
+            $url = asset('images/' . $fileName);
+            $msg = 'Image uploaded successfully';
+            $response = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";
+
+            @header('Content-type: text/html; charset=utf-8');
+            echo $response;
+        }
     }
 }

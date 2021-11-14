@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\AboutUsPage;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Post;
@@ -335,6 +336,7 @@ class SiteController extends Controller
     public function about()
     {
         $topic = Topic::whereTranslationLike('seo_url_slug', '%about%')->first();
+        $about = AboutUsPage::first();
         if ($topic) {
             SEOTools::setTitle(config('settings.site_name') . ' | ' . $topic->seo_title);
             SEOTools::setDescription($topic->seo_description);
@@ -347,7 +349,7 @@ class SiteController extends Controller
             $topic->visits = $topic->visits + 1;
             $topic->save();
         }
-        return view('site.aboutUs', compact('topic'));
+        return view('site.aboutUs', compact('topic', 'about'));
     }
 
     public function contact()

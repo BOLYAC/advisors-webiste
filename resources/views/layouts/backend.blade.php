@@ -195,6 +195,12 @@
                                 class="sidebar-mini-hide">{{ __('Faq Questions') }}</span>
                         </a>
                     </li>
+                    <li>
+                        <a class="{{ request()->is('admin/about-page') ? ' active' : '' }}"
+                           href="{{ route('aboutPage.index')  }}">
+                            <i class="si si-docs"></i><span class="sidebar-mini-hide">{{ __('About Page') }}</span>
+                        </a>
+                    </li>
 
                     <li class="nav-main-heading">
                         <span class="sidebar-mini-visible">MR</span><span
