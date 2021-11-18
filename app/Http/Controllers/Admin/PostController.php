@@ -14,6 +14,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class PostController extends Controller
 {
@@ -126,25 +127,38 @@ class PostController extends Controller
 
         $content = $request_data['en']['details'];
         $dom = new \DOMDocument();
-        $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-        $imageFile = $dom->getElementsByTagName('imageFile');
+        $dom->loadHtml(mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8"), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | LIBXML_NOERROR | LIBXML_NOWARNING);
+        $images = $dom->getElementsByTagName('img');
 
-        foreach($imageFile as $item => $image){
-            $data = $img->getAttribute('src');
+        // foreach <img> in the submited message
+        foreach ($images as $img) {
+            $src = $img->getAttribute('src');
 
-            list($type, $data) = explode(';', $data);
-            list(, $data)      = explode(',', $data);
+            // if the img source is 'data-url'
+            if (preg_match('/data:image/', $src)) {
 
-            $imgeData = base64_decode($data);
-            $image_name= "/upload/" . time().$item.'.png';
-            $path = public_path() . $image_name;
-            file_put_contents($path, $imgeData);
+                // get the mimetype
+                preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
+                $mimetype = $groups['mime'];
 
-            $image->removeAttribute('src');
-            $image->setAttribute('src', $image_name);
-        }
+                // Generating a random filename
+                $filename = uniqid();
+                $filepath = "/images/$filename.$mimetype";
 
-        $content = $dom->saveHTML();
+                // @see http://image.intervention.io/api/
+                $image = Image::make($src)
+                    // resize if required
+                    /* ->resize(300, 200) */
+                    ->encode($mimetype, 100)    // encode file to the specified mimetype
+                    ->save(public_path($filepath));
+
+                $new_src = asset($filepath);
+                $img->removeAttribute('src');
+                $img->setAttribute('src', $new_src);
+            } // <!--endif
+        } // <!--endforeach
+
+        $content = $dom->saveHTML($dom->documentElement);
         $request_data['en']['details'] = $content;
 
 
