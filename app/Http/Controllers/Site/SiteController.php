@@ -10,6 +10,7 @@ use App\Models\Post;
 use App\Models\Project;
 use App\Models\Property;
 use App\Models\Section;
+use App\Models\ServicePage;
 use App\Models\Topic;
 use App\User;
 use Artesaos\SEOTools\Facades\JsonLd;
@@ -395,6 +396,7 @@ class SiteController extends Controller
     public function services()
     {
         $topic = Topic::whereTranslationLike('seo_url_slug', '%services%')->first();
+        $services = ServicePage::first();
         if ($topic) {
             SEOTools::setTitle(config('settings.site_name') . ' | ' . $topic->seo_title);
             SEOTools::setDescription($topic->seo_description);
@@ -407,7 +409,7 @@ class SiteController extends Controller
             $topic->visits = $topic->visits + 1;
             $topic->save();
         }
-        return view('site.services');
+        return view('site.services', compact('services'));
     }
 
     public function service()

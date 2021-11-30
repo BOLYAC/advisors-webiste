@@ -42,6 +42,16 @@
     {{ config('settings.google_analytics') }}
 <!-- facebook -->
     {{ config('settings.facebook_pixels') }}
+    <style media="screen">
+    body {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+    </style>
 </head>
 <body>
 
@@ -50,8 +60,21 @@
     @yield('content')
     @include('site.includes.footer')
     @include('site.includes.sideButtons')
+{{--    @include('cookie-consent::index')--}}
 </div>
 <script src="{{ asset('sites/js/app.js') }}" type="text/javascript"></script>
+<script type="text/javascript">
+// $(document).ready(function () {
+//     //to disable the entire page
+//     $("body").on("contextmenu",function(e){
+//         return false;
+//     });
+//
+//     $('body').bind('cut copy paste', function (e) {
+//         e.preventDefault();
+//     });
+// });
+</script>
 @yield('javascripts')
 </body>
 </html>

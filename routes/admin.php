@@ -42,6 +42,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::post('/settings', 'SettingController@update')->name('settings.update');
         Route::get('about-page', 'AboutUsPageController@index')->name('aboutPage.index');
         Route::post('about-page', 'AboutUsPageController@updatePage')->name('aboutPage.update');
+        Route::get('services-page', 'ServicePageController@index')->name('servicesPage.index');
+        Route::post('services-page', 'ServicePageController@updatePage')->name('servicesPage.update');
 
         Route::group(['prefix' => 'real-estate'], function () {
             Route::resource('features', 'FeatureController');

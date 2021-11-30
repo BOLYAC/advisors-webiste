@@ -18,7 +18,7 @@
 
 @section('content')
     <section class="page-header page-header-modern page-header-background page-header-background-sm mb-5"
-             style="background-image: url({{ asset('img/background.jpg') }});">
+             style="background-image: url({{ asset('sites/img/background.jpg') }});">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 align-self-center p-static order-2 text-center">
@@ -41,18 +41,16 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-lg-6 col-xl-4 mb-4">
                     <div class="pr-5">
-                        <h2 class="font-weight-extra-bold line-height-1 mb-5">{{ __('servicesPage.fine_touch_of_luxury') }}</h2>
-                        <p class="lead mb-5 pb-2">{{ __('servicesPage.fine_touch_of_luxury_details') }}</p>
+                        <h2 class="font-weight-extra-bold line-height-1 mb-5">{{ $services->first_title }}</h2>
+                        <p class="lead mb-5 pb-2">{!! $services->first_details !!}</p>
                         <div class="more-details d-inline-block mb-4">
-                            <a href="{{ route('service') }}"
-                               class="btn btn-outline-secondary btn-secondary-animated btn-lg px-5 w-auto-mobile w-100">{{ __('messages.view_more') }}
-                                <span class="arrow2 is-triangle arrow-bar is-right"></span></a>
+
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-xl-8 fluid-col-lg-6 fluid-col-xl-8">
                     <div class="fluid-col-lg fluid-col-end text-end">
-                        <img src="{{ asset('sites/img/services/luxury.jpg') }}" class="img-fluid w-100" alt=""/>
+                        <img src="{{ pageImage($services->first_image) }}" class="img-fluid" alt=""/>
                     </div>
                 </div>
             </div>
@@ -63,24 +61,122 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-lg-6 col-xl-8 fluid-col-xl-8 order-1 order-lg-0" style="min-height: 33vw;">
                     <div class="fluid-col-lg fluid-col-start text-start">
-                        <img src="{{ asset('sites/img/services/virtual.jpg') }}" class="img-fluid w-100" alt=""/>
+                        <img src="{{ pageImage($services->first_image) }}" class="img-fluid" alt=""/>
                     </div>
                 </div>
                 <div class="col-lg-6 col-xl-4 order-0 order-lg-1 mb-4">
                     <div class="pr-5">
-                        <h2 class="font-weight-extra-bold line-height-1 mb-5">{{ __('servicesPage.virtual_tour_360') }}</h2>
-                        <p class="lead mb-5 pb-2">{{ __('servicesPage.virtual_tour_360_details') }}</p>
+                        <h2 class="font-weight-extra-bold line-height-1 mb-5">{{ $services->second_title }}</h2>
+                        <p class="lead mb-5 pb-2">{{ $services->second_details }}</p>
                         <div class="more-details d-inline-block mb-4">
-                            <a href="{{ route('virtual.tour') }}"
-                               class="btn btn-outline-secondary btn-secondary-animated btn-lg px-5 w-auto-mobile w-100">{{ __('messages.view_more') }}
-                                <span class="arrow2 is-triangle arrow-bar is-right"></span></a>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="section wwa-section border-0 mt-5 py-4" style="background-image: url({{ asset('img/wwa.jpg') }});">
+    <section class="section about-section border-0 mb-0 pt-5">
+        <div class="container container-lg">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-6 col-xl-4 mb-4">
+                    <div class="pr-5">
+                        <h2 class="font-weight-extra-bold line-height-1 mb-5">{{ $services->third_title }}</h2>
+                        <p class="lead mb-5 pb-2">{!! $services->third_details !!}</p>
+                        <div class="more-details d-inline-block mb-4">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xl-8 fluid-col-lg-6 fluid-col-xl-8">
+                    <div class="fluid-col-lg fluid-col-end text-end">
+                        <img src="{{ pageImage($services->third_image) }}" class="img-fluid" alt=""/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section about-section section-height-3 border-0 mb-0 pt-5">
+        <div class="container container-lg">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-6 col-xl-8 fluid-col-xl-8 order-1 order-lg-0" style="min-height: 33vw;">
+                    <div class="fluid-col-lg fluid-col-start text-start">
+                        <img src="{{ pageImage($services->fourth_image) }}" class="img-fluid" alt=""/>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xl-4 order-0 order-lg-1 mb-4">
+                    <div class="pr-5">
+                        <h2 class="font-weight-extra-bold line-height-1 mb-5">{{ $services->fourth_title }}</h2>
+                        <p class="lead mb-5 pb-2">{{ $services->fourth_details }}</p>
+                        <div class="more-details d-inline-block mb-4">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section about-section border-0 mb-0 pt-5">
+        <div class="container container-lg">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-6 col-xl-4 mb-4">
+                    <div class="pr-5">
+                        <h2 class="font-weight-extra-bold line-height-1 mb-5">{{ $services->fifth_title }}</h2>
+                        <p class="lead mb-5 pb-2">{!! $services->fifth_details !!}</p>
+                        <div class="more-details d-inline-block mb-4">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xl-8 fluid-col-lg-6 fluid-col-xl-8">
+                    <div class="fluid-col-lg fluid-col-end text-end">
+                        <img src="{{ pageImage($services->fifth_image) }}" class="img-fluid" alt=""/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section about-section section-height-3 border-0 mb-0 pt-5">
+        <div class="container container-lg">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-6 col-xl-8 fluid-col-xl-8 order-1 order-lg-0" style="min-height: 33vw;">
+                    <div class="fluid-col-lg fluid-col-start text-start">
+                        <img src="{{ pageImage($services->sixth_image) }}" class="img-fluid" alt=""/>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xl-4 order-0 order-lg-1 mb-4">
+                    <div class="pr-5">
+                        <h2 class="font-weight-extra-bold line-height-1 mb-5">{{ $services->sixth_title }}</h2>
+                        <p class="lead mb-5 pb-2">{{ $services->sixth_details }}</p>
+                        <div class="more-details d-inline-block mb-4">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section about-section border-0 mb-0 pt-5">
+        <div class="container container-lg">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-6 col-xl-4 mb-4">
+                    <div class="pr-5">
+                        <h2 class="font-weight-extra-bold line-height-1 mb-5">{{ $services->seventh_title }}</h2>
+                        <p class="lead mb-5 pb-2">{!! $services->seventh_details !!}</p>
+                        <div class="more-details d-inline-block mb-4">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xl-8 fluid-col-lg-6 fluid-col-xl-8">
+                    <div class="fluid-col-lg fluid-col-end text-end">
+                        <img src="{{ pageImage($services->seventh_image) }}" class="img-fluid" alt=""/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section wwa-section border-0 mt-5 py-4" style="background-image: url({{ asset('sites/img/wwa.jpg') }});">
         <div class="container container-lg">
             <div class="row align-items-end justify-content-between">
                 <div class="col-sm-6">

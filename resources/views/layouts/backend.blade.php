@@ -201,7 +201,12 @@
                             <i class="si si-docs"></i><span class="sidebar-mini-hide">{{ __('About Page') }}</span>
                         </a>
                     </li>
-
+                    <li>
+                        <a class="{{ request()->is('admin/services-page') ? ' active' : '' }}"
+                           href="{{ route('servicesPage.index')  }}">
+                            <i class="si si-docs"></i><span class="sidebar-mini-hide">{{ __('Services Page') }}</span>
+                        </a>
+                    </li>
                     <li class="nav-main-heading">
                         <span class="sidebar-mini-visible">MR</span><span
                             class="sidebar-mini-hidden">{{ __('Settings') }}</span>
