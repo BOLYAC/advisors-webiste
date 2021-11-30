@@ -89,5 +89,5 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::post('/import-file', 'MenuController@store')->name('import.file');
 
     // Users
-    Route::resource(\App\Http\Controllers\UsersController::class, 'users');
+    Route::resource('users', 'UsersController');
 });

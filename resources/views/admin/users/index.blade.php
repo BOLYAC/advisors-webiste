@@ -35,10 +35,8 @@
                     <thead>
                     <tr>
                         <th>#</th>
+                        <th>{{ __('Picture') }}</th>
                         <th>{{ __('Name') }}</th>
-                        <th>{{ __('Title') }}</th>
-                        <th>{{ __('Details') }}</th>
-                        <th>{{ __('Created at') }}</th>
                         <th class="text-center">{{ __('Actions') }}</th>
                     </tr>
                     </thead>
@@ -46,9 +44,10 @@
                     @forelse($users as $key => $user)
                         <tr>
                             <td>{{ $key++ }}</td>
+                            <td class="font-w600">
+                                <img src="{{ pageImage($user->photo_file) }}" class="img-avatar img-avatar-thumb" alt="">
+                            </td>
                             <td class="text-center">{{ $user->name ?? ''}}</td>
-                            <td class="font-w600">{{ $user->user_title ?? '' }}</td>
-                            <td class="font-w600">{{ $user->photo_file ?? '' }}</td>
                             <td class="text-center">
                                 <div class="btn-group">
                                     <a href="{{ route('users.edit', $user) }}"

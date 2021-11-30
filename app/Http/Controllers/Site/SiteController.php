@@ -11,6 +11,7 @@ use App\Models\Project;
 use App\Models\Property;
 use App\Models\Section;
 use App\Models\Topic;
+use App\User;
 use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\SEOMeta;
@@ -336,6 +337,7 @@ class SiteController extends Controller
     public function about()
     {
         $topic = Topic::whereTranslationLike('seo_url_slug', '%about%')->first();
+        $users = User::all();
         $about = AboutUsPage::first();
         if ($topic) {
             SEOTools::setTitle(config('settings.site_name') . ' | ' . $topic->seo_title);
@@ -349,7 +351,7 @@ class SiteController extends Controller
             $topic->visits = $topic->visits + 1;
             $topic->save();
         }
-        return view('site.aboutUs', compact('topic', 'about'));
+        return view('site.aboutUs', compact('topic', 'about', 'users'));
     }
 
     public function contact()

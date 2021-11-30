@@ -145,6 +145,30 @@
             </div>
         </div>
     </section>
+    <section class="section team-section section-height-3 border-0">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Team</h2>
+            @foreach($users as $user)
+                <div class="row team-member gx-4 gx-xxl-5 align-items-center mb-5">
+                    <div class="col-lg-3 mb-4">
+                        <div class="team-photo ratio ratio-1x1 mb-4 text-center m-auto">
+                            <img src="{{ pageImage($user->photo_file) }}" alt="">
+                        </div>
+                        <div class="team-info text-center mb-2">
+                            <h5 class="mb-2"><a>{{ $user->name }}</a></h5>
+                            <span>{{ $user->title }}</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 team-testimonial">
+                        <blockquote>
+                            {{ $user->details }}
+                        </blockquote>
+                    </div>
+                </div>
+            @endforeach
+
+        </div>
+    </section>
     <section class="section wwa-section border-0 mt-5 py-4"
              style="background-image: url({{ asset('sites/img/wwa.jpg') }});">
         <div class="container container-lg">

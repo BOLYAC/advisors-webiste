@@ -143,7 +143,7 @@ class PostController extends Controller
 
                 // Generating a random filename
                 $filename = uniqid();
-                $filepath = "/images/$filename.$mimetype";
+                $filepath = "/img/posts/$filename.$mimetype";
 
                 // @see http://image.intervention.io/api/
                 $image = Image::make($src)

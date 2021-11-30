@@ -206,6 +206,13 @@
                         <span class="sidebar-mini-visible">MR</span><span
                             class="sidebar-mini-hidden">{{ __('Settings') }}</span>
                     </li>
+                    *
+                    <li>
+                        <a href="{{ route('users.index') }}">
+                            <i class="si si-location-pin"></i><span
+                                class="sidebar-mini-hide">{{ __('Users') }}</span>
+                        </a>
+                    </li>
                     <li>
                         <a href="/admin/languages" target="_blank">
                             <i class="si si-location-pin"></i><span
