@@ -22,11 +22,12 @@
             </div>
             <div class="col-12 col-sm-6 col-lg-3 mb-5">
                 <h4 class="text-font-weight-light text-color-light">{{ __('messages.latest_articles') }}</h4>
-                @foreach(\App\Models\Article::all()->take(4) as $article)
-                    <p class="mb-1"><a
-                            href="{{ route('news.details', $article->seo_url_slug ?? $article->translate('en')->seo_url_slug) }}">{{$article->title}}</a>
-                    </p>
-                @endforeach
+                <p class="mb-1"><a
+                        href="{{ route('citizenShipPage') }}">{{ __('messages.citizenship') }}</a>
+                </p>
+                <p class="mb-1"><a
+                        href="{{ route('post.details', 'buying-a-property-in-turkey-by-using-cryptocurrency') }}">{{ __('Buying a property in Turkey by using cryptocurrency') }}</a>
+                </p>
             </div>
             <div class="col-12 col-sm-6 col-lg-3 mb-5">
                 <h4 class="text-font-weight-light text-color-light">{{ __('messages.useful_links') }}</h4>
