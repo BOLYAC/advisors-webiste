@@ -46,41 +46,53 @@
             <div class="beehive pb-lg-5">
                 <div class="center center1">
                     <div class="shape odd">
-                        <div class="shape-text">
-
-                        </div>
-                    </div>
-                    <div class="shape even secondary">
                         <div class="shape-text"
                              onclick="location.href='#{{ \Str::slug($services->first_title, '-') }}';"
                              style="cursor: pointer">
                             {{ $services->first_title }}
                         </div>
                     </div>
+                    <div class="shape even secondary">
+
+                    </div>
                     <div class="shape odd">
-                        <div class="shape-text">
-                            <img src="{{ asset('sites/img/logo.png')  }}" alt="" class="img-fluid">
+                        <div class="shape-text"
+                             onclick="location.href='#{{ \Str::slug($services->fourth_title, '-') }}';"
+                             style="cursor: pointer">
+                            {{ $services->fourth_title }}
                         </div>
                     </div>
                     <div class="shape even secondary">
-                        <div class="shape-text"
-                             onclick="location.href='#{{ \Str::slug($services->third_title, '-') }}';"
-                             style="cursor: pointer">
-                            {{ $services->third_title }}
-                        </div>
+
                     </div>
                     <div class="shape odd">
                         <div class="shape-text">
-
+                            <div class="shape-text"
+                                 onclick="location.href='#{{ \Str::slug($services->sixth_title, '-') }}';"
+                                 style="cursor: pointer">
+                                {{ $services->sixth_title }}
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="center center2">
                     <div class="shape odd secondary">
                         <div class="shape-text"
-                             onclick="location.href='#{{ \Str::slug($services->fourth_title, '-') }}';"
+                             onclick="location.href='#{{ \Str::slug($services->second_title, '-') }}';"
                              style="cursor: pointer">
-                            {{ $services->fourth_title }}
+                            {{ $services->second_title }}
+                        </div>
+                    </div>
+                    <div class="shape even">
+                        <div class="shape-text"
+                             onclick="location.href='#{{ \Str::slug($services->third_title, '-') }}';"
+                             style="cursor: pointer;">
+                            {{ $services->third_title }}
+                        </div>
+                    </div>
+                    <div class="shape odd secondary" style="background-color: #002f5b">
+                        <div class="shape-text">
+                            <img src="{{ asset('sites/img/logo.png') }}" alt="" class="img-fluid">
                         </div>
                     </div>
                     <div class="shape even">
@@ -92,23 +104,9 @@
                     </div>
                     <div class="shape odd secondary">
                         <div class="shape-text"
-                             onclick="location.href='#{{ \Str::slug($services->sixth_title, '-') }}';"
-                             style="cursor: pointer">
-                            {{ $services->sixth_title }}
-                        </div>
-                    </div>
-                    <div class="shape even">
-                        <div class="shape-text"
                              onclick="location.href='#{{ \Str::slug($services->seventh_title, '-') }}';"
                              style="cursor: pointer">
                             {{ $services->seventh_title }}
-                        </div>
-                    </div>
-                    <div class="shape odd secondary">
-                        <div class="shape-text"
-                             onclick="location.href='#{{ \Str::slug($services->second_title, '-') }}';"
-                             style="cursor: pointer">
-                            {{ $services->second_title }}
                         </div>
                     </div>
                 </div>

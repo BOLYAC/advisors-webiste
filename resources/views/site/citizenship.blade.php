@@ -45,11 +45,82 @@
                 </div>
                 <div class="col-lg-6 text-center">
                     <h2 class="font-weight-extra-bold line-height-3 mb-4">Turkish Citizenship by Investment Program</h2>
-                    <p class="lead">You can be a Turkish Citizen by purchasing a property in Turkey that is worth a
-                        minimum of $250,000. The Spouse and children who are less than 18 years old will also be granted
-                        Turkish Citizenship. Your Turkish Citizenship will remain throughout your life and your children
-                        will be born as Turkish Citizens. You can keep multiple citizenships along with your Turkish
-                        Citizenship.</p>
+                    <p class="lead">In 2017 the Turkish government published the first Turkish citizenship program for
+                        foreigners’ draft, the law gave eligibility to foreigners who are interested in Turkish
+                        Citizenship to obtain citizenship by investing in 1 million dollars, the foreign investors would
+                        be eligible to pass it to his family, wife, and children under 18, but there was no sufficient
+                        demanding, therefore the Turkish parliament got the matter of re-studying the law into
+                        consideration, therefore the costs’ value adjusted to 500,000 $ in the same year, until 2018,
+                        the law of Turkish citizenship program for foreigners been fixed and become under processing,
+                        and the amount fixed to 250,000 $, Since the 2018 and until today, 77,000 applications been
+                        released.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section section-height-2 border-0 mb-0 pt-5">
+        <div class="container container-lg">
+            <div class="row justify-content-center">
+                <div class="col-lg-7 col-xl-6 text-center mb-5">
+                    <h2 class="font-weight-extra-bold line-height-4 mb-5">Real Estate Investment Minimum 250.000$</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center gx-5">
+                <div class="investment col-md-6 col-lg-4 mb-5 px-5 px-md-4 px-xl-5">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div class="card-number">01</div>
+                            <p class="card-text line-height-3">Opening a Turkish Bank Account</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="investment col-md-6 col-lg-4 mb-5 px-5 px-md-4 px-xl-5">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div class="card-number">02</div>
+                            <p class="card-text line-height-3">Opening a Turkish Bank Account</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="investment col-md-6 col-lg-4 mb-5 px-5 px-md-4 px-xl-5">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div class="card-number">03</div>
+                            <p class="card-text line-height-3">Finding the Property</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="investment col-md-6 col-lg-4 mb-5 px-5 px-md-4 px-xl-5">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div class="card-number">04</div>
+                            <p class="card-text line-height-3">Buying the Property</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="investment col-md-6 col-lg-4 mb-5 px-5 px-md-4 px-xl-5">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div class="card-number">05</div>
+                            <p class="card-text line-height-3">Obtaining the Certificate of Conformity</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="investment col-md-6 col-lg-4 mb-5 px-5 px-md-4 px-xl-5">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div class="card-number">06</div>
+                            <p class="card-text line-height-3">Application for Turkish Residency</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="investment col-md-6 col-lg-4 mb-5 px-5 px-md-4 px-xl-5">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div class="card-number">07</div>
+                            <p class="card-text line-height-3">Application For Turkish Citizenship</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -177,124 +248,102 @@
             </div>
         </div>
     </section>
-    <section class="section section-height-2 border-0 mb-0 pt-5">
-        <div class="container container-lg">
-            <div class="row justify-content-center">
-                <div class="col-lg-7 col-xl-6 text-center mb-5">
-                    <h2 class="font-weight-extra-bold line-height-4 mb-5">Real Estate Investment Minimum 250.000$</h2>
-                </div>
-            </div>
-            <div class="row justify-content-center gx-5">
-                <div class="investment col-md-6 col-lg-4 mb-5 px-5 px-md-4 px-xl-5">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <div class="card-number">01</div>
-                            <p class="card-text line-height-3">Opening a Turkish Bank Account</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="investment col-md-6 col-lg-4 mb-5 px-5 px-md-4 px-xl-5">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <div class="card-number">02</div>
-                            <p class="card-text line-height-3">Opening a Turkish Bank Account</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="investment col-md-6 col-lg-4 mb-5 px-5 px-md-4 px-xl-5">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <div class="card-number">03</div>
-                            <p class="card-text line-height-3">Finding the Property</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="investment col-md-6 col-lg-4 mb-5 px-5 px-md-4 px-xl-5">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <div class="card-number">04</div>
-                            <p class="card-text line-height-3">Buying the Property</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="investment col-md-6 col-lg-4 mb-5 px-5 px-md-4 px-xl-5">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <div class="card-number">05</div>
-                            <p class="card-text line-height-3">Obtaining the Certificate of Conformity</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="investment col-md-6 col-lg-4 mb-5 px-5 px-md-4 px-xl-5">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <div class="card-number">06</div>
-                            <p class="card-text line-height-3">Application for Turkish Residency</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="investment col-md-6 col-lg-4 mb-5 px-5 px-md-4 px-xl-5">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <div class="card-number">07</div>
-                            <p class="card-text line-height-3">Application For Turkish Citizenship</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
     <section class="section section-height-2 border-0 mb-0 pt-5">
         <div class="container container-lg">
             <div class="row justify-content-center">
                 <div class="col-lg-7 col-xl-6 text-center mb-4">
-                    <h2 class="font-weight-extra-bold line-height-4">What is the Requirements for this program ?</h2>
+                    <h2 class="font-weight-extra-bold line-height-4">Turkish Citizenship by Investment Program:</h2>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12 text-4 line-height-7">
-                    <p>- Turkey Advisors is going to introduce to its clients brand new luxury properties in the city of
-                        Bursa Turkey. In this article we will talk about the city famously known as ‘Green Bursa’ for
-                        its amazing nature and what makes it a unique travel and living destination.</p>
-                    <p>- Bursa was first an ancient Greek settlement, later a major Byzantine city, and eventually the
-                        first capital of the Ottoman Empire and it remains a significant city today. The total area of
-                        Bursa is 1,035 square kilometres. It is home to around 2 million residents, this large sprawling
-                        city in North-western Anatolia is close to the Sea of Marmara, is situated south of Istanbul and
-                        is the fourth most populous city in Turkey after Istanbul, Ankara and Izmir.</p>
-                    <p>- The city lies in the foothills of Mount Uludağ meaning “Great Mountain” which rises 2543 m to
-                        the south of the historic center of Bursa which is mostly known for its historical sites dating
-                        back to the early Ottoman Empire around and it's beautiful ornately decorated mosques.</p>
-                    <p>- Bursa is smaller and less crowded than Īstanbul. This makes it more manageable and far easier
-                        to navigate. Many of the main attractions are located in the very walkable city center and you
-                        can easily get from one end of the city to the other in about a half an hour by public
-                        transportation. Yet with a population of more than 2 million, Bursa is large enough to have all
-                        the amenities of a modern big city.</p>
-                    <p>- The people of Bursa are amazing. For the most part, Bursa locals are quite pleasant,
-                        hospitable, genuine, warm, and ready to accommodate.</p>
-                    <p>- Bursa hosts invigorating hot springs which are wonderfully relaxing thermal spa baths found
-                        west of the center of Bursa in Çekirge’s.</p>
-                    <p>- Bursa is commonly referred to as “Yesil Bursa'' meaning Green Bursa as it has many stunning
-                        parks, trees, and is surrounded by forests which add to the dramatic beauty of the mountain
-                        backdrop.</p>
-                    <p>- The wonderful and ancient 14th century Ulu Camii which means Great Mosque has an impressive 20
-                        domes and Seljuk style arches, it is Bursa’s most dominant mosque and was built by Sultan
-                        Beyazıt, it’s grand in design with two huge minarets and the pulpit has intricate wood carvings
-                        and the walls feature beautiful calligraphy. </p>
-                    <p>- Did you know, the favorite traditional Iskender Kebap originates from Bursa! It is a lamb dish
-                        cooked with thyme and served on pide with a savory tomato sauce, browned butter and topped with
-                        yoghurt and parsley, and it’s delicious! Today Bursa is a modern city but retains the historical
-                        buildings all around it including mosques and mausoleums celebrating the city as it was once the
-                        first Ottoman capital. As a city, you would expect it to be vastly built up but with numerous
-                        parks and greenery, they make for wonderful areas to escape to. During the summer months you can
-                        ride the cable car which takes you to the summit of Mount Uludağ for hiking or to take in the
-                        fresh cool air and in the winter months you can ski as it’s Turkey’s premier ski resort, as you
-                        can imagine the views from the summit are magnificent.</p>
-                    <p>- Bursa is an ideal location as it’s close to Istanbul and the recently opened Osmangazi Bridge
-                        dramatically cuts the travel time between Istanbul and Bursa from two and half hours to just
-                        over an hour making Bursa on everyone’s radar now especially for tourists, city workers and
-                        property buyers.</p>
+            <section class="section our-vision-section border-0 py-3">
+                <div class="container">
+                    <div class="row justify-content-between align-items-center" id="owner-message">
+                        <div class="col-lg-6 col-xl-5 mb-3">
+                            <p class="lead">
+                                In 2017 the Turkish government published the first Turkish citizenship program for
+                                foreigners’ draft, the law gave eligibility to foreigners who are interested in Turkish
+                                Citizenship to obtain citizenship by investing in 1 million dollars, the foreign
+                                investors would be eligible to pass it to his family, wife, and children under 18, but
+                                there was no sufficient demanding, therefore the Turkish parliament got the matter of
+                                re-studying the law into consideration, therefore the costs’ value adjusted to 500,000 $
+                                in the same year, until 2018, the law of Turkish citizenship program for foreigners been
+                                fixed and become under processing, and the amount fixed to 250,000 $, Since the 2018 and
+                                until today, 77,000 applications been released.
+                                The law is offering several different options, by taking into consideration the
+                                difference between global investors' aspirations in investment in Turkey.
+                                The types of Turkish citizenship applications:
+                            </p>
+                        </div>
+                        <div class="col-lg-6 col-xl-5">
+                            <img class="w-100 img-fluid" src=""
+                                 alt="A message from the owners image"/>
+                        </div>
+                    </div>
+                    <div class="row justify-content-between align-items-center" id="owner-message">
+                        <div class="col-lg-6 col-xl-5 mb-3">
+                            <p class="lead">
+                                1- investing with <strong>250,000 $ </strong> in real estate assets:
+                                <br>
+                                By buying one or multiple real estates assets in any desirable Turkish City, with
+                                <strong>250,000$</strong>, you are eligible to submit your application, by getting the
+                                title deed of the
+                                property, too (Department of Immigration and Passports?!), with additional legal
+                                required papers for your application, and from here on your application will take from 2
+                                to 3 months maximum.
+                                By clicking on the underlined phrase, the screen scroll down itself to the section of
+                                the required legal papers
+
+                            </p>
+                        </div>
+                        <div class="col-lg-6 col-xl-5">
+                            <img class="w-100 img-fluid" src=""
+                                 alt="A message from the owners image"/>
+                        </div>
+                    </div>
+                    <div class="row justify-content-between align-items-center" id="owner-message">
+                        <div class="col-lg-6 col-xl-5 mb-3">
+                            <p class="lead">
+                                2- <strong> Deposit in a Turkish bank at least 500,000$</strong> <br> <br>
+                                By <strong> depositing 500,000 $ </strong> in any Turkish bank, whether private or
+                                governmental Turkish
+                                bank, you are eligible to submit your application, by getting the Bank deposit receipt
+                                to (Department of Immigration and Passports?!), with additional legal required papers
+                                for your application, and from here on your application will take from 2 to 3 months
+                                maximum.
+
+                            </p>
+                        </div>
+                        <div class="col-lg-6 col-xl-5">
+                            <img class="w-100 img-fluid" src=""
+                                 alt="A message from the owners image"/>
+                        </div>
+                    </div>
+                    <div class="row justify-content-between align-items-center" id="owner-message">
+                        <div class="col-lg-6 col-xl-5 mb-3">
+                            <p class="lead">
+                                3- establishing a Turkish company and creating 50 job opportunities for Turkish
+                                citizens:
+                                <br><br>
+                                By Establishing a commercial registry in any Turkish City, according to the law, It
+                                doesn't matter what the company's specialization is, it can be industrial or commercial,
+                                the law doesn't force a foreign investor to have a specific specialization or field of
+                                work, what is matter in this section of the law, Is to create 50 job opportunities for
+                                50 Turkish citizens
+                                By getting both the registration number and the tax, you are eligible to submit your
+                                application to (Department of Immigration and Passports?!), with additional legal
+                                required papers for your application, and from here on your application will take from 2
+                                to 3 months maximum.
+                            </p>
+                        </div>
+                        <div class="col-lg-6 col-xl-5">
+                            <img class="w-100 img-fluid" src="{{ asset('sites/img/S08.jpg') }}"
+                                 alt="A message from the owners image"/>
+                        </div>
+                    </div>
+
                 </div>
-            </div>
+            </section>
         </div>
     </section>
     <section class="section section-height-2 border-0 mb-0 py-5">
@@ -363,7 +412,8 @@
             </div>
         </div>
     </section>
-    <section class="section wwa-section border-0 mt-5 py-4" style="background-image: url({{ asset('sites/img/wwa.jpg') }});">
+    <section class="section wwa-section border-0 mt-5 py-4"
+             style="background-image: url({{ asset('sites/img/wwa.jpg') }});">
         <div class="container container-lg">
             <div class="row align-items-end justify-content-between">
                 <div class="col-sm-6">

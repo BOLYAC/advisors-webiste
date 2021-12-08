@@ -454,7 +454,7 @@ class SiteController extends Controller
     {
 
         $intaStoryImages = InstaStory::findOrfail($id)->images()->get();
-        
+
         return view('site.story', compact('intaStoryImages'));
     }
 
