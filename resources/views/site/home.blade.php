@@ -203,7 +203,7 @@
                 @foreach($stories as $story)
                     <div class="offer">
                         <div class="story embed-responsive embed-responsive-1by1">
-                            <a href="{{ $story->link_story }}">
+                            <a href="{{ route('story', $story->id) }}">
                                 <img class="embed-responsive-item w-100 h-100 img-responsive p-2"
                                      src="{{ pageImage($story->photo_file) }}" alt="">
                             </a>

@@ -15,4 +15,13 @@ class InstaStory extends Model
         'status' => 'boolean'
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function images()
+    {
+        return $this->hasMany(InstaStoryImage::class);
+    }
+
+
 }

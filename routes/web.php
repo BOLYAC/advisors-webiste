@@ -37,6 +37,8 @@ Route::namespace('Site')->prefix(LaravelLocalization::setLocale())->middleware('
 
     Route::get('/currency-switch/{currency}', [SiteController::class, 'switchCurrency'])->name('switch_currency');
 
+    Route::get('/story/{id}', [SiteController::class, 'getStories'])->name('story');
+
 });
 
 // Admin routes

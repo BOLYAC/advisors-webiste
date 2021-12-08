@@ -120,9 +120,9 @@
             <div class="row justify-content-between align-items-center" id="owner-message">
                 <div class="col-lg-6 col-xl-5 mb-3">
                     <h2>{{ $services->first_title ?? '' }}</h2>
-                    <p class="lead">
+                    <div class="lead">
                         {!! $services->first_details ?? '' !!}
-                    </p>
+                    </div>
                 </div>
                 <div class="col-lg-6 col-xl-5">
                     <img class="w-100 img-fluid" src="{{ pageImage($services->first_image) }}"
@@ -140,9 +140,9 @@
                 </div>
                 <div class="col-lg-6 col-xl-5 order-0 order-lg-1 mb-3">
                     <h2>{{ $services->second_title ?? '' }}</h2>
-                    <p class="lead">
+                    <div class="lead">
                         {!! $services->second_title ?? '' !!}
-                    </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -152,9 +152,9 @@
             <div class="row justify-content-between align-items-center" id="owner-message">
                 <div class="col-lg-6 col-xl-5 mb-3">
                     <h2>{{ $services->third_title ?? '' }}</h2>
-                    <p class="lead">
+                    <div class="lead">
                         {!! $services->third_details ?? '' !!}
-                    </p>
+                    </div>
                 </div>
                 <div class="col-lg-6 col-xl-5">
                     <img class="w-100 img-fluid" src="{{ pageImage($services->third_image) }}"
@@ -172,9 +172,9 @@
                 </div>
                 <div class="col-lg-6 col-xl-5 order-0 order-lg-1 mb-3">
                     <h2>{{ $services->fourth_title ?? '' }}</h2>
-                    <p class="lead">
+                    <div class="lead">
                         {!! $services->fourth_details ?? '' !!}
-                    </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -184,9 +184,9 @@
             <div class="row justify-content-between align-items-center" id="owner-message">
                 <div class="col-lg-6 col-xl-5 mb-3">
                     <h2>{{ $services->fifth_title ?? '' }}</h2>
-                    <p class="lead">
+                    <div class="lead">
                         {!! $services->fifth_details ?? '' !!}
-                    </p>
+                    </div>
                 </div>
                 <div class="col-lg-6 col-xl-5">
                     <img class="w-100 img-fluid" src="{{ pageImage($services->fifth_image) }}"
@@ -204,9 +204,9 @@
                 </div>
                 <div class="col-lg-6 col-xl-5 order-0 order-lg-1 mb-3">
                     <h2>{{ $services->sixth_title ?? '' }}</h2>
-                    <p class="lead">
+                    <div class="lead">
                         {!! $services->sixth_details ?? '' !!}
-                    </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -216,9 +216,9 @@
             <div class="row justify-content-between align-items-center" id="owner-message">
                 <div class="col-lg-6 col-xl-5 mb-3">
                     <h2>{{ $services->seventh_title ?? '' }}</h2>
-                    <p class="lead">
+                    <div class="lead">
                         {!! $services->seventh_details ?? '' !!}
-                    </p>
+                    </div>
                 </div>
                 <div class="col-lg-6 col-xl-5">
                     <img class="w-100 img-fluid" src="{{ pageImage($services->seventh_image) }}"

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\InstaStory;
+use App\Models\InstaStoryImage;
 use App\Traits\UploadAble;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\File;
 class InstaStoryController extends Controller
 {
     use UploadAble;
+
     /**
      * Display a listing of the resource.
      *
@@ -94,6 +96,36 @@ class InstaStoryController extends Controller
 
             $request_data['photo_file'] = $categoryImage;
 
+        }
+
+        /*if (isset($request_data['imageDestroy'])) {
+            foreach ($request_data['imageDestroy'] as $key => $image) {
+                File::delete('storage/' . $image);
+                InstaStoryImage::findOrFail($image)->delete();
+            }
+        }*/
+        if (isset($request_data['imageDestroy'])) {
+            InstaStoryImage::find($request_data['imageDestroy'])->each(function ($model, $key) {
+                //Do things before deleting
+                File::delete('storage/' . $model->photo_file);
+                $model->delete();
+            });
+        }
+
+        if (isset($request_data['row_no_image'])) {
+            foreach ($request_data['row_no_image'] as $key => $row_num) {
+                InstaStoryImage::findOrFail($key)->update(['row_no' => $row_num]);
+            }
+        }
+
+        if ($request->hasFile('photos')) {
+            foreach ($request_data['photos'] as $image) {
+                $pathImage = $this->uploadOne($image, 'img/stories');
+                InstaStoryImage::create([
+                    'photo_file' => $pathImage,
+                    'insta_story_id' => $instaStory->id,
+                ]);
+            }
         }
 
         // create new topic

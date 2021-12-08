@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\AboutUsPage;
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\InstaStory;
+use App\Models\InstaStoryImage;
 use App\Models\Post;
 use App\Models\Project;
 use App\Models\Property;
@@ -446,6 +448,14 @@ class SiteController extends Controller
             $topic->save();
         }
         return view('site.service-virtual-tour');
+    }
+
+    public function getStories($id)
+    {
+
+        $intaStoryImages = InstaStory::findOrfail($id)->images()->get();
+        
+        return view('site.story', compact('intaStoryImages'));
     }
 
     public function search(Request $request, $city = null, $area = null)

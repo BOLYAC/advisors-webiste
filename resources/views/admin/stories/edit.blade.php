@@ -36,6 +36,45 @@
                                        placeholder="{{ __('Enter the link') }}">
                             </div>
                             <div class="form-group row">
+                                <label class="col-12">{{ __('More Images') }}</label>
+                                <div class="col-12">
+                                    <div class="custom-file">
+                                        <input type="file" class="form-control-file" id="photos"
+                                               name="photos[]" data-toggle="custom-file-input" multiple>
+                                        <label class="custom-file-label"
+                                               for="photos">{{ __('Choose file') }}</label>
+                                    </div>
+                                </div>
+                            </div>
+                            @if ($instaStory->images)
+                                <div class="galeri-container">
+                                    <div class="row gutters-tiny js-gallery img-fluid-100 js-gallery-enabled">
+                                        @foreach ($instaStory->images as $i => $image)
+                                            <div class="col-4" id="{{ $image->id }}">
+                                                <a class="img-link img-link-simple img-thumb img-lightbox"
+                                                   href="{{ pageImage($image->photo_file) }}">
+                                                    <img class="img-fluid rounded-top"
+                                                         src="{{ pageImage($image->photo_file) }}">
+                                                </a>
+                                                <div class="form-group">
+                                                    <input class="form-control form-control-sm" type="number"
+                                                           name="row_no_image[{{$image->id}}]"
+                                                           value="{{ $image->row_no }}">
+                                                </div>
+                                                <div class="checkbox">
+                                                    <input id="check-{{ $image->id }}" type="checkbox"
+                                                           name="imageDestroy[]"
+                                                           value="{{ $image->id }}">
+                                                    <label for="check-{{ $image->id }}">{{__('Delete') }}</label>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @else
+                                <p>Empty</p>
+                            @endif
+                            <div class="form-group row">
                                 <label class="col-12"
                                        for="row_no">{{ __('Order')}} </label>
                                 <div class="col-12">

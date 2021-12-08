@@ -15,7 +15,7 @@ class PropertyImage extends Model
     /**
      * @var array
      */
-    protected $fillable = ['property_id', 'full'];
+    protected $fillable = ['property_id', 'full', 'row_no'];
 
     /**
      * @var array

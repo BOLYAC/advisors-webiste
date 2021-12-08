@@ -129,34 +129,18 @@
 <amp-story standalone
            title=""
            publisher="Turkey advisors"
-           publisher-logo-src="{{ asset('img/logo.png') }}"
+           publisher-logo-src="{{ asset('sites/img/logo.png') }}"
            poster-portrait-src="assets/cover.jpg">
-    <amp-story-page id="cover">
-        <amp-story-grid-layer template="fill">
-            <amp-img src="assets/cover.jpg"
-                     width="720" height="1280"
-                     layout="responsive">
-            </amp-img>
-        </amp-story-grid-layer>
-    </amp-story-page>
-
-    <amp-story-page id="page1">
-        <amp-story-grid-layer template="vertical">
-            <amp-img src="assets/cat.jpg"
-                     width="720" height="1280"
-                     layout="responsive">
-            </amp-img>
-        </amp-story-grid-layer>
-    </amp-story-page>
-
-    <amp-story-page id="page2">
-        <amp-story-grid-layer template="fill">
-            <amp-img src="assets/dog.jpg"
-                     width="720" height="1280"
-                     layout="responsive">
-            </amp-img>
-        </amp-story-grid-layer>
-    </amp-story-page>
+    @foreach($intaStoryImages as $key => $instStory)
+        <amp-story-page id="{{ $loop->first ? 'cover' : 'page' . $key }}">
+            <amp-story-grid-layer template="fill">
+                <amp-img src="{{ pageImage($instStory->photo_file) }}"
+                         width="720" height="1280"
+                         layout="responsive">
+                </amp-img>
+            </amp-story-grid-layer>
+        </amp-story-page>
+    @endforeach
 </amp-story>
 </body>
 </html>
