@@ -276,74 +276,79 @@
                             </p>
                         </div>
                         <div class="col-lg-6 col-xl-5">
-                            <img class="w-100 img-fluid" src=""
+                            <img class="w-100 img-fluid" src="{{ asset('sites/img/citizenship.jpg') }}"
                                  alt="A message from the owners image"/>
                         </div>
                     </div>
-                    <div class="row justify-content-between align-items-center" id="owner-message">
-                        <div class="col-lg-6 col-xl-5 mb-3">
-                            <p class="lead">
-                                1- investing with <strong>250,000 $ </strong> in real estate assets:
-                                <br>
-                                By buying one or multiple real estates assets in any desirable Turkish City, with
-                                <strong>250,000$</strong>, you are eligible to submit your application, by getting the
-                                title deed of the
-                                property, too (Department of Immigration and Passports?!), with additional legal
-                                required papers for your application, and from here on your application will take from 2
-                                to 3 months maximum.
-                                By clicking on the underlined phrase, the screen scroll down itself to the section of
-                                the required legal papers
-
-                            </p>
-                        </div>
-                        <div class="col-lg-6 col-xl-5">
-                            <img class="w-100 img-fluid" src=""
-                                 alt="A message from the owners image"/>
-                        </div>
-                    </div>
-                    <div class="row justify-content-between align-items-center" id="owner-message">
-                        <div class="col-lg-6 col-xl-5 mb-3">
-                            <p class="lead">
-                                2- <strong> Deposit in a Turkish bank at least 500,000$</strong> <br> <br>
-                                By <strong> depositing 500,000 $ </strong> in any Turkish bank, whether private or
-                                governmental Turkish
-                                bank, you are eligible to submit your application, by getting the Bank deposit receipt
-                                to (Department of Immigration and Passports?!), with additional legal required papers
-                                for your application, and from here on your application will take from 2 to 3 months
-                                maximum.
-
-                            </p>
-                        </div>
-                        <div class="col-lg-6 col-xl-5">
-                            <img class="w-100 img-fluid" src=""
-                                 alt="A message from the owners image"/>
-                        </div>
-                    </div>
-                    <div class="row justify-content-between align-items-center" id="owner-message">
-                        <div class="col-lg-6 col-xl-5 mb-3">
-                            <p class="lead">
-                                3- establishing a Turkish company and creating 50 job opportunities for Turkish
-                                citizens:
-                                <br><br>
-                                By Establishing a commercial registry in any Turkish City, according to the law, It
-                                doesn't matter what the company's specialization is, it can be industrial or commercial,
-                                the law doesn't force a foreign investor to have a specific specialization or field of
-                                work, what is matter in this section of the law, Is to create 50 job opportunities for
-                                50 Turkish citizens
-                                By getting both the registration number and the tax, you are eligible to submit your
-                                application to (Department of Immigration and Passports?!), with additional legal
-                                required papers for your application, and from here on your application will take from 2
-                                to 3 months maximum.
-                            </p>
-                        </div>
-                        <div class="col-lg-6 col-xl-5">
-                            <img class="w-100 img-fluid" src="{{ asset('sites/img/S08.jpg') }}"
-                                 alt="A message from the owners image"/>
-                        </div>
-                    </div>
-
                 </div>
             </section>
+        </div>
+    </section>
+    <section class="section section-height-2 border-0 mb-0 pt-5">
+        <div class="row justify-content-between align-items-center" id="owner-message">
+            <div class="col-lg-6 col-xl-5 mb-3">
+                <p class="lead">
+                    1- investing with <strong>250,000 $ </strong> in real estate assets:
+                    <br>
+                    By buying one or multiple real estates assets in any desirable Turkish City, with
+                    <strong>250,000$</strong>, you are eligible to submit your application, by getting the
+                    title deed of the
+                    property, too (Department of Immigration and Passports?!), with additional legal
+                    required papers for your application, and from here on your application will take from 2
+                    to 3 months maximum.
+                    By clicking on the underlined phrase, the screen scroll down itself to the section of
+                    the required legal papers
+
+                </p>
+            </div>
+            <div class="col-lg-6 col-xl-5">
+                <img class="w-100 img-fluid" src="{{ asset('sites/img/ctz.jpeg') }}"
+                     alt="A message from the owners image"/>
+            </div>
+        </div>
+    </section>
+    <section class="section section-height-2 border-0 mb-0 pt-5">
+        <div class="row justify-content-between align-items-center" id="owner-message">
+            <div class="col-lg-6 col-xl-5 mb-3">
+                <p class="lead">
+                    2- <strong> Deposit in a Turkish bank at least 500,000$</strong> <br> <br>
+                    By <strong> depositing 500,000 $ </strong> in any Turkish bank, whether private or
+                    governmental Turkish
+                    bank, you are eligible to submit your application, by getting the Bank deposit receipt
+                    to (Department of Immigration and Passports?!), with additional legal required papers
+                    for your application, and from here on your application will take from 2 to 3 months
+                    maximum.
+
+                </p>
+            </div>
+            <div class="col-lg-6 col-xl-5">
+                <img class="w-100 img-fluid" src="{{ asset('sites/img/ctz1.jpeg') }}"
+                     alt="A message from the owners image"/>
+            </div>
+        </div>
+    </section>
+    <section class="section section-height-2 border-0 mb-0 pt-5">
+        <div class="row justify-content-between align-items-center" id="owner-message">
+            <div class="col-lg-6 col-xl-5 mb-3">
+                <p class="lead">
+                    3- establishing a Turkish company and creating 50 job opportunities for Turkish
+                    citizens:
+                    <br><br>
+                    By Establishing a commercial registry in any Turkish City, according to the law, It
+                    doesn't matter what the company's specialization is, it can be industrial or commercial,
+                    the law doesn't force a foreign investor to have a specific specialization or field of
+                    work, what is matter in this section of the law, Is to create 50 job opportunities for
+                    50 Turkish citizens
+                    By getting both the registration number and the tax, you are eligible to submit your
+                    application to (Department of Immigration and Passports?!), with additional legal
+                    required papers for your application, and from here on your application will take from 2
+                    to 3 months maximum.
+                </p>
+            </div>
+            <div class="col-lg-6 col-xl-5">
+                <img class="w-100 img-fluid" src="{{ asset('sites/img/S08.jpg') }}"
+                     alt="A message from the owners image"/>
+            </div>
         </div>
     </section>
     <section class="section section-height-2 border-0 mb-0 py-5">
