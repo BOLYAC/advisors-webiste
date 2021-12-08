@@ -45,15 +45,14 @@
                 </div>
                 <div class="col-lg-6 text-center">
                     <h2 class="font-weight-extra-bold line-height-3 mb-4">Turkish Citizenship by Investment Program</h2>
-                    <p class="lead">In 2017 the Turkish government published the first Turkish citizenship program for
-                        foreigners’ draft, the law gave eligibility to foreigners who are interested in Turkish
-                        Citizenship to obtain citizenship by investing in 1 million dollars, the foreign investors would
-                        be eligible to pass it to his family, wife, and children under 18, but there was no sufficient
-                        demanding, therefore the Turkish parliament got the matter of re-studying the law into
-                        consideration, therefore the costs’ value adjusted to 500,000 $ in the same year, until 2018,
-                        the law of Turkish citizenship program for foreigners been fixed and become under processing,
-                        and the amount fixed to 250,000 $, Since the 2018 and until today, 77,000 applications been
-                        released.</p>
+                    <p class="lead">The Turkish government is granting Turkish citizenship for foreigners, the law gave
+                        eligibility to foreigners who are interested in Turkish Citizenship, by investing in <strong>250.000
+                            $</strong>,
+                        the foreign investors would be eligible to pass it to his family, wife, and children under 18.
+                        the law and the procedure of obtaining Turkish citizenship are obtainable within 3 different
+                        programs, for more information <a href="#description"
+                                                          style="background-color: rgb(255, 255, 255);"><b><u>scroll
+                                    down.</u></b></a></p>
                 </div>
             </div>
         </div>
@@ -258,9 +257,9 @@
             </div>
             <section class="section our-vision-section border-0 py-3">
                 <div class="container">
-                    <div class="row justify-content-between align-items-center" id="owner-message">
+                    <div class="row justify-content-between align-items-center" id="description">
                         <div class="col-lg-6 col-xl-5 mb-3">
-                            <p class="lead">
+                            <p style="font-size:1.5em;line-height:1.6em;">
                                 In 2017 the Turkish government published the first Turkish citizenship program for
                                 foreigners’ draft, the law gave eligibility to foreigners who are interested in Turkish
                                 Citizenship to obtain citizenship by investing in 1 million dollars, the foreign
@@ -284,70 +283,72 @@
             </section>
         </div>
     </section>
-    <section class="section section-height-2 border-0 mb-0 pt-5">
-        <div class="row justify-content-between align-items-center" id="owner-message">
-            <div class="col-lg-6 col-xl-5 mb-3">
-                <p class="lead">
-                    1- investing with <strong>250,000 $ </strong> in real estate assets:
-                    <br>
-                    By buying one or multiple real estates assets in any desirable Turkish City, with
-                    <strong>250,000$</strong>, you are eligible to submit your application, by getting the
-                    title deed of the
-                    property, too (Department of Immigration and Passports?!), with additional legal
-                    required papers for your application, and from here on your application will take from 2
-                    to 3 months maximum.
-                    By clicking on the underlined phrase, the screen scroll down itself to the section of
-                    the required legal papers
-
-                </p>
-            </div>
-            <div class="col-lg-6 col-xl-5">
-                <img class="w-100 img-fluid" src="{{ asset('sites/img/ctz.jpeg') }}"
-                     alt="A message from the owners image"/>
-            </div>
-        </div>
-    </section>
-    <section class="section section-height-2 border-0 mb-0 pt-5">
-        <div class="row justify-content-between align-items-center" id="owner-message">
-            <div class="col-lg-6 col-xl-5 mb-3">
-                <p class="lead">
-                    2- <strong> Deposit in a Turkish bank at least 500,000$</strong> <br> <br>
-                    By <strong> depositing 500,000 $ </strong> in any Turkish bank, whether private or
-                    governmental Turkish
-                    bank, you are eligible to submit your application, by getting the Bank deposit receipt
-                    to (Department of Immigration and Passports?!), with additional legal required papers
-                    for your application, and from here on your application will take from 2 to 3 months
-                    maximum.
-
-                </p>
-            </div>
-            <div class="col-lg-6 col-xl-5">
-                <img class="w-100 img-fluid" src="{{ asset('sites/img/ctz1.jpeg') }}"
-                     alt="A message from the owners image"/>
+    <section class="section our-vision-section border-0 py-3">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-6 col-xl-5 order-1 order-lg-0">
+                    <img class="w-100 img-fluid" src="{{ asset('sites/img/ctz1.jpeg') }}"
+                         alt="Our mission"/>
+                </div>
+                <div class="col-lg-6 col-xl-5 order-0 order-lg-1 mb-3">
+                    <h2>1- investing with 250,000 $ in real estate assets:</h2>
+                    <div class="lead">
+                        By buying one or multiple real estates assets in any desirable Turkish City, with
+                        <strong>250,000$</strong>, you are eligible to submit your application, by getting the
+                        title deed of the
+                        property, too (Department of Immigration and Passports?!), with additional legal
+                        required papers for your application, and from here on your application will take from 2
+                        to 3 months maximum.
+                        By clicking on the underlined phrase, the screen scroll down itself to the section of
+                        the required legal papers
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-    <section class="section section-height-2 border-0 mb-0 pt-5">
-        <div class="row justify-content-between align-items-center" id="owner-message">
-            <div class="col-lg-6 col-xl-5 mb-3">
-                <p class="lead">
-                    3- establishing a Turkish company and creating 50 job opportunities for Turkish
-                    citizens:
-                    <br><br>
-                    By Establishing a commercial registry in any Turkish City, according to the law, It
-                    doesn't matter what the company's specialization is, it can be industrial or commercial,
-                    the law doesn't force a foreign investor to have a specific specialization or field of
-                    work, what is matter in this section of the law, Is to create 50 job opportunities for
-                    50 Turkish citizens
-                    By getting both the registration number and the tax, you are eligible to submit your
-                    application to (Department of Immigration and Passports?!), with additional legal
-                    required papers for your application, and from here on your application will take from 2
-                    to 3 months maximum.
-                </p>
+    <section class="section our-vision-section border-0 py-3">
+        <div class="container">
+            <div class="row justify-content-between align-items-center" id="owner-message">
+                <div class="col-lg-6 col-xl-5 mb-3">
+                    <h2>2- Deposit in a Turkish bank at least 500,000$</h2>
+                    <div class="lead">
+                        By <strong> depositing 500,000 $ </strong> in any Turkish bank, whether private or
+                        governmental Turkish
+                        bank, you are eligible to submit your application, by getting the Bank deposit receipt
+                        to (Department of Immigration and Passports?!), with additional legal required papers
+                        for your application, and from here on your application will take from 2 to 3 months
+                        maximum.
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xl-5">
+                    <img class="w-100 img-fluid" src="{{ asset('sites/img/ctz.jpeg') }}"
+                         alt="A message from the owners image"/>
+                </div>
             </div>
-            <div class="col-lg-6 col-xl-5">
-                <img class="w-100 img-fluid" src="{{ asset('sites/img/S08.jpg') }}"
-                     alt="A message from the owners image"/>
+        </div>
+    </section>
+    <section class="section our-vision-section border-0 py-3">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-6 col-xl-5 order-1 order-lg-0">
+                    <img class="w-100 img-fluid" src="{{ asset('sites/img/S08.jpg') }}"
+                         alt="Our mission"/>
+                </div>
+                <div class="col-lg-6 col-xl-5 order-0 order-lg-1 mb-3">
+                    <h2>3- establishing a Turkish company and creating 50 job opportunities for Turkish
+                        citizens:</h2>
+                    <div class="lead">
+                        By Establishing a commercial registry in any Turkish City, according to the law, It
+                        doesn't matter what the company's specialization is, it can be industrial or commercial,
+                        the law doesn't force a foreign investor to have a specific specialization or field of
+                        work, what is matter in this section of the law, Is to create 50 job opportunities for
+                        50 Turkish citizens
+                        By getting both the registration number and the tax, you are eligible to submit your
+                        application to (Department of Immigration and Passports?!), with additional legal
+                        required papers for your application, and from here on your application will take from 2
+                        to 3 months maximum.
+                    </div>
+                </div>
             </div>
         </div>
     </section>
