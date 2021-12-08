@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\ImageManagerStatic as Image;
 
@@ -131,11 +132,11 @@ class PostController extends Controller
         $images = $dom->getElementsByTagName('img');
 
         // foreach <img> in the submited message
-        foreach ($images as $img) {
+        foreach($images as $img){
             $src = $img->getAttribute('src');
 
             // if the img source is 'data-url'
-            if (preg_match('/data:image/', $src)) {
+            if(preg_match('/data:image/', $src)){
 
                 // get the mimetype
                 preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
@@ -143,14 +144,17 @@ class PostController extends Controller
 
                 // Generating a random filename
                 $filename = uniqid();
-                $filepath = "/img/posts/$filename.$mimetype";
+                $filepath = "images/$filename.$mimetype";
+                //$file_name=time()."_".$image->getClientOriginalName();
+                //$path = "$filepath";
 
                 // @see http://image.intervention.io/api/
+                //dd(is_writable($filepath));
                 $image = Image::make($src)
                     // resize if required
                     /* ->resize(300, 200) */
-                    ->encode($mimetype, 100)    // encode file to the specified mimetype
-                    ->save(public_path($filepath));
+                    ->encode($mimetype, 100) 	// encode file to the specified mimetype
+                    ->save($filepath);
 
                 $new_src = asset($filepath);
                 $img->removeAttribute('src');

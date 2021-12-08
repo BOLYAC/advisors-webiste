@@ -63,8 +63,8 @@
                              data-basealign="grid"
                              style="z-index: 5"
                              data-mask_in="x:0px;y:0px;">
-                            <a class="btn btn-secondary p-2"
-                               href="{{ $banner->link_url }}">{{ __('messages.get_in_touch') }} <span
+                            <a class="btn btn-secondary btn-blink p-3"
+                               href="{{ $banner->link_url }}">{{ __('messages.more_details') }} <span
                                     class="arrow1 is-triangle arrow-bar is-right"></span></a>
                         </div>
                     </li>
@@ -201,11 +201,13 @@
             <h3 class="mb-4">{{ __('messages.best_offers') }}</h3>
             <div class="owl-carousel owl-theme offers">
                 @foreach($stories as $story)
-                    <div class="offer embed-responsive embed-responsive-1by1">
-                        <a href="{{ $story->link_story }}">
-                            <img class="embed-responsive-item w-100 h-100 img-responsive p-2"
-                                 src="{{ pageImage($story->photo_file) }}" alt="">
-                        </a>
+                    <div class="offer">
+                        <div class="story embed-responsive embed-responsive-1by1">
+                            <a href="{{ $story->link_story }}">
+                                <img class="embed-responsive-item w-100 h-100 img-responsive p-2"
+                                     src="{{ pageImage($story->photo_file) }}" alt="">
+                            </a>
+                        </div>
                     </div>
                 @endforeach
             </div>
@@ -324,7 +326,9 @@
             <div class="owl-carousel owl-theme articles mt-3">
                 @foreach($posts as $post)
                     <div class="article card border-radius-0">
-                        <img class="card-img-top" src="{{ pageImage($post->photo_file) }}" alt="Project">
+                        <div class="ratio ratio-16x9">
+                            <img class="card-img-top" src="{{ pageImage($post->photo_file) }}" alt="{{ $post->title }}">
+                        </div>
                         <div class="card-body">
                             <div class="article-date"><i
                                     class="fas fa-calendar-alt me-1"></i> {{ \Carbon\Carbon::parse($post->date)->format('d M Y')}}
@@ -352,6 +356,9 @@
             </div>
         </div>
     </section>
+    <div class="container">
+        <hr class="bg-color-grey-scale-3 mt-5">
+    </div>
     <section class="section about-section section-height-4 border-0 mb-0 pt-5">
         <div class="container container-lg">
             <div class="row align-items-center justify-content-between">
@@ -673,44 +680,21 @@
             </div>
         </div>
     </section>
-    <section class="section articles-section my-0">
+    <section class="section citizenship-section my-0">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-9 col-xl-10">
-                    <h3>{{ __('messages.articles_about_turkish_citizenship') }}</h3>
+            <div class="row align-items-center gx-5">
+                <div class="col-lg-7">
+                    <img src="{{ asset('sites/img/turkish_citizenship.jpg') }}" alt="Turkish citizenship" class="w-100">
                 </div>
-                <div class="col-lg-3 col-xl-2 text-start text-lg-end mb-3">
-                    <a href="{{ route('blog') }}"
-                       class="btn btn-secondary btn-secondary-animated btn-lg px-5 px-lg-0 w-auto-mobile w-100">{{ __('messages.articles') }}
-                        <span class="arrow2 is-triangle arrow-bar is-right"></span></a>
+                <div class="col-lg-5">
+                    <h3 class="section-title text-light mb-0">Turkish Citizenship</h3>
+                    <span class="section-sub-title text-6 text-light d-block mb-4">By Investment Programme</span>
+                    <p class="text-light">You can apply for Turkish citizenship by speculation whenever you have put at
+                        least $250,000 in private or business property in Turkey. Your companion and your childern
+                        younger than 18 will likewise be qualified for Turkish identity. Kindly get in touch with us for
+                        furthur subtleties, legitimate guidance and a rundown of properties in Turkey that are
+                        pre-endorsed for the citizenship by venture program.</p>
                 </div>
-            </div>
-            <div class="owl-carousel owl-theme articles mt-3">
-                @foreach($citizenPosts as $post)
-                    <div class="article card border-radius-0">
-                        <img class="card-img-top img-fluid" src="{{ pageImage($post->photo_file) }}" alt="Project">
-                        <div class="card-body">
-                            <div class="article-date"><i
-                                    class="fas fa-calendar-alt me-1"></i> {{ \Carbon\Carbon::parse($post->date)->format('d M Y')}}
-                            </div>
-                            <div class="article-views"><i
-                                    class="fa fa-eye me-1"></i> {{ $post->visits }} {{ __('messages.views') }}
-                            </div>
-                            <div class="card-title">
-                                <div class="mb-3 text-4 card-subtitle">{{ $post->categories->first()->title }}</div>
-                                <h4 class="mb-0 text-5 text-sm-6 text-lg-5 font-weight-bold">{{ $post->title }}</h4>
-                            </div>
-                            <div class="card-text row align-items-end">
-                                <div class="col-10">
-                                    <p class="text-4">{!! \Str::limit($post->details , 100, $end='...') !!}</p>
-                                </div>
-                                <div class="col-2 read-more text-end">
-                                    <a href="#"><span class="arrow2 is-triangle arrow-bar is-right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
             </div>
         </div>
     </section>

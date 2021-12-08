@@ -1,6 +1,6 @@
 <div class="side-fixed d-none d-lg-block">
     <div class="open">
-        <i class="far fa-comment-dots" aria-hidden="true"></i>
+        <i class="far fa-comment-dots btn-blink" aria-hidden="true"></i>
         <ul class="ml-1">
             <li data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Live Chat">
                 <button>

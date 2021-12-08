@@ -62,7 +62,7 @@
                     @foreach($posts as $post)
                         <div class="col-lg-6 mb-4">
                             <div class="article card border-radius-0">
-                                <div class="card-top">
+                                <div class="ratio ratio-16x9">
                                     <img class="card-img-top" src="{{ pageImage($post->photo_file) }}" alt="post">
                                 </div>
                                 <div class="card-body">
@@ -89,15 +89,6 @@
                         </div>
                     @endforeach
                 </div>
-                <ul class="pagination justify-content-center mt-4 mb-5">
-                    <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-left"></i></a></li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#"><i class="fas fa-angle-right"></i></a>
-                    </li>
-                </ul>
             </div>
             <div class="col-xl-4 sidebar">
                 <div class="search d-none d-xl-block">
@@ -216,7 +207,7 @@
                     @foreach($lastArticles as $a)
                         <div class="col-12 col-lg-6 col-xl-12">
                             <div class="mb-4 article card border-radius-0">
-                                <div>
+                                <div class="ratio ratio-16x9">
                                     <img class="card-img-top" src="{{ pageImage($a->photo_file) }}" alt="Project">
                                 </div>
                                 <div class="card-body">

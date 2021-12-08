@@ -51,7 +51,9 @@
                         </div>
                     </div>
                     <div class="shape even secondary">
-                        <div class="shape-text" onclick="location.href='#{{ $services->first_title }}';" style="cursor: pointer">
+                        <div class="shape-text"
+                             onclick="location.href='#{{ \Str::slug($services->first_title, '-') }}';"
+                             style="cursor: pointer">
                             {{ $services->first_title }}
                         </div>
                     </div>
@@ -61,7 +63,9 @@
                         </div>
                     </div>
                     <div class="shape even secondary">
-                        <div class="shape-text" onclick="location.href='#{{ $services->third_title }}';" style="cursor: pointer">
+                        <div class="shape-text"
+                             onclick="location.href='#{{ \Str::slug($services->third_title, '-') }}';"
+                             style="cursor: pointer">
                             {{ $services->third_title }}
                         </div>
                     </div>
@@ -73,27 +77,37 @@
                 </div>
                 <div class="center center2">
                     <div class="shape odd secondary">
-                        <div class="shape-text" onclick="location.href='#{{ $services->fourth_title }}';" style="cursor: pointer">
+                        <div class="shape-text"
+                             onclick="location.href='#{{ \Str::slug($services->fourth_title, '-') }}';"
+                             style="cursor: pointer">
                             {{ $services->fourth_title }}
                         </div>
                     </div>
                     <div class="shape even">
-                        <div class="shape-text" onclick="location.href='#{{ $services->fifth_title }}';" style="cursor: pointer">
+                        <div class="shape-text"
+                             onclick="location.href='#{{ \Str::slug($services->fifth_title, '-') }}';"
+                             style="cursor: pointer">
                             {{ $services->fifth_title }}
                         </div>
                     </div>
                     <div class="shape odd secondary">
-                        <div class="shape-text" onclick="location.href='#{{ $services->sixth_title }}';" style="cursor: pointer">
+                        <div class="shape-text"
+                             onclick="location.href='#{{ \Str::slug($services->sixth_title, '-') }}';"
+                             style="cursor: pointer">
                             {{ $services->sixth_title }}
                         </div>
                     </div>
                     <div class="shape even">
-                        <div class="shape-text" onclick="location.href='#{{ $services->seventh_title }}';" style="cursor: pointer">
+                        <div class="shape-text"
+                             onclick="location.href='#{{ \Str::slug($services->seventh_title, '-') }}';"
+                             style="cursor: pointer">
                             {{ $services->seventh_title }}
                         </div>
                     </div>
                     <div class="shape odd secondary">
-                        <div class="shape-text" onclick="location.href='#{{ $services->second_title }}';" style="cursor: pointer">
+                        <div class="shape-text"
+                             onclick="location.href='#{{ \Str::slug($services->second_title, '-') }}';"
+                             style="cursor: pointer">
                             {{ $services->second_title }}
                         </div>
                     </div>
@@ -101,142 +115,114 @@
             </div>
         </div>
     </section>
-    <section class="section about-section border-0 mb-0 pt-5">
-        <div class="container container-lg" id="{{ $services->first_title }}">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-lg-6 col-xl-4 mb-4">
-                    <div class="pr-5">
-                        <h2 class="font-weight-extra-bold line-height-1 mb-5">{{ $services->first_title }}</h2>
-                        <p class="lead mb-5 pb-2">{!! $services->first_details !!}</p>
-                        <div class="more-details d-inline-block mb-4">
-
-                        </div>
-                    </div>
+    <section class="section our-vision-section border-0 py-3" id="{{ \Str::slug($services->first_title, '-') }}">
+        <div class="container">
+            <div class="row justify-content-between align-items-center" id="owner-message">
+                <div class="col-lg-6 col-xl-5 mb-3">
+                    <h2>{{ $services->first_title ?? '' }}</h2>
+                    <p class="lead">
+                        {!! $services->first_details ?? '' !!}
+                    </p>
                 </div>
-                <div class="col-lg-6 col-xl-8 fluid-col-lg-6 fluid-col-xl-8">
-                    <div class="fluid-col-lg fluid-col-end text-end">
-                        <img src="{{ pageImage($services->first_image) }}" class="img-fluid" alt=""/>
-                    </div>
+                <div class="col-lg-6 col-xl-5">
+                    <img class="w-100 img-fluid" src="{{ pageImage($services->first_image) }}"
+                         alt="A message from the owners image"/>
                 </div>
             </div>
         </div>
     </section>
-    <section class="section about-section section-height-3 border-0 mb-0 pt-5">
-        <div class="container container-lg" id="{{ $services->second_title }}">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-lg-6 col-xl-8 fluid-col-xl-8 order-1 order-lg-0" style="min-height: 33vw;">
-                    <div class="fluid-col-lg fluid-col-start text-start">
-                        <img src="{{ pageImage($services->first_image) }}" class="img-fluid" alt=""/>
-                    </div>
+    <section class="section our-vision-section border-0 py-3" id="{{ \Str::slug($services->second_title, '-') }}">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-6 col-xl-5 order-1 order-lg-0">
+                    <img class="w-100 img-fluid" src="{{ pageImage($services->second_image) }}"
+                         alt="Our mission"/>
                 </div>
-                <div class="col-lg-6 col-xl-4 order-0 order-lg-1 mb-4">
-                    <div class="pr-5">
-                        <h2 class="font-weight-extra-bold line-height-1 mb-5">{{ $services->second_title }}</h2>
-                        <p class="lead mb-5 pb-2">{{ $services->second_details }}</p>
-                        <div class="more-details d-inline-block mb-4">
-
-                        </div>
-                    </div>
+                <div class="col-lg-6 col-xl-5 order-0 order-lg-1 mb-3">
+                    <h2>{{ $services->second_title ?? '' }}</h2>
+                    <p class="lead">
+                        {!! $services->second_title ?? '' !!}
+                    </p>
                 </div>
             </div>
         </div>
     </section>
-    <section class="section about-section border-0 mb-0 pt-5">
-        <div class="container container-lg" id="{{ $services->third_title }}">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-lg-6 col-xl-4 mb-4">
-                    <div class="pr-5">
-                        <h2 class="font-weight-extra-bold line-height-1 mb-5">{{ $services->third_title }}</h2>
-                        <p class="lead mb-5 pb-2">{!! $services->third_details !!}</p>
-                        <div class="more-details d-inline-block mb-4">
-
-                        </div>
-                    </div>
+    <section class="section our-vision-section border-0 py-3" id="{{ \Str::slug($services->third_title, '-') }}">
+        <div class="container">
+            <div class="row justify-content-between align-items-center" id="owner-message">
+                <div class="col-lg-6 col-xl-5 mb-3">
+                    <h2>{{ $services->third_title ?? '' }}</h2>
+                    <p class="lead">
+                        {!! $services->third_details ?? '' !!}
+                    </p>
                 </div>
-                <div class="col-lg-6 col-xl-8 fluid-col-lg-6 fluid-col-xl-8">
-                    <div class="fluid-col-lg fluid-col-end text-end">
-                        <img src="{{ pageImage($services->third_image) }}" class="img-fluid" alt=""/>
-                    </div>
+                <div class="col-lg-6 col-xl-5">
+                    <img class="w-100 img-fluid" src="{{ pageImage($services->third_image) }}"
+                         alt="A message from the owners image"/>
                 </div>
             </div>
         </div>
     </section>
-    <section class="section about-section section-height-3 border-0 mb-0 pt-5">
-        <div class="container container-lg" id="{{ $services->fourth_title }}">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-lg-6 col-xl-8 fluid-col-xl-8 order-1 order-lg-0" style="min-height: 33vw;">
-                    <div class="fluid-col-lg fluid-col-start text-start">
-                        <img src="{{ pageImage($services->fourth_image) }}" class="img-fluid" alt=""/>
-                    </div>
+    <section class="section our-vision-section border-0 py-3" id="{{ \Str::slug($services->fourth_title, '-') }}">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-6 col-xl-5 order-1 order-lg-0">
+                    <img class="w-100 img-fluid" src="{{ pageImage($services->fourth_image) }}"
+                         alt="Our mission"/>
                 </div>
-                <div class="col-lg-6 col-xl-4 order-0 order-lg-1 mb-4">
-                    <div class="pr-5">
-                        <h2 class="font-weight-extra-bold line-height-1 mb-5">{{ $services->fourth_title }}</h2>
-                        <p class="lead mb-5 pb-2">{{ $services->fourth_details }}</p>
-                        <div class="more-details d-inline-block mb-4">
-
-                        </div>
-                    </div>
+                <div class="col-lg-6 col-xl-5 order-0 order-lg-1 mb-3">
+                    <h2>{{ $services->fourth_title ?? '' }}</h2>
+                    <p class="lead">
+                        {!! $services->fourth_details ?? '' !!}
+                    </p>
                 </div>
             </div>
         </div>
     </section>
-    <section class="section about-section border-0 mb-0 pt-5">
-        <div class="container container-lg" id="{{ $services->fifth_title }}">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-lg-6 col-xl-4 mb-4">
-                    <div class="pr-5">
-                        <h2 class="font-weight-extra-bold line-height-1 mb-5">{{ $services->fifth_title }}</h2>
-                        <p class="lead mb-5 pb-2">{!! $services->fifth_details !!}</p>
-                        <div class="more-details d-inline-block mb-4">
-
-                        </div>
-                    </div>
+    <section class="section our-vision-section border-0 py-3" id="{{ \Str::slug($services->fifth_title, '-') }}">
+        <div class="container">
+            <div class="row justify-content-between align-items-center" id="owner-message">
+                <div class="col-lg-6 col-xl-5 mb-3">
+                    <h2>{{ $services->fifth_title ?? '' }}</h2>
+                    <p class="lead">
+                        {!! $services->fifth_details ?? '' !!}
+                    </p>
                 </div>
-                <div class="col-lg-6 col-xl-8 fluid-col-lg-6 fluid-col-xl-8">
-                    <div class="fluid-col-lg fluid-col-end text-end">
-                        <img src="{{ pageImage($services->fifth_image) }}" class="img-fluid" alt=""/>
-                    </div>
+                <div class="col-lg-6 col-xl-5">
+                    <img class="w-100 img-fluid" src="{{ pageImage($services->fifth_image) }}"
+                         alt="A message from the owners image"/>
                 </div>
             </div>
         </div>
     </section>
-    <section class="section about-section section-height-3 border-0 mb-0 pt-5">
-        <div class="container container-lg" id="{{ $services->sixth_title }}">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-lg-6 col-xl-8 fluid-col-xl-8 order-1 order-lg-0" style="min-height: 33vw;">
-                    <div class="fluid-col-lg fluid-col-start text-start">
-                        <img src="{{ pageImage($services->sixth_image) }}" class="img-fluid" alt=""/>
-                    </div>
+    <section class="section our-vision-section border-0 py-3" id="{{ \Str::slug($services->sixth_title, '-') }}">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-6 col-xl-5 order-1 order-lg-0">
+                    <img class="w-100 img-fluid" src="{{ pageImage($services->sixth_image) }}"
+                         alt="Our mission"/>
                 </div>
-                <div class="col-lg-6 col-xl-4 order-0 order-lg-1 mb-4">
-                    <div class="pr-5">
-                        <h2 class="font-weight-extra-bold line-height-1 mb-5">{{ $services->sixth_title }}</h2>
-                        <p class="lead mb-5 pb-2">{{ $services->sixth_details }}</p>
-                        <div class="more-details d-inline-block mb-4">
-
-                        </div>
-                    </div>
+                <div class="col-lg-6 col-xl-5 order-0 order-lg-1 mb-3">
+                    <h2>{{ $services->sixth_title ?? '' }}</h2>
+                    <p class="lead">
+                        {!! $services->sixth_details ?? '' !!}
+                    </p>
                 </div>
             </div>
         </div>
     </section>
-    <section class="section about-section border-0 mb-0 pt-5">
-        <div class="container container-lg" id="{{ $services->seventh_title }}">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-lg-6 col-xl-4 mb-4">
-                    <div class="pr-5">
-                        <h2 class="font-weight-extra-bold line-height-1 mb-5">{{ $services->seventh_title }}</h2>
-                        <p class="lead mb-5 pb-2">{!! $services->seventh_details !!}</p>
-                        <div class="more-details d-inline-block mb-4">
-
-                        </div>
-                    </div>
+    <section class="section our-vision-section border-0 py-3" id="{{ \Str::slug($services->seventh_title, '-') }}">
+        <div class="container">
+            <div class="row justify-content-between align-items-center" id="owner-message">
+                <div class="col-lg-6 col-xl-5 mb-3">
+                    <h2>{{ $services->seventh_title ?? '' }}</h2>
+                    <p class="lead">
+                        {!! $services->seventh_details ?? '' !!}
+                    </p>
                 </div>
-                <div class="col-lg-6 col-xl-8 fluid-col-lg-6 fluid-col-xl-8">
-                    <div class="fluid-col-lg fluid-col-end text-end">
-                        <img src="{{ pageImage($services->seventh_image) }}" class="img-fluid" alt=""/>
-                    </div>
+                <div class="col-lg-6 col-xl-5">
+                    <img class="w-100 img-fluid" src="{{ pageImage($services->seventh_image) }}"
+                         alt="A message from the owners image"/>
                 </div>
             </div>
         </div>
