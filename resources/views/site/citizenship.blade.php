@@ -69,22 +69,6 @@
                     <div class="card">
                         <div class="card-body text-center">
                             <div class="card-number">01</div>
-                            <p class="card-text line-height-3">Opening a Turkish Bank Account</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="investment col-md-6 col-lg-4 mb-5 px-5 px-md-4 px-xl-5">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <div class="card-number">02</div>
-                            <p class="card-text line-height-3">Opening a Turkish Bank Account</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="investment col-md-6 col-lg-4 mb-5 px-5 px-md-4 px-xl-5">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <div class="card-number">03</div>
                             <p class="card-text line-height-3">Finding the Property</p>
                         </div>
                     </div>
@@ -92,7 +76,7 @@
                 <div class="investment col-md-6 col-lg-4 mb-5 px-5 px-md-4 px-xl-5">
                     <div class="card">
                         <div class="card-body text-center">
-                            <div class="card-number">04</div>
+                            <div class="card-number">02</div>
                             <p class="card-text line-height-3">Buying the Property</p>
                         </div>
                     </div>
@@ -100,7 +84,7 @@
                 <div class="investment col-md-6 col-lg-4 mb-5 px-5 px-md-4 px-xl-5">
                     <div class="card">
                         <div class="card-body text-center">
-                            <div class="card-number">05</div>
+                            <div class="card-number">03</div>
                             <p class="card-text line-height-3">Obtaining the Certificate of Conformity</p>
                         </div>
                     </div>
@@ -108,7 +92,7 @@
                 <div class="investment col-md-6 col-lg-4 mb-5 px-5 px-md-4 px-xl-5">
                     <div class="card">
                         <div class="card-body text-center">
-                            <div class="card-number">06</div>
+                            <div class="card-number">04</div>
                             <p class="card-text line-height-3">Application for Turkish Residency</p>
                         </div>
                     </div>
@@ -116,7 +100,7 @@
                 <div class="investment col-md-6 col-lg-4 mb-5 px-5 px-md-4 px-xl-5">
                     <div class="card">
                         <div class="card-body text-center">
-                            <div class="card-number">07</div>
+                            <div class="card-number">05</div>
                             <p class="card-text line-height-3">Application For Turkish Citizenship</p>
                         </div>
                     </div>
@@ -124,6 +108,9 @@
             </div>
         </div>
     </section>
+    <div class="container">
+        <hr class="bg-color-grey-scale-3 mt-5">
+    </div>
     <section class="section section-height-2 border-0 mb-0 pt-5">
         <div class="container container-lg">
             <div class="row justify-content-center">

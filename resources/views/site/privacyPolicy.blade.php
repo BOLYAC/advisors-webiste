@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.simple')
 @section('seo_header')
     {!! SEO::generate() !!}
 @endsection
@@ -13,7 +13,7 @@
 @endsection
 
 @section('content')
-    <section class="page-header page-header-modern page-header-background page-header-background-sm mb-5" style="background-image: url({{ asset('img/background.jpg') }});">
+    <section class="page-header page-header-modern page-header-background page-header-background-sm mb-5" style="background-image: url({{ asset('sites/img/background.jpg') }});">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 align-self-center p-static order-2 text-center">
@@ -49,7 +49,7 @@
         </div>
 
     </div>
-    <section class="section wwa-section border-0 mt-5 py-4" style="background-image: url({{ asset('img/wwa.jpg') }});">
+    <section class="section wwa-section border-0 mt-5 py-4" style="background-image: url({{ asset('sites/img/wwa.jpg') }});">
         <div class="container container-lg">
             <div class="row align-items-end justify-content-between">
                 <div class="col-sm-6">

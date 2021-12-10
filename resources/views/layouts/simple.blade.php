@@ -63,7 +63,10 @@
 {{--    @include('cookie-consent::index')--}}
 </div>
 <script src="{{ asset('sites/js/app.js') }}" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
 <script type="text/javascript">
+    const observer = lozad();
+    observer.observe();
 // $(document).ready(function () {
 //     //to disable the entire page
 //     $("body").on("contextmenu",function(e){

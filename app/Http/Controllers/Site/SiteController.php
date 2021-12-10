@@ -30,7 +30,7 @@ class SiteController extends Controller
         $sections = \App\Models\Section::all();
         $projects = \App\Models\Project::where('featured', true)->get()->take(6);
         $citizenProjects = \App\Models\Project::where('citizen_status', true)->get()->take(6);
-        $posts = \App\Models\Post::all();
+        $posts = \App\Models\Post::latest()->take(6)->get();
         $citizenPosts = \App\Models\Post::where('citizen_status', true)->get()->take(6);
         $testimonials = \App\Models\Testimonial::where('status', true)->orderBy('row_no')->get();
         $stories = \App\Models\InstaStory::where('status', true)->orderBy('row_no')->get();
@@ -98,7 +98,7 @@ class SiteController extends Controller
             }
         }
 
-        $projects = $projects->paginate(6);
+        $projects = $projects->paginate(9);
 
 
         return view('site.projects', compact('projects', 'features', 'sections', 'popProjects', 'topic'))
