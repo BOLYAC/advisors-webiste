@@ -51,9 +51,8 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-12">
-                                            <label
-                                                for="js-ckeditor_{{$locale}}">{{ __('About us details') . " " ."(" . $locale . ")" }} </label>
-                                            <textarea class="form-control"
+                                            <label>{{ __('About us details') . " " ."(" . $locale . ")" }} </label>
+                                            <textarea class="form-control js-summernote"
                                                       name="{{$locale}}[about_us_details]">{!! optional($aboutPage->translate($locale))->about_us_details !!}</textarea>
                                         </div>
                                     </div>
@@ -67,9 +66,8 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-12">
-                                            <label
-                                                for="js-ckeditor_{{$locale}}">{{ __('a message from the owners details') . " " ."(" . $locale . ")" }} </label>
-                                            <textarea class="form-control"
+                                            <label>{{ __('a message from the owners details') . " " ."(" . $locale . ")" }} </label>
+                                            <textarea class="form-control js-summernote"
                                                       name="{{$locale}}[a_message_from_the_owners_details]">{!! optional($aboutPage->translate($locale))->a_message_from_the_owners_details !!}</textarea>
                                         </div>
                                     </div>
@@ -83,9 +81,8 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-12">
-                                            <label
-                                                for="js-ckeditor_{{$locale}}">{{ __('Our mission details') . " " ."(" . $locale . ")" }} </label>
-                                            <textarea class="form-control"
+                                            <label>{{ __('Our mission details') . " " ."(" . $locale . ")" }} </label>
+                                            <textarea class="form-control js-summernote"
                                                       name="{{$locale}}[our_mission_details]">{!! optional($aboutPage->translate($locale))->our_mission_details !!}</textarea>
                                         </div>
                                     </div>
@@ -99,9 +96,8 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-12">
-                                            <label
-                                                for="js-ckeditor_{{$locale}}">{{ __('Our vision details') . " " ."(" . $locale . ")" }} </label>
-                                            <textarea class="form-control"
+                                            <label>{{ __('Our vision details') . " " ."(" . $locale . ")" }} </label>
+                                            <textarea class="form-control js-summernote"
                                                       name="{{$locale}}[our_vision_details]">{!! optional($aboutPage->translate($locale))->our_vision_details !!}</textarea>
                                         </div>
                                     </div>
@@ -115,9 +111,8 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-12">
-                                            <label
-                                                for="js-ckeditor_{{$locale}}">{{ __('Team details') . " " ."(" . $locale . ")" }} </label>
-                                            <textarea class="form-control"
+                                            <label>{{ __('Team details') . " " ."(" . $locale . ")" }} </label>
+                                            <textarea class="form-control js-summernote"
                                                       name="{{$locale}}[team_details]">{!! optional($aboutPage->translate($locale))->team_details !!}</textarea>
                                         </div>
                                     </div>
@@ -191,7 +186,8 @@
                                 </div>
                                 <div class="col-10 mx-auto mt-5">
                                     @if ( $aboutPage->a_message_from_the_owners_image ?? '' !== null)
-                                        <img src="{{ pageImage( $aboutPage->a_message_from_the_owners_image ?? '' ) }}" id="faviconImg"
+                                        <img src="{{ pageImage( $aboutPage->a_message_from_the_owners_image ?? '' ) }}"
+                                             id="faviconImg"
                                              style="width: 80px; height: auto;">
                                     @else
                                         <img src="https://via.placeholder.com/80x80?text=Placeholder+Image"
@@ -280,13 +276,13 @@
 @endsection
 
 @section('js_after')
+    <!-- Page JS Plugins -->
     <script src="{{ asset('js/plugins/summernote/summernote-bs4.min.js') }}"></script>
+    <script src="{{ asset('js/plugins/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('js/plugins/simplemde/simplemde.min.js') }}"></script>
     <script>
         jQuery(function () {
-            Codebase.helpers('summernote');
-            @foreach(LaravelLocalization::getSupportedLocales() as $locale => $properties)
-            $('.js_summernote_{{ $locale }}').summernote();
-            @endforeach
+            Codebase.helpers(['summernote', 'ckeditor', 'simplemde']);
         });
     </script>
 @endsection

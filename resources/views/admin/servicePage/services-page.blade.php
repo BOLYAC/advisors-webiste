@@ -361,19 +361,13 @@
 @endsection
 
 @section('js_after')
-    <script src="{{ asset('js/plugins/ckeditor/ckeditor.js') }}"></script>
     <!-- Page JS Plugins -->
     <script src="{{ asset('js/plugins/summernote/summernote-bs4.min.js') }}"></script>
     <script src="{{ asset('js/plugins/ckeditor/ckeditor.js') }}"></script>
     <script src="{{ asset('js/plugins/simplemde/simplemde.min.js') }}"></script>
-    <script>jQuery(function () {
-            Codebase.helpers(['summernote', 'ckeditor', 'simplemde']);
-        });</script>
     <script>
-        {{--jQuery(function () {--}}
-        {{--    @foreach(LaravelLocalization::getSupportedLocales() as $locale => $properties)--}}
-        {{--    CKEDITOR.replace('js-ckeditor_{{ $locale }}');--}}
-        {{--    @endforeach--}}
-        {{--});--}}
+        jQuery(function () {
+            Codebase.helpers(['summernote', 'ckeditor', 'simplemde']);
+        });
     </script>
 @endsection
