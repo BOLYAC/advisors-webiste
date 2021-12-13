@@ -14,12 +14,15 @@
     <script src="{{ asset('sites/js/articles.js') }}" type="text/javascript"></script>
     <script type="text/javascript">
         window.$ = window.jQuery = $;
+        const hasSupport = 'loading' in HTMLImageElement.prototype;
+        document.documentElement.className = hasSupport ? 'pass' : 'fail';
+        document.querySelector('span').textContent = hasSupport;
     </script>
 @endsection
 
 @section('content')
     <section class="page-header page-header-modern page-header-background page-header-background-sm mb-5"
-             style="background-image: url({{ asset('img/background.jpg') }});">
+             style="background-image: url({{ asset('sites/img/background.jpg') }});">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 align-self-center p-static order-2 text-center">
@@ -63,7 +66,8 @@
                         <div class="col-lg-6 mb-4">
                             <div class="article card border-radius-0">
                                 <div class="ratio ratio-16x9">
-                                    <img class="card-img-top" src="{{ pageImage($post->photo_file) }}" alt="post">
+                                    <img src="{{ pageImage($post->photo_file) }}" class="card-img-top" loading="lazy"
+                                         alt="{{ $post->title }}">
                                 </div>
                                 <div class="card-body">
                                     <div class="article-date"><i

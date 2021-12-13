@@ -116,7 +116,7 @@
 @endsection
 
 @section('content')
-    <section class="page-header page-header-modern page-header-background page-header-background-sm mb-5"
+    <section class="page-header page-header-modern page-header-background page-header-background-sm"
              style="background-image: url({{ asset('sites/img/background.jpg') }});">
         <div class="container">
             <div class="row">
@@ -135,7 +135,7 @@
             </div>
         </div>
     </section>
-    <section class="section search-form-section section-no-background my-0">
+    <section class="section search-form-section section-no-background my-0 pt-0" style="padding-top: 0!important;">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-xl-3 mb-3">
@@ -226,7 +226,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-1-5">
+                        <div class="col-md-6 col-lg-1-5 areas-col">
                             <button class="areas-dropdown btn dropdown-toggle text-center" type="button" id="areasMenu"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fas fa-map-marker-alt text-secondary me-1"></i> Area
@@ -562,6 +562,7 @@
                 </div>
             </div>
         </div>
+        <hr>
     </section>
     <div class="scrolling-pagination">
         <section class="section projects-section my-0">

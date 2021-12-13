@@ -43,14 +43,14 @@
 <!-- facebook -->
     {{ config('settings.facebook_pixels') }}
     <style media="screen">
-    body {
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
+        body {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
     </style>
 </head>
 <body>
@@ -60,23 +60,38 @@
     @yield('content')
     @include('site.includes.footer')
     @include('site.includes.sideButtons')
-{{--    @include('cookie-consent::index')--}}
+    @include('cookieConsent::index')
+    {{--    @include('cookie-consent::index')--}}
 </div>
 <script src="{{ asset('sites/js/app.js') }}" type="text/javascript"></script>
-<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
 <script type="text/javascript">
-    const observer = lozad();
-    observer.observe();
-// $(document).ready(function () {
-//     //to disable the entire page
-//     $("body").on("contextmenu",function(e){
-//         return false;
-//     });
-//
-//     $('body').bind('cut copy paste', function (e) {
-//         e.preventDefault();
-//     });
-// });
+    // Banner Trigger if Not Closed
+    if (!localStorage.bannerClosed) {
+        $('.privacy-banner').css('display', 'inherit');
+    } else {
+        $('.privacy-banner').css('display', 'none');
+    }
+    $('.privacy-banner button').click(function () {
+        $('.privacy-banner').css('display', 'none');
+        localStorage.bannerClosed = 'true';
+    });
+    $('.banner-accept').click(function () {
+        $('.privacy-banner').css('display', 'none');
+        localStorage.bannerClosed = 'true';
+    });
+    if (navigator.userAgent.match(/Opera|OPR\//)) {
+        $('.privacy-banner').css('display', 'inherit');
+    }
+    // $(document).ready(function () {
+    //     //to disable the entire page
+    //     $("body").on("contextmenu",function(e){
+    //         return false;
+    //     });
+    //
+    //     $('body').bind('cut copy paste', function (e) {
+    //         e.preventDefault();
+    //     });
+    // });
 </script>
 @yield('javascripts')
 </body>

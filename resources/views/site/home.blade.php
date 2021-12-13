@@ -63,7 +63,7 @@
                              data-basealign="grid"
                              style="z-index: 5"
                              data-mask_in="x:0px;y:0px;">
-                            <a class="btn btn-secondary btn-blink p-3"
+                            <a class="btn btn-secondary btn-blink p-2"
                                href="{{ $banner->link_url }}">{{ __('messages.more_details') }} <span
                                     class="arrow1 is-triangle arrow-bar is-right"></span></a>
                         </div>
