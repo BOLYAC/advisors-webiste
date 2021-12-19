@@ -1,6 +1,6 @@
 <header id="header" class="header-effect-shrink"
         data-plugin-options="{'headerContainerHeight': 130, 'stickyEnabled': false, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyChangeLogo': true, 'stickyStartAt': 30, 'stickyHeaderContainerHeight': 130}">
-    <div class="header-body border-top-0" style="background-image: url({{ asset('img/header_bg.jpg') }})">
+    <div class="header-body border-top-0" style="background-image: url({{ asset('sites/img/header_bg.jpg') }})">
         <div class="header-container container">
             <div class="header-row">
                 <div class="header-column order-0">

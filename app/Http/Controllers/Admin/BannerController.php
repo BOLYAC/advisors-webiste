@@ -63,6 +63,7 @@ class BannerController extends Controller
 
         $request_data['row_no'] = $next_nor_no;
         $request_data['status'] = $request->has('status') ? 1 : 0;
+        $request_data['video_type'] = $request->has('video_type') ? 1 : 0;
         $request_data['visits'] = 0;
         $request_data['created_by'] = Auth::id();
 
@@ -132,6 +133,7 @@ class BannerController extends Controller
         // create new topic
         $request_data['updated_by'] = Auth::id();
         $request_data['status'] = $request->has('status') ? 1 : 0;
+        $request_data['video_type'] = $request->has('video_type') ? 1 : 0;
 
         $banner->update($request_data);
         return redirect()->route('banners.index')->withSuccess(__('Banner updated Successfully!'));

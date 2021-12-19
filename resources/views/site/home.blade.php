@@ -31,11 +31,53 @@
         <div id="revolutionSlider" class="slider rev_slider" data-version="5.4.8" data-plugin-revolution-slider
              data-plugin-options="{ 'gridwidth': 1200, 'gridheight':760, 'disableProgressBar': 'on', 'navigation': {'arrows': {'enable': true, 'hide_onmobile': true, 'style': 'gyges', 'left': { 'h_offset': 100 }, 'right': { 'h_offset': 100 } }, 'bullets': {'enable' : false} }}">
             <ul>
+                <li data-transition="fade" class="slide slide1">
+                    <img
+                        src="{{ asset('sites/img/slides/slide1/background.jpg')  }}"
+                        alt="slide background"
+                        class="rev-slidebg"/>
+                    <div class="tp-caption tp-resizeme fullscreenvideo tp-videolayer"
+                         id="slide-3018-layer-3"
+                         data-x="0"
+                         data-y="0"
+                         data-type="video"
+                         data-responsive_offset="on"
+                         data-frames='[{"speed":1000,"to":"o:1;","delay":0,"ease":"Power1.easeInOut"},{"delay":"wait","speed":1000,"ease":"nothing"}]'
+                         data-ytid="eV6lTEY95yY"
+                         data-videoattributes="autoplay=1&amp;loop=1&amp;controls=0&amp;version=3&amp;enablejsapi=1&amp;html5=1&amp;mute=1&amp;hd=1&wmode=opaque&showinfo=0&ref=0&amp;origin=http://www.turkeyadvisors.com;"
+                         data-videorate="1"
+                         data-videowidth="100%"
+                         data-videoheight="100%"
+                         data-videocontrols="controls"
+                         data-videoloop="loop"
+                         data-forceCover="1"
+                         data-aspectratio="16:9"
+                         data-autoplay="true"
+                         data-autoplayonlyfirsttime="false"
+                         data-nextslideatend="true"
+                         data-volume="100"
+                         data-forcerewind="on">
+                    </div>
+                    <div class="tp-caption slide-text"
+                         data-x="{{ App::getLocale() == 'ar' ? 'right' : 'left'}}"
+                         data-hoffset="{{ App::getLocale() == 'ar' ? '-740' : '40'}}"
+                         data-y="top" data-voffset="430"
+                         data-width="800"
+                         data-start="800"
+                         data-whitespace="nowrap"
+                         data-transform_in="y:100%;s:400;"
+                         data-transform_out="opacity:0;s:1000;"
+                         data-basealign="grid"
+                         style="z-index: 5"
+                         data-mask_in="x:0px;y:0px;">
+                    </div>
+                </li>
                 @foreach($banners as $banner)
                     <li data-transition="fade" class="slide slide1">
-                        <img src="{{ pageImage($banner->youtube_link) }}"
-                             alt="slide background"
-                             class="rev-slidebg"/>
+                        <img
+                            src="{{ ($banner->vide_type === true ? asset('sites/img/slides/slide1/background.jpg') : pageImage($banner->youtube_link) ) }}"
+                            alt="slide background"
+                            class="rev-slidebg"/>
                         <div class="tp-caption slide-text"
                              data-x="{{ App::getLocale() == 'ar' ? 'right' : 'left'}}"
                              data-hoffset="{{ App::getLocale() == 'ar' ? '-740' : '40'}}"
@@ -69,6 +111,7 @@
                         </div>
                     </li>
                 @endforeach
+
             </ul>
         </div>
     </div>
@@ -680,14 +723,12 @@
             </div>
         </div>
     </section>
-    <section class="section citizenship-section my-0">
+    <section class="section citizenship-section section-height-4"
+             style="background-image: url({{ asset('sites/img/citizenship-bg.jpg') }})">
         <div class="container">
             <div class="row align-items-center gx-5">
-                <div class="col-lg-7">
-                    <img src="{{ asset('sites/img/turkish_citizenship.jpg') }}" alt="Turkish citizenship" class="w-100">
-                </div>
-                <div class="col-lg-5">
-                    <h3 class="section-title text-light mb-0">Turkish Citizenship</h3>
+                <div class="col-lg-8 col-xl-6">
+                    <h3 class="section-title text-red mb-0">Turkish Citizenship</h3>
                     <span class="section-sub-title text-6 text-light d-block mb-4">By Investment Programme</span>
                     <p class="text-light">You can apply for Turkish citizenship by speculation whenever you have put at
                         least $250,000 in private or business property in Turkey. Your companion and your childern

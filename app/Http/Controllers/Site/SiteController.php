@@ -411,7 +411,7 @@ class SiteController extends Controller
             $topic->visits = $topic->visits + 1;
             $topic->save();
         }
-        return view('site.services', compact('services'));
+        return view('site.services', compact('services', 'topic'));
     }
 
     public function service()

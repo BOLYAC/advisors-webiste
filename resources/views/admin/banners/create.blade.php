@@ -75,7 +75,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="row">
+
+                    </div>
+                    <div class="form-group col-6 row">
                         <label for="status" class="col-12">{{ __('Status') }}</label>
                         <div class="col-12">
                             <label class="css-control css-control-success css-switch">
@@ -85,7 +88,16 @@
                             </label>
                         </div>
                     </div>
-
+                    <div class="form-group col-6 row">
+                        <label for="status" class="col-12">{{ __('Video') }}</label>
+                        <div class="col-12">
+                            <label class="css-control css-control-success css-switch">
+                                <input type="checkbox" class="css-control-input" id="status"
+                                       name="video_type">
+                                <span class="css-control-indicator"></span>
+                            </label>
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <div class="col-6">
                             <a href="{{ url()->previous() }}" class="btn btn-alt-danger">

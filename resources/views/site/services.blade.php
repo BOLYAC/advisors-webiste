@@ -39,8 +39,10 @@
     <section class="section section-height-2 border-0 mb-0 py-5">
         <div class="container container-lg mb-lg-5">
             <div class="row justify-content-center">
-                <div class="col-lg-7 col-xl-6 text-center mb-5">
+                <div class="text-left mb-5">
                     {{--                    <h2 class="font-weight-extra-bold line-height-4 mb-5">Required Documents for the program.</h2>--}}
+                    <div class="lead">
+                        {!! $topic->details !!}</div>
                 </div>
             </div>
             <div class="beehive pb-lg-5">
@@ -139,7 +141,7 @@
                 <div class="col-lg-6 col-xl-5 order-0 order-lg-1 mb-3">
                     <h2>{{ $services->second_title ?? '' }}</h2>
                     <div class="lead">
-                        {!! $services->second_title ?? '' !!}
+                        {!! $services->second_details ?? '' !!}
                     </div>
                 </div>
             </div>

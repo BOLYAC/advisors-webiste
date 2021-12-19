@@ -17,6 +17,7 @@ class Banner extends Model implements TranslatableContract
 
     protected $casts = [
         'status' => 'boolean',
+        'video_type' => 'boolean'
     ];
 
     public function delete()
