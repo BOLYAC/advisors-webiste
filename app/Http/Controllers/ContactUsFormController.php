@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 
 class ContactUsFormController extends Controller
@@ -26,6 +27,8 @@ class ContactUsFormController extends Controller
 
         $request_data = $request->except('_token');
         $request_data['subject'] = $request->header('User-Agent');
+        // Send form to the CRM
+        $response = Http::asForm()->post('https://winalco-web.app/web-hook/wbInquiries', $request_data);
         //  Store data in database
         Contact::create($request_data);
 

@@ -19,7 +19,7 @@
 
 @section('content')
     <section class="page-header page-header-modern page-header-background page-header-background-sm mb-5"
-             style="background-image: url({{ asset('img/background.jpg') }});">
+             style="background-image: url({{ asset('sites/img/background.jpg') }});">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 align-self-center p-static order-2 text-center">
@@ -205,7 +205,7 @@
                     @endforeach
                 </div>
                 <section class="section wwa-section border-0 my-5 px-3 py-4"
-                         style="background-image: url({{ asset('img/wwa.jpg') }});">
+                         style="background-image: url({{ asset('sites/img/wwa.jpg') }});">
                     <div class="container container-lg">
                         <div class="row align-items-end justify-content-between">
                             <div class="col-12">

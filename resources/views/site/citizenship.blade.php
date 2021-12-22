@@ -239,7 +239,7 @@
         <div class="container container-lg">
             <div class="row justify-content-center">
                 <div class="col-lg-7 col-xl-6 text-center mb-4">
-                    <h2 class="font-weight-extra-bold line-height-4">Turkish Citizenship by Investment Program:</h2>
+                    <h2 class="font-weight-extra-bold line-height-4">Turkish Citizenship by Investment Program</h2>
                 </div>
             </div>
             <section class="section our-vision-section border-0 py-3">
@@ -247,18 +247,16 @@
                     <div class="row justify-content-between align-items-center" id="description">
                         <div class="col-lg-6 col-xl-5 mb-3">
                             <p style="font-size:1.5em;line-height:1.6em;">
-                                In 2017 the Turkish government published the first Turkish citizenship program for
-                                foreigners’ draft, the law gave eligibility to foreigners who are interested in Turkish
-                                Citizenship to obtain citizenship by investing in 1 million dollars, the foreign
-                                investors would be eligible to pass it to his family, wife, and children under 18, but
-                                there was no sufficient demanding, therefore the Turkish parliament got the matter of
-                                re-studying the law into consideration, therefore the costs’ value adjusted to 500,000 $
-                                in the same year, until 2018, the law of Turkish citizenship program for foreigners been
-                                fixed and become under processing, and the amount fixed to 250,000 $, Since the 2018 and
-                                until today, 77,000 applications been released.
-                                The law is offering several different options, by taking into consideration the
-                                difference between global investors' aspirations in investment in Turkey.
-                                The types of Turkish citizenship applications:
+                                - In 2017, the Turkish government published the first Turkish citizenship program for foreign investors.
+                                The law gives eligibility to foreigners who are interested in Turkish Citizenship to obtain Turkish nationality;
+                                by investing in 1 million dollars, the foreign investors would be eligible to pass it to his family (wife and children under 18).
+                                Still, there was no sufficient demand, due to the high budget.<br>
+                                - Therefore, the Turkish parliament got the matter of re-studying the law into consideration, accordingly, the costs'
+                                value adjusted to 500,000 $ in the same year, until 2018, the direction of the Turkish citizenship program for foreigners been fixed and become under processing,
+                                this time the amount set to 250,000 $, Since the 2018 and until today, 77,000 applications been released.
+                                The law offers several different options by considering the differences between global investors'
+                                aspirations in investment in Turkey. Here are the different types of Turkish citizenship applications:
+
                             </p>
                         </div>
                         <div class="col-lg-6 col-xl-5">
@@ -283,11 +281,11 @@
                         By buying one or multiple real estates assets in any desirable Turkish City, with
                         <strong>250,000$</strong>, you are eligible to submit your application, by getting the
                         title deed of the
-                        property, too (Department of Immigration and Passports?!), with additional legal
-                        required papers for your application, and from here on your application will take from 2
+                        property, too (Department of Immigration and Passports?!), with additional
+                        <a href="https://winalco-web.app/services#legal-executive-stage" target="_blank"><b><u> legal
+                                required papers</u></b></a>,
+                         for your application, and from here on your application will take from 2
                         to 3 months maximum.
-                        By clicking on the underlined phrase, the screen scroll down itself to the section of
-                        the required legal papers
                     </div>
                 </div>
             </div>
@@ -302,7 +300,8 @@
                         By <strong> depositing 500,000 $ </strong> in any Turkish bank, whether private or
                         governmental Turkish
                         bank, you are eligible to submit your application, by getting the Bank deposit receipt
-                        to (Department of Immigration and Passports?!), with additional legal required papers
+                        to, with additional <a href="https://winalco-web.app/services#legal-executive-stage" target="_blank"><b><u> legal
+                                required papers</u></b>,</a>
                         for your application, and from here on your application will take from 2 to 3 months
                         maximum.
                     </div>
@@ -331,8 +330,8 @@
                         work, what is matter in this section of the law, Is to create 50 job opportunities for
                         50 Turkish citizens
                         By getting both the registration number and the tax, you are eligible to submit your
-                        application to (Department of Immigration and Passports?!), with additional legal
-                        required papers for your application, and from here on your application will take from 2
+                        application to, with additional <a href="https://winalco-web.app/services#legal-executive-stage" target="_blank"><b><u> legal
+                                    required papers</u></b>,</a> for your application, and from here on your application will take from 2
                         to 3 months maximum.
                     </div>
                 </div>

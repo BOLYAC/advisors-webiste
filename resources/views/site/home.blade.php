@@ -49,7 +49,7 @@
                          data-videowidth="100%"
                          data-videoheight="100%"
                          data-videocontrols="controls"
-                         data-videoloop="loop"
+                         data-videoloop="loopandnoslidestop"
                          data-forceCover="1"
                          data-aspectratio="16:9"
                          data-autoplay="true"
