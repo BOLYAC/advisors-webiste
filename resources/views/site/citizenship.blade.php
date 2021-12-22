@@ -45,14 +45,20 @@
                 </div>
                 <div class="col-lg-6 text-center">
                     <h2 class="font-weight-extra-bold line-height-3 mb-4">Turkish Citizenship by Investment Program</h2>
-                    <p class="lead">The Turkish government is granting Turkish citizenship for foreigners, the law gave
-                        eligibility to foreigners who are interested in Turkish Citizenship, by investing in <strong>250.000
-                            $</strong>,
-                        the foreign investors would be eligible to pass it to his family, wife, and children under 18.
-                        the law and the procedure of obtaining Turkish citizenship are obtainable within 3 different
-                        programs, for more information <a href="#description"
-                                                          style="background-color: rgb(255, 255, 255);"><b><u>scroll
-                                    down.</u></b></a></p>
+                    <p class="lead"> The Turkish government is granting Turkish citizenship to foreigners, the law gave
+                        eligibility to
+                        foreigners who are interested in Turkish Citizenship, by offering several options.
+                        However, the government facilities the procedures for real estate investors who are interested
+                        in
+                        investing in Turkey, By buying real estate properties with <strong>250.000 $ </strong>meanwhile
+                        obtaining Turkish
+                        nationality, the foreign investor would be eligible to pass it to family, wife, and children
+                        under
+                        18.
+                        The law and the procedure of acquiring Turkish citizenship are attainable within additional
+                        different 3 different programs, for more information
+                        <a href="#description" style="background-color: rgb(255, 255, 255);"><b><u>scroll down.</u></b></a>
+                    </p>
                 </div>
             </div>
         </div>
@@ -122,7 +128,8 @@
             <div class="row justify-content-center gx-5 gx-lg-4 gx-xl-5">
                 <div class="type col-md-6 col-lg-4 col-xxl-3 text-center mb-4">
                     <div class="card">
-                        <div class="card-body text-center">
+                        <div class="card-body text-center" onclick="location.href='#first-one';"
+                             style="cursor: pointer">
                             <span class="icon-border mb-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40.305"><defs></defs><g
                                         transform="translate(0 -0.003)"><path class="a"
@@ -159,7 +166,8 @@
                 </div>
                 <div class="type col-md-6 col-lg-4 col-xxl-3 text-center mb-4">
                     <div class="card">
-                        <div class="card-body text-center">
+                        <div class="card-body text-center" onclick="location.href='#second-one';"
+                             style="cursor: pointer">
                             <span class="icon-border mb-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40.305"><defs></defs><g
                                         transform="translate(0 -0.003)"><path class="a"
@@ -196,7 +204,8 @@
                 </div>
                 <div class="type col-md-6 col-lg-4 col-xxl-3 text-center mb-4">
                     <div class="card">
-                        <div class="card-body text-center">
+                        <div class="card-body text-center" onclick="location.href='#third-one';"
+                             style="cursor: pointer">
                             <span class="icon-border mb-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40.305"><defs></defs><g
                                         transform="translate(0 -0.003)"><path class="a"
@@ -247,15 +256,23 @@
                     <div class="row justify-content-between align-items-center" id="description">
                         <div class="col-lg-6 col-xl-5 mb-3">
                             <p style="font-size:1.5em;line-height:1.6em;">
-                                - In 2017, the Turkish government published the first Turkish citizenship program for foreign investors.
-                                The law gives eligibility to foreigners who are interested in Turkish Citizenship to obtain Turkish nationality;
-                                by investing in 1 million dollars, the foreign investors would be eligible to pass it to his family (wife and children under 18).
+                                - In 2017, the Turkish government published the first Turkish citizenship program for
+                                foreign investors.
+                                The law gives eligibility to foreigners who are interested in Turkish Citizenship to
+                                obtain Turkish nationality;
+                                by investing in 1 million dollars, the foreign investors would be eligible to pass it to
+                                his family (wife and children under 18).
                                 Still, there was no sufficient demand, due to the high budget.<br>
-                                - Therefore, the Turkish parliament got the matter of re-studying the law into consideration, accordingly, the costs'
-                                value adjusted to 500,000 $ in the same year, until 2018, the direction of the Turkish citizenship program for foreigners been fixed and become under processing,
-                                this time the amount set to 250,000 $, Since the 2018 and until today, 77,000 applications been released.
-                                The law offers several different options by considering the differences between global investors'
-                                aspirations in investment in Turkey. Here are the different types of Turkish citizenship applications:
+                                - Therefore, the Turkish parliament got the matter of re-studying the law into
+                                consideration, accordingly, the costs'
+                                value adjusted to 500,000 $ in the same year, until 2018, the direction of the Turkish
+                                citizenship program for foreigners been fixed and become under processing,
+                                this time the amount set to 250,000 $, Since the 2018 and until today, 77,000
+                                applications been released.
+                                The law offers several different options by considering the differences between global
+                                investors'
+                                aspirations in investment in Turkey. Here are the different types of Turkish citizenship
+                                applications:
 
                             </p>
                         </div>
@@ -275,16 +292,16 @@
                     <img class="w-100 img-fluid" src="{{ asset('sites/img/ctz1.jpeg') }}"
                          alt="Our mission"/>
                 </div>
-                <div class="col-lg-6 col-xl-5 order-0 order-lg-1 mb-3">
+                <div class="col-lg-6 col-xl-5 order-0 order-lg-1 mb-3" id="first-one">
                     <h2>1- investing with 250,000 $ in real estate assets:</h2>
                     <div class="lead">
                         By buying one or multiple real estates assets in any desirable Turkish City, with
                         <strong>250,000$</strong>, you are eligible to submit your application, by getting the
                         title deed of the
                         property, too (Department of Immigration and Passports?!), with additional
-                        <a href="https://winalco-web.app/services#legal-executive-stage" target="_blank"><b><u> legal
-                                required papers</u></b></a>,
-                         for your application, and from here on your application will take from 2
+                        <a href="#legal-papers"><b><u> legal
+                                    required papers</u></b></a>,
+                        for your application, and from here on your application will take from 2
                         to 3 months maximum.
                     </div>
                 </div>
@@ -294,14 +311,14 @@
     <section class="section our-vision-section border-0 py-3">
         <div class="container">
             <div class="row justify-content-between align-items-center" id="owner-message">
-                <div class="col-lg-6 col-xl-5 mb-3">
+                <div class="col-lg-6 col-xl-5 mb-3" id="second-one">
                     <h2>2- Deposit in a Turkish bank at least 500,000$</h2>
                     <div class="lead">
                         By <strong> depositing 500,000 $ </strong> in any Turkish bank, whether private or
                         governmental Turkish
                         bank, you are eligible to submit your application, by getting the Bank deposit receipt
-                        to, with additional <a href="https://winalco-web.app/services#legal-executive-stage" target="_blank"><b><u> legal
-                                required papers</u></b>,</a>
+                        to, with additional <a href="#legal-papers"><b><u> legal
+                                    required papers</u></b>,</a>
                         for your application, and from here on your application will take from 2 to 3 months
                         maximum.
                     </div>
@@ -320,7 +337,7 @@
                     <img class="w-100 img-fluid" src="{{ asset('sites/img/S08.jpg') }}"
                          alt="Our mission"/>
                 </div>
-                <div class="col-lg-6 col-xl-5 order-0 order-lg-1 mb-3">
+                <div class="col-lg-6 col-xl-5 order-0 order-lg-1 mb-3" id="third-one">
                     <h2>3- establishing a Turkish company and creating 50 job opportunities for Turkish
                         citizens:</h2>
                     <div class="lead">
@@ -330,15 +347,16 @@
                         work, what is matter in this section of the law, Is to create 50 job opportunities for
                         50 Turkish citizens
                         By getting both the registration number and the tax, you are eligible to submit your
-                        application to, with additional <a href="https://winalco-web.app/services#legal-executive-stage" target="_blank"><b><u> legal
-                                    required papers</u></b>,</a> for your application, and from here on your application will take from 2
+                        application to, with additional <a href="#legal-papers"><b><u> legal
+                                    required papers</u></b>,</a> for your application, and from here on your application
+                        will take from 2
                         to 3 months maximum.
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="section section-height-2 border-0 mb-0 py-5">
+    <section class="section section-height-2 border-0 mb-0 py-5" id="legal-papers">
         <div class="container container-lg mb-lg-5">
             <div class="row justify-content-center">
                 <div class="col-lg-7 col-xl-6 text-center mb-5">

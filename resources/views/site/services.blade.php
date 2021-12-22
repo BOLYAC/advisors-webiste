@@ -37,7 +37,7 @@
         </div>
     </section>
     <section class="section section-height-2 border-0 mb-0 py-5">
-        <div class="container container-lg mb-lg-5">
+        <div class="container container-lg">
             <div class="row justify-content-center">
                 <div class="text-left mb-5">
                     {{--                    <h2 class="font-weight-extra-bold line-height-4 mb-5">Required Documents for the program.</h2>--}}
@@ -45,73 +45,76 @@
                         {!! $topic->details !!}</div>
                 </div>
             </div>
-            <div class="beehive pb-lg-5">
-                <div class="center center1">
-                    <div class="shape odd">
-                        <div class="shape-text"
-                             onclick="location.href='#{{ \Str::slug($services->first_title, '-') }}';"
-                             style="cursor: pointer">
-                            {{ $services->first_title }}
-                        </div>
-                    </div>
-                    <div class="shape even secondary">
+            {{--            <div class="beehive pb-lg-5">--}}
+            {{--                <div class="center center1">--}}
+            {{--                    <div class="shape odd">--}}
+            {{--                        <div class="shape-text"--}}
+            {{--                             onclick="location.href='#{{ \Str::slug($services->first_title, '-') }}';"--}}
+            {{--                             style="cursor: pointer">--}}
+            {{--                            {{ $services->first_title }}--}}
+            {{--                        </div>--}}
+            {{--                    </div>--}}
+            {{--                    <div class="shape even secondary">--}}
 
-                    </div>
-                    <div class="shape odd">
-                        <div class="shape-text"
-                             onclick="location.href='#{{ \Str::slug($services->fourth_title, '-') }}';"
-                             style="cursor: pointer">
-                            {{ $services->fourth_title }}
-                        </div>
-                    </div>
-                    <div class="shape even secondary">
+            {{--                    </div>--}}
+            {{--                    <div class="shape odd">--}}
+            {{--                        <div class="shape-text"--}}
+            {{--                             onclick="location.href='#{{ \Str::slug($services->fourth_title, '-') }}';"--}}
+            {{--                             style="cursor: pointer">--}}
+            {{--                            {{ $services->fourth_title }}--}}
+            {{--                        </div>--}}
+            {{--                    </div>--}}
+            {{--                    <div class="shape even secondary">--}}
 
-                    </div>
-                    <div class="shape odd">
-                        <div class="shape-text">
-                            <div class="shape-text"
-                                 onclick="location.href='#{{ \Str::slug($services->sixth_title, '-') }}';"
-                                 style="cursor: pointer">
-                                {{ $services->sixth_title }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="center center2">
-                    <div class="shape odd secondary">
-                        <div class="shape-text"
-                             onclick="location.href='#{{ \Str::slug($services->second_title, '-') }}';"
-                             style="cursor: pointer">
-                            {{ $services->second_title }}
-                        </div>
-                    </div>
-                    <div class="shape even">
-                        <div class="shape-text"
-                             onclick="location.href='#{{ \Str::slug($services->third_title, '-') }}';"
-                             style="cursor: pointer;">
-                            {{ $services->third_title }}
-                        </div>
-                    </div>
-                    <div class="shape odd secondary" style="background-color: #002f5b">
-                        <div class="shape-text">
-                            <img src="{{ asset('sites/img/logo.png') }}" alt="" class="img-fluid">
-                        </div>
-                    </div>
-                    <div class="shape even">
-                        <div class="shape-text"
-                             onclick="location.href='#{{ \Str::slug($services->fifth_title, '-') }}';"
-                             style="cursor: pointer">
-                            {{ $services->fifth_title }}
-                        </div>
-                    </div>
-                    <div class="shape odd secondary">
-                        <div class="shape-text"
-                             onclick="location.href='#{{ \Str::slug($services->seventh_title, '-') }}';"
-                             style="cursor: pointer">
-                            {{ $services->seventh_title }}
-                        </div>
-                    </div>
-                </div>
+            {{--                    </div>--}}
+            {{--                    <div class="shape odd">--}}
+            {{--                        <div class="shape-text">--}}
+            {{--                            <div class="shape-text"--}}
+            {{--                                 onclick="location.href='#{{ \Str::slug($services->sixth_title, '-') }}';"--}}
+            {{--                                 style="cursor: pointer">--}}
+            {{--                                {{ $services->sixth_title }}--}}
+            {{--                            </div>--}}
+            {{--                        </div>--}}
+            {{--                    </div>--}}
+            {{--                </div>--}}
+            {{--                <div class="center center2">--}}
+            {{--                    <div class="shape odd secondary">--}}
+            {{--                        <div class="shape-text"--}}
+            {{--                             onclick="location.href='#{{ \Str::slug($services->second_title, '-') }}';"--}}
+            {{--                             style="cursor: pointer">--}}
+            {{--                            {{ $services->second_title }}--}}
+            {{--                        </div>--}}
+            {{--                    </div>--}}
+            {{--                    <div class="shape even">--}}
+            {{--                        <div class="shape-text"--}}
+            {{--                             onclick="location.href='#{{ \Str::slug($services->third_title, '-') }}';"--}}
+            {{--                             style="cursor: pointer;">--}}
+            {{--                            {{ $services->third_title }}--}}
+            {{--                        </div>--}}
+            {{--                    </div>--}}
+            {{--                    <div class="shape odd secondary" style="background-color: #002f5b">--}}
+            {{--                        <div class="shape-text">--}}
+            {{--                            <img src="{{ asset('sites/img/logo.png') }}" alt="" class="img-fluid">--}}
+            {{--                        </div>--}}
+            {{--                    </div>--}}
+            {{--                    <div class="shape even">--}}
+            {{--                        <div class="shape-text"--}}
+            {{--                             onclick="location.href='#{{ \Str::slug($services->fifth_title, '-') }}';"--}}
+            {{--                             style="cursor: pointer">--}}
+            {{--                            {{ $services->fifth_title }}--}}
+            {{--                        </div>--}}
+            {{--                    </div>--}}
+            {{--                    <div class="shape odd secondary">--}}
+            {{--                        <div class="shape-text"--}}
+            {{--                             onclick="location.href='#{{ \Str::slug($services->seventh_title, '-') }}';"--}}
+            {{--                             style="cursor: pointer">--}}
+            {{--                            {{ $services->seventh_title }}--}}
+            {{--                        </div>--}}
+            {{--                    </div>--}}
+            {{--                </div>--}}
+            {{--            </div>--}}
+            <div class="text-center">
+                <img src="{{ asset('sites/img/services.png') }}" alt="" class="img-fluid" style="height: 600px;">
             </div>
         </div>
     </section>
