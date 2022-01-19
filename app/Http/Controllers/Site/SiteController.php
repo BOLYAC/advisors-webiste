@@ -18,9 +18,11 @@ use App\User;
 use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\SEOMeta;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Http;
 
 class SiteController extends Controller
 {
@@ -34,6 +36,22 @@ class SiteController extends Controller
         $citizenPosts = \App\Models\Post::where('citizen_status', true)->get()->take(6);
         $testimonials = \App\Models\Testimonial::where('status', true)->orderBy('row_no')->get();
         $stories = \App\Models\InstaStory::where('status', true)->orderBy('row_no')->get();
+
+        // for the currency
+        $response = Http::timeout(5)->get('https://openexchangerates.org/api/latest.json?app_id=38c874f782d54f7b8686796e636a4285&show_alternative=1&symbols=TRY,EUR,GBP,CAD,BTC,ETH,LTC');
+        // Array of data from the JSON response
+        $r = $response->json();
+        // Read File
+        $jsonString = file_get_contents(public_path('currency.json'));
+        $data = json_decode($jsonString, true);
+        // Update Key
+        if ($data['date'] < Carbon::now('Europe/Berlin')->addHours(4)) {
+            $data['date'] = \Carbon\Carbon::now('Europe/Berlin');
+            $data['rates'] = $r;
+            // Write File
+            $newJsonString = json_encode($data, JSON_PRETTY_PRINT);
+            file_put_contents(public_path('currency.json'), stripslashes($newJsonString));
+        }
 
         $news = \App\Models\Article::all();
         $topic = Topic::whereTranslationLike('title', '%home%')->first();

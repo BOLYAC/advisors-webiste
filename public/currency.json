@@ -1,0 +1,18 @@
+{
+    "date": "2022-01-19T05:11:20.914779Z",
+    "rates": {
+        "disclaimer": "Usage subject to terms: https://openexchangerates.org/terms",
+        "license": "https://openexchangerates.org/license",
+        "timestamp": 1642568400,
+        "base": "USD",
+        "rates": {
+            "BTC": 2.3939331e-5,
+            "CAD": 1.250271,
+            "ETH": 0.0003215603,
+            "EUR": 0.882587,
+            "GBP": 0.735028,
+            "LTC": 0.0072654667,
+            "TRY": 13.546085
+        }
+    }
+}

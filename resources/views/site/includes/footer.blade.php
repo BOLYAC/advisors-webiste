@@ -27,11 +27,19 @@
                         href="{{ route('post.details', 'buying-a-property-in-turkey-by-using-cryptocurrency') }}">{{ __('Buying a property in Turkey by using cryptocurrency') }}</a>
                 </p>
                 <p style="margin-bottom: 40px;"></p>
-                <ul class="footer-social-icons social-icons mt-0">
-                    <li class=""><a href="javascript:void(0)" class="border-0" style="pointer-events: none;"><img src="{{ asset('sites/img/btc.svg') }}" alt=""></a></li>
-                    <li class=""><a href="javascript:void(0)" class="border-0" style="pointer-events: none;"><img src="{{ asset('sites/img/ethereum.svg') }}" alt=""></a></li>
-                    <li class=""><a href="javascript:void(0)" class="border-0" style="pointer-events: none;"><img src="{{ asset('sites/img/litecoin.svg') }}" alt=""></a></li>
-                    <li class=""><a href="javascript:void(0)" class="border-0" style="pointer-events: none;"><img src="{{ asset('sites/img/binanceCoin.svg') }}" alt=""></a></li>
+                <ul class="footer-social-icons social-icons social-icons-clean mt-0">
+                    <li class=""><a
+                            href="{{ route('post.details', 'buying-a-property-in-turkey-by-using-cryptocurrency') }}"><img
+                                src="{{ asset('sites/img/btc.svg') }}" alt=""></a></li>
+                    <li class=""><a
+                            href="{{ route('post.details', 'buying-a-property-in-turkey-by-using-cryptocurrency') }}"><img
+                                src="{{ asset('sites/img/ethereum.svg') }}" alt=""></a></li>
+                    <li class=""><a
+                            href="{{ route('post.details', 'buying-a-property-in-turkey-by-using-cryptocurrency') }}"><img
+                                src="{{ asset('sites/img/litecoin.svg') }}" alt=""></a></li>
+                    <li class=""><a
+                            href="{{ route('post.details', 'buying-a-property-in-turkey-by-using-cryptocurrency') }}"><img
+                                src="{{ asset('sites/img/binanceCoin.svg') }}" alt=""></a></li>
                 </ul>
             </div>
             <div class="col-12 col-sm-6 col-lg-3 mb-5">

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.simple')
 
 @section('title')
     {{ __('messages.page_not_found') }}

@@ -3,7 +3,7 @@
     {!! SEO::generate() !!}
 @endsection
 @section('stylesheets')
-    @if (App::getLocale() == 'ar')
+    @if (App::getLocale() === 'ar')
         <link rel="stylesheet" href="{{ asset('sites/css/projects.rtl.css') }}">
     @else
         <link rel="stylesheet" href="{{ asset('sites/css/projects.css') }}">
@@ -14,39 +14,6 @@
     /*
     <script type="text/javascript">
         window.$ = window.jQuery = $;
-
-        function loadMoreData(page) {
-            $.ajax({
-                url: '?page=' + page,
-                type: 'get',
-                beforeSend: function () {
-                    $(".ajax-load").show();
-                }
-            })
-                .done(function (data) {
-                    if (data.html == "") {
-                        $('.ajax-load').html("No more Posts Found!");
-                        return;
-                    }
-                    $('.ajax-load').hide();
-                    $("#post-data").append(data.html);
-                })
-                // Call back function
-                .fail(function (jqXHR, ajaxOptions, thrownError) {
-                    alert("Server not responding.....");
-                });
-
-        }
-
-        //function for Scroll Event
-        let page = 1;
-
-        $(window).scroll(function () {
-            if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
-                page++;
-                loadMoreData(page);
-            }
-        });
 
         $(document).ready(function () {
             if ($('.common_selector_city').is(':checked')) {
@@ -108,6 +75,7 @@
 
             });
         });
+
         $('.common_selector').click(function () {
             $('#areasMenu').html($(this).attr('id'))
         });
@@ -524,34 +492,114 @@
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-1-5">
-                            <div class="select-wrapper">
-                                <select name="property_type" id="property-type" class="form-control form-control">
-                                    <option value="">{{ __('messages.property_type') }}</option>
-                                    @foreach($sections as $section)
-                                        <option
-                                            value="{{ $section->id }}" {{ request()->property_type == $section->id  ? 'selected' : ''  }}>{{ $section->title }}</option>
-                                    @endforeach
-                                </select>
+                            <button class="cities-dropdown dropdown-toggle text-center" type="button"
+                                    id="propertiesMenu"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-map-marker-alt text-secondary me-1"></i> {{ __('messages.property_type') }}
+                            </button>
+                            <div class="cities-dropdown-menu dropdown-menu p-4" aria-labelledby="propertiesMenu" style="width: 300px;">
+                                <h6>{{ __('messages.property_type') }}</h6>
+                                <div class="row gx-5">
+                                    <div class="col-lg-12">
+                                        @foreach($sections as $section)
+                                            <div class="form-check mb-3">
+                                                <input class="form-check-input"
+                                                       type="checkbox"
+                                                       value="{{ $section->id }}"
+                                                       id="property_type{{ $section->id }}"
+                                                       name="property_type[]" {{ (is_array(request()->input('property_type')) and in_array(1, request()->input('property_type'), true) ? ' checked' : '') }}>
+                                                <label class="form-check-label" for="property_type{{ $section->id }}">
+                                                    {{ $section->title }}
+                                                </label>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-1-5">
-                            <div class="select-wrapper">
-                                <select name="project_bedrooms" id="project_bedrooms"
-                                        class="form-control form-control">
-                                    <option value="">{{ __('messages.bedrooms') }}</option>
-                                    <option value="1" {{ request()->project_bedrooms == 1  ? 'selected' : ''  }}>1+0
-                                    </option>
-                                    <option value="2" {{ request()->project_bedrooms == 2  ? 'selected' : ''  }}>1+1
-                                    </option>
-                                    <option value="3" {{ request()->project_bedrooms == 3  ? 'selected' : ''  }}>2+1
-                                    </option>
-                                    <option value="4" {{ request()->project_bedrooms == 4  ? 'selected' : ''  }}>3+1
-                                    </option>
-                                    <option value="5" {{ request()->project_bedrooms == 5  ? 'selected' : ''  }}>4+1
-                                    </option>
-                                    <option
-                                        value="6" {{ request()->project_bedrooms == 6  ? 'selected' : ''  }}>{{ __('More') }}</option>
-                                </select>
+                            <button class="cities-dropdown dropdown-toggle text-center" type="button"
+                                    id="propertiesMenu"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-map-marker-alt text-secondary me-1"></i> {{ __('messages.bedrooms') }}
+                            </button>
+                            <div class="cities-dropdown-menu dropdown-menu p-4" aria-labelledby="propertiesMenu"
+                                 style="width: 300px;">
+                                <h6>{{ __('messages.bedrooms') }}</h6>
+                                <div class="row gx-5">
+                                    <div class="col-lg-12">
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input"
+                                                   type="checkbox"
+                                                   value="1"
+                                                   id="project_bedrooms-1"
+                                                   name="property_type[]" {{ (is_array(request()->input('project_bedrooms')) and in_array(1, request()->input('project_bedrooms'), true) ? ' checked' : '') }}>
+                                            <label class="form-check-label" for="project_bedrooms-1">
+                                                1+0
+                                            </label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input"
+                                                   type="checkbox"
+                                                   value="2"
+                                                   id="project_bedrooms-2"
+                                                   name="property_type[]" {{ (is_array(request()->input('project_bedrooms')) and in_array(2, request()->input('project_bedrooms'), true) ? ' checked' : '') }}>
+                                            <label class="form-check-label" for="project_bedrooms-2">
+                                                1+1
+                                            </label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input"
+                                                   type="checkbox"
+                                                   value="3"
+                                                   id="project_bedrooms-3"
+                                                   name="property_type[]" {{ (is_array(request()->input('project_bedrooms')) and in_array(3, request()->input('project_bedrooms'), true) ? ' checked' : '') }}>
+                                            <label class="form-check-label" for="project_bedrooms-3">
+                                                1+2
+                                            </label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input"
+                                                   type="checkbox"
+                                                   value="4"
+                                                   id="project_bedrooms-4"
+                                                   name="project_bedrooms[]" {{ (is_array(request()->input('project_bedrooms')) and in_array(4, request()->input('project_bedrooms'), true) ? ' checked' : '') }}>
+                                            <label class="form-check-label" for="project_bedrooms-4">
+                                                1+3
+                                            </label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input"
+                                                   type="checkbox"
+                                                   value="5"
+                                                   id="project_bedrooms-5"
+                                                   name="project_bedrooms[]" {{ (is_array(request()->input('project_bedrooms')) and in_array(5, request()->input('project_bedrooms'), true) ? ' checked' : '') }}>
+                                            <label class="form-check-label" for="project_bedrooms-5">
+                                                1+4
+                                            </label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input"
+                                                   type="checkbox"
+                                                   value="6"
+                                                   id="project_bedrooms-6"
+                                                   name="project_bedrooms[]" {{ (is_array(request()->input('project_bedrooms')) and in_array(6, request()->input('project_bedrooms'), true) ? ' checked' : '') }}>
+                                            <label class="form-check-label" for="project_bedrooms-6">
+                                                1+5
+                                            </label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input"
+                                                   type="checkbox"
+                                                   value="7"
+                                                   id="project_bedrooms-7"
+                                                   name="project_bedrooms[]" {{ (is_array(request()->input('project_bedrooms')) and in_array(7, request()->input('project_bedrooms'), true) ? ' checked' : '') }}>
+                                            <label class="form-check-label" for="project_bedrooms-7">
+                                                {{ __('More') }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-1-5 mt-2 mt-lg-0">

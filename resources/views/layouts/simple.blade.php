@@ -82,6 +82,27 @@
     if (navigator.userAgent.match(/Opera|OPR\//)) {
         $('.privacy-banner').css('display', 'inherit');
     }
+    $(document).ready(function () {
+        $.getJSON("currency.json", function (data) {
+            let d = [
+                "1 USD / " + data.rates.rates.TRY + " Turkish Lira",
+                "1 USD /  " + data.rates.rates.EUR + " Euro",
+                "1 USD /  " + data.rates.rates.GBP + " British pound",
+                "1 USD /  " + data.rates.rates.BTC + " BTC",
+                "1 USD /  " + data.rates.rates.ETH + " ETH",
+                "1 USD /  " + data.rates.rates.LTC + " LTC"
+            ];
+            $.each(d, function (i, l) {
+                $("#new-currency").append(`
+                    <li class="nav-item nav-item-anim-icon d-inline-block me-5 font-weight-bold">
+                        <a href="javascript:void(0)">` + l + `</a>
+                    </li>`
+                );
+            });
+        }).fail(function () {
+            console.log("An error has occurred.");
+        });
+    });
     // $(document).ready(function () {
     //     //to disable the entire page
     //     $("body").on("contextmenu",function(e){

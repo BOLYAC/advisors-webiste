@@ -45,18 +45,16 @@
                 </div>
                 <div class="col-lg-6 text-center">
                     <h2 class="font-weight-extra-bold line-height-3 mb-4">Turkish Citizenship by Investment Program</h2>
-                    <p class="lead"> The Turkish government is granting Turkish citizenship to foreigners, the law gave
-                        eligibility to
-                        foreigners who are interested in Turkish Citizenship, by offering several options.
+                    <p class="lead">The Turkish government is granting Turkish citizenship to foreigners, the law gave
+                        eligibility to foreigners who are interested in Turkish Citizenship, by offering several
+                        options.
                         However, the government facilities the procedures for real estate investors who are interested
                         in
                         investing in Turkey, By buying real estate properties with <strong>250.000 $ </strong>meanwhile
-                        obtaining Turkish
-                        nationality, the foreign investor would be eligible to pass it to family, wife, and children
-                        under
-                        18.
-                        The law and the procedure of acquiring Turkish citizenship are attainable within additional
-                        different 3 different programs, for more information
+                        obtaining Turkish nationality, the foreign investor would be eligible to pass it to family,
+                        wife,
+                        and children under 18. The law and the procedure of acquiring Turkish citizenship are attainable
+                        within additional different 3 different programs, for more information
                         <a href="#description" style="background-color: rgb(255, 255, 255);"><b><u>scroll down.</u></b></a>
                     </p>
                 </div>
@@ -256,14 +254,13 @@
                     <div class="row justify-content-between align-items-center" id="description">
                         <div class="col-lg-6 col-xl-5 mb-3">
                             <p style="font-size:1.5em;line-height:1.6em;">
-                                - In 2017, the Turkish government published the first Turkish citizenship program for
-                                foreign investors.
-                                The law gives eligibility to foreigners who are interested in Turkish Citizenship to
-                                obtain Turkish nationality;
-                                by investing in 1 million dollars, the foreign investors would be eligible to pass it to
-                                his family (wife and children under 18).
+                                In 2017, the Turkish government published the first Turkish citizenship program for
+                                foreign investors. The law gives eligibility to foreigners who are interested in Turkish
+                                Citizenship to obtain Turkish nationality; by investing in 1 million dollars,
+                                the foreign investors would be eligible to pass it to his family (wife and children
+                                under 18).
                                 Still, there was no sufficient demand, due to the high budget.<br>
-                                - Therefore, the Turkish parliament got the matter of re-studying the law into
+                                Therefore, the Turkish parliament got the matter of re-studying the law into
                                 consideration, accordingly, the costs'
                                 value adjusted to 500,000 $ in the same year, until 2018, the direction of the Turkish
                                 citizenship program for foreigners been fixed and become under processing,
@@ -273,7 +270,6 @@
                                 investors'
                                 aspirations in investment in Turkey. Here are the different types of Turkish citizenship
                                 applications:
-
                             </p>
                         </div>
                         <div class="col-lg-6 col-xl-5">
@@ -293,14 +289,13 @@
                          alt="Our mission"/>
                 </div>
                 <div class="col-lg-6 col-xl-5 order-0 order-lg-1 mb-3" id="first-one">
-                    <h2>1- investing with 250,000 $ in real estate assets:</h2>
+                    <h2>Investing with 250,000 $ in real estate assets:</h2>
                     <div class="lead">
                         By buying one or multiple real estates assets in any desirable Turkish City, with
                         <strong>250,000$</strong>, you are eligible to submit your application, by getting the
                         title deed of the
                         property, too (Department of Immigration and Passports?!), with additional
-                        <a href="#legal-papers"><b><u> legal
-                                    required papers</u></b></a>,
+                        <a href="#legal-papers"><b><u> legal required papers</u></b></a>,
                         for your application, and from here on your application will take from 2
                         to 3 months maximum.
                     </div>
@@ -312,13 +307,12 @@
         <div class="container">
             <div class="row justify-content-between align-items-center" id="owner-message">
                 <div class="col-lg-6 col-xl-5 mb-3" id="second-one">
-                    <h2>2- Deposit in a Turkish bank at least 500,000$</h2>
+                    <h2>Deposit in a Turkish bank at least 500,000$</h2>
                     <div class="lead">
                         By <strong> depositing 500,000 $ </strong> in any Turkish bank, whether private or
                         governmental Turkish
                         bank, you are eligible to submit your application, by getting the Bank deposit receipt
-                        to, with additional <a href="#legal-papers"><b><u> legal
-                                    required papers</u></b>,</a>
+                        to, with additional <a href="#legal-papers"><b><u>legal required papers</u></b>,</a>
                         for your application, and from here on your application will take from 2 to 3 months
                         maximum.
                     </div>
@@ -338,7 +332,7 @@
                          alt="Our mission"/>
                 </div>
                 <div class="col-lg-6 col-xl-5 order-0 order-lg-1 mb-3" id="third-one">
-                    <h2>3- establishing a Turkish company and creating 50 job opportunities for Turkish
+                    <h2>Establishing a Turkish company and creating 50 job opportunities for Turkish
                         citizens:</h2>
                     <div class="lead">
                         By Establishing a commercial registry in any Turkish City, according to the law, It
@@ -363,63 +357,67 @@
                     <h2 class="font-weight-extra-bold line-height-4 mb-5">Required Documents for the program.</h2>
                 </div>
             </div>
-            <div class="beehive pb-lg-5">
-                <div class="center center1">
-                    <div class="shape odd">
-                        <div class="shape-text">
-                            Birth Certificate
-                        </div>
-                    </div>
-                    <div class="shape even secondary">
-                        <div class="shape-text">
-                            Vital Record that allows all family members as the husband, wife and children, Marriage
-                            Certificate, Divorce Certificate
-                        </div>
-                    </div>
-                    <div class="shape odd">
-                        <div class="shape-text">
-                            Health Insurance
-                        </div>
-                    </div>
-                    <div class="shape even secondary">
-                        <div class="shape-text">
-                            Passport
-                        </div>
-                    </div>
-                    <div class="shape odd">
-                        <div class="shape-text">
-                            Power of Attorney
-                        </div>
-                    </div>
-                </div>
-                <div class="center center2">
-                    <div class="shape odd secondary">
-                        <div class="shape-text">
-                            Certificate Of Residence
-                        </div>
-                    </div>
-                    <div class="shape even">
-                        <div class="shape-text">
-                            If the applicant is widowed, Spouse's Death Certificate
-                        </div>
-                    </div>
-                    <div class="shape odd secondary">
-                        <div class="shape-text">
-                            12 Biometrics Photos taken on white background
-                        </div>
-                    </div>
-                    <div class="shape even">
-                        <div class="shape-text">
-                            Original and Notarized Turkish translation of these documents
-                        </div>
-                    </div>
-                    <div class="shape odd secondary">
-                        <div class="shape-text">
-                            Application Forms
-                        </div>
-                    </div>
-                </div>
+            <div class="text-center">
+                <img src="{{ asset('sites/img/citizenship-paper.png') }}" alt="" class="img-fluid"
+                     style="height: 600px;">
             </div>
+            {{--            <div class="beehive pb-lg-5">--}}
+            {{--                <div class="center center1">--}}
+            {{--                    <div class="shape odd">--}}
+            {{--                        <div class="shape-text">--}}
+            {{--                            Birth Certificate--}}
+            {{--                        </div>--}}
+            {{--                    </div>--}}
+            {{--                    <div class="shape even secondary">--}}
+            {{--                        <div class="shape-text">--}}
+            {{--                            Vital Record that allows all family members as the husband, wife and children, Marriage--}}
+            {{--                            Certificate, Divorce Certificate--}}
+            {{--                        </div>--}}
+            {{--                    </div>--}}
+            {{--                    <div class="shape odd">--}}
+            {{--                        <div class="shape-text">--}}
+            {{--                            Health Insurance--}}
+            {{--                        </div>--}}
+            {{--                    </div>--}}
+            {{--                    <div class="shape even secondary">--}}
+            {{--                        <div class="shape-text">--}}
+            {{--                            Passport--}}
+            {{--                        </div>--}}
+            {{--                    </div>--}}
+            {{--                    <div class="shape odd">--}}
+            {{--                        <div class="shape-text">--}}
+            {{--                            Power of Attorney--}}
+            {{--                        </div>--}}
+            {{--                    </div>--}}
+            {{--                </div>--}}
+            {{--                <div class="center center2">--}}
+            {{--                    <div class="shape odd secondary">--}}
+            {{--                        <div class="shape-text">--}}
+            {{--                            Certificate Of Residence--}}
+            {{--                        </div>--}}
+            {{--                    </div>--}}
+            {{--                    <div class="shape even">--}}
+            {{--                        <div class="shape-text">--}}
+            {{--                            If the applicant is widowed, Spouse's Death Certificate--}}
+            {{--                        </div>--}}
+            {{--                    </div>--}}
+            {{--                    <div class="shape odd secondary">--}}
+            {{--                        <div class="shape-text">--}}
+            {{--                            12 Biometrics Photos taken on white background--}}
+            {{--                        </div>--}}
+            {{--                    </div>--}}
+            {{--                    <div class="shape even">--}}
+            {{--                        <div class="shape-text">--}}
+            {{--                            Original and Notarized Turkish translation of these documents--}}
+            {{--                        </div>--}}
+            {{--                    </div>--}}
+            {{--                    <div class="shape odd secondary">--}}
+            {{--                        <div class="shape-text">--}}
+            {{--                            Application Forms--}}
+            {{--                        </div>--}}
+            {{--                    </div>--}}
+            {{--                </div>--}}
+            {{--            </div>--}}
         </div>
     </section>
     <section class="section wwa-section border-0 mt-5 py-4"

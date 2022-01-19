@@ -99,12 +99,7 @@
                         <div class="d-inline-flex align-middle">
                             <marquee direction="{{ App::getLocale() == 'ar' ? 'right' : 'left'}}"
                                      onmouseover="this.stop();" onmouseout="this.start();">
-                                <ul class="nav nav-pills d-block">
-                                    @foreach(\App\Models\Article::all() as $item)
-                                        <li class="nav-item nav-item-anim-icon d-inline-block me-5">
-                                            <a href="{{ $item->seo_url_slug ?? $item->translate('en')->seo_url_slug }}">{{ $item->title }}</a>
-                                        </li>
-                                    @endforeach
+                                <ul class="nav nav-pills d-block" id="new-currency">
                                 </ul>
                             </marquee>
                         </div>

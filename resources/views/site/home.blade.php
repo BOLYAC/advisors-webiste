@@ -24,6 +24,7 @@
     </script>
     <script src="{{ asset('sites/vendor/rs-plugin/js/jquery.themepunch.tools.min.js') }}"></script>
     <script src="{{ asset('sites/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
+    <script src="{{ asset('vendor/rs-plugin/js/extensions/revolution.extension.video.min.js') }}"></script>
 @endsection
 
 @section('content')
@@ -44,12 +45,12 @@
                          data-responsive_offset="on"
                          data-frames='[{"speed":1000,"to":"o:1;","delay":0,"ease":"Power1.easeInOut"},{"delay":"wait","speed":1000,"ease":"nothing"}]'
                          data-ytid="eV6lTEY95yY"
-                         data-videoattributes="autoplay=1&amp;loop=1&amp;controls=0&amp;version=3&amp;enablejsapi=1&amp;html5=1&amp;mute=1&amp;hd=1&wmode=opaque&showinfo=0&ref=0&amp;origin=http://www.turkeyadvisors.com;"
+                         data-videoattributes="autoplay=1&loop=1&controls=0&version=3&enablejsapi=1&fsh=0&modestbranding=1&html5=1&mute=1&hd=1&wmode=opaque&showinfo=0&ref=0&amp;rel=0&origin=https://www.turkeyadvisors.com;"
                          data-videorate="1"
                          data-videowidth="100%"
                          data-videoheight="100%"
                          data-videocontrols="controls"
-                         data-videoloop="loopandnoslidestop"
+                         data-videoloop="loop"
                          data-forceCover="1"
                          data-aspectratio="16:9"
                          data-autoplay="true"
@@ -70,6 +71,9 @@
                          data-basealign="grid"
                          style="z-index: 5"
                          data-mask_in="x:0px;y:0px;">
+                        <a class="btn btn-secondary btn-blink p-2"
+                           href="#">{{ __('messages.more_details') }} <span
+                                class="arrow1 is-triangle arrow-bar is-right"></span></a>
                     </div>
                 </li>
                 @foreach($banners as $banner)
@@ -271,12 +275,16 @@
             <div class="owl-carousel owl-theme projects mt-3">
                 @foreach($projects as $project)
                     <div class="project card">
-                        <div class="ratio ratio-16x9">
-                            <img class="card-img-top" src="{{ pageImage($project->photo_file) }}" alt="Project">
-                        </div>
+                        <a href="{{ route('project.detail', $project->seo_url_slug ?? $project->translate('en')->seo_url_slug) }}">
+                            <div class="ratio ratio-16x9">
+                                <img class="card-img-top" src="{{ pageImage($project->photo_file) }}" alt="Project">
+                            </div>
+                        </a>
                         <div class="card-body">
                             <div class="card-infos">
-                                <h4 class="card-title mb-4 text-7 font-weight-bold">{{ __('messages.project_no') }} {{ $project->title  }}</h4>
+                                <a href="{{ route('project.detail', $project->seo_url_slug ?? $project->translate('en')->seo_url_slug) }}">
+                                    <h4 class="card-title mb-4 text-7 font-weight-bold">{{ __('messages.project_no') }} {{ $project->title  }}</h4>
+                                </a>
                                 <div class="row features mb-3 gx-2 gx-sm-3">
                                     <div class="col-auto text-3"><img class="feature-icon me-1"
                                                                       src="{{ asset('sites/img/project/map.svg') }}"
@@ -369,9 +377,12 @@
             <div class="owl-carousel owl-theme articles mt-3">
                 @foreach($posts as $post)
                     <div class="article card border-radius-0">
-                        <div class="ratio ratio-16x9">
-                            <img class="card-img-top" src="{{ pageImage($post->photo_file) }}" alt="{{ $post->title }}">
-                        </div>
+                        <a href="{{ route('post.details', $post->seo_url_slug ?? $post->translate('en')->seo_url_slug) }}">
+                            <div class="ratio ratio-16x9">
+                                <img class="card-img-top" src="{{ pageImage($post->photo_file) }}"
+                                     alt="{{ $post->title }}">
+                            </div>
+                        </a>
                         <div class="card-body">
                             <div class="article-date"><i
                                     class="fas fa-calendar-alt me-1"></i> {{ \Carbon\Carbon::parse($post->date)->format('d M Y')}}
@@ -379,12 +390,15 @@
                             <div class="article-views"><i
                                     class="fa fa-eye me-1"></i> {{ $post->visits }} {{ __('messages.views') }}
                             </div>
-                            <div class="card-title">
-                                <div
-                                    class="mb-3 text-4 card-subtitle">{{ $post->categories->first()->title ?? '' }}</div>
-                                <h4 class="mb-0 text-5 text-sm-6 text-lg-5 font-weight-bold">{{ $post->title }}</h4>
-                            </div>
+                            <a href="{{ route('post.details', $post->seo_url_slug ?? $post->translate('en')->seo_url_slug) }}">
+                                <div class="card-title">
+                                    <div
+                                        class="mb-3 text-4 card-subtitle">{{ $post->categories->first()->title ?? '' }}</div>
+                                    <h4 class="mb-0 text-5 text-sm-6 text-lg-5 font-weight-bold">{{ $post->title }}</h4>
+                                </div>
+                            </a>
                             <div class="card-text row align-items-end">
+
                                 <div class="col-10">
                                     <p class="text-4">{!! \Str::limit($post->details , 100, $end='...') !!}</p>
                                 </div>
@@ -460,12 +474,16 @@
             <div class="owl-carousel owl-theme projects mt-3">
                 @foreach($citizenProjects as $p)
                     <div class="project card">
-                        <div class="ratio ratio-16x9">
-                            <img class="card-img-top" src="{{ pageImage($project->photo_file) }}" alt="Project">
-                        </div>
+                        <a href="{{ route('project.detail', $p->seo_url_slug ?? $p->translate('en')->seo_url_slug) }}">
+                            <div class="ratio ratio-16x9">
+                                <img class="card-img-top" src="{{ pageImage($p->photo_file) }}" alt="Project">
+                            </div>
+                        </a>
                         <div class="card-body">
                             <div class="card-infos">
-                                <h4 class="card-title mb-4 text-7 font-weight-bold">{{ __('messages.project_no') }} {{ $project->title  }}</h4>
+                                <a href="{{ route('project.detail', $project->seo_url_slug ?? $project->translate('en')->seo_url_slug) }}">
+                                    <h4 class="card-title mb-4 text-7 font-weight-bold">{{ __('messages.project_no') }} {{ $p->title  }}</h4>
+                                </a>
                                 <div class="row features mb-3 gx-3">
                                     <div class="col-auto text-3"><img class="feature-icon me-1"
                                                                       src="{{ asset('sites/img/project/map.svg') }}"
@@ -500,12 +518,12 @@
                                     </div>
                                     <div class="col-auto text-3"><img class="feature-icon me-1"
                                                                       src="{{ asset('sites/img/project/hand.svg') }}"
-                                                                      alt="hand"/> {{ $project->payment_type == '1' ? __('Cash') : __('Installment') }}
+                                                                      alt="hand"/> {{ $p->payment_type == '1' ? __('Cash') : __('Installment') }}
                                     </div>
                                     <div class="col-auto text-3"><img class="feature-icon me-1"
                                                                       src="{{ asset('sites/img/project/hourglass.svg') }}"
                                                                       alt="hourglass"/>
-                                        @switch($project->status)
+                                        @switch($p->status)
                                             @case(1)
                                             {{  __('Not available') }}
                                             @break
@@ -525,14 +543,14 @@
 
                                     </div>
                                 </div>
-                                <p class="card-text text-4 mb-5">{!! \Str::limit($project->details , 150, $end='...') !!}</p>
+                                <p class="card-text text-4 mb-5">{!! \Str::limit($p->details , 150, $end='...') !!}</p>
                             </div>
                             <div class="row align-items-center justify-content-between">
                                 <div
-                                    class="col-auto col-sm-6 price text-primary text-5 text-sm-6 font-weight-semibold">{{ currencyConvert($project->lowest_price) }}
+                                    class="col-auto col-sm-6 price text-primary text-5 text-sm-6 font-weight-semibold">{{ currencyConvert($p->lowest_price) }}
                                 </div>
                                 <div class="col-auto col-sm-6 more-details">
-                                    <a href="{{ route('project.detail', $project->seo_url_slug ?? $project->translate('en')->seo_url_slug) }}"
+                                    <a href="{{ route('project.detail', $p->seo_url_slug ?? $p->translate('en')->seo_url_slug) }}"
                                        class="btn btn-primary btn-line w-100 text-3">{{ __('messages.more_details') }}</a>
                                 </div>
                             </div>
@@ -724,7 +742,7 @@
         </div>
     </section>
     <section class="section citizenship-section section-height-4"
-             style="background-image: url({{ asset('sites/img/citizenship-bg.jpg') }})">
+             style="background-image: url({{ asset('sites/img/citizenship-bg.jpeg') }})">
         <div class="container">
             <div class="row align-items-center gx-5">
                 <div class="col-lg-8 col-xl-6">

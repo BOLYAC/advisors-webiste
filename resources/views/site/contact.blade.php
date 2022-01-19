@@ -19,9 +19,11 @@
     </script>
     <script type="text/javascript">
         function initMap() {
-            let zoom = 15;
-            let latitude = 41.10313111118659;
-            let longitude = 28.983718256779238;
+            const zoom = 20;
+
+            let latitude = 41.103012502875714;
+            let longitude = 28.983155778515343;
+
             let mapOptions = {
                 zoom: zoom,
                 center: new google.maps.LatLng(latitude, longitude),
@@ -29,92 +31,31 @@
                     {elementType: "geometry", stylers: [{color: "#242f3e"}]},
                     {elementType: "labels.text.stroke", stylers: [{color: "#242f3e"}]},
                     {elementType: "labels.text.fill", stylers: [{color: "#746855"}]},
-                    {
-                        featureType: "administrative.locality",
-                        elementType: "labels.text.fill",
-                        stylers: [{color: "#e3ba32"}],
-                    },
-                    {
-                        featureType: "poi",
-                        elementType: "labels.text.fill",
-                        stylers: [{color: "#e3ba32"}],
-                    },
-                    {
-                        featureType: "poi.park",
-                        elementType: "geometry",
-                        stylers: [{color: "#263c3f"}],
-                    },
-                    {
-                        featureType: "poi.park",
-                        elementType: "labels.text.fill",
-                        stylers: [{color: "#6b9a76"}],
-                    },
-                    {
-                        featureType: "road",
-                        elementType: "geometry",
-                        stylers: [{color: "#455465"}],
-                    },
-                    {
-                        featureType: "road",
-                        elementType: "geometry.stroke",
-                        stylers: [{color: "#081217"}],
-                    },
-                    {
-                        featureType: "road",
-                        elementType: "labels.text.fill",
-                        stylers: [{color: "#9ca5b3"}],
-                    },
-                    {
-                        featureType: "road.highway",
-                        elementType: "geometry",
-                        stylers: [{color: "#746855"}],
-                    },
-                    {
-                        featureType: "road.highway",
-                        elementType: "geometry.stroke",
-                        stylers: [{color: "#1f2835"}],
-                    },
-                    {
-                        featureType: "road.highway",
-                        elementType: "labels.text.fill",
-                        stylers: [{color: "#f3d19c"}],
-                    },
-                    {
-                        featureType: "transit",
-                        elementType: "geometry",
-                        stylers: [{color: "#2f3948"}],
-                    },
-                    {
-                        featureType: "transit.station",
-                        elementType: "labels.text.fill",
-                        stylers: [{color: "#d59563"}],
-                    },
-                    {
-                        featureType: "water",
-                        elementType: "geometry",
-                        stylers: [{color: "#17263c"}],
-                    },
-                    {
-                        featureType: "water",
-                        elementType: "labels.text.fill",
-                        stylers: [{color: "#515c6d"}],
-                    },
-                    {
-                        featureType: "water",
-                        elementType: "labels.text.stroke",
-                        stylers: [{color: "#17263c"}],
-                    }]
+                    {featureType: "administrative.locality", stylers: [{color: "#e3ba32"}],},
+                    {featureType: "poi", elementType: "labels.text.fill", stylers: [{color: "#e3ba32"}]},
+                    {featureType: "poi.park", elementType: "geometry", stylers: [{color: "#263c3f"}]},
+                    {featureType: "poi.park", elementType: "labels.text.fill", stylers: [{color: "#6b9a76"}]},
+                    {featureType: "road", elementType: "geometry", stylers: [{color: "#455465"}],},
+                    {featureType: "road", elementType: "geometry.stroke", stylers: [{color: "#081217"}],},
+                    {featureType: "road", elementType: "labels.text.fill", stylers: [{color: "#9ca5b3"}],},
+                    {featureType: "road.highway", elementType: "geometry", stylers: [{color: "#746855"}]},
+                    {featureType: "road.highway", elementType: "geometry.stroke", stylers: [{color: "#1f2835"}],},
+                    {featureType: "road.highway", elementType: "labels.text.fill", stylers: [{color: "#f3d19c"}],},
+                    {featureType: "transit", elementType: "geometry", stylers: [{color: "#2f3948"}]},
+                    {featureType: "transit.station", elementType: "labels.text.fill", stylers: [{color: "#d59563"}]},
+                    {featureType: "water", elementType: "geometry", stylers: [{color: "#17263c"}],},
+                    {featureType: "water", elementType: "labels.text.fill", stylers: [{color: "#515c6d"}]},
+                    {featureType: "water", elementType: "labels.text.stroke", stylers: [{color: "#17263c"}],}]
             };
+            let mapElement = document.getElementById('map');
 
+            let map = new google.maps.Map(mapElement, mapOptions);
 
-            var mapElement = document.getElementById('map');
-
-            var map = new google.maps.Map(mapElement, mapOptions);
-
-            var marker = new google.maps.Marker({
-                map: map,
-                title: 'Turkey Advisors',
-            });
+            // let marker = new google.maps.Marker({
+            //     position: new google.maps.LatLng(latitude, longitude),
+            //     map: map,
+            //     title: 'Turkey Advisors'
+            // });
         }
     </script>
 @endsection

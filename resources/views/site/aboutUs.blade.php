@@ -32,7 +32,7 @@
             </div>
         </div>
     </section>
-    <section class="section our-vision-section border-0 py-3">
+    <section class="section our-vision-section border-0 py-3" >
         <div class="container">
             <div class="row justify-content-between align-items-center">
                 <div class="col-lg-6 col-xl-5 mb-3">
@@ -47,38 +47,39 @@
             </div>
         </div>
     </section>
-    <section class="section section-height-2 border-0 mb-0 py-5">
-        <div class="container container-lg mb-lg-5">
-            <div class="beehive pb-lg-5">
-                <div class="center center1">
-                    <div class="shape odd">
-                        <div class="shape-text" onclick="location.href='#owner-message';" style="cursor: pointer">
-                            {{ $about->a_message_from_the_owners_tile ?? '' }}
-                        </div>
-                    </div>
-                    <div class="shape even secondary">
-                        <div class="shape-text" onclick="location.href='#our-mission';" style="cursor: pointer">
-                            {{ $about->our_mission_title ?? '' }}
-                        </div>
-                    </div>
-                    <div class="shape odd">
-                        <div class="shape-text">
-                            <img src="{{ asset('sites/img/logo.png')  }}" alt="" class="img-fluid">
-                        </div>
-                    </div>
-                    <div class="shape even secondary">
-                        <div class="shape-text" onclick="location.href='#our-vision';" style="cursor: pointer">
-                            {{ $about->our_vision_title ?? '' }}
-                        </div>
-                    </div>
-                    <div class="shape odd">
-                        <div class="shape-text" onclick="location.href='#our-team';" style="cursor: pointer">
-                            {{ $about->team_title ?? '' }}
-                        </div>
-                    </div>
-                </div>
+    <section class="section section-height-1 border-0 mb-0 py-5">
+        <div class="container container-lg mb-lg-5 text-center">
+            <img src="{{ asset('sites/img/about-icons.png') }}" alt="" class="img-fluid">
+{{--            <div class="beehive pb-lg-5">--}}
+{{--                <div class="center center1">--}}
+{{--                    <div class="shape odd">--}}
+{{--                        <div class="shape-text" onclick="location.href='#owner-message';" style="cursor: pointer">--}}
+{{--                            {{ $about->a_message_from_the_owners_tile ?? '' }}--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="shape even secondary">--}}
+{{--                        <div class="shape-text" onclick="location.href='#our-mission';" style="cursor: pointer">--}}
+{{--                            {{ $about->our_mission_title ?? '' }}--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="shape odd">--}}
+{{--                        <div class="shape-text">--}}
+{{--                            <img src="{{ asset('sites/img/logo.png')  }}" alt="" class="img-fluid">--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="shape even secondary">--}}
+{{--                        <div class="shape-text" onclick="location.href='#our-vision';" style="cursor: pointer">--}}
+{{--                            {{ $about->our_vision_title ?? '' }}--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="shape odd">--}}
+{{--                        <div class="shape-text" onclick="location.href='#our-team';" style="cursor: pointer">--}}
+{{--                            {{ $about->team_title ?? '' }}--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
-            </div>
+{{--            </div>--}}
         </div>
     </section>
     <section class="section our-vision-section border-0 py-3">
