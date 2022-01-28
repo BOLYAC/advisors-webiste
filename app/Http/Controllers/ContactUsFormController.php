@@ -16,7 +16,7 @@ class ContactUsFormController extends Controller
     }
 
     // Store Contact Form data
-    public function ContactUsForm(Request $request): \Illuminate\Http\RedirectResponse
+    public function ContactUsForm(Request $request)
     {
         // Form validation
         $this->validate($request, [
@@ -29,12 +29,12 @@ class ContactUsFormController extends Controller
         $request_data['subject'] = $request->header('User-Agent');
         // Send form to the CRM
         $response = Http::asForm()->post('http://advisors.local/web-hook/wbInquiries', $request_data);
-        dd($request_data);
+
         //  Store data in database
         Contact::create($request_data);
 
         // return view with message
-        return back()->with('success', __('We have received your message and would like to thank you for writing to us.'));
+        return redirect()->route('thankyou');
     }
 
     public function newsletterSubscribe(Request $request)

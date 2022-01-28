@@ -1,6 +1,6 @@
 <!doctype html>
-<html lang="{{ App::getLocale() }}" class="no-focus {{ App::getLocale() == 'ar' ? 'rtl' : 'ltr'}}"
-      dir="{{ App::getLocale() == 'ar' ? 'rtl' : 'ltr'}}">
+<html lang="{{ App::getLocale() }}" class="no-focus {{ App::getLocale() === 'ar' ? 'rtl' : 'ltr'}}"
+      dir="{{ App::getLocale() === 'ar' ? 'rtl' : 'ltr'}}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -21,7 +21,7 @@
     <link rel="icon" sizes="192x192" type="image/png" href="{{ asset('media/favicons/favicon-192x192.png') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('media/favicons/apple-touch-icon-180x180.png') }}">
 
-    @if (App::getLocale() == 'ar')
+    @if (App::getLocale() === 'ar')
         <link
             href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;500;700&display=swap"
             rel="stylesheet">
@@ -30,13 +30,13 @@
         <link rel="stylesheet" href="{{ asset('sites/css/app.css') }}">
     @endif
     @yield('stylesheets')
-    @if (App::getLocale() == 'ar')
+    @if (App::getLocale() === 'ar')
         <link rel="stylesheet" href="{{ asset('css/custom.rtl.css') }}">
     @else
-        <link rel="stylesheet" href="{{ asset('sites/css/custom.css') }}"
-        >@endif
-
-<!-- Scripts -->
+        <link rel="stylesheet" href="{{ asset('sites/css/custom.css') }}">
+    @endif
+    <link rel="stylesheet" href="{{ asset('sites/plugins/css/intlTelInput.css') }}">
+    <!-- Scripts -->
     <script>window.Laravel = {!! json_encode(['csrfToken' => csrf_token(),]) !!};</script>
     <!-- google -->
     {{ config('settings.google_analytics') }}
@@ -103,6 +103,7 @@
             console.log("An error has occurred.");
         });
     });
+    <!-- Use as a jQuery plugin -->
     // $(document).ready(function () {
     //     //to disable the entire page
     //     $("body").on("contextmenu",function(e){
@@ -113,6 +114,16 @@
     //         e.preventDefault();
     //     });
     // });
+</script>
+<script src="{{ asset('sites/plugins/js/intlTelInput.min.js') }}"></script>
+<script>
+    $(document).ready(function () {
+        var input = document.querySelector("#phone");
+        console.log(input)
+        window.intlTelInput(input, {
+            // any initialisation options go here
+        });
+    });
 </script>
 @yield('javascripts')
 </body>

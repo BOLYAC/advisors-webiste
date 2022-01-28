@@ -1,18 +1,18 @@
 {
-    "date": "2022-01-19T05:11:20.914779Z",
+    "date": "2022-01-28T12:01:28.320748Z",
     "rates": {
         "disclaimer": "Usage subject to terms: https://openexchangerates.org/terms",
         "license": "https://openexchangerates.org/license",
-        "timestamp": 1642568400,
+        "timestamp": 1643371200,
         "base": "USD",
         "rates": {
-            "BTC": 2.3939331e-5,
-            "CAD": 1.250271,
-            "ETH": 0.0003215603,
-            "EUR": 0.882587,
-            "GBP": 0.735028,
-            "LTC": 0.0072654667,
-            "TRY": 13.546085
+            "BTC": 2.7441731e-5,
+            "CAD": 1.278323,
+            "ETH": 0.0004181288,
+            "EUR": 0.898212,
+            "GBP": 0.74686,
+            "LTC": 0.0093676554,
+            "TRY": 13.624912
         }
     }
 }

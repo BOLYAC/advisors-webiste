@@ -19,7 +19,7 @@
                 </a>
             </li>
             <li data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="WhatsApp">
-                <a href="https://api.whatsapp.com/send/?phone=00905513993355&text&app_absent=0" target="_blank"
+                <a href="https://api.whatsapp.com/send/?phone=00905530124846&text&app_absent=0" target="_blank"
                    rel="nofollow noreferrer"
                    data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right"
                    data-bs-content="Right popover">
@@ -64,7 +64,7 @@
                     </div>
                     <div class="form-group">
                         <input
-                            type="text" name="phone"
+                            type="text" name="phone" id="phone"
                             class="form-control form-control-lg  {{ $errors->has('phone') ? 'error' : '' }}"
                             placeholder="{{ __('messages.your_phone_number') }}">
                         @if ($errors->has('phone'))

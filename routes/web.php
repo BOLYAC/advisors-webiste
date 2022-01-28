@@ -35,9 +35,11 @@ Route::namespace('Site')->prefix(LaravelLocalization::setLocale())->middleware('
     Route::post(LaravelLocalization::transRoute('routes.search'), [SiteController::class, 'search'])->name('search');
     //Route::get(LaravelLocalization::transRoute('routes.search/{city?}'), [SiteController::class, 'search'])->name('search.city');
 
-    Route::get('/currency-switch/{currency}', [SiteController::class, 'switchCurrency'])->name('switch_currency');
+    Route::get('/currency-switch/{currency}', [SiteController::class, 'switchCurrency '])->name('switch_currency');
 
     Route::get('/story/{id}', [SiteController::class, 'getStories'])->name('story');
+    Route::view('/tankyou', 'site/thankyou')->name('thankyou');
+
 
 });
 

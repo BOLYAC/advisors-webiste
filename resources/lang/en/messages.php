@@ -91,5 +91,7 @@ return [
     'best_offers' => 'Best Offers',
     'subscription_details' => 'Let us help you choose the right property for you',
     'most_popular_questions' => 'Most Popular Questions',
-    'turkish_citizenship' => 'Turkish Citizenship'
+    'turkish_citizenship' => 'Turkish Citizenship',
+    'enquire_now' => 'Enquire Now',
+    'consultation_free' => 'Consult us for free to get more information'
 ];

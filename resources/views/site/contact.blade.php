@@ -227,7 +227,7 @@
                         @endif
                     </div>
                     <div class="form-group mb-5">
-                        <input type="text" name="phone"
+                        <input type="text" name="phone" id="phone"
                                class="form-control form-control-lg {{ $errors->has('phone') ? 'error' : '' }}"
                                placeholder="{{ __('messages.your_phone_number') }}" required>
                         @if ($errors->has('phone'))

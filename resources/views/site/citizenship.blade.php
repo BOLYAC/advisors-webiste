@@ -61,6 +61,12 @@
             </div>
         </div>
     </section>
+    <section class="section wwa-section text-center mb-2">
+        <button class="btn btn-lg btn-secondary px-4 py-3 w-100-mobile text-uppercase"
+                data-bs-toggle="modal" data-bs-target="#contactModal" data-bs-container="body"
+                data-bs-trigger="hover focus" data-bs-placement="right"
+                data-bs-content="Right popover">{{ __('messages.enquire_now') }}</button>
+    </section>
     <section class="section section-height-2 border-0 mb-0 pt-5">
         <div class="container container-lg">
             <div class="row justify-content-center">
@@ -112,9 +118,6 @@
             </div>
         </div>
     </section>
-    <div class="container">
-        <hr class="bg-color-grey-scale-3 mt-5">
-    </div>
     <section class="section section-height-2 border-0 mb-0 pt-5">
         <div class="container container-lg">
             <div class="row justify-content-center">
@@ -241,7 +244,12 @@
             </div>
         </div>
     </section>
-
+    <section class="section wwa-section text-center mb-2">
+        <button class="btn btn-lg btn-secondary px-4 py-3 w-100-mobile text-uppercase"
+                data-bs-toggle="modal" data-bs-target="#contactModal" data-bs-container="body"
+                data-bs-trigger="hover focus" data-bs-placement="right"
+                data-bs-content="Right popover">{{ __('messages.consultation_free') }}</button>
+    </section>
     <section class="section section-height-2 border-0 mb-0 pt-5">
         <div class="container container-lg">
             <div class="row justify-content-center">
@@ -431,7 +439,7 @@
                 </div>
                 <div class="col-sm-6 text-start text-lg-end mt-4">
                     <a class="btn btn-lg btn-secondary px-4 py-3 w-100-mobile"
-                       href="#">{{ __('messages.get_in_touch') }} <span
+                       href="{{ route('contact') }}">{{ __('messages.get_in_touch') }} <span
                             class="arrow1 is-triangle arrow-bar is-right"></span></a>
                 </div>
             </div>
