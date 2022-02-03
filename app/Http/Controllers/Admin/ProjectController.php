@@ -167,7 +167,7 @@ class ProjectController extends Controller
 
         if (isset($request_data['imageDestroy'])) {
             foreach ($request_data['imageDestroy'] as $key => $image) {
-                File::delete('storage/' . $image);
+                //File::delete('storage/' . $image);
                 /*ProjectImage::findOrFail($image)->delete();*/
             }
         }

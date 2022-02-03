@@ -9,7 +9,7 @@ return [
     'link_broken' => 'The link you followed probably broken <br/>or the page has been removed.',
     'return_to_homepage' => 'Return To Homepage',
     'home' => 'Home',
-    'about_us' =>  'About Us',
+    'about_us' => 'About Us',
     'projects' => 'Projects',
     'services' => 'Services',
     'citizenship' => 'Citizenship',
@@ -93,5 +93,12 @@ return [
     'most_popular_questions' => 'Most Popular Questions',
     'turkish_citizenship' => 'Turkish Citizenship',
     'enquire_now' => 'Enquire Now',
-    'consultation_free' => 'Consult us for free to get more information'
+    'consultation_free' => 'Consult us for free to get more information',
+    'login' => 'Login',
+    'password' => 'Password',
+    'register' => 'Don\'t have an account signup',
+    'reset' => 'Forget password?',
+    'your_password' => 'Your password',
+    'confirm_your_password' => 'Confirm your password',
+    'registration' => 'Registration',
 ];

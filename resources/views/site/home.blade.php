@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{ asset('sites/vendor/rs-plugin/css/settings.css') }}" media="screen">
     <link rel="stylesheet" href="{{ asset('sites/vendor/rs-plugin/css/layers.css') }}" media="screen">
     <link rel="stylesheet" href="{{ asset('sites/vendor/rs-plugin/css/navigation.css') }}" media="screen">
-    @if (App::getLocale() == 'ar')
+    @if (App::getLocale() === 'ar')
         <link rel="stylesheet" href="{{ asset('sites/css/homepage.rtl.css') }}">
     @else
         <link rel="stylesheet" href="{{ asset('sites/css/homepage.css') }}">
@@ -24,58 +24,13 @@
     </script>
     <script src="{{ asset('sites/vendor/rs-plugin/js/jquery.themepunch.tools.min.js') }}"></script>
     <script src="{{ asset('sites/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
-    <script src="{{ asset('vendor/rs-plugin/js/extensions/revolution.extension.video.min.js') }}"></script>
 @endsection
 
 @section('content')
-    <div class="slider-container rev_slider_wrapper" style="height: 850px;">
+    <div class="slider-container rev_slider_wrapper" style="height: 700px;">
         <div id="revolutionSlider" class="slider rev_slider" data-version="5.4.8" data-plugin-revolution-slider
-             data-plugin-options="{ 'gridwidth': 1200, 'gridheight':760, 'disableProgressBar': 'on', 'navigation': {'arrows': {'enable': true, 'hide_onmobile': true, 'style': 'gyges', 'left': { 'h_offset': 100 }, 'right': { 'h_offset': 100 } }, 'bullets': {'enable' : false} }}">
+             data-plugin-options="{ 'gridwidth': 1200, 'gridheight':700, 'disableProgressBar': 'on', 'navigation': {'arrows': {'enable': true, 'hide_onmobile': true, 'style': 'gyges', 'left': { 'h_offset': 100 }, 'right': { 'h_offset': 100 } }, 'bullets': {'enable': true, 'style': 'hesperiden','h_align': 'center', 'v_align': 'bottom', 'h_offset': 0, 'v_offset': 20, 'space': 5} }}">
             <ul>
-                <li data-transition="fade" class="slide slide1">
-                    <img
-                        src="{{ asset('sites/img/slides/slide1/background.jpg')  }}"
-                        alt="slide background"
-                        class="rev-slidebg"/>
-                    <div class="tp-caption tp-resizeme fullscreenvideo tp-videolayer"
-                         id="slide-3018-layer-3"
-                         data-x="0"
-                         data-y="0"
-                         data-type="video"
-                         data-responsive_offset="on"
-                         data-frames='[{"speed":1000,"to":"o:1;","delay":0,"ease":"Power1.easeInOut"},{"delay":"wait","speed":1000,"ease":"nothing"}]'
-                         data-ytid="eV6lTEY95yY"
-                         data-videoattributes="autoplay=1&loop=1&controls=0&version=3&enablejsapi=1&fsh=0&modestbranding=1&html5=1&mute=1&hd=1&wmode=opaque&showinfo=0&ref=0&amp;rel=0&origin=https://www.turkeyadvisors.com;"
-                         data-videorate="1"
-                         data-videowidth="100%"
-                         data-videoheight="100%"
-                         data-videocontrols="controls"
-                         data-videoloop="loop"
-                         data-forceCover="1"
-                         data-aspectratio="16:9"
-                         data-autoplay="true"
-                         data-autoplayonlyfirsttime="false"
-                         data-nextslideatend="true"
-                         data-volume="100"
-                         data-forcerewind="on">
-                    </div>
-                    <div class="tp-caption slide-text"
-                         data-x="{{ App::getLocale() == 'ar' ? 'right' : 'left'}}"
-                         data-hoffset="{{ App::getLocale() == 'ar' ? '-740' : '40'}}"
-                         data-y="top" data-voffset="430"
-                         data-width="800"
-                         data-start="800"
-                         data-whitespace="nowrap"
-                         data-transform_in="y:100%;s:400;"
-                         data-transform_out="opacity:0;s:1000;"
-                         data-basealign="grid"
-                         style="z-index: 5"
-                         data-mask_in="x:0px;y:0px;">
-                        <a class="btn btn-secondary btn-blink p-2"
-                           href="#">{{ __('messages.more_details') }} <span
-                                class="arrow1 is-triangle arrow-bar is-right"></span></a>
-                    </div>
-                </li>
                 @foreach($banners as $banner)
                     <li data-transition="fade" class="slide slide1">
                         <img
@@ -83,8 +38,8 @@
                             alt="slide background"
                             class="rev-slidebg"/>
                         <div class="tp-caption slide-text"
-                             data-x="{{ App::getLocale() == 'ar' ? 'right' : 'left'}}"
-                             data-hoffset="{{ App::getLocale() == 'ar' ? '-740' : '40'}}"
+                             data-x="{{ App::getLocale() === 'ar' ? 'right' : 'left'}}"
+                             data-hoffset="{{ App::getLocale() === 'ar' ? '-740' : '40'}}"
                              data-y="top" data-voffset="250"
                              data-width="850"
                              data-start="800"
@@ -98,8 +53,8 @@
                             <h4>{!! $banner->details !!}</h4>
                         </div>
                         <div class="tp-caption slide-text"
-                             data-x="{{ App::getLocale() == 'ar' ? 'right' : 'left'}}"
-                             data-hoffset="{{ App::getLocale() == 'ar' ? '-740' : '40'}}"
+                             data-x="{{ App::getLocale() === 'ar' ? 'right' : 'left'}}"
+                             data-hoffset="{{ App::getLocale() === 'ar' ? '-740' : '40'}}"
                              data-y="top" data-voffset="430"
                              data-width="800"
                              data-start="800"
@@ -109,13 +64,12 @@
                              data-basealign="grid"
                              style="z-index: 5"
                              data-mask_in="x:0px;y:0px;">
-                            <a class="btn btn-secondary btn-blink p-2"
-                               href="{{ $banner->link_url }}">{{ __('messages.more_details') }} <span
+                            <a class="btn btn-secondary btn-blink"
+                               href="{{ $banner->link_url }}">{{ __('messages.enquire_now') }} <span
                                     class="arrow1 is-triangle arrow-bar is-right"></span></a>
                         </div>
                     </li>
                 @endforeach
-
             </ul>
         </div>
     </div>
@@ -775,7 +729,8 @@
                                             <img src="{{ pageImage($testimonial->photo_file) }}"
                                                  class="img-fluid rounded-circle"
                                                  alt="">
-                                            <p><strong
+                                            <p>
+                                                <strong
                                                     class="font-weight-extra-bold">{{ $testimonial->name ?? '' }}</strong>
                                                 <span>{{ $testimonial->title ?? '' }}</span>
                                             </p>

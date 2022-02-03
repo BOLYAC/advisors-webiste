@@ -1,18 +1,9 @@
 {
-    "date": "2022-01-28T12:01:28.320748Z",
+    "date": "2022-02-03T12:04:18.338672Z",
     "rates": {
-        "disclaimer": "Usage subject to terms: https://openexchangerates.org/terms",
-        "license": "https://openexchangerates.org/license",
-        "timestamp": 1643371200,
-        "base": "USD",
-        "rates": {
-            "BTC": 2.7441731e-5,
-            "CAD": 1.278323,
-            "ETH": 0.0004181288,
-            "EUR": 0.898212,
-            "GBP": 0.74686,
-            "LTC": 0.0093676554,
-            "TRY": 13.624912
-        }
+        "error": true,
+        "status": 429,
+        "message": "access_restricted",
+        "description": "Access restricted until 2022-02-12 (reason: too_many_requests). If there has been a mistake, please contact support@openexchangerates.org."
     }
 }

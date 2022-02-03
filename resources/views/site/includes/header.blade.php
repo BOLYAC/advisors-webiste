@@ -111,6 +111,11 @@
                     <nav class="header-nav-top justify-content-center justify-content-xl-end">
                         <ul class="nav nav-pills align-items-center">
                             <li class="nav-item nav-item-left-border-remove nav-item-left-border-sm-show me-3">
+                                <span class="ws-nowrap text-4"><a href="#search" data-toggle="search-form">
+                                        <img src="{{ asset('sites/img/search.png') }}" alt="search"
+                                             class="fa-border"/></a></span>
+                            </li>
+                            <li class="nav-item nav-item-left-border-remove nav-item-left-border-sm-show me-3">
                                 <span class="ws-nowrap"><img src="{{ asset('sites/img/envelope.svg') }}" alt="email"
                                                              class="fa-border"/> <a
                                         href="mailto:{{ config('settings.default_email_address') }}">{{ config('settings.default_email_address') }}</a></span>
@@ -192,7 +197,21 @@
                             </li>
                         </ul>
                     </nav>
+                    <div class="search-form-wrapper">
+                        <form class="search-form" id="" action="">
+                            <div class="input-group">
+                                <input type="text" name="search" class="search form-control" placeholder="Search">
+                                <span class="input-group-addon" id="basic-addon2"><i class="fa fa-search"
+                                                                                     aria-hidden="true"></i>
+         </span>
+                                <span class="input-group-addon search-close" id="basic-addon2"><i
+                                        class="fa fa-window-close" aria-hidden="true"></i>
+         </span>
+                            </div>
+                        </form>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>

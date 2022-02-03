@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     @yield('seo_header')
-    <meta name="robots" content="noindex, nofollow">
+    <meta name="robots">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap"
@@ -17,9 +17,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Icons -->
-    <link rel="shortcut icon" href="{{ asset('media/favicons/favicon.png') }}">
-    <link rel="icon" sizes="192x192" type="image/png" href="{{ asset('media/favicons/favicon-192x192.png') }}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('media/favicons/apple-touch-icon-180x180.png') }}">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" sizes="192x192" type="image/png" href="{{ asset('favicon-192x192.ico') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon-180x180.ico') }}">
 
     @if (App::getLocale() === 'ar')
         <link
@@ -36,6 +36,20 @@
         <link rel="stylesheet" href="{{ asset('sites/css/custom.css') }}">
     @endif
     <link rel="stylesheet" href="{{ asset('sites/plugins/css/intlTelInput.css') }}">
+    <style>
+        .search-form-wrapper {
+            display: none;
+            position: absolute;
+            left: 0;
+            right: 0;
+            padding: 20px 15px;
+            margin-top: 50px;
+            background: url(/resources/images/misc/bg_search-open.png) right center no-repeat #f89d1c;
+        }
+        .search-form-wrapper.open {
+            display: block;
+        }
+    </style>
     <!-- Scripts -->
     <script>window.Laravel = {!! json_encode(['csrfToken' => csrf_token(),]) !!};</script>
     <!-- google -->
@@ -101,6 +115,24 @@
             });
         }).fail(function () {
             console.log("An error has occurred.");
+        });
+
+        $('[data-toggle=search-form]').click(function() {
+            $('.search-form-wrapper').toggleClass('open');
+            $('.search-form-wrapper .search').focus();
+            $('html').toggleClass('search-form-open');
+        });
+        $('[data-toggle=search-form-close]').click(function() {
+            $('.search-form-wrapper').removeClass('open');
+            $('html').removeClass('search-form-open');
+        });
+        $('.search-form-wrapper .search').keypress(function( event ) {
+            if($(this).val() == "Search") $(this).val("");
+        });
+
+        $('.search-close').click(function(event) {
+            $('.search-form-wrapper').removeClass('open');
+            $('html').removeClass('search-form-open');
         });
     });
     <!-- Use as a jQuery plugin -->

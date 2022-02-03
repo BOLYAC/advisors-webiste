@@ -40,13 +40,10 @@ Route::namespace('Site')->prefix(LaravelLocalization::setLocale())->middleware('
     Route::get('/story/{id}', [SiteController::class, 'getStories'])->name('story');
     Route::view('/tankyou', 'site/thankyou')->name('thankyou');
 
-
 });
 
 // Admin routes
 Auth::routes([
-    'register' => false, // Registration Routes...
-    'reset' => false, // Password Reset Routes...
     'verify' => false, // Email Verification Routes...
 ]);
 require 'admin.php';

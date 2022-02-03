@@ -3,7 +3,7 @@
     {!! SEO::generate() !!}
 @endsection
 @section('stylesheets')
-    @if (App::getLocale() == 'ar')
+    @if (App::getLocale() === 'ar')
         <link rel="stylesheet" href="{{ asset('sites/css/articles.rtl.css') }}">
     @else
         <link rel="stylesheet" href="{{ asset('sites/css/articles.css') }}">
@@ -86,7 +86,7 @@
                                 </div>
                                 <div class="card-text row align-items-end">
                                     <div class="col-10">
-                                        <p class="text-4">{!! \Str::limit($post->details , 90, $end='...') !!}</p>
+                                        <p class="text-1">{!! \Str::limit(strip_tags($post->details) , 90, $end='...') !!}</p>
                                     </div>
                                     <div class="col-2 read-more text-end">
                                         <a href="{{ route('post.details', $post->seo_url_slug ?? $post->translate('en')->seo_url_slug) }}"><span

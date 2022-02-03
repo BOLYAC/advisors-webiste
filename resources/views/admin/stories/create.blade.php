@@ -20,7 +20,7 @@
     <div class="content">
         <nav class="breadcrumb bg-white push">
             <a class="breadcrumb-item" href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
-            <a class="breadcrumb-item" href="{{ route('testimonial.index') }}">{{ __('List stories') }}</a>
+            <a class="breadcrumb-item" href="{{ route('insta-stories.index') }}">{{ __('List stories') }}</a>
             <span class="breadcrumb-item active">{{ __('Create new story') }}</span>
         </nav>
         <div class="row">
@@ -74,7 +74,7 @@
 
                             <div class="form-group row">
                                 <div class="col-6">
-                                    <a href="{{ route('testimonial.index') }}" class="btn btn-alt-danger">
+                                    <a href="{{ route('insta-stories.index') }}" class="btn btn-alt-danger">
                                         <i class="fa fa-arrow-left mr-5"></i> {{ __('Cancel') }}
                                     </a>
                                 </div>

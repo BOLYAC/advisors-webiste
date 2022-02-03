@@ -3,7 +3,7 @@
     {!! SEO::generate() !!}
 @endsection
 @section('stylesheets')
-    @if (App::getLocale() == 'ar')
+    @if (App::getLocale() === 'ar')
         <link rel="stylesheet" href="{{ asset('sites/css/project.rtl.css') }}">
     @else
         <link rel="stylesheet" href="{{ asset('sites/css/project.css') }}">
@@ -71,8 +71,10 @@
                             class="fas fa-envelope-open-text me-1 text-secondary"></i> {{ __('messages.email') }}</a>
                     <a class="d-inline-block share me-3"><i
                             class="fas fa-share-alt me-1 text-secondary"></i> {{ __('messages.share') }}</a>
-                    <a class="d-inline-block print"><i
+                    <a class="d-inline-block print me-3"><i
                             class="fa fa-print text-secondary"></i> {{ __('messages.print') }}</a>
+                    <a href="#form-enquiry"
+                       class="badge badge-secondary badge-md px-3 ml-3 btn-blink"> {{ __('messages.enquire_now') }}</a>
                 </div>
             </div>
             <hr class="bg-color-grey-scale-8"/>
@@ -367,7 +369,7 @@
                 </div>
                 <div class="col-xl-4 sidebar">
                     <div class="contact">
-                        <div class="contact-on-whatsapp">
+                        <div class="contact-on-whatsapp" id="form-enquiry">
                             <a href="https://wa.me/00905527440617" target="_blank"
                                class="btn btn-lg btn-secondary w-100 font-weight-semibold py-3">{{ __('messages.contact_us_on_whatsapp') }}
                                 <i class="ms-3 fab fa-whatsapp text-5"></i></a>

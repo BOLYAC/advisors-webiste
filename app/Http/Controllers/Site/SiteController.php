@@ -358,7 +358,7 @@ class SiteController extends Controller
     public function about()
     {
         $topic = Topic::whereTranslationLike('seo_url_slug', '%about%')->first();
-        $users = User::all();
+        $users = User::where('status', false)->get();
         $about = AboutUsPage::first();
         if ($topic) {
             SEOTools::setTitle(config('settings.site_name') . ' | ' . $topic->seo_title);

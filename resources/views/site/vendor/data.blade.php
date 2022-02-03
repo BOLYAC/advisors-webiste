@@ -1,14 +1,18 @@
 @foreach ($projects as $project)
     <div class="col-lg-6 col-xl-4 mb-4">
         <div class="project card">
-            <div class="ratio ratio-16x9">
-                <img class="card-img-top" src="{{ pageImage($project->photo_file) }}"
-                     alt="{{ $project->seo_title }}">
-            </div>
+            <a href="{{ route('project.detail', $project->seo_url_slug ?? $project->translate('en')->seo_url_slug) }}">
+                <div class="ratio ratio-16x9">
+                    <img class="card-img-top" src="{{ pageImage($project->photo_file) }}"
+                         alt="{{ $project->seo_title }}">
+                </div>
+            </a>
             <div class="card-body">
                 <div class="card-infos">
+                    <a href="{{ route('project.detail', $project->seo_url_slug ?? $project->translate('en')->seo_url_slug) }}">
                     <h4 class="card-title mb-4 text-6 text-sm-7 text-lg-6 text-xl-6 text-xxl-7 font-weight-bold">
                         {{ __('messages.project_no') }} {{ $project->title }}</h4>
+                    </a>
                     <div class="row features mb-3 gx-2 gx-sm-3 gx-xl-2 gx-xxl-3">
                         <div class="col-auto text-3"><img class="feature-icon me-1"
                                                           src="{{ asset('sites/img/project/map.svg') }}"
@@ -67,7 +71,7 @@
                             @endswitch
                         </div>
                     </div>
-                    <p class="card-text text-4 mb-5">{!! \Str::limit($project->details , 100, $end='...') !!}</p>
+                    <p class="card-text text-4 mb-5">{!! \Str::limit($project->details , 120, $end='...') !!}</p>
                 </div>
                 <div class="row align-items-center justify-content-between">
                     <div
