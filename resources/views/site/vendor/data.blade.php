@@ -10,8 +10,8 @@
             <div class="card-body">
                 <div class="card-infos">
                     <a href="{{ route('project.detail', $project->seo_url_slug ?? $project->translate('en')->seo_url_slug) }}">
-                    <h4 class="card-title mb-4 text-6 text-sm-7 text-lg-6 text-xl-6 text-xxl-7 font-weight-bold">
-                        {{ __('messages.project_no') }} {{ $project->title }}</h4>
+                        <h4 class="card-title mb-4 text-6 text-sm-7 text-lg-6 text-xl-6 text-xxl-7 font-weight-bold">
+                            {{ __('messages.project_no') }} {{ $project->title }}</h4>
                     </a>
                     <div class="row features mb-3 gx-2 gx-sm-3 gx-xl-2 gx-xxl-3">
                         <div class="col-auto text-3"><img class="feature-icon me-1"
@@ -42,7 +42,6 @@
                                 @case(8)
                                 {{  __('Izmir') }}
                                 @break
-
                             @endswitch
                         </div>
                         <div class="col-auto text-3"><img class="feature-icon me-1"

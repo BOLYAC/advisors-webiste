@@ -35,21 +35,7 @@
     @else
         <link rel="stylesheet" href="{{ asset('sites/css/custom.css') }}">
     @endif
-    <link rel="stylesheet" href="{{ asset('sites/plugins/css/intlTelInput.css') }}">
-    <style>
-        .search-form-wrapper {
-            display: none;
-            position: absolute;
-            left: 0;
-            right: 0;
-            padding: 20px 15px;
-            margin-top: 50px;
-            background: url(/resources/images/misc/bg_search-open.png) right center no-repeat #f89d1c;
-        }
-        .search-form-wrapper.open {
-            display: block;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('sites/css/intlTelInput.min.css') }}">
     <!-- Scripts -->
     <script>window.Laravel = {!! json_encode(['csrfToken' => csrf_token(),]) !!};</script>
     <!-- google -->
@@ -116,24 +102,6 @@
         }).fail(function () {
             console.log("An error has occurred.");
         });
-
-        $('[data-toggle=search-form]').click(function() {
-            $('.search-form-wrapper').toggleClass('open');
-            $('.search-form-wrapper .search').focus();
-            $('html').toggleClass('search-form-open');
-        });
-        $('[data-toggle=search-form-close]').click(function() {
-            $('.search-form-wrapper').removeClass('open');
-            $('html').removeClass('search-form-open');
-        });
-        $('.search-form-wrapper .search').keypress(function( event ) {
-            if($(this).val() == "Search") $(this).val("");
-        });
-
-        $('.search-close').click(function(event) {
-            $('.search-form-wrapper').removeClass('open');
-            $('html').removeClass('search-form-open');
-        });
     });
     <!-- Use as a jQuery plugin -->
     // $(document).ready(function () {
@@ -146,16 +114,6 @@
     //         e.preventDefault();
     //     });
     // });
-</script>
-<script src="{{ asset('sites/plugins/js/intlTelInput.min.js') }}"></script>
-<script>
-    $(document).ready(function () {
-        var input = document.querySelector("#phone");
-        console.log(input)
-        window.intlTelInput(input, {
-            // any initialisation options go here
-        });
-    });
 </script>
 @yield('javascripts')
 </body>

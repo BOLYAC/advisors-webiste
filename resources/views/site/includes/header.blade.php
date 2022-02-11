@@ -14,7 +14,7 @@
                 </div>
                 <div class="header-column justify-content-end order-2 order-lg-1">
                     <div class="header-row">
-                        <div class="header-nav header-nav-line header-nav-bottom-line">
+                        <div class="header-nav header-nav-line header-nav-bottom-line order-2 order-lg-1">
                             <div
                                 class="header-nav-main header-nav-main-square header-nav-main-dropdown-no-borders header-nav-main-effect-2 header-nav-main-sub-effect-1">
                                 <nav class="collapse">
@@ -64,6 +64,16 @@
                                                 {{ __('messages.contact_us') }}
                                             </a>
                                         </li>
+                                        <li class="d-lg-none">
+                                            <a href="{{ route('login') }}">
+                                                {{ __('messages.login') }}
+                                            </a>
+                                        </li>
+                                        <li class="d-lg-none">
+                                            <a href="{{ route('contact') }}">
+                                                {{ __('messages.register') }}
+                                            </a>
+                                        </li>
                                     </ul>
                                 </nav>
                             </div>
@@ -75,13 +85,78 @@
                                 </span>
                             </button>
                         </div>
-                    </div>
-                </div>
-                <div class="header-column d-none d-xl-flex order-1 order-lg-2">
-                    <div class="header-row justify-content-end">
-                        <a href="{{ route('contact') }}"
-                           class="btn btn-lg btn-secondary">{{ __('messages.get_in_touch') }} <span
-                                class="arrow1 is-triangle arrow-bar is-right"></span> </a>
+                        <div class="header-nav-features p-0 order-1 order-lg-2 ms-4 ms-xl-5">
+                            <ul class="header-extra-info">
+                                <li class="m-0">
+                                    <div
+                                        class="feature-box feature-box-style-2 align-items-end flex-column header-nav-features-search-reveal-container">
+                                        <div
+                                            class="header-nav-feature header-nav-features-search header-nav-features-search-reveal align-items-center">
+                                            <a href="#"
+                                               class="btn btn-link text-light header-nav-features-search-show-icon d-inline-flex px-0 me-2 me-xl-3"><i
+                                                    class="fas fa-search header-nav-top-icon"></i></a>
+                                            <a href="#"
+                                               class="btn btn-sm btn-secondary px-2 py-1 d-none d-lg-inline-flex"
+                                               data-bs-toggle="modal" data-bs-target="#contactModal"
+                                               data-bs-container="body"
+                                               data-bs-trigger="hover focus" data-bs-placement="right"
+                                               data-bs-content="Right popover"
+                                            >{{ __('messages.enquire_now') }}</a>
+                                        </div>
+                                        <div class="d-none d-lg-flex">
+                                            @guest
+                                                <a href="#" class="btn btn-link text-light px-0 me-3 me-xl-4"
+                                                   data-bs-toggle="modal" data-bs-target="#loginModal"
+                                                   data-bs-container="body"
+                                                   data-bs-trigger="hover focus" data-bs-placement="right"
+                                                   data-bs-content="Right popover"
+                                                >{{ __('messages.login') }}</a>
+                                                <a href="#" class="btn btn-link text-light px-0"
+                                                   data-bs-toggle="modal" data-bs-target="#registerModal"
+                                                   data-bs-container="body"
+                                                   data-bs-trigger="hover focus" data-bs-placement="right"
+                                                   data-bs-content="Right popover"
+                                                >{{ __('messages.register') }}</a>
+                                            @else
+                                                <a href="{{ route('logout') }}" class="btn btn-link text-light px-0"
+                                                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                                >{{ __('messages.logout') }}</a>
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                      style="display: none;">
+                                                    @csrf
+                                                </form>
+                                            @endguest
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="header-nav-features header-nav-features-no-border p-static">
+                            <div
+                                class="header-nav-feature header-nav-features-search header-nav-features-search-reveal header-nav-features-search-reveal-big-search header-nav-features-search-reveal-big-search-full">
+                                <div class="container">
+                                    <div class="row justify-content-center h-100 d-flex">
+                                        <div class="col-lg-10 col-xl-9 h-100 d-flex">
+                                            <form role="search" class="d-flex h-100 w-100"
+                                                  action="{{ route('searchFull') }}" method="post" id="search">
+                                                @csrf
+                                                <div class="big-search-header input-group input-group-lg">
+                                                    <input class="form-control form-control-lg text-1" id="headerSearch"
+                                                           name="q" type="search" value=""
+                                                           placeholder="Example: Appartment Istanbul Sea View...">
+                                                    <button class="btn btn-lg bg-secondary text-primary px-5"
+                                                            type="submit" id="button-addon2">{{ __('messages.search') }}
+                                                    </button>
+                                                    <a href="javascript:void(0)"
+                                                       class="header-nav-features-search-hide-icon"><i
+                                                            class="fas fa-times header-nav-top-icon"></i></a>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -97,7 +172,7 @@
                         <h6 class="d-inline-flex align-middle flash-news mb-0 text-4">
                             <strong>{{ __('messages.latest_news') }} : </strong></h6>
                         <div class="d-inline-flex align-middle">
-                            <marquee direction="{{ App::getLocale() == 'ar' ? 'right' : 'left'}}"
+                            <marquee direction="{{ App::getLocale() === 'ar' ? 'right' : 'left'}}"
                                      onmouseover="this.stop();" onmouseout="this.start();">
                                 <ul class="nav nav-pills d-block" id="new-currency">
                                 </ul>
@@ -110,11 +185,6 @@
                 <div class="header-row w-100">
                     <nav class="header-nav-top justify-content-center justify-content-xl-end">
                         <ul class="nav nav-pills align-items-center">
-                            <li class="nav-item nav-item-left-border-remove nav-item-left-border-sm-show me-3">
-                                <span class="ws-nowrap text-4"><a href="#search" data-toggle="search-form">
-                                        <img src="{{ asset('sites/img/search.png') }}" alt="search"
-                                             class="fa-border"/></a></span>
-                            </li>
                             <li class="nav-item nav-item-left-border-remove nav-item-left-border-sm-show me-3">
                                 <span class="ws-nowrap"><img src="{{ asset('sites/img/envelope.svg') }}" alt="email"
                                                              class="fa-border"/> <a
@@ -197,21 +267,7 @@
                             </li>
                         </ul>
                     </nav>
-                    <div class="search-form-wrapper">
-                        <form class="search-form" id="" action="">
-                            <div class="input-group">
-                                <input type="text" name="search" class="search form-control" placeholder="Search">
-                                <span class="input-group-addon" id="basic-addon2"><i class="fa fa-search"
-                                                                                     aria-hidden="true"></i>
-         </span>
-                                <span class="input-group-addon search-close" id="basic-addon2"><i
-                                        class="fa fa-window-close" aria-hidden="true"></i>
-         </span>
-                            </div>
-                        </form>
-                    </div>
                 </div>
-
             </div>
         </div>
     </div>

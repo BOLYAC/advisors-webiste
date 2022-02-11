@@ -24,7 +24,10 @@ class User extends Authenticatable
         'users_linkedin',
         'users_whatsapp',
         'user_title',
-        'photo_file'
+        'photo_file',
+        'google_id',
+        'facebook_id',
+        'oauth_type',
     ];
 
     /**

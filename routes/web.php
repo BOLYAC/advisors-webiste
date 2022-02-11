@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ContactUsFormController;
 use App\Http\Controllers\Site\SiteController;
+use App\Http\Controllers\SocialController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -33,12 +34,25 @@ Route::namespace('Site')->prefix(LaravelLocalization::setLocale())->middleware('
     Route::get(LaravelLocalization::transRoute('routes.projects/{slug}'), [SiteController::class, 'getProject'])->name('project.detail');
     Route::get(LaravelLocalization::transRoute('routes.properties/{slug}'), [SiteController::class, 'getProperty'])->name('property.detail');
     Route::post(LaravelLocalization::transRoute('routes.search'), [SiteController::class, 'search'])->name('search');
+    Route::post(LaravelLocalization::transRoute('routes.searchFull'), [SiteController::class, 'searchFull'])->name('searchFull');
     //Route::get(LaravelLocalization::transRoute('routes.search/{city?}'), [SiteController::class, 'search'])->name('search.city');
 
     Route::get('/currency-switch/{currency}', [SiteController::class, 'switchCurrency '])->name('switch_currency');
 
     Route::get('/story/{id}', [SiteController::class, 'getStories'])->name('story');
     Route::view('/tankyou', 'site/thankyou')->name('thankyou');
+
+    // Facebook login
+    Route::get('auth/facebook', [SocialController::class, 'facebookRedirect']);
+    Route::get('auth/facebook/callback', [SocialController::class, 'loginWithFacebook']);
+    // Twitter login
+    Route::get('auth/twitter', [SocialController::class, 'loginwithTwitter']);
+    Route::get('auth/callback/twitter', [SocialController::class, 'cbTwitter']);
+    // Google Login
+    Route::get('auth/google', [SocialController::class, 'redirectToGoogle']);
+    Route::get('auth/google/callback', [SocialController::class, 'handleGoogleCallback']);
+    // Search
+    Route::get('searchFull', [SiteController::class, 'searchFull']);
 
 });
 

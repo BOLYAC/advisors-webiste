@@ -14,6 +14,7 @@ return [
     'blog/{slug}'               => 'blog/{slug}',
     'news/{slug}'               => 'news/{slug}',
     'search'                    => 'search',
+    'searchFull'                => 'search-full',
     'search/{city?}'            => 'search/{slug?}',
     'works'                     => 'works',
     'newsletter/submit'         => 'newsletter/submit',

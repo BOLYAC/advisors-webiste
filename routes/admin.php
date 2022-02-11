@@ -84,6 +84,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
         return "Done!"; //Return anything
     });
+
+    Route::get('/migrate', function () {
+        Artisan::call('migrate');
+        return "Done!"; //Return anything
+    });
+
     Route::get('login', 'LoginController@showLoginForm')->name('admin.login');
     Route::post('login', 'LoginController@login')->name('admin.login.post');
     Route::get('logout', 'LoginController@logout')->name('admin.logout');

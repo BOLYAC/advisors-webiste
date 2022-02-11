@@ -96,9 +96,13 @@ return [
     'consultation_free' => 'Consult us for free to get more information',
     'login' => 'Login',
     'password' => 'Password',
-    'register' => 'Don\'t have an account signup',
+    'register_new' => 'Don\'t have an account signup',
     'reset' => 'Forget password?',
     'your_password' => 'Your password',
     'confirm_your_password' => 'Confirm your password',
     'registration' => 'Registration',
+    'Login_with_facebook' => 'Login with Facebook',
+    'Login_with_google' => 'Login with Google',
+    'register' => 'Register',
+    'logout' => 'Logout'
 ];

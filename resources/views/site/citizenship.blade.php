@@ -3,7 +3,7 @@
     {!! SEO::generate() !!}
 @endsection
 @section('stylesheets')
-    @if (App::getLocale() == 'ar')
+    @if (App::getLocale() === 'ar')
         <link rel="stylesheet" href="{{ asset('sites/css/citizenship.rtl.css') }}">
     @else
         <link rel="stylesheet" href="{{ asset('sites/css/citizenship.css') }}">
@@ -428,6 +428,25 @@
             {{--            </div>--}}
         </div>
     </section>
+
+    <section class="section projects-section mt-4 mb-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-xl-3 mt-2">
+                    <h3>{{ __('For more information') }}</h3>
+                </div>
+                <div class="col-lg-3 col-xl-3 text-start text-lg-start mb-3">
+                    <a href="#"
+                       data-bs-toggle="modal" data-bs-target="#contactModal"
+                       data-bs-container="body"
+                       data-bs-trigger="hover focus" data-bs-placement="right"
+                       data-bs-content="Right popover"
+                       class="btn btn-blink btn-lg">{{ __('Click here') }}</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="section wwa-section border-0 mt-5 py-4"
              style="background-image: url({{ asset('sites/img/wwa.jpg') }});">
         <div class="container container-lg">

@@ -30,4 +30,16 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'facebook' => [
+        'client_id' => env('FB_CLIENT_ID'),
+        'client_secret' => env('fb_client_secret'),
+        'redirect' => env('FB_REDIRECT')
+    ],
+
+    'google' => [
+        'client_id' => env('google_client_id'),
+        'client_secret' => env('google_client_secret'),
+        'redirect' => env('google_redirect')
+    ],
+
 ];

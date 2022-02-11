@@ -228,7 +228,10 @@
             </div>
             <div class="owl-carousel owl-theme projects mt-3">
                 @foreach($projects as $project)
-                    <div class="project card">
+                    <div class="project card position-relative">
+                        <div class="like" style="cursor: pointer">
+                            <i class="far fa-heart"></i>
+                        </div>
                         <a href="{{ route('project.detail', $project->seo_url_slug ?? $project->translate('en')->seo_url_slug) }}">
                             <div class="ratio ratio-16x9">
                                 <img class="card-img-top" src="{{ pageImage($project->photo_file) }}" alt="Project">
@@ -354,7 +357,7 @@
                             <div class="card-text row align-items-end">
 
                                 <div class="col-10">
-                                    <p class="text-4">{!! \Str::limit($post->details , 100, $end='...') !!}</p>
+                                    <p class="text-4">{!! \Str::limit(strip_tags($post->details) , 100, $end='...') !!}</p>
                                 </div>
                                 <div class="col-2 read-more text-end">
                                     <a href="{{ route('post.details', $post->seo_url_slug ?? $post->translate('en')->seo_url_slug) }}"><span
@@ -428,6 +431,9 @@
             <div class="owl-carousel owl-theme projects mt-3">
                 @foreach($citizenProjects as $p)
                     <div class="project card">
+                        <div class="like" style="cursor: pointer">
+                            <i class="far fa-heart"></i>
+                        </div>
                         <a href="{{ route('project.detail', $p->seo_url_slug ?? $p->translate('en')->seo_url_slug) }}">
                             <div class="ratio ratio-16x9">
                                 <img class="card-img-top" src="{{ pageImage($p->photo_file) }}" alt="Project">
@@ -435,7 +441,7 @@
                         </a>
                         <div class="card-body">
                             <div class="card-infos">
-                                <a href="{{ route('project.detail', $project->seo_url_slug ?? $project->translate('en')->seo_url_slug) }}">
+                                <a href="{{ route('project.detail', $p->seo_url_slug ?? $p->translate('en')->seo_url_slug) }}">
                                     <h4 class="card-title mb-4 text-7 font-weight-bold">{{ __('messages.project_no') }} {{ $p->title  }}</h4>
                                 </a>
                                 <div class="row features mb-3 gx-3">
@@ -497,7 +503,7 @@
 
                                     </div>
                                 </div>
-                                <p class="card-text text-4 mb-5">{!! \Str::limit($p->details , 150, $end='...') !!}</p>
+                                <p class="card-text text-4 mb-5">{!! \Str::limit(strip_tags($p->details) , 150, $end='...') !!}</p>
                             </div>
                             <div class="row align-items-center justify-content-between">
                                 <div

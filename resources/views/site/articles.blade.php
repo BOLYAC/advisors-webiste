@@ -65,7 +65,7 @@
                     @foreach($posts as $post)
                         <div class="col-lg-6 mb-4">
                             <div class="article card border-radius-0">
-                                <a href="{{ route('project.detail', $post->seo_url_slug ?? $post->translate('en')->seo_url_slug) }}">
+                                <a href="{{ route('post.detail', $post->seo_url_slug ?? $post->translate('en')->seo_url_slug) }}">
                                     <div class="ratio ratio-16x9">
                                         <img src="{{ pageImage($post->photo_file) }}" class="card-img-top"
                                              loading="lazy"
@@ -240,7 +240,7 @@
                                 </a>
                                 <div class="card-text row align-items-end">
                                     <div class="col-10">
-                                        <p class="text-4">{!! \Str::limit($a->details , 100, $end='...') !!}</p>
+                                        <p class="text-4">{!! \Str::limit(strip_tags($a->details) , 100, $end='...') !!}</p>
                                     </div>
                                     <div class="col-2 read-more text-end">
                                         <a href="{{ route('post.details', $a->seo_url_slug ?? $a->translate('en')->seo_url_slug) }}"><span

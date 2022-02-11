@@ -549,6 +549,25 @@ class SiteController extends Controller
         return view('site.search', compact('projectResult', 'sections'));*/
     }
 
+    public function searchFull(Request $request)
+    {
+        $key = $request->q;
+
+        if ($key) {
+            $projectResult = Project::where(function ($query) use ($key) {
+                $query->whereTranslationLike('title', '%' . $key . '%')
+                    ->orWhereTranslationLike('details', '%' . $key . '%');
+            })->get();
+            $postResult = Post::where(function ($query) use ($key) {
+                $query->whereTranslationLike('title', '%' . $key . '%')
+                    ->orWhereTranslationLike('details', '%' . $key . '%');
+            })->get();
+
+            return view('site.search', compact('projectResult', 'postResult'));
+        }
+
+    }
+
     public function switchCurrency($currency)
     {
         Session::put('currency', $currency);
