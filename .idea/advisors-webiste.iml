@@ -57,7 +57,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/asm89/stack-cors" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php80" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/string" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/http-client-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-intl-grapheme" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/deprecation-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-intl-normalizer" />
@@ -155,6 +154,11 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/laravel-cookie-consent" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/league/oauth1-client" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/socialite" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/overtrue/laravel-follow" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/geoip2/geoip2" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/stevebauman/location" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/maxmind/web-service-common" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/maxmind-db/reader" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

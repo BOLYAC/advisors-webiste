@@ -42,14 +42,14 @@
                     </p>
                 </div>
                 <div class="col-lg-6 col-xl-5">
-                    <img class="w-100 img-fluid" src="{{ pageImage($about->about_us_image) }}" alt="About us"/>
+                    <img class="w-100 img-fluid" src="{{ pageImage($about->about_us_image) }}" alt="About us" width="539" height="539"/>
                 </div>
             </div>
         </div>
     </section>
     <section class="section section-height-1 border-0 mb-0 py-5">
         <div class="container container-lg mb-lg-5 text-center">
-            <img src="{{ asset('sites/img/about-icons.png') }}" alt="" class="img-fluid">
+            <img src="{{ asset('sites/img/about-icons.png') }}" alt="" class="img-fluid" width="1031" height="444">
 {{--            <div class="beehive pb-lg-5">--}}
 {{--                <div class="center center1">--}}
 {{--                    <div class="shape odd">--}}
@@ -103,7 +103,7 @@
             <div class="row justify-content-between align-items-center" id="our-mission">
                 <div class="col-lg-6 col-xl-5 order-1 order-lg-0">
                     <img class="w-100 img-fluid" src="{{ pageImage($about->our_mission_image) }}"
-                         alt="Our mission"/>
+                         alt="Our mission" width="539" height="539"/>
                 </div>
                 <div class="col-lg-6 col-xl-5 order-0 order-lg-1 mb-3">
                     <h2>{{ $about->our_mission_title ?? '' }}</h2>
@@ -125,7 +125,7 @@
                 </div>
                 <div class="col-lg-6 col-xl-5">
                     <img class="w-100 img-fluid" src="{{ pageImage($about->our_vision_image) }}"
-                         alt="Our vision"/>
+                         alt="Our vision" width="539" height="539"/>
                 </div>
             </div>
         </div>
@@ -135,7 +135,7 @@
             <div class="row justify-content-between align-items-center" id="our-team">
                 <div class="col-lg-6 col-xl-5 order-1 order-lg-0">
                     <img class="w-100 img-fluid" src="{{ pageImage($about->team_image) }}"
-                         alt="Our team"/>
+                         alt="Our team" width="539" height="539"/>
                 </div>
                 <div class="col-lg-6 col-xl-5 order-0 order-lg-1 mb-3">
                     <h2>{{ $about->team_title ?? '' }}</h2>
@@ -153,7 +153,7 @@
                 <div class="row team-member gx-4 gx-xxl-5 align-items-center mb-5">
                     <div class="col-lg-3 mb-4">
                         <div class="team-photo ratio ratio-1x1 mb-4 text-center m-auto">
-                            <img src="{{ pageImage($user->photo_file) }}" alt="">
+                            <img src="{{ pageImage($user->photo_file) }}" alt="{{ $user->name }}" width="296" height="296">
                         </div>
                         <div class="team-info text-center mb-2">
                             <h5 class="mb-2"><a>{{ $user->name }}</a></h5>

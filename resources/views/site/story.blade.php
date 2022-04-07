@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>{{ config('app.name') }}</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-    <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}"/>
+    <link rel="icon" type="image/png" href="{{ asset('sites/img/logo.png') }}"/>
     <style amp-boilerplate>body {
             -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
             -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;

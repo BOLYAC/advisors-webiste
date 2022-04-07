@@ -369,73 +369,15 @@
                 <img src="{{ asset('sites/img/citizenship-paper.png') }}" alt="" class="img-fluid"
                      style="height: 600px;">
             </div>
-            {{--            <div class="beehive pb-lg-5">--}}
-            {{--                <div class="center center1">--}}
-            {{--                    <div class="shape odd">--}}
-            {{--                        <div class="shape-text">--}}
-            {{--                            Birth Certificate--}}
-            {{--                        </div>--}}
-            {{--                    </div>--}}
-            {{--                    <div class="shape even secondary">--}}
-            {{--                        <div class="shape-text">--}}
-            {{--                            Vital Record that allows all family members as the husband, wife and children, Marriage--}}
-            {{--                            Certificate, Divorce Certificate--}}
-            {{--                        </div>--}}
-            {{--                    </div>--}}
-            {{--                    <div class="shape odd">--}}
-            {{--                        <div class="shape-text">--}}
-            {{--                            Health Insurance--}}
-            {{--                        </div>--}}
-            {{--                    </div>--}}
-            {{--                    <div class="shape even secondary">--}}
-            {{--                        <div class="shape-text">--}}
-            {{--                            Passport--}}
-            {{--                        </div>--}}
-            {{--                    </div>--}}
-            {{--                    <div class="shape odd">--}}
-            {{--                        <div class="shape-text">--}}
-            {{--                            Power of Attorney--}}
-            {{--                        </div>--}}
-            {{--                    </div>--}}
-            {{--                </div>--}}
-            {{--                <div class="center center2">--}}
-            {{--                    <div class="shape odd secondary">--}}
-            {{--                        <div class="shape-text">--}}
-            {{--                            Certificate Of Residence--}}
-            {{--                        </div>--}}
-            {{--                    </div>--}}
-            {{--                    <div class="shape even">--}}
-            {{--                        <div class="shape-text">--}}
-            {{--                            If the applicant is widowed, Spouse's Death Certificate--}}
-            {{--                        </div>--}}
-            {{--                    </div>--}}
-            {{--                    <div class="shape odd secondary">--}}
-            {{--                        <div class="shape-text">--}}
-            {{--                            12 Biometrics Photos taken on white background--}}
-            {{--                        </div>--}}
-            {{--                    </div>--}}
-            {{--                    <div class="shape even">--}}
-            {{--                        <div class="shape-text">--}}
-            {{--                            Original and Notarized Turkish translation of these documents--}}
-            {{--                        </div>--}}
-            {{--                    </div>--}}
-            {{--                    <div class="shape odd secondary">--}}
-            {{--                        <div class="shape-text">--}}
-            {{--                            Application Forms--}}
-            {{--                        </div>--}}
-            {{--                    </div>--}}
-            {{--                </div>--}}
-            {{--            </div>--}}
         </div>
     </section>
-
     <section class="section projects-section mt-4 mb-0">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-xl-3 mt-2">
+            <div class="d-flex justify-content-center">
+                <div class="col-lg-3 col-xl-3 mt-2 text-start text-lg-start">
                     <h3>{{ __('For more information') }}</h3>
                 </div>
-                <div class="col-lg-3 col-xl-3 text-start text-lg-start mb-3">
+                <div class="col-lg-5 col-xl-5 text-start text-lg-start mb-3">
                     <a href="#"
                        data-bs-toggle="modal" data-bs-target="#contactModal"
                        data-bs-container="body"

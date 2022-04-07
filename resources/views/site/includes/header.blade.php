@@ -74,6 +74,39 @@
                                                 {{ __('messages.register') }}
                                             </a>
                                         </li>
+                                        <li class="d-lg-none d-flex justify-content-center">
+                                            <a class="px-0 me-2 me-xl-3" href="#">
+                                                <i class="fas fa-euro-sign"></i>
+                                            </a>
+                                            |
+                                            <a class="px-0 me-2 me-xl-3 " href="#">
+                                                <i class="fas fa-pound-sign"></i>
+                                            </a>
+                                            |
+                                            <a class="px-0 me-2 me-xl-3" href="#">
+                                                <i class="fas fa-dollar-sign"></i>
+                                            </a>
+                                            |
+                                            <a class="px-0 me-2 me-xl-3 " href="#">
+                                                <i class="fas fa-lira-sign"></i>
+                                            </a>
+                                        </li>
+                                        <li class="d-lg-none d-flex justify-content-center">
+                                            <a class="px-0 me-2 me-xl-3" href="#">
+                                                EN
+                                            </a>
+                                            <a class="px-0 me-2 me-xl-3" href="#">
+                                                AR
+                                            </a>
+                                            <a class="px-0 me-2 me-xl-3" href="#">
+                                                FA
+                                            </a>
+                                        </li>
+                                        <li class="d-lg-none d-flex justify-content-center">
+                                            <a class="btn btn-sm btn-light px-0 me-2 me-xl-3  w-auto">Enquire
+                                                now
+                                            </a>
+                                        </li>
                                     </ul>
                                 </nav>
                             </div>
@@ -89,19 +122,107 @@
                             <ul class="header-extra-info">
                                 <li class="m-0">
                                     <div
-                                        class="feature-box feature-box-style-2 align-items-end flex-column header-nav-features-search-reveal-container">
+                                        class="feature-box feature-box-style-2 align-items-center flex-column header-nav-features-search-reveal-container">
                                         <div
-                                            class="header-nav-feature header-nav-features-search header-nav-features-search-reveal align-items-center">
-                                            <a href="#"
-                                               class="btn btn-link text-light header-nav-features-search-show-icon d-inline-flex px-0 me-2 me-xl-3"><i
-                                                    class="fas fa-search header-nav-top-icon"></i></a>
-                                            <a href="#"
-                                               class="btn btn-sm btn-secondary px-2 py-1 d-none d-lg-inline-flex"
-                                               data-bs-toggle="modal" data-bs-target="#contactModal"
-                                               data-bs-container="body"
-                                               data-bs-trigger="hover focus" data-bs-placement="right"
-                                               data-bs-content="Right popover"
-                                            >{{ __('messages.enquire_now') }}</a>
+                                            class="header-nav-feature header-nav-features-search header-nav-features-search-reveal d-flex align-items-center">
+                                            <div class="d-inline-flex flex-column">
+                                                <a href="https://api.whatsapp.com/send/?phone=00905530124846&text&app_absent=0"
+                                                   target="_blank"
+                                                   rel="nofollow noreferrer"
+                                                   class="btn btn-link text-light d-inline-flex px-0 me-2 me-xl-3"><i
+                                                        class="fab fa-whatsapp header-nav-top-icon"></i></a>
+                                                <a href="#"
+                                                   class="btn btn-link text-light header-nav-features-search-show-icon d-inline-flex px-0 me-xl-3"><i
+                                                        class="fas fa-search header-nav-top-icon"></i></a>
+                                            </div>
+                                            <div class="d-inline-flex flex-column">
+                                                <div class="mb-2 d-none d-lg-inline-flex">
+                                                    <a class="btn btn-sm btn-enquiry me-2 px-1"
+                                                       href="#"
+                                                       role="button" id="dropdownCurrencies" data-bs-toggle="dropdown"
+                                                       aria-expanded="false">
+                                                        @switch(\Illuminate\Support\Facades\Session::get('currency'))
+                                                            @case('EUR')
+                                                            <img src="{{ asset('sites/img/currency.svg') }}"
+                                                                 alt="currency"/>
+                                                            EUR
+                                                            @break
+                                                            @case('USD')
+                                                            <img src="{{ asset('sites/img/currency.svg') }}"
+                                                                 alt="currency"/>
+                                                            USD
+                                                            @break
+                                                            @case('TRY')
+                                                            <img src="{{ asset('sites/img/currency.svg') }}"
+                                                                 alt="currency"/>
+                                                            TRY
+                                                            @break
+                                                            @case('GBP')
+                                                            <img src="{{ asset('sites/img/currency.svg') }}"
+                                                                 alt="currency"/>
+                                                            GBP
+                                                            @break
+                                                        @endswitch
+                                                    </a>
+                                                    <div class="dropdown-menu dropdown-menu-right"
+                                                         aria-labelledby="dropdownCurrencies">
+                                                        <a class="dropdown-item"
+                                                           href="{{ route('switch_currency', 'USD') }}">
+                                                            <img src="{{ asset('sites/img/flags/us.png') }}"
+                                                                 class="flag flag-us rounded-circle" alt="USD"> USD
+                                                        </a>
+                                                        <a class="dropdown-item"
+                                                           href="{{ route('switch_currency', 'EUR') }}">
+                                                            <img src="{{ asset('sites/img/flags/eu.png') }}"
+                                                                 class="flag flag-us rounded-circle" alt="EUR"> EUR
+                                                        </a>
+                                                        <a class="dropdown-item"
+                                                           href="{{ route('switch_currency', 'TRY') }}">
+                                                            <img src="{{ asset('sites/img/flags/tr.png') }}"
+                                                                 class="flag flag-us rounded-circle" alt="EUR"> TRY
+                                                        </a>
+                                                        <a class="dropdown-item"
+                                                           href="{{ route('switch_currency', 'GBP') }}">
+                                                            <img src="{{ asset('sites/img/flags/gb.png') }}"
+                                                                 class="flag flag-us rounded-circle" alt="GBP"> GBP
+                                                        </a>
+                                                    </div>
+                                                    <a class="btn btn-sm btn-enquiry px-1"
+                                                       href="#"
+                                                       role="button"
+                                                       id="dropdownLanguages" data-bs-toggle="dropdown"
+                                                       aria-expanded="false">
+                                                        <img src="{{ asset('sites/img/locale.svg') }}" alt="locale"/>
+                                                        @switch(LaravelLocalization::getCurrentLocale())
+                                                            @case('en')
+                                                            EN
+                                                            @break
+                                                            @case('ru')
+                                                            RU
+                                                            @break
+                                                        @endswitch
+                                                    </a>
+                                                    <div class="dropdown-menu dropdown-menu-right"
+                                                         aria-labelledby="dropdownLanguages">
+                                                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                                            <a rel="alternate"
+                                                               hreflang="{{ $localeCode }}"
+                                                               class="dropdown-item text-uppercase"
+                                                               href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                                                {{ $properties['native'] }}
+                                                            </a>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <a href="#"
+                                                       data-bs-toggle="modal" data-bs-target="#contactModal"
+                                                       data-bs-container="body"
+                                                       data-bs-trigger="hover focus" data-bs-placement="right"
+                                                       data-bs-content="Right popover"
+                                                       class="btn btn-sm btn-enquiry px-3 d-none d-lg-inline-flex w-100">{{ __('messages.enquire_now') }}</a>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="d-none d-lg-flex">
                                             @guest
@@ -110,13 +231,15 @@
                                                    data-bs-container="body"
                                                    data-bs-trigger="hover focus" data-bs-placement="right"
                                                    data-bs-content="Right popover"
-                                                >{{ __('messages.login') }}</a>
+                                                >{{ __('messages.login') }}
+                                                </a>
                                                 <a href="#" class="btn btn-link text-light px-0"
                                                    data-bs-toggle="modal" data-bs-target="#registerModal"
                                                    data-bs-container="body"
                                                    data-bs-trigger="hover focus" data-bs-placement="right"
                                                    data-bs-content="Right popover"
-                                                >{{ __('messages.register') }}</a>
+                                                >{{ __('messages.register') }}
+                                                </a>
                                             @else
                                                 <a href="{{ route('logout') }}" class="btn btn-link text-light px-0"
                                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
@@ -163,10 +286,10 @@
         </div>
     </div>
 </header>
-<div class="header-top" style="min-height:40px!important;">
+<div class="header-top py-1" style="min-height:40px!important;">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-xl-6 mb-0 mb-lg-2 mb-xl-0">
+            <div class="col-xl-6 mb-0 mb-lg-1 mb-xl-0">
                 <div class="header-row">
                     <nav class="header-nav-top flash-news">
                         <h6 class="d-inline-flex align-middle flash-news mb-0 text-4">

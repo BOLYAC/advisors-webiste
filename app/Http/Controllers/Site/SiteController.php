@@ -38,20 +38,20 @@ class SiteController extends Controller
         $stories = \App\Models\InstaStory::where('status', true)->orderBy('row_no')->get();
 
         // for the currency
-        $response = Http::timeout(5)->get('https://openexchangerates.org/api/latest.json?app_id=38c874f782d54f7b8686796e636a4285&show_alternative=1&symbols=TRY,EUR,GBP,CAD,BTC,ETH,LTC');
+        //$response = Http::timeout(5)->get('https://openexchangerates.org/api/latest.json?app_id=38c874f782d54f7b8686796e636a4285&show_alternative=1&symbols=TRY,EUR,GBP,CAD,BTC,ETH,LTC');
         // Array of data from the JSON response
-        $r = $response->json();
+        //$r = $response->json();
         // Read File
-        $jsonString = file_get_contents(public_path('currency.json'));
-        $data = json_decode($jsonString, true);
+        //$jsonString = file_get_contents(public_path('currency.json'));
+        //$data = json_decode($jsonString, true);
         // Update Key
-        if ($data['date'] < Carbon::now('Europe/Berlin')->addHours(4)) {
-            $data['date'] = \Carbon\Carbon::now('Europe/Berlin');
-            $data['rates'] = $r;
-            // Write File
-            $newJsonString = json_encode($data, JSON_PRETTY_PRINT);
-            file_put_contents(public_path('currency.json'), stripslashes($newJsonString));
-        }
+//        if ($data['date'] < Carbon::now('Europe/Berlin')->addHours(4)) {
+//            $data['date'] = \Carbon\Carbon::now('Europe/Berlin');
+//            $data['rates'] = $r;
+//            // Write File
+//            $newJsonString = json_encode($data, JSON_PRETTY_PRINT);
+//            file_put_contents(public_path('currency.json'), stripslashes($newJsonString));
+//        }
 
         $news = \App\Models\Article::all();
         $topic = Topic::whereTranslationLike('title', '%home%')->first();
@@ -62,7 +62,7 @@ class SiteController extends Controller
             SEOTools::setCanonical(route('home'));
             SEOTools::opengraph()->addProperty('type', 'articles');
             SEOTools::twitter()->setSite(config('settings.social_twitter'));
-            SEOTools::jsonLd()->addImage($topic->photo_file);
+            SEOTools::jsonLd()->addImage(pageImage($topic->photo_file));
             SEOMeta::addKeyword($topic->seo_keywords);
             $topic->visits = $topic->visits + 1;
             $topic->save();
@@ -73,7 +73,7 @@ class SiteController extends Controller
         );
     }
 
-    public function projectList(Request $request, $city = null, $area = null)
+    public function projectList(Request $request, $city = null, $area = null, $property_type = null, $project_bedrooms = null)
     {
         $projects = \App\Models\Project::query();
         $features = \App\Models\Feature::all();
@@ -95,9 +95,8 @@ class SiteController extends Controller
 
         $input = $request->all();
 
-
         if ($request->property_type) {
-            $projects->where('category_id', $input['property_type']);
+            $projects->whereIn('category_id', $input['property_type'] ?? $property_type);
         }
 
         if ($request->city) {
@@ -110,13 +109,17 @@ class SiteController extends Controller
 
         if ($request->project_bedrooms) {
             if ($input['project_bedrooms'] < 6) {
-                $projects->where('project_bedrooms', $input['project_bedrooms']);
+                $projects->where('project_bedrooms', $input['project_bedrooms'] ?? $project_bedrooms);
             } else {
-                $projects->where('project_bedrooms', '>=', $input['project_bedrooms']);
+                $projects->where('project_bedrooms', '>=', $input['project_bedrooms'] ?? $project_bedrooms);
             }
         }
 
-        $projects = $projects->paginate(9);
+
+
+        $projects = $projects
+            ->latest()
+            ->paginate(9);
 
 
         return view('site.projects', compact('projects', 'features', 'sections', 'popProjects', 'topic'))
@@ -131,10 +134,25 @@ class SiteController extends Controller
         $project->visits = $project->visits + 1;
         $project->save();
 
-        SEOTools::setTitle(config('settings.site_name') . ' | ' . $project->seo_title);
-        SEOTools::setDescription($project->seo_description);
-        SEOTools::opengraph()->setUrl(route('project.detail', $project->seo_url_slug));
-        SEOTools::setCanonical(route('project.detail', $project->seo_url_slug));
+        // Meta description
+        SEOMeta::setTitle(config('settings.site_name') . ' | ' . $project->seo_title);
+        SEOMeta::setDescription($project->seo_description);
+        SEOMeta::addMeta('project:published_time', $project->created_at->toW3CString(), 'property');
+        SEOMeta::addMeta('project:section', $project->seo_title, 'property');
+        SEOMeta::addKeyword($project->seo_keywords);
+
+        OpenGraph::setTitle($project->seo_title);
+        OpenGraph::setDescription($project->details);
+        OpenGraph::setUrl(route('project.detail', $project->seo_url_slug));
+        OpenGraph::addProperty('type', 'article');
+        OpenGraph::addProperty('locale', 'tr-TR');
+
+        OpenGraph::addImage(pageImage($project->photo_file), ['height' => 300, 'width' => 300]);
+
+        JsonLd::setTitle($project->seo_title);
+        JsonLd::setDescription($project->seo_description);
+        JsonLd::setType('Article');
+
         SEOTools::opengraph()->addProperty('type', 'articles');
         SEOTools::twitter()->setSite(config('settings.social_twitter'));
         SEOTools::jsonLd()->addImage($project->photo_file);
@@ -482,8 +500,9 @@ class SiteController extends Controller
         dd($input);
         $sections = \App\Models\Section::all();
         $queryProjects = Project::query();
+        $request->dd();
         if ($request->property_type) {
-            $queryProjects->where('category_id', $input['property_type']);
+            $queryProjects->whereIn('category_id', $input['property_type']);
         }
 
         if ($request->city) {
@@ -572,5 +591,41 @@ class SiteController extends Controller
     {
         Session::put('currency', $currency);
         return redirect()->back();
+    }
+
+    public function store(Project $question)
+    {
+        $question->favorites()->attach(auth()->id());
+
+        return back();
+    }
+
+    public function destroy(Project $question)
+    {
+        $question->favorites()->detach(auth()->id());
+
+        return back();
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function ajaxRequest(Request $request)
+    {
+
+        $project = Project::find($request->id);
+
+        if ($project->is_favorited) {
+            $project->favorites()->detach(auth()->id());
+            $res = $project->is_favorited;
+            return response()->json(['success' => $res]);
+        } else {
+            $project->favorites()->attach(auth()->id());
+            $res = $project->is_favorited;
+            return response()->json(['success' => $res]);
+        }
+
     }
 }

@@ -29,6 +29,9 @@ class SettingController extends Controller
 
     public function toSitemap()
     {
+        SitemapGenerator::create('https://hashimproperty.com/')->writeToFile('sitemap.xml');
+
+        return redirect()->route('settings')->withSuccess(__('Sitemap generate Successfully!'));
         /*SitemapGenerator::create('https://turkeyadvisors.com')
             ->getSitemap()
             ->add(Url::create('/home')

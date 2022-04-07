@@ -24,10 +24,12 @@
         "laravel/tinker": "^2.5",
         "maatwebsite/excel": "^3.1.14",
         "mcamara/laravel-localization": "^1.6",
+        "overtrue/laravel-follow": "3.x-dev",
         "realrashid/sweet-alert": "^3.1",
         "spatie/laravel-cookie-consent": "^2.12",
         "spatie/laravel-medialibrary": "^9.8",
         "spatie/laravel-sitemap": "^5.7",
+        "stevebauman/location": "^6.3",
         "yajra/laravel-datatables-oracle": "~9.0"
     },
     "require-dev": {

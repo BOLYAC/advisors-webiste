@@ -16,6 +16,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
             return view('admin.dashboard.index');
         })->name('admin.dashboard');
 
+        Route::get('/report', 'DashboardController@getReport')->name('admin.report');
         Route::resource('site-pages', 'TopicController', ['parameters' => [
             'site-pages' => 'topic'
         ]]);

@@ -1,4 +1,4 @@
-<footer id="footer">
+<footer id="footer" style="background-image: url({{ asset('sites/img/footer-backgournd.jpg') }})">
     <div class="container my-4">
         <div class="row pt-5 pb-4 justify-content-around">
             <div class="col-12 col-sm-6 col-lg-3 mb-5">

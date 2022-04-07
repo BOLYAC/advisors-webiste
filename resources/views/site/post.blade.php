@@ -222,34 +222,33 @@
                 </section>
                 <h3 class="mb-4">{{ __('messages.latest_articles') }}</h3>
                 <div class="latest-posts articles row">
-                    @for ($i = 0; $i < 3; $i++)
+                    @foreach ($lastArticles as $lp)
                         <div class="col-12 col-lg-6 col-xl-12">
                             <div class="mb-4 article card border-radius-0">
-                                <div>
-                                    <img class="card-img-top" src="{{ asset('sites/img/post.png') }}" alt="Project">
+                                <div class="ratio ratio-16x9">
+                                    <img class="card-img-top" src="{{ pageImage($lp->photo_file) }}"
+                                         loading="lazy"
+                                         alt="{{ $lp->title }}">
                                 </div>
                                 <div class="card-body">
-                                    <div class="article-date"><i class="fas fa-calendar-alt me-1"></i> 15 Nov 2020</div>
+                                    <div class="article-date"><i class="fas fa-calendar-alt me-1"></i> {{ \Carbon\Carbon::parse($lp->date)->format('d M Y')}}</div>
                                     <div class="article-views"><i class="fa fa-eye me-1"></i>
-                                        6485 {{ __('messages.views') }}</div>
+                                        {{ $lp->visits }} {{ __('messages.views') }}</div>
                                     <div class="card-title">
-                                        <div class="mb-3 text-4 card-subtitle">Istanbul new airport</div>
-                                        <h4 class="mb-0 text-5 text-sm-6 text-lg-5 font-weight-bold">Istanbul new
-                                            airport opening</h4>
+                                        <h4 class="mb-0 text-5 text-sm-6 text-lg-5 font-weight-bold">{{ $lp->title }}</h4>
                                     </div>
                                     <div class="card-text row align-items-end">
                                         <div class="col-10">
-                                            <p class="text-4">Lorem ipsum dolor sit amet, consectetur adipiscing
-                                                elit.</p>
+                                            <p class="text-1">{!! \Str::limit(strip_tags($lp->details) , 90, $end='...') !!}</p>
                                         </div>
                                         <div class="col-2 read-more text-end">
-                                            <a href="#"><span class="arrow2 is-triangle arrow-bar is-right"></span></a>
+                                            <a href="{{ route('post.details', $lp->seo_url_slug ?? $lp->translate('en')->seo_url_slug) }}"><span class="arrow2 is-triangle arrow-bar is-right"></span></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    @endfor
+                    @endforeach
                 </div>
             </div>
         </div>

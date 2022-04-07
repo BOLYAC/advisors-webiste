@@ -9,7 +9,7 @@ class InstaStory extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['photo_file', 'status', 'row_no', 'link_story'];
+    protected $fillable = ['photo_file', 'status', 'row_no', 'link_story', 'title'];
 
     protected $casts = [
         'status' => 'boolean'

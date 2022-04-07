@@ -2,11 +2,14 @@
     <div class="open">
         <i class="far fa-comment-dots btn-blink" aria-hidden="true"></i>
         <ul class="ml-1">
-            {{--            <li data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Live Chat">--}}
-            {{--                <button>--}}
-            {{--                    <i class="far fa-comments" aria-hidden="true"></i>--}}
-            {{--                </button>--}}
-            {{--            </li>--}}
+            <li data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="{{ config('settings.phone_number_2') }}">
+                <a href="tel://{{ config('settings.phone_number_2') }}" target="_blank"
+                   rel="nofollow noreferrer"
+                   data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right"
+                   data-bs-content="Right popover">
+                    <i class="far fa-phone" aria-hidden="true"></i>
+                </a>
+            </li>
             <li data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Request Call">
                 <button data-bs-toggle="modal" data-bs-target="#contactModal" data-bs-container="body"
                         data-bs-trigger="hover focus" data-bs-placement="right" data-bs-content="Right popover">
@@ -18,7 +21,7 @@
                     <i class="fab fa-facebook-messenger" aria-hidden="true"></i>
                 </a>
             </li>
-            <li data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="WhatsApp">
+            <li data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="00905530124846">
                 <a href="https://api.whatsapp.com/send/?phone=00905530124846&text&app_absent=0" target="_blank"
                    rel="nofollow noreferrer"
                    data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right"
@@ -40,6 +43,7 @@
             <div class="modal-body py-4">
                 <form action="{{ route('submit.contact') }}" method="POST">
                     @csrf
+                    <input name="url_link" type="hidden" value="{{ url()->full()}}">
                     <div class="form-group">
                         <input
                             type="text" name="name"

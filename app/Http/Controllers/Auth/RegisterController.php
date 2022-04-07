@@ -31,6 +31,12 @@ class RegisterController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
+    protected function redirectTo()
+    {
+        session()->flash('message', __('Welcome to Turkey Advisors Family! Please Don not hesitate to share your thoughts with us, we will be waiting for you :'));
+        return route('registrationThankYou');
+    }
+
     /**
      * Create a new controller instance.
      *
@@ -41,10 +47,11 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -59,7 +66,7 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \App\Models\User
      */
     protected function create(array $data)

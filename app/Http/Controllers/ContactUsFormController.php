@@ -6,6 +6,7 @@ use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
+use Stevebauman\Location\Facades\Location;
 
 class ContactUsFormController extends Controller
 {
@@ -22,11 +23,19 @@ class ContactUsFormController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email',
-            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+            'full_number' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:8',
         ]);
 
+        $ip = $request->ip();
+        $data = Location::get($ip);
+
+
         $request_data = $request->except('_token');
+        $request_data['country'] = $data->countryName;
+        $request_data['city'] = $data->cityName;
+        dd($request_data);
         $request_data['subject'] = $request->header('User-Agent');
+
         // Send form to the CRM
         $response = Http::asForm()->post('http://advisors.local/web-hook/wbInquiries', $request_data);
 
@@ -34,7 +43,7 @@ class ContactUsFormController extends Controller
         Contact::create($request_data);
 
         // return view with message
-        return redirect()->route('thankyou');
+        return redirect()->route('ContactThankYou')->with('message', __('Your message has been sent successfully, we will get in touch with you as soon as possible'));
     }
 
     public function newsletterSubscribe(Request $request)
@@ -46,6 +55,6 @@ class ContactUsFormController extends Controller
         Contact::create([
             'email' => $request->email
         ]);
-        return view('site.success');
+        return redirect()->route('newsletterThankYou')->with('message', __('Thank you for joining our newsletters!'));
     }
 }

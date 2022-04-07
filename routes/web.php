@@ -3,6 +3,7 @@
 use App\Http\Controllers\ContactUsFormController;
 use App\Http\Controllers\Site\SiteController;
 use App\Http\Controllers\SocialController;
+use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -40,7 +41,6 @@ Route::namespace('Site')->prefix(LaravelLocalization::setLocale())->middleware('
     Route::get('/currency-switch/{currency}', [SiteController::class, 'switchCurrency '])->name('switch_currency');
 
     Route::get('/story/{id}', [SiteController::class, 'getStories'])->name('story');
-    Route::view('/tankyou', 'site/thankyou')->name('thankyou');
 
     // Facebook login
     Route::get('auth/facebook', [SocialController::class, 'facebookRedirect']);
@@ -53,9 +53,29 @@ Route::namespace('Site')->prefix(LaravelLocalization::setLocale())->middleware('
     Route::get('auth/google/callback', [SocialController::class, 'handleGoogleCallback']);
     // Search
     Route::get('searchFull', [SiteController::class, 'searchFull']);
+    // Favors
+    Route::post('ajaxRequest', [SiteController::class, 'ajaxRequest'])->name('ajaxRequest');
 
+    // After subscription
+    /// Contact form and project form
+    Route::view('/thank-you-for-submitting-the-form', 'site/thankyou')->name('ContactThankYou');
+    /// Newsletter subscription
+    Route::view('/thank-you-to-join-newsletter', 'site/thankyou')->name('newsletterThankYou');
+    ///  Registration
+    Route::view('/thank-you-to-register', 'site/thankyou')->name('registrationThankYou');
+
+    Route::get('/project/fatch/', [DashboardController::class, 'getProject']);
 });
+Route::view('/citizenship/lpen', 'site/landing-pages/landing-page-en');
+Route::view('/citizenship/lpar', 'site/landing-pages/landing-page-ar');
+Route::view('/citizenship/lpfa', 'site/landing-pages/landing-page-fa');
+Route::view('/landing-page', 'site/landing-pages/landing-page');
 
+Route::get('/landing', function (){
+
+    return 'Hello';
+   return view('site.landing-pages.landing-page');
+});
 // Admin routes
 Auth::routes([
     'verify' => false, // Email Verification Routes...

@@ -74,8 +74,8 @@
         </div>
     </div>
     <section class="section search-form-section section-no-background my-0">
-        <div class="container">
-            <div class="row align-items-end">
+        <div class="container ">
+            <div class="row align-items-center search-bar-form">
                 <div class="col-xl-4 mb-3">
                     <h3 class="mb-0">{{ __('messages.find_your_dream_home') }}</h3>
                 </div>
@@ -189,7 +189,7 @@
                             </div>
                         </div>
                         <div class="col-lg-3 mt-2 mt-lg-0">
-                            <button type="submit" class="btn btn-primary btn-lg w-100 py-3"><i
+                            <button type="submit" class="btn btn-primary w-100"><i
                                     class="fa fa-search me-2"></i> {{ __('messages.search') }}</button>
                         </div>
                     </form>
@@ -201,14 +201,19 @@
         <div class="container">
             <h3 class="mb-4">{{ __('messages.best_offers') }}</h3>
             <div class="owl-carousel owl-theme offers">
-                @foreach($stories as $story)
+                @foreach($stories as $i => $story)
                     <div class="offer">
                         <div class="story embed-responsive embed-responsive-1by1">
                             <a href="{{ route('story', $story->id) }}">
                                 <img class="embed-responsive-item w-100 h-100 img-responsive p-2"
-                                     src="{{ pageImage($story->photo_file) }}" alt="">
+                                     src="{{ pageImage($story->photo_file) }}" alt="story{{$i}}">
                             </a>
                         </div>
+                        <p class="text-center text-font-weight-light text-color-light mt-2">
+                        <a href="#" class="text-font-weight-light text-color-light">
+                                Helloo
+                        </a>
+                        </p>
                     </div>
                 @endforeach
             </div>
@@ -229,12 +234,13 @@
             <div class="owl-carousel owl-theme projects mt-3">
                 @foreach($projects as $project)
                     <div class="project card position-relative">
-                        <div class="like" style="cursor: pointer">
-                            <i class="far fa-heart"></i>
+                        <div class="like" style="cursor: pointer" data-id="{{ $project->id }}">
+                            <i class="{{Auth::guest() ? 'far fa-heart' : ($project->is_favorited ? 'fas fa-heart' : 'far fa-heart')}}"></i>
                         </div>
                         <a href="{{ route('project.detail', $project->seo_url_slug ?? $project->translate('en')->seo_url_slug) }}">
                             <div class="ratio ratio-16x9">
-                                <img class="card-img-top" src="{{ pageImage($project->photo_file) }}" alt="Project">
+                                <img class="card-img-top" src="{{ pageImage($project->photo_file) }}"
+                                     alt="{{ $project->title  }}" height="409" width="230">
                             </div>
                         </a>
                         <div class="card-body">
@@ -245,7 +251,7 @@
                                 <div class="row features mb-3 gx-2 gx-sm-3">
                                     <div class="col-auto text-3"><img class="feature-icon me-1"
                                                                       src="{{ asset('sites/img/project/map.svg') }}"
-                                                                      alt="map"/>
+                                                                      alt="map" width="24" height="24"/>
                                         @switch($project->city)
                                             @case(1)
                                             {{  __('Istanbul') }}
@@ -276,11 +282,12 @@
                                     </div>
                                     <div class="col-auto text-3"><img class="feature-icon me-1"
                                                                       src="{{ asset('sites/img/project/hand.svg') }}"
-                                                                      alt="hand"/> {{ $project->payment_type == '1' ? __('Cash') : __('Installment') }}
+                                                                      alt="hand" width="24"
+                                                                      height="24"/> {{ $project->payment_type == '1' ? __('Cash') : __('Installment') }}
                                     </div>
                                     <div class="col-auto text-3"><img class="feature-icon me-1"
                                                                       src="{{ asset('sites/img/project/hourglass.svg') }}"
-                                                                      alt="hourglass"/>
+                                                                      alt="hourglass" width="24" height="24"/>
                                         @switch($project->status)
                                             @case(1)
                                             {{  __('Not available') }}
@@ -337,7 +344,7 @@
                         <a href="{{ route('post.details', $post->seo_url_slug ?? $post->translate('en')->seo_url_slug) }}">
                             <div class="ratio ratio-16x9">
                                 <img class="card-img-top" src="{{ pageImage($post->photo_file) }}"
-                                     alt="{{ $post->title }}">
+                                     alt="{{ $post->title }}" width="413" height="232">
                             </div>
                         </a>
                         <div class="card-body">
@@ -381,7 +388,7 @@
                         <span class="d-block font-weight-light text-4 mb-1">{{ __('messages.who_we_are') }} !</span>
                         <h2 class="font-weight-extra-bold line-height-1 text-7 mb-5">{{ __('Turkey Advisors') }}</h2>
                         <div class="img-fluid d-block d-lg-none mb-4">
-                            <img src="{{ asset('sites/img/about.jpg') }}" class="img-fluid" alt=""/>
+                            <img src="{{ asset('sites/img/about.jpg') }}" class="img-fluid" alt="About TurkeyAdvisors"/>
                         </div>
                         <p class="text-5 mb-5 pb-2">{{ __('messages.turkey_advisors_about') }}</p>
                         <div class="more-details d-inline-block mb-4">
@@ -392,11 +399,12 @@
                 </div>
                 <div class="col-lg-6 fluid-col-lg-6 d-none d-lg-flex" style="min-height: 33vw;">
                     <div class="fluid-col text-end">
-                        <img src="{{ asset('sites/img/about.jpg') }}" class="img-fluid" alt=""/>
+                        <img src="{{ asset('sites/img/about.jpg') }}" class="img-fluid" alt="About TurkeyAdvisors"/>
                     </div>
                 </div>
             </div>
-            <img src="{{ asset('sites/img/about2.png') }}" class="img-center d-none d-xl-block" alt=""/>
+            <img src="{{ asset('sites/img/about2.png') }}" class="img-center d-none d-xl-block"
+                 alt="About TurkeyAdvisors"/>
         </div>
     </section>
     <section class="section wwa-section border-0 mt-5 py-4"
@@ -436,19 +444,20 @@
                         </div>
                         <a href="{{ route('project.detail', $p->seo_url_slug ?? $p->translate('en')->seo_url_slug) }}">
                             <div class="ratio ratio-16x9">
-                                <img class="card-img-top" src="{{ pageImage($p->photo_file) }}" alt="Project">
+                                <img class="card-img-top" loading="lazy" src="{{ pageImage($p->photo_file) }}"
+                                     alt="{{ $p->title }}" width="409" height="230">
                             </div>
                         </a>
                         <div class="card-body">
                             <div class="card-infos">
                                 <a href="{{ route('project.detail', $p->seo_url_slug ?? $p->translate('en')->seo_url_slug) }}">
-                                    <h4 class="card-title mb-4 text-7 font-weight-bold">{{ __('messages.project_no') }} {{ $p->title  }}</h4>
+                                    <h4 class="card-title mb-4 text-7 font-weight-bold">{{ __('messages.project_no') }} {{ $p->title }}</h4>
                                 </a>
                                 <div class="row features mb-3 gx-3">
                                     <div class="col-auto text-3"><img class="feature-icon me-1"
                                                                       src="{{ asset('sites/img/project/map.svg') }}"
-                                                                      alt="map"/>
-                                        @switch($project->city)
+                                                                      alt="map" width="24" height="24"/>
+                                        @switch($p->city)
                                             @case(1)
                                             {{  __('Istanbul') }}
                                             @break
@@ -478,11 +487,12 @@
                                     </div>
                                     <div class="col-auto text-3"><img class="feature-icon me-1"
                                                                       src="{{ asset('sites/img/project/hand.svg') }}"
-                                                                      alt="hand"/> {{ $p->payment_type == '1' ? __('Cash') : __('Installment') }}
+                                                                      alt="hand" width="24"
+                                                                      height="24"/> {{ $p->payment_type == '1' ? __('Cash') : __('Installment') }}
                                     </div>
                                     <div class="col-auto text-3"><img class="feature-icon me-1"
                                                                       src="{{ asset('sites/img/project/hourglass.svg') }}"
-                                                                      alt="hourglass"/>
+                                                                      alt="hourglass" width="24" height="24"/>
                                         @switch($p->status)
                                             @case(1)
                                             {{  __('Not available') }}
@@ -702,7 +712,7 @@
         </div>
     </section>
     <section class="section citizenship-section section-height-4"
-             style="background-image: url({{ asset('sites/img/citizenship-bg.jpeg') }})">
+             style="background-image: url({{ asset('sites/img/citizenship-bg.jpg') }})">
         <div class="container">
             <div class="row align-items-center gx-5">
                 <div class="col-lg-8 col-xl-6">

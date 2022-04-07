@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Overtrue\LaravelFollow\Followable;
+
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, Followable ;
 
     /**
      * The attributes that are mass assignable.
@@ -37,4 +39,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'status' => 'boolean'
     ];
+
+    public function favorites()
+    {
+        return $this->belongsToMany(Project::class, 'user_follower')->withTimestamps();
+    }
 }

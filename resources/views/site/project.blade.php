@@ -381,6 +381,7 @@
                             <form action="{{ route('submit.contact') }}" method="POST">
                                 @csrf
                                 <input name="item_id" type="hidden" value="{{ $project->title }}">
+                                <input name="url_link" type="hidden" value="{{ url()->full()}}">
                                 <div class="form-group mb-5">
                                     <input
                                         type="text"
@@ -408,7 +409,7 @@
                                 <div class="form-group mb-5">
                                     <input
                                         type="text"
-                                        class="form-control form-control-lg {{ $errors->has('phone') ? 'error' : '' }}"
+                                        class="phone-input form-control form-control-lg {{ $errors->has('phone') ? 'error' : '' }}"
                                         name="phone"
                                         placeholder="{{ __('messages.your_phone_number') }}" required>
                                     @if ($errors->has('phone'))

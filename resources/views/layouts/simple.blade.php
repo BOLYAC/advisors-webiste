@@ -83,24 +83,46 @@
         $('.privacy-banner').css('display', 'inherit');
     }
     $(document).ready(function () {
-        $.getJSON("currency.json", function (data) {
-            let d = [
-                "1 USD / " + data.rates.rates.TRY + " Turkish Lira",
-                "1 USD /  " + data.rates.rates.EUR + " Euro",
-                "1 USD /  " + data.rates.rates.GBP + " British pound",
-                "1 USD /  " + data.rates.rates.BTC + " BTC",
-                "1 USD /  " + data.rates.rates.ETH + " ETH",
-                "1 USD /  " + data.rates.rates.LTC + " LTC"
-            ];
-            $.each(d, function (i, l) {
-                $("#new-currency").append(`
-                    <li class="nav-item nav-item-anim-icon d-inline-block me-5 font-weight-bold">
-                        <a href="javascript:void(0)">` + l + `</a>
-                    </li>`
-                );
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $('i.far.fa-heart, i.fas.fa-heart').click(function () {
+            @guest
+
+            $("#loginModal").modal('show');
+
+            @else
+
+            var id = $(this).closest(".like").attr('data-id');
+            var cObjId = this.id;
+            var cObj = $(this);
+
+            console.log(id);
+            console.log(cObj);
+            console.log(cObjId);
+
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('ajaxRequest') }}',
+                data: {id: id},
+                success: function (data) {
+                    console.log(data)
+                    if (data.success === false) {
+                        $(cObj).removeClass("fas fa-heart");
+                        $(cObj).addClass("far fa-heart");
+                    } else {
+                        $(cObj).removeClass("far fa-heart");
+                        $(cObj).addClass("fas fa-heart");
+                    }
+                }
             });
-        }).fail(function () {
-            console.log("An error has occurred.");
+
+            @endguest
+
         });
     });
     <!-- Use as a jQuery plugin -->

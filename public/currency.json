@@ -1,9 +1,9 @@
 {
-    "date": "2022-02-11T12:19:18.945517Z",
+    "date": "2022-03-30T02:46:37.303832Z",
     "rates": {
         "error": true,
         "status": 429,
         "message": "access_restricted",
-        "description": "Access restricted until 2022-02-12 (reason: too_many_requests). If there has been a mistake, please contact support@openexchangerates.org."
+        "description": "Access restricted until 2022-04-12 (reason: too_many_requests). If there has been a mistake, please contact support@openexchangerates.org."
     }
 }

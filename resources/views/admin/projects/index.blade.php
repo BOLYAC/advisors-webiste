@@ -25,44 +25,60 @@
                             <th>{{ __('Created at') }}</th>
                             <th style="width: 30%;">{{ __('Visits') }}</th>
                             <th style="width: 15%;">{{ __('Active') }}</th>
+                            <th style="width: 15%;">{{ __('Hots') }}</th>
+                            <th style="width: 15%;">{{ __('Citizenship') }}</th>
                             <th class="text-center" style="width: 100px;">{{ __('Actions') }}</th>
                         </tr>
                         </thead>
                         <tbody>
                         @forelse($projects as $project)
-                        <tr>
-                            <td>{{ $project->id }}</td>
-                            <td class="text-center">
-                                <img class="img-fluid" src="{{ pageImage($project->photo_file) }}" alt="">
-                            </td>
-                            <td class="font-w600">{{ $project->title }}</td>
-                            <td class="font-w600">{{ $project->created_at->format('d-m-Y') }}</td>
-                            <td>
-                                {{ $project->visits }}
-                            </td>
-                            <td>
-                                @if($project->featured === true)
-                                    <span class="badge badge-info">{{ __('Yes') }}</span>
-                                @else
-                                    <span class="badge badge-danger">{{ __('No') }}</span>
-                                @endif
-
-                            </td>
-                            <td class="text-center">
-                                <div class="btn-group">
-                                    <a href="{{ route('projects.edit', $project) }}" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Edit">
-                                        <i class="fa fa-pencil"></i>
-                                    </a>
-                                    <form action="{{ route('projects.destroy', $project) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Delete">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>{{ $project->id }}</td>
+                                <td class="text-center">
+                                    <img class="img-fluid" src="{{ pageImage($project->photo_file) }}" alt="">
+                                </td>
+                                <td class="font-w600">{{ $project->title }}</td>
+                                <td class="font-w600">{{ $project->created_at->format('d-m-Y') }}</td>
+                                <td>
+                                    {{ $project->visits }}
+                                </td>
+                                <td>@if($project->active === true)
+                                        <span class="badge badge-info">{{ __('Yes') }}</span>
+                                    @else
+                                        <span class="badge badge-danger">{{ __('No') }}</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($project->featured === true)
+                                        <span class="badge badge-info">{{ __('Yes') }}</span>
+                                    @else
+                                        <span class="badge badge-danger">{{ __('No') }}</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($project->citizen_status === true)
+                                        <span class="badge badge-info">{{ __('Yes') }}</span>
+                                    @else
+                                        <span class="badge badge-danger">{{ __('No') }}</span>
+                                    @endif
+                                </td>
+                                <td class="text-center">
+                                    <div class="btn-group">
+                                        <a href="{{ route('projects.edit', $project) }}"
+                                           class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Edit">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                        <form action="{{ route('projects.destroy', $project) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-secondary" data-toggle="tooltip"
+                                                    title="Delete">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
                         @empty
                             <p class="col text-center">{{ __('There is no project') }}</p>
                         @endforelse

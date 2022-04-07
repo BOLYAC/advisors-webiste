@@ -17,6 +17,13 @@
                         @csrf
                         @method('PUT')
                         <div class="block-content">
+                            <div class="form-group">
+                                <label for="title">{{ __('Link')}}</label>
+                                <input type="text" class="form-control" id="title"
+                                       name="title"
+                                       value="{{ old('title', $instaStory->title ?? '') }}"
+                                       placeholder="{{ __('Title') }}">
+                            </div>
                             <div class="form-group row">
                                 <label for="photo_file" class="col-12">{{ __('Photo') }}</label>
                                 <div class="col-12">

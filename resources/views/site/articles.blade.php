@@ -69,7 +69,7 @@
                                     <div class="ratio ratio-16x9">
                                         <img src="{{ pageImage($post->photo_file) }}" class="card-img-top"
                                              loading="lazy"
-                                             alt="{{ $post->title }}">
+                                             alt="{{ $post->title }}" width="424" height="238">
 
                                     </div>
                                 </a>
@@ -129,7 +129,7 @@
                                 <div class="row features mb-3 gx-3">
                                     <div class="col-auto text-3"><img class="feature-icon me-1"
                                                                       src="{{ asset('sites/img/project/map.svg') }}"
-                                                                      alt="map"/>
+                                                                      alt="{{ $project->title }}" width="422" height="237"/>
                                         @switch($project->city)
                                             @case(1)
                                             {{  __('Istanbul') }}
@@ -222,7 +222,7 @@
                         <div class="mb-4 article card border-radius-0">
                             <a href="{{ route('post.details', $a->seo_url_slug ?? $a->translate('en')->seo_url_slug) }}">
                                 <div class="ratio ratio-16x9">
-                                    <img class="card-img-top" src="{{ pageImage($a->photo_file) }}" alt="Project">
+                                    <img class="card-img-top" src="{{ pageImage($a->photo_file) }}" alt="{{ $a->title }}" width="424" height="238">
                                 </div>
                             </a>
                             <div class="card-body">

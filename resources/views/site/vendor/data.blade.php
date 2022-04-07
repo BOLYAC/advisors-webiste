@@ -1,6 +1,9 @@
 @foreach ($projects as $project)
     <div class="col-lg-6 col-xl-4 mb-4">
         <div class="project card">
+            <div class="like" style="cursor: pointer" data-id="{{ $project->id }}">
+                <i class="{{Auth::guest() ? 'far fa-heart' : ($project->is_favorited ? 'fas fa-heart' : 'far fa-heart')}}"></i>
+            </div>
             <a href="{{ route('project.detail', $project->seo_url_slug ?? $project->translate('en')->seo_url_slug) }}">
                 <div class="ratio ratio-16x9">
                     <img class="card-img-top" src="{{ pageImage($project->photo_file) }}"
